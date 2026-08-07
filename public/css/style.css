@@ -133,7 +133,7 @@ body {
 section { position: relative; }
 
 /* ---- Typography -------------------------------------------------------- */
-h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; line-height: 1.1; letter-spacing: 0.01em; }
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; line-height: 1.1; letter-spacing: 0.01em; }
 h1 { font-size: clamp(2.75rem, 5.5vw, 4.25rem); }
 h2 { font-size: clamp(2.1rem, 3.6vw, 3rem); }
 h3 { font-size: clamp(1.4rem, 2.2vw, 1.7rem); }
@@ -433,6 +433,7 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 700;
+  text-transform: uppercase;
   color: var(--orange);
   line-height: 1;
 }
@@ -538,7 +539,7 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
   flex-direction: column;
   line-height: 1;
 }
-.story-badge strong { font-family: var(--font-heading); font-size: 2.3rem; color: var(--orange); }
+.story-badge strong { font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; font-size: 2.3rem; color: var(--orange); }
 .story-badge span { font-size: 0.78rem; color: var(--ink-soft); font-weight: 600; margin-top: 4px; }
 .story-copy p { margin-top: 16px; }
 .story-copy p:first-of-type { margin-top: 0; }
@@ -548,7 +549,7 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
 /* ---- Stats / USP row ------------------------------------------------------ */
 .usp-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
 .usp-item { text-align: center; }
-.usp-item strong { display: block; font-family: var(--font-heading); font-size: 2.4rem; color: var(--blue); }
+.usp-item strong { display: block; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; font-size: 2.4rem; color: var(--blue); }
 .usp-item span { font-size: 0.85rem; color: var(--ink-soft); font-weight: 600; }
 
 /* ---- Testimonials --------------------------------------------------------- */
