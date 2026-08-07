@@ -18,13 +18,11 @@
     drawer.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeDrawer));
   }
 
-  // Sticky header shadow on scroll
-  const header = document.querySelector('.site-header');
-  if (header) {
-    const onScroll = () => {
-      header.style.boxShadow = window.scrollY > 8 ? '0 4px 16px rgba(20,24,31,0.06)' : 'none';
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
+  // Toggle a body-level "scrolled" state: drives the header shadow on every
+  // page, and the transparent-over-hero -> solid-white transition on home.
+  const onScroll = () => {
+    document.body.classList.toggle('scrolled', window.scrollY > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 })();

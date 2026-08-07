@@ -3,12 +3,18 @@
 <head>
 <%- include('partials/head') %>
 </head>
-<body>
+<body class="page-home">
 <%- include('partials/header') %>
 
 <main>
   <section class="hero">
-    <div class="hero-bg" style="background-image:url('/images/hero-van.jpg')"></div>
+    <div class="hero-media">
+      <video class="hero-video" autoplay muted loop playsinline poster="/images/hero-poster.jpg">
+        <source src="/video/hero-loop.webm" type="video/webm">
+        <source src="/video/hero-loop.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
     <div class="container">
       <div class="hero-content">
         <span class="hero-badge"><span class="dot"></span> 24/7 Emergency Service &middot; Inland Empire</span>
