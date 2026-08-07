@@ -6,8 +6,8 @@
 <title>Lincoln Plumbing &amp; Rooter | Trusted Plumbers in San Bernardino &amp; the Inland Empire</title>
 <meta name="description" content="Family-owned plumbing company serving the Inland Empire since 2021. 24/7 emergency service, free estimates, and licensed technicians you can trust.">
 <link rel="icon" href="/images/logo.png">
-<link rel="preload" href="/fonts/PlusJakartaSans-Variable.woff2?v=static-2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/style.css?v=static-2">
+<link rel="preload" href="/fonts/PlusJakartaSans-Variable.woff2?v=static-3" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/style.css?v=static-3">
 
 </head>
 <body class="page-home">
@@ -87,16 +87,18 @@
 <main>
   <section class="hero">
     <div class="hero-media">
-      <video class="hero-video" autoplay muted loop playsinline poster="/images/hero-poster.jpg?v=static-2">
-        <source src="/video/hero-loop.webm?v=static-2" type="video/webm">
-        <source src="/video/hero-loop.mp4?v=static-2" type="video/mp4">
+      <video class="hero-video" autoplay muted loop playsinline poster="/images/hero-poster.jpg?v=static-3">
+        <source src="/video/hero-loop.webm?v=static-3" type="video/webm">
+        <source src="/video/hero-loop.mp4?v=static-3" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
+      <div class="hero-grid"></div>
     </div>
+    <svg class="hero-watermark" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M501 74a12 12 0 0 0-20-5l-63 63-45-11-11-45 63-63a12 12 0 0 0-5-20 137 137 0 0 0-172 165L26 383a80 80 0 0 0 113 113l205-205A137 137 0 0 0 501 74zM118 452a28 28 0 1 1 0-56 28 28 0 0 1 0 56z"/></svg>
     <div class="container">
       <div class="hero-content">
         <span class="hero-badge"><span class="dot"></span> 24/7 Emergency Service &middot; Inland Empire</span>
-        <h1>Fast, Honest Plumbing You Can Actually Trust</h1>
+        <h1>Fast, Honest Plumbing You Can <span class="hl">Actually Trust</span></h1>
         <p class="lede">Family-owned since 2021, backed by two decades of hands-on experience. Licensed, insured, and ready around the clock for anything from a slow drain to a full repipe.</p>
         <div class="hero-ctas">
           <a href="tel:19097800887" class="btn btn-primary">24/7 Emergency Service — Call Now</a>
@@ -114,7 +116,15 @@
         </div>
       </div>
     </div>
+    <div class="scroll-cue" aria-hidden="true"><span class="mouse"></span>Scroll</div>
   </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>24/7 Emergency Service <i>&#10022;</i> Free Estimates <i>&#10022;</i> Licensed &amp; Insured <i>&#10022;</i> Family Owned <i>&#10022;</i> Same-Day Service <i>&#10022;</i> Upfront Pricing <i>&#10022;</i></span>
+      <span>24/7 Emergency Service <i>&#10022;</i> Free Estimates <i>&#10022;</i> Licensed &amp; Insured <i>&#10022;</i> Family Owned <i>&#10022;</i> Same-Day Service <i>&#10022;</i> Upfront Pricing <i>&#10022;</i></span>
+    </div>
+  </div>
 
   <div class="trust-bar">
   <div class="container">
@@ -146,41 +156,57 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-head center">
+      <div class="section-head center" data-reveal>
+        <span class="kicker-num" aria-hidden="true">01</span>
         <span class="eyebrow">What We Do</span>
         <h2>Core Plumbing Services</h2>
         <p>From everyday repairs to full sewer line replacements, our licensed technicians handle it right the first time — residential and commercial.</p>
       </div>
       <div class="services-grid">
-        
-        <div class="service-card">
+
+        <div class="service-card" data-reveal>
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="19" rx="4"/><path d="M10 8c0 1-1.2 1.5-1.2 3a1.2 1.2 0 0 0 2.4 0c0-1.5-1.2-2-1.2-3"/><path d="M14.5 10c0 1-1.2 1.5-1.2 3a1.2 1.2 0 0 0 2.4 0c0-1.5-1.2-2-1.2-3"/><line x1="7" y1="21" x2="17" y2="21"/></svg></div>
           <h3>Water Heaters</h3>
           <p>Repair, replacement &amp; tankless installation.</p>
           <a class="service-link" href="/services.html#water-heaters">Learn more &rarr;</a>
         </div>
-        
-        <div class="service-card">
+
+        <div class="service-card" data-reveal style="--reveal-delay:.08s">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9l3-2 3 2M9 15l3 2 3-2"/></svg></div>
           <h3>Drain Cleaning &amp; Hydrojetting</h3>
           <p>Fast relief for slow, clogged, or backed-up drains.</p>
           <a class="service-link" href="/services.html#drain-cleaning">Learn more &rarr;</a>
         </div>
-        
-        <div class="service-card">
+
+        <div class="service-card" data-reveal style="--reveal-delay:.16s">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9a2 2 0 0 1 2-2h4l2-3h2l2 3h4a2 2 0 0 1 2 2v12"/><path d="M3 15h18"/><path d="M8 21v-4M16 21v-4"/></svg></div>
           <h3>Sewer Lines &amp; Slab Leaks</h3>
           <p>Main line backups, slab leaks &amp; sewer repair.</p>
           <a class="service-link" href="/services.html#sewer-lines">Learn more &rarr;</a>
         </div>
-        
-        <div class="service-card">
+
+        <div class="service-card" data-reveal style="--reveal-delay:.24s">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
           <h3>General Plumbing Repair</h3>
           <p>Leaks, fixtures, gas lines &amp; everyday repairs.</p>
           <a class="service-link" href="/services.html#general-plumbing">Learn more &rarr;</a>
         </div>
-        
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section stat-band bg-black blueprint-bg">
+    <div class="container">
+      <div class="section-head center" data-reveal style="margin-bottom:56px;">
+        <span class="eyebrow" style="color:var(--orange-2)">By The Numbers</span>
+        <h2>Built On Experience, Backed By Results</h2>
+      </div>
+      <div class="counter-row" data-reveal>
+        <div class="counter-item"><div class="num" data-count="20" data-suffix="+"><span class="val">0</span><span class="suf">+</span></div><div class="lbl">Years Hands-On Experience</div></div>
+        <div class="counter-item"><div class="num" data-count="24" data-suffix="/7"><span class="val">0</span><span class="suf">/7</span></div><div class="lbl">Emergency Availability</div></div>
+        <div class="counter-item"><div class="num" data-count="100" data-suffix="%"><span class="val">0</span><span class="suf">%</span></div><div class="lbl">Family Owned &amp; Operated</div></div>
+        <div class="counter-item"><div class="num" data-count="5" data-suffix="★"><span class="val">0</span><span class="suf">★</span></div><div class="lbl">Star-Rated Across The IE</div></div>
       </div>
     </div>
   </section>
@@ -188,38 +214,37 @@
   <section class="section bg-soft">
     <div class="container">
       <div class="story">
-        <div class="story-media">
+        <div class="story-media" data-reveal>
           <img src="/images/team-two-techs.jpg" alt="Two Lincoln Plumbing & Rooter technicians standing in front of a company van">
           <div class="story-badge"><strong>2021</strong><span>Company Founded</span></div>
         </div>
-        <div class="story-copy">
-          <span class="eyebrow blue">Our Story</span>
+        <div class="story-copy" data-reveal style="--reveal-delay:.12s">
+          <span class="eyebrow">Our Story</span>
           <h2>Two Brothers, One Simple Mission</h2>
           <p>Founded by two brothers with a simple mission: to provide honest, high-quality plumbing services that customers can trust. From fixing leaky faucets to tackling major pipe replacements, we treat every job with the same level of care.</p>
           <p>We've built a reputation for reliability, transparency, and quality craftsmanship — backed by two decades of hands-on experience across the Inland Empire.</p>
           <div class="story-signoff">
-            <a href="/about.html" class="btn btn-outline">Read Our Full Story &rarr;</a>
+            <a href="/about.html" class="btn btn-primary">Read Our Full Story &rarr;</a>
+            <div class="seal" aria-label="100% satisfaction guaranteed">
+              <svg class="seal-spin" viewBox="0 0 132 132" aria-hidden="true"><defs><path id="sealcircle" d="M66,66 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs><text fill="rgba(255,255,255,0.55)" font-size="10.5" font-family="Antonio, sans-serif" font-weight="700" letter-spacing="2.4"><textPath href="#sealcircle" startOffset="0">SATISFACTION GUARANTEED &#9733; WORKMANSHIP &#9733; </textPath></text></svg>
+              <strong>100%</strong>
+              <span>Guaranteed</span>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="usp-row">
-        <div class="usp-item"><strong>20+</strong><span>Years Hands-On Experience</span></div>
-        <div class="usp-item"><strong>24/7</strong><span>Emergency Availability</span></div>
-        <div class="usp-item"><strong>100%</strong><span>Family Owned & Operated</span></div>
-        <div class="usp-item"><strong>Free</strong><span>In-Person Estimates</span></div>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="section-head center">
+      <div class="section-head center" data-reveal>
+        <span class="kicker-num" aria-hidden="true">02</span>
         <span class="eyebrow">Reputation</span>
         <h2>Rated 5 Stars Across the Inland Empire</h2>
         <p>Don't just take our word for it — see what neighbors across San Bernardino, Riverside, and Fontana are saying.</p>
       </div>
-      <div class="testimonial-grid">
+      <div class="testimonial-grid" data-reveal>
         <a href="https://share.google/dAugpVXgXkDwGv2dv" target="_blank" rel="noopener" class="testimonial-card" style="text-decoration:none;">
           <div class="stars">★★★★★</div>
           <h3 style="font-size:1.1rem;">Google Reviews</h3>
@@ -241,14 +266,41 @@
     </div>
   </section>
 
+  <section class="area-band section slash-top">
+    <div class="container">
+      <div class="area-head section-head" data-reveal style="max-width:720px;">
+        <span class="eyebrow">Proudly Local</span>
+        <h2>Serving the Entire Inland Empire</h2>
+        <p>Same-day and 24/7 emergency plumbing across San Bernardino, Riverside, and every neighborhood in between. If you're in the IE, we're already in your corner.</p>
+      </div>
+      <div class="city-cloud" data-reveal>
+        <span class="city-chip solid">San Bernardino</span>
+        <span class="city-chip">Riverside</span>
+        <span class="city-chip">Fontana</span>
+        <span class="city-chip">Rialto</span>
+        <span class="city-chip">Colton</span>
+        <span class="city-chip solid">Redlands</span>
+        <span class="city-chip">Highland</span>
+        <span class="city-chip">Loma Linda</span>
+        <span class="city-chip">Grand Terrace</span>
+        <span class="city-chip">Yucaipa</span>
+        <span class="city-chip solid">Moreno Valley</span>
+        <span class="city-chip">Bloomington</span>
+        <span class="city-chip">Rancho Cucamonga</span>
+        <span class="city-chip">Ontario</span>
+      </div>
+    </div>
+  </section>
+
   <section class="section bg-soft">
     <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow blue">From the Blog</span>
+      <div class="section-head center" data-reveal>
+        <span class="kicker-num" aria-hidden="true">03</span>
+        <span class="eyebrow">From the Blog</span>
         <h2>Plumbing Tips & News</h2>
         <p>Guides and insight from our own licensed technicians, written for Inland Empire homeowners and businesses.</p>
       </div>
-      <div class="blog-grid">
+      <div class="blog-grid" data-reveal>
         
         <a class="blog-card" href="/blog/when-its-time-to-repipe-a-guide-for-inland-empire-homeowners.html">
           <div class="blog-card-media"><img src="/images/work-bathroom-vanity.jpg" alt="When It&#39;s Time to Repipe: A Guide for Inland Empire Homeowners"></div>
@@ -286,7 +338,7 @@
 
   <section class="section-tight">
     <div class="container">
-      <div class="cta-band">
+      <div class="cta-band" data-reveal>
         <div>
           <h2>Have a plumbing problem right now?</h2>
           <p>Our team is on call 24/7 across the Inland Empire — call now or book a free in-person estimate.</p>
@@ -383,7 +435,7 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=static-2"></script>
+<script src="/js/main.js?v=static-3"></script>
 
 </body>
 </html>

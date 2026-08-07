@@ -30,6 +30,51 @@
   // to the server and redirects back with ?sent=1. Since pages are static,
   // there's no server-rendered confirmation banner — show a toast instead,
   // then clean the query param off the URL.
+  // ---- Scroll reveal: fade/slide elements in as they enter the viewport ----
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (revealEls.length && 'IntersectionObserver' in window && !reduceMotion) {
+    const revObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach((el) => revObserver.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
+  }
+
+  // ---- Count-up: animate stat numbers once they scroll into view ----------
+  const counters = document.querySelectorAll('.num[data-count]');
+  if (counters.length && 'IntersectionObserver' in window) {
+    const runCount = (el) => {
+      const target = parseFloat(el.getAttribute('data-count')) || 0;
+      const valEl = el.querySelector('.val');
+      if (!valEl) return;
+      if (reduceMotion) { valEl.textContent = target; return; }
+      const duration = 1400;
+      let start = null;
+      const step = (ts) => {
+        if (start === null) start = ts;
+        const p = Math.min((ts - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        valEl.textContent = Math.round(target * eased);
+        if (p < 1) requestAnimationFrame(step);
+        else valEl.textContent = target;
+      };
+      requestAnimationFrame(step);
+    };
+    const countObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { runCount(entry.target); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach((el) => countObserver.observe(el));
+  }
+
   const params = new URLSearchParams(window.location.search);
   if (params.get('sent') === '1') {
     const toast = document.createElement('div');
