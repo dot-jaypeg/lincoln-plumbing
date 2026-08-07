@@ -9,9 +9,9 @@
 <main>
   <section class="hero">
     <div class="hero-media">
-      <video class="hero-video" autoplay muted loop playsinline poster="/images/hero-poster.jpg">
-        <source src="/video/hero-loop.webm" type="video/webm">
-        <source src="/video/hero-loop.mp4" type="video/mp4">
+      <video class="hero-video" autoplay muted loop playsinline poster="/images/hero-poster.jpg?v=<%= v %>">
+        <source src="/video/hero-loop.webm?v=<%= v %>" type="video/webm">
+        <source src="/video/hero-loop.mp4?v=<%= v %>" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
     </div>

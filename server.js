@@ -10,6 +10,13 @@ const gallery = require('./data/gallery');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Cache-busting token appended to static asset URLs as `?v=`. Static assets are
+// served with a long max-age, so without this, browsers that visited before a
+// deploy keep using their stale cached CSS/JS/video until it expires. Railway
+// sets RAILWAY_GIT_COMMIT_SHA per deploy; falling back to boot time covers
+// local dev and any environment that doesn't provide it.
+const ASSET_VERSION = process.env.RAILWAY_GIT_COMMIT_SHA || String(Date.now());
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -21,6 +28,7 @@ app.use((req, res, next) => {
   res.locals.site = site;
   res.locals.icons = icons;
   res.locals.currentPath = req.path;
+  res.locals.v = ASSET_VERSION;
   next();
 });
 
