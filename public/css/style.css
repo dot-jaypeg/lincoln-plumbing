@@ -2,38 +2,55 @@
    Lincoln Plumbing & Rooter — Design System
    ========================================================================== */
 
+/* Headline font: Antonio (condensed display sans) */
 @font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('/fonts/PlusJakartaSans-Variable.woff2') format('woff2');
+  font-family: 'Antonio';
+  src: url('/fonts/Antonio-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Antonio';
+  src: url('/fonts/Antonio-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('/fonts/PlusJakartaSans-Variable.woff2') format('woff2');
+  font-family: 'Antonio';
+  src: url('/fonts/Antonio-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Body font: Work Sans */
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/fonts/WorkSans-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Work Sans';
+  src: url('/fonts/WorkSans-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('/fonts/PlusJakartaSans-Variable.woff2') format('woff2');
+  font-family: 'Work Sans';
+  src: url('/fonts/WorkSans-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('/fonts/PlusJakartaSans-Variable.woff2') format('woff2');
+  font-family: 'Work Sans';
+  src: url('/fonts/WorkSans-Bold.otf') format('opentype');
   font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('/fonts/PlusJakartaSans-Variable.woff2') format('woff2');
-  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
@@ -60,7 +77,8 @@
   --success: #1f9d55;
 
   /* Type */
-  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Antonio', 'Work Sans', -apple-system, sans-serif;
 
   /* Layout */
   --max-width: 1200px;
@@ -115,10 +133,10 @@ body {
 section { position: relative; }
 
 /* ---- Typography -------------------------------------------------------- */
-h1, h2, h3, h4 { font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
-h1 { font-size: clamp(2.25rem, 4.5vw, 3.5rem); }
-h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
-h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; line-height: 1.1; letter-spacing: 0.01em; }
+h1 { font-size: clamp(2.75rem, 5.5vw, 4.25rem); }
+h2 { font-size: clamp(2.1rem, 3.6vw, 3rem); }
+h3 { font-size: clamp(1.4rem, 2.2vw, 1.7rem); }
 p { color: var(--ink-soft); }
 .lede { font-size: clamp(1.05rem, 1.4vw, 1.25rem); color: var(--ink-soft); }
 
@@ -180,17 +198,20 @@ p { color: var(--ink-soft); }
 .btn-sm { padding: 11px 18px; font-size: 0.9rem; }
 
 .btn-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   background: var(--orange);
   color: var(--white);
   border-radius: 999px;
-  padding: 12px 20px 12px 16px;
-  font-size: 0.95rem;
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
   box-shadow: 0 4px 14px rgba(255, 123, 0, 0.4);
 }
 .btn-call:hover { background: var(--orange-dark); }
 .btn-call svg { flex-shrink: 0; }
-.btn-call .call-label { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
-.btn-call .call-label small { font-weight: 400; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.9; }
 
 /* ---- Header / Nav ------------------------------------------------------ */
 .top-bar {
@@ -239,7 +260,9 @@ body.page-home.scrolled .site-header {
   padding: 10px 16px;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--ink-soft);
   transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -407,7 +430,8 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
   padding: 14px 20px;
 }
 .promo-chip .price {
-  font-size: 1.7rem;
+  font-family: var(--font-heading);
+  font-size: 2rem;
   font-weight: 700;
   color: var(--orange);
   line-height: 1;
@@ -514,7 +538,7 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
   flex-direction: column;
   line-height: 1;
 }
-.story-badge strong { font-size: 2rem; color: var(--orange); }
+.story-badge strong { font-family: var(--font-heading); font-size: 2.3rem; color: var(--orange); }
 .story-badge span { font-size: 0.78rem; color: var(--ink-soft); font-weight: 600; margin-top: 4px; }
 .story-copy p { margin-top: 16px; }
 .story-copy p:first-of-type { margin-top: 0; }
@@ -524,7 +548,7 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
 /* ---- Stats / USP row ------------------------------------------------------ */
 .usp-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
 .usp-item { text-align: center; }
-.usp-item strong { display: block; font-size: 2.1rem; color: var(--blue); }
+.usp-item strong { display: block; font-family: var(--font-heading); font-size: 2.4rem; color: var(--blue); }
 .usp-item span { font-size: 0.85rem; color: var(--ink-soft); font-weight: 600; }
 
 /* ---- Testimonials --------------------------------------------------------- */
@@ -629,6 +653,24 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 20px;
+}
+
+.alert-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 400;
+  max-width: min(420px, calc(100vw - 48px));
+  box-shadow: var(--shadow-lg);
+  transform: translate(-50%, 16px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  margin-bottom: 0;
+}
+.alert-toast.show { transform: translate(-50%, 0); opacity: 1; }
+
+@media (max-width: 860px) {
+  .alert-toast { bottom: 76px; }
 }
 
 /* Contact page split layout */
@@ -762,7 +804,6 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
   .hero-ctas .btn { justify-content: center; }
   .promo-strip { flex-direction: column; }
   .trust-bar .container { grid-template-columns: 1fr; }
-  .header-actions .btn-call .call-label small { display: none; }
   .hero .container { padding-top: 110px; padding-bottom: 64px; }
 }
 
@@ -784,8 +825,10 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
 .mobile-nav-links { display: flex; flex-direction: column; padding: 12px 24px; }
 .mobile-nav-links a {
   padding: 16px 0;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   border-bottom: 1px solid var(--gray-200);
 }
 .mobile-nav-cta { padding: 24px; display: grid; gap: 12px; }
