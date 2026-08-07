@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<%- include('../partials/head') %>
+</head>
+<body>
+<%- include('../partials/header') %>
+
+<main>
+  <section class="section-tight">
+    <div class="container">
+      <div class="blog-post-header">
+        <span class="blog-date"><%= new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></span>
+        <h1 style="margin-top:14px;"><%= post.title %></h1>
+      </div>
+
+      <div class="blog-post-hero">
+        <img src="/images/<%= post.image %>" alt="<%= post.title %>">
+      </div>
+
+      <div class="blog-post-body">
+        <%- post.body %>
+
+        <div class="blog-post-cta">
+          <div class="cta-band" style="padding:40px;">
+            <div>
+              <h2 style="font-size:1.4rem;">Ready to get this fixed?</h2>
+              <p>Call <%= site.phone %> or book a free in-person estimate — we're available 24/7.</p>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a href="<%= site.phoneHref %>" class="btn btn-primary">Call Now</a>
+              <a href="/contact" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5); color:#fff;">Free Estimate</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% if (related && related.length) { %>
+      <div class="related-posts">
+        <div class="container" style="padding:0;">
+          <div class="section-head center">
+            <span class="eyebrow blue">Keep Reading</span>
+            <h2>More From the Blog</h2>
+          </div>
+          <div class="blog-grid">
+            <% related.forEach(function(p) { %>
+            <a class="blog-card" href="/blog/<%= p.slug %>">
+              <div class="blog-card-media"><img src="/images/<%= p.image %>" alt="<%= p.title %>" loading="lazy"></div>
+              <div class="blog-card-body">
+                <span class="blog-date"><%= new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></span>
+                <h3><%= p.title %></h3>
+                <p><%= p.excerpt %></p>
+                <span class="read-more">Read More &rarr;</span>
+              </div>
+            </a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
+</body>
+</html>

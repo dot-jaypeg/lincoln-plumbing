@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<%- include('partials/head') %>
+</head>
+<body>
+<%- include('partials/header') %>
+
+<main>
+  <section class="section-tight bg-soft">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Contact Us</span>
+        <h2>Let's Get Your Plumbing Fixed</h2>
+        <p>Call us anytime for emergency service, or fill out the form for a free in-person estimate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <div class="contact-info-card">
+          <h3>Get In Touch</h3>
+          <div class="contact-info-row">
+            <%- icons.phone %>
+            <div><strong>Call or Text</strong><a href="<%= site.phoneHref %>"><%= site.phone %></a></div>
+          </div>
+          <div class="contact-info-row">
+            <%- icons.mail %>
+            <div><strong>Email</strong><a href="mailto:<%= site.email %>"><%= site.email %></a></div>
+          </div>
+          <div class="contact-info-row">
+            <%- icons["map-pin"] %>
+            <div><strong>Address</strong><span><%= site.address.street %>, <%= site.address.city %>, <%= site.address.state %> <%= site.address.zip %></span></div>
+          </div>
+          <div class="contact-info-row">
+            <%- icons.clock %>
+            <div><strong>Hours</strong><span><%= site.hours %></span></div>
+          </div>
+          <div class="contact-info-row">
+            <%- icons.shield %>
+            <div><strong>License</strong><span><%= site.license %></span></div>
+          </div>
+          <div class="contact-socials">
+            <a href="<%= site.social.instagram %>" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+            </a>
+            <a href="<%= site.social.facebook %>" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="<%= site.social.google %>" target="_blank" rel="noopener" aria-label="Google Reviews">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/></svg>
+            </a>
+            <a href="<%= site.social.yelp %>" target="_blank" rel="noopener" aria-label="Yelp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 5.9 6.4.6-4.9 4.2 1.5 6.3L12 15.9 6.4 19l1.5-6.3-4.9-4.2 6.4-.6z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <% if (sent) { %>
+          <div class="alert-success">Thanks — your request was received. Our team will call you back shortly.</div>
+          <% } %>
+          <form action="/contact" method="POST">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(909) 000-0000" required>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="jane@email.com">
+              </div>
+              <div class="field">
+                <label for="service">Service Needed</label>
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Select a service</option>
+                  <option>Water Heater</option>
+                  <option>Drain Cleaning / Hydrojetting</option>
+                  <option>Sewer Line / Slab Leak</option>
+                  <option>General Plumbing Repair</option>
+                  <option>Emergency / 24-7 Service</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="message">Tell us what's going on</label>
+                <textarea id="message" name="message" rows="5" placeholder="Describe the issue or the service you're looking for..."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top:20px;">Send Request</button>
+            <p class="form-note">By submitting, you agree to be contacted by Lincoln Plumbing & Rooter about your request. We don't share your information.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm bg-soft">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow blue">Service Area</span>
+        <h2>Proudly Serving the Inland Empire</h2>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:800px; margin:0 auto;">
+        <% site.serviceArea.forEach(function(city) { %>
+        <span class="btn-outline btn-sm" style="pointer-events:none;"><%= city %></span>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>
+</body>
+</html>

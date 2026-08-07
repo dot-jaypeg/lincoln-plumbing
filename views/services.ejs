@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<%- include('partials/head') %>
+</head>
+<body>
+<%- include('partials/header') %>
+
+<main>
+  <section class="section-tight bg-soft">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Plumbing Services</span>
+        <h2>Everything Your Home or Business Needs</h2>
+        <p>Residential and commercial plumbing across San Bernardino, Riverside, Fontana, Redlands, and the rest of the Inland Empire — backed by upfront pricing and free in-person estimates.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:56px; padding-bottom:0;">
+    <div class="container">
+      <% services.forEach(function(service) { %>
+      <div class="service-detail" id="<%= service.slug %>">
+        <div>
+          <div class="service-icon"><%- icons[service.icon] %></div>
+          <h2 style="margin-top:20px;"><%= service.title %></h2>
+          <p class="lede" style="margin-top:14px;"><%= service.description %></p>
+          <ul>
+            <% service.bullets.forEach(function(bullet) { %>
+            <li><%- icons.check %> <%= bullet %></li>
+            <% }) %>
+          </ul>
+          <a href="/contact" class="btn btn-primary">Book a Free Estimate</a>
+        </div>
+        <div class="service-detail-media">
+          <img src="/images/<%= service.image %>" alt="<%= service.title %> — Lincoln Plumbing & Rooter technician at work">
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Not sure what you need?</h2>
+          <p>Tell us what's going on and we'll point you to the right fix — no obligation, no guesswork.</p>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="<%= site.phoneHref %>" class="btn btn-primary">Call <%= site.phone %></a>
+          <a href="/contact" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5); color:#fff;">Free Estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>
+</body>
+</html>

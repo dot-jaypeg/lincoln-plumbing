@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+*.log
+.env
+
+# Raw source assets (multi-GB photos/videos, original font files) — not needed at runtime.
+# Everything actually used by the site has already been optimized into public/.
+references/
+fonts/

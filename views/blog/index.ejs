@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<%- include('../partials/head') %>
+</head>
+<body>
+<%- include('../partials/header') %>
+
+<main>
+  <section class="section-tight bg-soft">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Blog / News</span>
+        <h2>Plumbing Tips & Guides</h2>
+        <p>Practical advice from our own licensed technicians — written for Inland Empire homeowners and businesses.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:56px;">
+    <div class="container">
+      <div class="blog-grid">
+        <% posts.forEach(function(post) { %>
+        <a class="blog-card" href="/blog/<%= post.slug %>">
+          <div class="blog-card-media"><img src="/images/<%= post.image %>" alt="<%= post.title %>" loading="lazy"></div>
+          <div class="blog-card-body">
+            <span class="blog-date"><%= new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></span>
+            <h3><%= post.title %></h3>
+            <p><%= post.excerpt %></p>
+            <span class="read-more">Read More &rarr;</span>
+          </div>
+        </a>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Have a plumbing question we didn't cover?</h2>
+          <p>Call our team directly — we're happy to talk through it before you book anything.</p>
+        </div>
+        <a href="<%= site.phoneHref %>" class="btn btn-primary">Call <%= site.phone %></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
+</body>
+</html>
