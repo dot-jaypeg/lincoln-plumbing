@@ -1,0 +1,2033 @@
+{
+  "ga-plumbing-services": {
+    "slug": "ga-plumbing-services",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/ga-plumbing-services/",
+    "title": "Plumbing Services - Lincoln Plumbing & Rooter",
+    "description": "Reliable plumbing, drain, sewer, and leak detection services in San Bernardino and the Inland Empire. Licensed, insured, and available now. Get a free quote.",
+    "hero": {
+      "badges": [
+        "✓ Licensed & Insured",
+        "✓ Open 24/7",
+        "✓ Same-Day Service"
+      ],
+      "h1_lines": [
+        "Reliable Plumbing,",
+        "Done Right"
+      ],
+      "lede": "From leaky faucets to full sewer line repairs, Lincoln Plumbing & Rooter has been the trusted plumber for San Bernardino and the Inland Empire. Fast response, honest pricing, no surprises.",
+      "stats": [
+        {
+          "value": "24/7",
+          "label": "Emergency Service"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "5★",
+          "label": "Customer Rated"
+        }
+      ]
+    },
+    "ticker": [
+      "🔧 Licensed & Insured",
+      "⏱️ Same-Day Service",
+      "💧 Leak Detection",
+      "🚽 Drains & Sewers",
+      "💰 Transparent Pricing"
+    ],
+    "signs": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "compare": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "how": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Choose Lincoln Plumbing & Rooter",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "👷",
+          "title": "Experienced Team",
+          "body": "Years of hands-on experience across residential and commercial plumbing.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "🛠️",
+          "title": "Advanced Technology",
+          "body": "Modern equipment and techniques to diagnose and fix problems faster.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "😊",
+          "title": "Customer Satisfaction",
+          "body": "We stand behind our work and won't leave until the job is done right.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Fully licensed and insured for your protection and peace of mind.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "⚡",
+          "title": "Prompt Response",
+          "body": "Fast, effective responses when you need us most — no long waits.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "💵",
+          "title": "Transparent Pricing",
+          "body": "Upfront pricing, no hidden fees, no surprises on your invoice.",
+          "items": []
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Plumbers In The Inland Empire",
+      "sub": "At Lincoln Plumbing & Rooter, we pride ourselves on being the go-to plumbing service provider for both residential and commercial clients throughout the Inland Empire and surrounding areas.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Ready When You Are",
+      "h2": "Get Your Free Quote Today",
+      "sub": "Fill out the form below and our team will follow up directly — or give us a call anytime."
+    },
+    "form_slots": [
+      "final",
+      "hero"
+    ],
+    "services": {
+      "eyebrow": "What We Do",
+      "h2": "Our Services",
+      "sub": "Whether it's a minor leak or a major sewer line issue, our team has the expertise to handle it all — built to fix the immediate problem and prevent the next one.",
+      "cards": [
+        {
+          "classes": "service-card",
+          "num": "01",
+          "icon": "",
+          "title": "Plumbing Services",
+          "body": "General plumbing covering everything from minor repairs to major installations — faucets, toilets, sinks, and more.",
+          "items": []
+        },
+        {
+          "classes": "service-card",
+          "num": "02",
+          "icon": "",
+          "title": "Drains & Sewers",
+          "body": "Keeping your drains and sewers flowing smoothly with expert cleaning, repair, and blockage prevention.",
+          "items": []
+        },
+        {
+          "classes": "service-card",
+          "num": "03",
+          "icon": "",
+          "title": "Leak Detection",
+          "body": "Advanced leak detection that identifies and fixes hidden leaks fast — saving you water damage and costly repairs.",
+          "items": []
+        },
+        {
+          "classes": "service-card",
+          "num": "04",
+          "icon": "",
+          "title": "Sewer Line Repair",
+          "body": "Specialized sewer line repair addressing breaks, blockages, and deterioration to restore full function.",
+          "items": []
+        }
+      ]
+    },
+    "stats_grid": [],
+    "info_cards": [],
+    "yelp_reviews": [],
+    "platform_links": [],
+    "commitment": {},
+    "final_cta": {},
+    "form_id": "dxqfiiA9bB1OLTNaNnRx"
+  },
+  "sewer-lines": {
+    "slug": "sewer-lines",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/sewer-lines/",
+    "title": "Sewer Lines - Lincoln Plumbing & Rooter",
+    "description": "Sewer line repair and replacement in San Bernardino and the Inland Empire. Camera inspection, trenchless options, and honest pricing. Licensed and insured.",
+    "hero": {
+      "badges": [
+        "✓ Camera Inspection",
+        "✓ Licensed & Insured",
+        "✓ Upfront Pricing"
+      ],
+      "h1_lines": [
+        "Sewer Line",
+        "Repair Done Right."
+      ],
+      "lede": "Backups, breaks, and root intrusion — we diagnose the real problem with a camera before we touch a shovel, and give you honest options for fixing it. Serving San Bernardino and the Inland Empire.",
+      "stats": [
+        {
+          "value": "📹",
+          "label": "Camera-Verified Diagnosis"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "5★",
+          "label": "Customer Rated"
+        }
+      ]
+    },
+    "ticker": [
+      "🚧 Sewer Line Repair",
+      "📹 Camera Inspection",
+      "🌳 Root Intrusion",
+      "🔧 Trenchless Options",
+      "💰 Upfront Pricing"
+    ],
+    "signs": {
+      "eyebrow": "Sound Familiar?",
+      "h2": "Signs Your Sewer Line Needs Attention",
+      "sub": "Sewer line problems rarely fix themselves — and they get more expensive the longer they're ignored.",
+      "cards": [
+        {
+          "classes": "sign-card",
+          "num": "01",
+          "icon": "",
+          "title": "Frequent Backups",
+          "body": "Multiple drains backing up at the same time, especially the lowest drain in the house.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "02",
+          "icon": "",
+          "title": "Sewage Odor Outside",
+          "body": "A persistent sewage smell in your yard, often near where the line runs.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "03",
+          "icon": "",
+          "title": "Soggy Or Sunken Yard",
+          "body": "Unexplained wet, soft, or sunken patches in your lawn above the sewer line.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "04",
+          "icon": "",
+          "title": "Slow Drains Everywhere",
+          "body": "Every drain in the house is slow at once — a strong sign the main line is affected.",
+          "items": []
+        }
+      ]
+    },
+    "compare": {
+      "eyebrow": "Your Options",
+      "h2": "Trenchless vs. Traditional Repair",
+      "sub": "Depending on the damage, you may not need to dig up your entire yard to fix it.",
+      "cards": [
+        {
+          "classes": "compare-card",
+          "num": "",
+          "icon": "",
+          "title": "Traditional Dig-And-Replace",
+          "body": "",
+          "items": [
+            "Requires digging a trench along the damaged line",
+            "Disrupts landscaping, driveways, or hardscape",
+            "Often necessary for severely collapsed or misaligned pipe",
+            "Typically longer job timeline"
+          ]
+        },
+        {
+          "classes": "compare-card highlight",
+          "num": "",
+          "icon": "",
+          "title": "Trenchless Repair",
+          "body": "",
+          "items": [
+            "Repairs or replaces the line with minimal digging",
+            "Preserves your yard, driveway, and landscaping",
+            "Often faster to complete",
+            "Great fit for cracks, root intrusion, and pipe lining"
+          ]
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "how-card",
+          "num": "1",
+          "icon": "",
+          "title": "Camera Inspection",
+          "body": "We send a camera through your line to see exactly what's wrong and where.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "2",
+          "icon": "",
+          "title": "Honest Options",
+          "body": "We walk you through trenchless and traditional options with upfront pricing for each.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "3",
+          "icon": "",
+          "title": "Repair & Confirm",
+          "body": "We complete the repair and re-inspect the line to confirm it's fully restored.",
+          "items": []
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Choose Lincoln Plumbing & Rooter",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📹",
+          "title": "Camera-Verified",
+          "body": "We diagnose with a camera first — no guessing, no unnecessary digging.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "💵",
+          "title": "Transparent Pricing",
+          "body": "Upfront pricing before we start, no hidden fees, no surprises on your invoice.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Fully licensed and insured for your protection and peace of mind.",
+          "items": []
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Sewer Line Repair In The Inland Empire",
+      "sub": "At Lincoln Plumbing & Rooter, we repair and replace sewer lines for residential and commercial clients throughout the Inland Empire and surrounding areas.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Ready When You Are",
+      "h2": "Get Your Free Quote Today",
+      "sub": "Fill out the form below and our team will follow up directly — or give us a call anytime."
+    },
+    "form_slots": [
+      "final",
+      "hero"
+    ],
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "stats_grid": [],
+    "info_cards": [],
+    "yelp_reviews": [],
+    "platform_links": [],
+    "commitment": {},
+    "final_cta": {},
+    "form_id": "dxqfiiA9bB1OLTNaNnRx"
+  },
+  "ga-tankless-water-heaters": {
+    "slug": "ga-tankless-water-heaters",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/ga-tankless-water-heaters/",
+    "title": "tankless-water-heaters - Lincoln Plumbing & Rooter",
+    "description": "Tankless water heater installation in San Bernardino and the Inland Empire. Endless hot water, lower energy bills, more space. Licensed and insured. Get a free quote.",
+    "hero": {
+      "badges": [
+        "✓ Endless Hot Water",
+        "✓ Licensed & Insured",
+        "✓ Upfront Pricing"
+      ],
+      "h1_lines": [
+        "Never Run Out",
+        "Of Hot Water Again."
+      ],
+      "lede": "Upgrade to a tankless water heater and get endless hot water, lower energy bills, and back your closet space. Lincoln Plumbing & Rooter installs tankless systems throughout San Bernardino and the Inland Empire.",
+      "stats": [
+        {
+          "value": "∞",
+          "label": "Endless Hot Water"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "5★",
+          "label": "Customer Rated"
+        }
+      ]
+    },
+    "ticker": [
+      "💧 Tankless Install",
+      "♾️ Endless Hot Water",
+      "⚡ Energy Savings",
+      "🔧 Licensed & Insured",
+      "💰 Upfront Pricing"
+    ],
+    "signs": {
+      "eyebrow": "Why Switch",
+      "h2": "The Tankless Advantage",
+      "sub": "A tankless system doesn't just fix hot water problems — it changes how your whole household uses hot water.",
+      "cards": [
+        {
+          "classes": "sign-card",
+          "num": "01",
+          "icon": "",
+          "title": "Never Run Out",
+          "body": "Hot water on demand, whenever you need it — no more racing the tank.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "02",
+          "icon": "",
+          "title": "Lower Energy Bills",
+          "body": "Only heats water when you actually use it, instead of keeping a tank hot all day.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "03",
+          "icon": "",
+          "title": "Saves Space",
+          "body": "Compact, wall-mounted units free up closet or garage space a tank used to take up.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "04",
+          "icon": "",
+          "title": "Built To Last Longer",
+          "body": "Tankless units typically outlast traditional tank water heaters by years.",
+          "items": []
+        }
+      ]
+    },
+    "compare": {
+      "eyebrow": "Is It Time?",
+      "h2": "Tank vs. Tankless",
+      "sub": "If any of this sounds like your household, tankless is worth a serious look.",
+      "cards": [
+        {
+          "classes": "compare-card",
+          "num": "",
+          "icon": "",
+          "title": "You Might Stick With Tank If...",
+          "body": "",
+          "items": [
+            "Your current tank is working fine and isn't near end of life",
+            "You want the lowest possible upfront cost",
+            "Your household has light, predictable hot water use"
+          ]
+        },
+        {
+          "classes": "compare-card highlight",
+          "num": "",
+          "icon": "",
+          "title": "Tankless Is Right For You If...",
+          "body": "",
+          "items": [
+            "You're tired of running out of hot water with a full house",
+            "Your current tank is old, leaking, or failing",
+            "You want lower energy bills long-term",
+            "You're remodeling and want the space back"
+          ]
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "how-card",
+          "num": "1",
+          "icon": "",
+          "title": "Free In-Home Assessment",
+          "body": "We look at your current setup and household hot water needs to size the right unit.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "2",
+          "icon": "",
+          "title": "Upfront Quote",
+          "body": "You get a clear price before any work starts — no surprises on the invoice.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "3",
+          "icon": "",
+          "title": "Professional Install",
+          "body": "Most tankless installs are completed in a single day by our licensed team.",
+          "items": []
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Choose Lincoln Plumbing & Rooter",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "👷",
+          "title": "Experienced Team",
+          "body": "Our techs are experienced specifically with tankless installation, not just tank swaps.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "💵",
+          "title": "Transparent Pricing",
+          "body": "Upfront pricing before we start, no hidden fees, no surprises on your invoice.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Fully licensed and insured for your protection and peace of mind.",
+          "items": []
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Tankless Installation In The Inland Empire",
+      "sub": "At Lincoln Plumbing & Rooter, we install tankless water heaters for residential and commercial clients throughout the Inland Empire and surrounding areas.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Ready When You Are",
+      "h2": "Get Your Free Quote Today",
+      "sub": "Fill out the form below and our team will follow up directly — or give us a call anytime."
+    },
+    "form_slots": [
+      "final",
+      "hero"
+    ],
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "stats_grid": [],
+    "info_cards": [],
+    "yelp_reviews": [],
+    "platform_links": [],
+    "commitment": {},
+    "final_cta": {},
+    "form_id": "dxqfiiA9bB1OLTNaNnRx"
+  },
+  "ga-testimonials": {
+    "slug": "ga-testimonials",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/ga-testimonials/",
+    "title": "testimonials - Lincoln Plumbing & Rooter",
+    "description": "See what customers are saying about Lincoln Plumbing & Rooter — licensed and insured plumbing services in San Bernardino and the Inland Empire.",
+    "hero": {
+      "badges": [],
+      "h1_lines": [
+        "What Our Customers Say"
+      ],
+      "lede": "We let our work speak for itself — here's what real customers have said about working with Lincoln Plumbing & Rooter.",
+      "stats": []
+    },
+    "ticker": [],
+    "signs": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "compare": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "how": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "why": {
+      "eyebrow": "Why Customers Trust Us",
+      "h2": "What Sets Lincoln Apart",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "👷",
+          "title": "Experienced Team",
+          "body": "Years of hands-on experience across residential and commercial plumbing.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "😊",
+          "title": "Customer Satisfaction",
+          "body": "We stand behind our work and won't leave until the job is done right.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "💵",
+          "title": "Transparent Pricing",
+          "body": "Upfront pricing, no hidden fees, no surprises on your invoice.",
+          "items": []
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "",
+      "who": ""
+    },
+    "area": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "chips": []
+    },
+    "quote_cta": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": ""
+    },
+    "form_slots": [],
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "stats_grid": [],
+    "info_cards": [],
+    "yelp_reviews": [
+      {
+        "review_id": "sg0JJlvwyypYm5Y2nw5-EA",
+        "user_id": "-Y6NpfHv2gXLnpT9-xqyMw",
+        "name": "Christine C."
+      },
+      {
+        "review_id": "eQDw2Y2r_uOOCdvWcgKjLQ",
+        "user_id": "1BIbZK-encs1h2LDO6zh4A",
+        "name": "John D."
+      },
+      {
+        "review_id": "1lLMdPn2jT5BNzkCcmJW5A",
+        "user_id": "S1YBIp71PYtcNaooG_AiJw",
+        "name": "Dan H."
+      },
+      {
+        "review_id": "ZETVCA_c7mHsFNqFk-w-cw",
+        "user_id": "kqfspsFyb03xKNFrZGCU6A",
+        "name": "Ben Z."
+      }
+    ],
+    "platform_links": [
+      {
+        "href": "https://www.google.com/search?q=Lincoln+Plumbing+%26+Rooter+San+Bernardino+reviews",
+        "label": "⭐ Review Us On Google"
+      },
+      {
+        "href": "https://www.facebook.com",
+        "label": "👍 Review Us On Facebook"
+      },
+      {
+        "href": "https://www.yelp.com",
+        "label": "🍽️ Review Us On Yelp"
+      }
+    ],
+    "commitment": {},
+    "final_cta": {
+      "eyebrow": "Worked With Us Before?",
+      "h2": "Leave Us A Review",
+      "sub": "If we've taken care of you, we'd genuinely appreciate you sharing your experience — it helps other homeowners in the Inland Empire find us."
+    },
+    "form_id": ""
+  },
+  "ga-water-heater": {
+    "slug": "ga-water-heater",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/ga-water-heater/",
+    "title": "Water Heater - Lincoln Plumbing & Rooter",
+    "description": "Water heater repair, replacement, and tankless installation in San Bernardino and the Inland Empire. Same-day service, upfront pricing. Licensed and insured.",
+    "hero": {
+      "badges": [
+        "✓ Same-Day Service",
+        "✓ Licensed & Insured",
+        "✓ Upfront Pricing"
+      ],
+      "h1_lines": [
+        "No Hot Water?",
+        "We Fix That Fast."
+      ],
+      "lede": "Repair, replacement, or a switch to tankless — Lincoln Plumbing & Rooter installs and services water heaters throughout San Bernardino and the Inland Empire, with honest pricing before we start.",
+      "stats": [
+        {
+          "value": "Same-Day",
+          "label": "Repair & Install"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "5★",
+          "label": "Customer Rated"
+        }
+      ]
+    },
+    "ticker": [
+      "🔥 Water Heater Repair",
+      "🔄 Replacement",
+      "💧 Tankless Install",
+      "🔧 Licensed & Insured",
+      "💰 Upfront Pricing"
+    ],
+    "signs": {
+      "eyebrow": "Sound Familiar?",
+      "h2": "Signs Your Water Heater Needs Attention",
+      "sub": "Most water heater failures show warning signs first — catching them early can save you a cold shower and a bigger bill.",
+      "cards": [
+        {
+          "classes": "sign-card",
+          "num": "01",
+          "icon": "",
+          "title": "No Hot Water",
+          "body": "Water isn't heating at all, or runs out much faster than it used to.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "02",
+          "icon": "",
+          "title": "Rusty Or Cloudy Water",
+          "body": "Discolored hot water is often a sign of a corroding tank from the inside.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "03",
+          "icon": "",
+          "title": "Strange Noises",
+          "body": "Rumbling, popping, or banging sounds coming from the tank.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "04",
+          "icon": "",
+          "title": "Leaking Around The Tank",
+          "body": "Any pooling water or moisture near the base of the water heater.",
+          "items": []
+        }
+      ]
+    },
+    "compare": {
+      "eyebrow": "Your Options",
+      "h2": "Traditional Tank vs. Tankless",
+      "sub": "We'll help you pick the right fit for your home and budget — no upselling, just the facts.",
+      "cards": [
+        {
+          "classes": "compare-card",
+          "num": "",
+          "icon": "",
+          "title": "Traditional Tank",
+          "body": "",
+          "items": [
+            "Lower upfront installation cost",
+            "Stores and continuously heats a set amount of water",
+            "Simple, well-understood technology",
+            "Hot water can run out with heavy use"
+          ]
+        },
+        {
+          "classes": "compare-card highlight",
+          "num": "",
+          "icon": "",
+          "title": "Tankless",
+          "body": "",
+          "items": [
+            "Heats water on demand — no storage tank needed",
+            "Continuous hot water, no running out",
+            "More energy efficient over time",
+            "Compact footprint, longer typical lifespan"
+          ]
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "how-card",
+          "num": "1",
+          "icon": "",
+          "title": "Call Or Book Online",
+          "body": "Tell us what's going on — no hot water, a leak, or you're ready to upgrade to tankless.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "2",
+          "icon": "",
+          "title": "We Diagnose & Recommend",
+          "body": "We assess the unit and walk you through repair vs. replacement options with upfront pricing.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "3",
+          "icon": "",
+          "title": "Install Or Repair Same-Day",
+          "body": "In most cases, we complete the job the same day so you're not stuck without hot water.",
+          "items": []
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Choose Lincoln Plumbing & Rooter",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "⚡",
+          "title": "Prompt Response",
+          "body": "Fast, effective responses when you need us most — no long waits for hot water.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "💵",
+          "title": "Transparent Pricing",
+          "body": "Upfront pricing before we start, no hidden fees, no surprises on your invoice.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Fully licensed and insured for your protection and peace of mind.",
+          "items": []
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Water Heater Service In The Inland Empire",
+      "sub": "At Lincoln Plumbing & Rooter, we repair and install water heaters for residential and commercial clients throughout the Inland Empire and surrounding areas.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Ready When You Are",
+      "h2": "Get Your Free Quote Today",
+      "sub": "Fill out the form below and our team will follow up directly — or give us a call anytime."
+    },
+    "form_slots": [
+      "final",
+      "hero"
+    ],
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "stats_grid": [],
+    "info_cards": [],
+    "yelp_reviews": [],
+    "platform_links": [],
+    "commitment": {},
+    "final_cta": {},
+    "form_id": "dxqfiiA9bB1OLTNaNnRx"
+  },
+  "ga-about-us": {
+    "slug": "ga-about-us",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/ga-about-us/",
+    "title": "about-us - Lincoln Plumbing & Rooter",
+    "description": "Learn about Lincoln Plumbing & Rooter — a licensed and insured plumbing company serving San Bernardino and the Inland Empire with experienced technicians and honest pricing.",
+    "hero": {
+      "badges": [],
+      "h1_lines": [
+        "Your Trusted Plumbers In The Inland Empire"
+      ],
+      "lede": "Lincoln Plumbing & Rooter is a licensed and insured plumbing company built on honest work, fair pricing, and showing up when we say we will.",
+      "stats": []
+    },
+    "ticker": [],
+    "signs": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "compare": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "how": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Choose Lincoln Plumbing & Rooter",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "👷",
+          "title": "Experienced Team",
+          "body": "Years of hands-on experience across residential and commercial plumbing.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "🛠️",
+          "title": "Advanced Technology",
+          "body": "Modern equipment and techniques to diagnose and fix problems faster.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "😊",
+          "title": "Customer Satisfaction",
+          "body": "We stand behind our work and won't leave until the job is done right.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Fully licensed and insured for your protection and peace of mind.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "⚡",
+          "title": "Prompt Response",
+          "body": "Fast, effective responses when you need us most — no long waits.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "💵",
+          "title": "Transparent Pricing",
+          "body": "Upfront pricing, no hidden fees, no surprises on your invoice.",
+          "items": []
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "chips": []
+    },
+    "quote_cta": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": ""
+    },
+    "form_slots": [],
+    "services": {
+      "eyebrow": "What We Do",
+      "h2": "Our Services",
+      "sub": "Whether it's a minor leak or a major sewer line issue, our team has the expertise to handle it all.",
+      "cards": [
+        {
+          "classes": "service-card",
+          "num": "",
+          "icon": "",
+          "title": "Plumbing Services",
+          "body": "General plumbing covering everything from minor repairs to major installations.",
+          "items": []
+        },
+        {
+          "classes": "service-card",
+          "num": "",
+          "icon": "",
+          "title": "Drains & Sewers",
+          "body": "Expert drain cleaning, sewer line repair, and blockage prevention.",
+          "items": []
+        },
+        {
+          "classes": "service-card",
+          "num": "",
+          "icon": "",
+          "title": "Leak Detection",
+          "body": "Advanced leak detection that finds hidden leaks fast, without the guesswork.",
+          "items": []
+        },
+        {
+          "classes": "service-card",
+          "num": "",
+          "icon": "",
+          "title": "Water Heaters",
+          "body": "Repair, replacement, and tankless water heater installation.",
+          "items": []
+        }
+      ]
+    },
+    "stats_grid": [
+      {
+        "value": "24/7",
+        "label": "Emergency Availability"
+      },
+      {
+        "value": "100%",
+        "label": "Licensed & Insured"
+      },
+      {
+        "value": "5★",
+        "label": "Customer Rated"
+      },
+      {
+        "value": "0",
+        "label": "Hidden Fees"
+      }
+    ],
+    "info_cards": [],
+    "yelp_reviews": [],
+    "platform_links": [],
+    "commitment": {},
+    "final_cta": {
+      "eyebrow": "Ready When You Are",
+      "h2": "Let's Get Your Plumbing Sorted",
+      "sub": "Reach out today and our team will follow up directly — or give us a call anytime."
+    },
+    "form_id": ""
+  },
+  "ga-contact": {
+    "slug": "ga-contact",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/ga-contact/",
+    "title": "contact - Lincoln Plumbing & Rooter",
+    "description": "Contact Lincoln Plumbing & Rooter — licensed and insured plumbing services in San Bernardino and the Inland Empire. Call, email, or request a free quote online.",
+    "hero": {
+      "badges": [],
+      "h1_lines": [
+        "Let's Get Your Plumbing Sorted"
+      ],
+      "lede": "Call, email, or send us a message below — our team will get back to you directly.",
+      "stats": []
+    },
+    "ticker": [],
+    "signs": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "compare": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "how": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "why": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "testimonial": {
+      "quote": "",
+      "who": ""
+    },
+    "area": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "chips": []
+    },
+    "quote_cta": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": ""
+    },
+    "form_slots": [
+      "contact"
+    ],
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "stats_grid": [],
+    "info_cards": [
+      {
+        "icon": "📞",
+        "title": "Call Us",
+        "body": "(909) 765-0236"
+      },
+      {
+        "icon": "✉️",
+        "title": "Email Us",
+        "body": "[email protected]"
+      },
+      {
+        "icon": "📍",
+        "title": "Visit Us",
+        "body": "738 S Waterman Ave. #C45, | San Bernardino, CA 92408"
+      },
+      {
+        "icon": "🕒",
+        "title": "Hours",
+        "body": "Open 24 Hours, | 7 Days A Week"
+      }
+    ],
+    "yelp_reviews": [],
+    "platform_links": [],
+    "commitment": {},
+    "final_cta": {},
+    "form_id": "dxqfiiA9bB1OLTNaNnRx"
+  },
+  "drain-cleaning": {
+    "slug": "drain-cleaning",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/drain-cleaning/",
+    "title": "Drain Cleaning - Lincoln Plumbing & Rooter",
+    "description": "Fast, affordable drain cleaning in San Bernardino and the Inland Empire. Clogged, slow, or backed-up drains cleared same day. Licensed and insured. Get a free quote.",
+    "hero": {
+      "badges": [
+        "✓ Same-Day Service",
+        "✓ Licensed & Insured",
+        "✓ Upfront Pricing"
+      ],
+      "h1_lines": [
+        "Clogged Drain?",
+        "We'll Clear It Today."
+      ],
+      "lede": "Slow, backed-up, or fully clogged drains — Lincoln Plumbing & Rooter clears it fast with no guesswork and no surprise charges. Serving San Bernardino and the Inland Empire.",
+      "stats": [
+        {
+          "value": "Same-Day",
+          "label": "Drain Service"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "5★",
+          "label": "Customer Rated"
+        }
+      ]
+    },
+    "ticker": [
+      "🚰 Drain Cleaning",
+      "⏱️ Same-Day Service",
+      "🔧 Licensed & Insured",
+      "💰 Upfront Pricing",
+      "📹 Camera Inspection"
+    ],
+    "signs": {
+      "eyebrow": "Sound Familiar?",
+      "h2": "Signs You Need Drain Cleaning",
+      "sub": "Small drain issues turn into big, expensive problems fast. If you're dealing with any of these, it's time to call.",
+      "cards": [
+        {
+          "classes": "sign-card",
+          "num": "01",
+          "icon": "",
+          "title": "Slow Draining",
+          "body": "Water pooling in sinks, tubs, or showers instead of draining normally.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "02",
+          "icon": "",
+          "title": "Bad Odors",
+          "body": "Persistent sewer-like smells coming from drains or fixtures.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "03",
+          "icon": "",
+          "title": "Gurgling Sounds",
+          "body": "Bubbling or gurgling noises when water drains or toilets flush.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "04",
+          "icon": "",
+          "title": "Recurring Clogs",
+          "body": "Drains that clog again and again no matter how often you clear them.",
+          "items": []
+        }
+      ]
+    },
+    "compare": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "how-card",
+          "num": "1",
+          "icon": "",
+          "title": "Call Or Book Online",
+          "body": "Reach out and tell us what's going on — we'll get you scheduled fast, often same-day.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "2",
+          "icon": "",
+          "title": "We Diagnose It Right",
+          "body": "Our techs identify the actual cause of the clog before recommending any work.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "3",
+          "icon": "",
+          "title": "We Clear It & Confirm",
+          "body": "We clear the line, confirm it's flowing properly, and walk you through upfront pricing before we start.",
+          "items": []
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Choose Lincoln Plumbing & Rooter",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "⚡",
+          "title": "Prompt Response",
+          "body": "Fast, effective responses when you need us most — no long waits for a backed-up drain.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "💵",
+          "title": "Transparent Pricing",
+          "body": "Upfront pricing before we start, no hidden fees, no surprises on your invoice.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Fully licensed and insured for your protection and peace of mind.",
+          "items": []
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Drain Cleaning In The Inland Empire",
+      "sub": "At Lincoln Plumbing & Rooter, we clear drains for both residential and commercial clients throughout the Inland Empire and surrounding areas.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Ready When You Are",
+      "h2": "Get Your Free Quote Today",
+      "sub": "Fill out the form below and our team will follow up directly — or give us a call anytime."
+    },
+    "form_slots": [
+      "final",
+      "hero"
+    ],
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "stats_grid": [],
+    "info_cards": [],
+    "yelp_reviews": [],
+    "platform_links": [],
+    "commitment": {},
+    "final_cta": {},
+    "form_id": "dxqfiiA9bB1OLTNaNnRx"
+  },
+  "ga-garbage-disposal-services": {
+    "slug": "ga-garbage-disposal-services",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/ga-garbage-disposal-services/",
+    "title": "garbage-disposal-services - Lincoln Plumbing & Rooter",
+    "description": "Garbage disposal repair, replacement, and installation in San Bernardino and the Inland Empire. Same-day service, upfront pricing. Licensed and insured.",
+    "hero": {
+      "badges": [
+        "✓ Same-Day Service",
+        "✓ Licensed & Insured",
+        "✓ Upfront Pricing"
+      ],
+      "h1_lines": [
+        "Garbage Disposal",
+        "Jammed Or Dead?"
+      ],
+      "lede": "Whether it needs a quick repair or a full replacement, Lincoln Plumbing & Rooter gets your garbage disposal working again fast — serving San Bernardino and the Inland Empire.",
+      "stats": [
+        {
+          "value": "Same-Day",
+          "label": "Repair & Install"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "5★",
+          "label": "Customer Rated"
+        }
+      ]
+    },
+    "ticker": [
+      "🗑️ Disposal Repair",
+      "🔄 Replacement",
+      "🆕 New Installation",
+      "🔧 Licensed & Insured",
+      "💰 Upfront Pricing"
+    ],
+    "signs": {
+      "eyebrow": "Sound Familiar?",
+      "h2": "Signs Your Garbage Disposal Needs Attention",
+      "sub": "A struggling disposal usually gives warning signs before it fails completely.",
+      "cards": [
+        {
+          "classes": "sign-card",
+          "num": "01",
+          "icon": "",
+          "title": "Won't Turn On",
+          "body": "No sound at all when you flip the switch — could be electrical or a jammed motor.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "02",
+          "icon": "",
+          "title": "Humming, Not Spinning",
+          "body": "The unit hums but the blades won't turn — usually a jam or worn motor.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "03",
+          "icon": "",
+          "title": "Leaking Under The Sink",
+          "body": "Water pooling below the disposal, often from a cracked housing or bad seal.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "04",
+          "icon": "",
+          "title": "Frequent Jamming",
+          "body": "Needing to reset the unit constantly, even with normal use.",
+          "items": []
+        }
+      ]
+    },
+    "compare": {
+      "eyebrow": "Honest Advice",
+      "h2": "Repair Or Replace?",
+      "sub": "We'll tell you honestly which one makes sense for your situation — not just push a new unit.",
+      "cards": [
+        {
+          "classes": "compare-card",
+          "num": "",
+          "icon": "",
+          "title": "Repair Might Make Sense If...",
+          "body": "",
+          "items": [
+            "The unit is relatively new and otherwise in good shape",
+            "The issue is a simple jam, reset, or minor part failure",
+            "You want the lowest-cost fix available"
+          ]
+        },
+        {
+          "classes": "compare-card",
+          "num": "",
+          "icon": "",
+          "title": "Replacement Might Make Sense If...",
+          "body": "",
+          "items": [
+            "The unit is old or has failed multiple times before",
+            "There's a leak from a cracked housing",
+            "You want a quieter or more powerful unit"
+          ]
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "how-card",
+          "num": "1",
+          "icon": "",
+          "title": "Call Or Book Online",
+          "body": "Tell us what's happening with your disposal — we'll get you scheduled fast.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "2",
+          "icon": "",
+          "title": "Honest Diagnosis",
+          "body": "We check the unit and give you a straight answer on repair vs. replacement, with upfront pricing.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "3",
+          "icon": "",
+          "title": "Fixed The Same Day",
+          "body": "In most cases, we complete the repair or install before we leave.",
+          "items": []
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Choose Lincoln Plumbing & Rooter",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "⚡",
+          "title": "Prompt Response",
+          "body": "Fast, effective responses when you need us most — no long waits for a working kitchen.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "💵",
+          "title": "Transparent Pricing",
+          "body": "Upfront pricing before we start, no hidden fees, no surprises on your invoice.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Fully licensed and insured for your protection and peace of mind.",
+          "items": []
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Garbage Disposal Service In The Inland Empire",
+      "sub": "At Lincoln Plumbing & Rooter, we repair and install garbage disposals for residential and commercial clients throughout the Inland Empire and surrounding areas.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Ready When You Are",
+      "h2": "Get Your Free Quote Today",
+      "sub": "Fill out the form below and our team will follow up directly — or give us a call anytime."
+    },
+    "form_slots": [
+      "final",
+      "hero"
+    ],
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "stats_grid": [],
+    "info_cards": [],
+    "yelp_reviews": [],
+    "platform_links": [],
+    "commitment": {},
+    "final_cta": {},
+    "form_id": "dxqfiiA9bB1OLTNaNnRx"
+  },
+  "hydrojetting": {
+    "slug": "hydrojetting",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/hydrojetting/",
+    "title": "Hydrojetting - Lincoln Plumbing & Rooter",
+    "description": "Professional hydrojetting in San Bernardino and the Inland Empire. Clear tree roots, grease buildup, and stubborn clogs with high-pressure water jetting. Licensed and insured.",
+    "hero": {
+      "badges": [
+        "✓ High-Pressure Jetting",
+        "✓ Licensed & Insured",
+        "✓ Upfront Pricing"
+      ],
+      "h1_lines": [
+        "Blast Through",
+        "Any Clog. For Good."
+      ],
+      "lede": "Tree roots, grease buildup, and stubborn clogs that keep coming back — hydrojetting clears your lines completely, not just temporarily. Serving San Bernardino and the Inland Empire.",
+      "stats": [
+        {
+          "value": "4000+",
+          "label": "PSI Water Pressure"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "5★",
+          "label": "Customer Rated"
+        }
+      ]
+    },
+    "ticker": [
+      "💦 Hydrojetting",
+      "🌳 Root Intrusion",
+      "🧈 Grease Removal",
+      "🔧 Licensed & Insured",
+      "📹 Camera Inspection"
+    ],
+    "signs": {
+      "eyebrow": "Sound Familiar?",
+      "h2": "Signs You Need Hydrojetting",
+      "sub": "Regular snaking only breaks a hole through a clog — hydrojetting clears the entire line. Here's when it's the right call.",
+      "cards": [
+        {
+          "classes": "sign-card",
+          "num": "01",
+          "icon": "",
+          "title": "Recurring Clogs",
+          "body": "The same drain keeps clogging no matter how many times it's been snaked.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "02",
+          "icon": "",
+          "title": "Tree Root Intrusion",
+          "body": "Roots have grown into your sewer line and are restricting or blocking flow.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "03",
+          "icon": "",
+          "title": "Grease Buildup",
+          "body": "Years of grease and buildup have narrowed your pipes from the inside out.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "04",
+          "icon": "",
+          "title": "Multiple Slow Drains",
+          "body": "Several drains in your home are slow at the same time — often a main line issue.",
+          "items": []
+        }
+      ]
+    },
+    "compare": {
+      "eyebrow": "The Difference",
+      "h2": "Snaking vs. Hydrojetting",
+      "sub": "Both clear clogs — but only one clears the whole pipe.",
+      "cards": [
+        {
+          "classes": "compare-card",
+          "num": "",
+          "icon": "",
+          "title": "Snaking",
+          "body": "",
+          "items": [
+            "Punches a hole through the clog",
+            "Leaves buildup on the pipe walls",
+            "Clogs often return within weeks or months",
+            "Good for a quick, minor blockage"
+          ]
+        },
+        {
+          "classes": "compare-card highlight",
+          "num": "",
+          "icon": "",
+          "title": "Hydrojetting",
+          "body": "",
+          "items": [
+            "Scours the entire interior of the pipe",
+            "Removes grease, scale, and root intrusion completely",
+            "Longer-lasting results, fewer repeat calls",
+            "Ideal for recurring or severe clogs"
+          ]
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "how-card",
+          "num": "1",
+          "icon": "",
+          "title": "Camera Inspection",
+          "body": "We run a camera through the line first to confirm hydrojetting is the right fix.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "2",
+          "icon": "",
+          "title": "High-Pressure Jetting",
+          "body": "Our equipment blasts the full pipe interior clear — roots, grease, and buildup included.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "3",
+          "icon": "",
+          "title": "Confirm & Walk Through",
+          "body": "We re-inspect the line, confirm it's fully clear, and walk you through what we found.",
+          "items": []
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Choose Lincoln Plumbing & Rooter",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📹",
+          "title": "Camera-Verified",
+          "body": "We inspect before and after so you actually see the results, not just take our word for it.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "💵",
+          "title": "Transparent Pricing",
+          "body": "Upfront pricing before we start, no hidden fees, no surprises on your invoice.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Fully licensed and insured for your protection and peace of mind.",
+          "items": []
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Hydrojetting In The Inland Empire",
+      "sub": "At Lincoln Plumbing & Rooter, we hydrojet residential and commercial lines throughout the Inland Empire and surrounding areas.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Ready When You Are",
+      "h2": "Get Your Free Quote Today",
+      "sub": "Fill out the form below and our team will follow up directly — or give us a call anytime."
+    },
+    "form_slots": [
+      "final",
+      "hero"
+    ],
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "stats_grid": [],
+    "info_cards": [],
+    "yelp_reviews": [],
+    "platform_links": [],
+    "commitment": {},
+    "final_cta": {},
+    "form_id": "dxqfiiA9bB1OLTNaNnRx"
+  },
+  "ga-leak-detection": {
+    "slug": "ga-leak-detection",
+    "legacy_url": "https://www.lincolnplumbingandrooter.com/ga-leak-detection/",
+    "title": "leak-detection - Lincoln Plumbing & Rooter",
+    "description": "Advanced leak detection in San Bernardino and the Inland Empire. Find hidden leaks without tearing up your home. Licensed and insured. Get a free quote.",
+    "hero": {
+      "badges": [
+        "✓ No Guesswork",
+        "✓ Licensed & Insured",
+        "✓ Upfront Pricing"
+      ],
+      "h1_lines": [
+        "Hidden Leak?",
+        "We'll Pinpoint It."
+      ],
+      "lede": "High water bill, damp spots, or the sound of running water with nothing on? Our advanced leak detection finds the exact source — without tearing up your home to look for it. Serving San Bernardino and the Inland Empire.",
+      "stats": [
+        {
+          "value": "📍",
+          "label": "Pinpoint Accuracy"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "5★",
+          "label": "Customer Rated"
+        }
+      ]
+    },
+    "ticker": [
+      "💧 Leak Detection",
+      "📍 Pinpoint Accuracy",
+      "🚫 No Guesswork",
+      "🔧 Licensed & Insured",
+      "💰 Upfront Pricing"
+    ],
+    "signs": {
+      "eyebrow": "Sound Familiar?",
+      "h2": "Signs You Have A Hidden Leak",
+      "sub": "Hidden leaks waste water and cause damage long before they become visible — catching them early saves money and prevents bigger repairs.",
+      "cards": [
+        {
+          "classes": "sign-card",
+          "num": "01",
+          "icon": "",
+          "title": "Unexplained High Bill",
+          "body": "Your water bill jumps with no change in usage — a classic sign of a hidden leak.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "02",
+          "icon": "",
+          "title": "Sound Of Running Water",
+          "body": "You hear water running when every fixture in the house is off.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "03",
+          "icon": "",
+          "title": "Damp Spots Or Mold",
+          "body": "Unexplained damp patches on walls, ceilings, or floors, or musty odors.",
+          "items": []
+        },
+        {
+          "classes": "sign-card",
+          "num": "04",
+          "icon": "",
+          "title": "Low Water Pressure",
+          "body": "A sudden drop in water pressure that wasn't there before.",
+          "items": []
+        }
+      ]
+    },
+    "compare": {
+      "eyebrow": "Why It Matters",
+      "h2": "Guessing vs. Professional Detection",
+      "sub": "Finding a leak the wrong way can cost you more than the leak itself.",
+      "cards": [
+        {
+          "classes": "compare-card",
+          "num": "",
+          "icon": "",
+          "title": "Guessing & Digging",
+          "body": "",
+          "items": [
+            "Opening walls or floors hoping to find the source",
+            "Risk of unnecessary demolition and repair costs",
+            "No guarantee the actual leak gets found",
+            "Can take multiple attempts to locate"
+          ]
+        },
+        {
+          "classes": "compare-card highlight",
+          "num": "",
+          "icon": "",
+          "title": "Professional Leak Detection",
+          "body": "",
+          "items": [
+            "Electronic listening equipment and moisture sensors pinpoint the source",
+            "Minimal to no unnecessary demolition",
+            "Confirms the exact location before any repair work starts",
+            "Faster, more accurate, and ultimately less costly"
+          ]
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "how-card",
+          "num": "1",
+          "icon": "",
+          "title": "Call Or Book Online",
+          "body": "Tell us what you're noticing — a high bill, sound, or damp spot — and we'll get you scheduled.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "2",
+          "icon": "",
+          "title": "Pinpoint The Source",
+          "body": "We use electronic detection equipment to locate the exact source of the leak.",
+          "items": []
+        },
+        {
+          "classes": "how-card",
+          "num": "3",
+          "icon": "",
+          "title": "Honest Repair Options",
+          "body": "Once we've found it, we walk you through repair options with upfront pricing.",
+          "items": []
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Choose Lincoln Plumbing & Rooter",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "🛠️",
+          "title": "Advanced Technology",
+          "body": "Modern detection equipment to find leaks fast, without unnecessary demolition.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "💵",
+          "title": "Transparent Pricing",
+          "body": "Upfront pricing before we start, no hidden fees, no surprises on your invoice.",
+          "items": []
+        },
+        {
+          "classes": "why-card",
+          "num": "",
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Fully licensed and insured for your protection and peace of mind.",
+          "items": []
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Leak Detection In The Inland Empire",
+      "sub": "At Lincoln Plumbing & Rooter, we detect hidden leaks for residential and commercial clients throughout the Inland Empire and surrounding areas.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Ready When You Are",
+      "h2": "Get Your Free Quote Today",
+      "sub": "Fill out the form below and our team will follow up directly — or give us a call anytime."
+    },
+    "form_slots": [
+      "final",
+      "hero"
+    ],
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "stats_grid": [],
+    "info_cards": [],
+    "yelp_reviews": [],
+    "platform_links": [],
+    "commitment": {},
+    "final_cta": {},
+    "form_id": "dxqfiiA9bB1OLTNaNnRx"
+  }
+}

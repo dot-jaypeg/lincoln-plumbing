@@ -1,0 +1,145 @@
+[
+  {
+    "slug": "drain-cleaning",
+    "title": "Drain Cleaning - Lincoln Plumbing & Rooter",
+    "desc": "Fast, affordable drain cleaning in San Bernardino and the Inland Empire. Clogged, slow, or backed-up drains cleared same day. Licensed and insured. Get a free quote.",
+    "forms": [
+      "dxqfiiA9bB1OLTNaNnRx"
+    ],
+    "slots": [
+      "final",
+      "hero"
+    ],
+    "chars": 4168,
+    "images": 6
+  },
+  {
+    "slug": "ga-about-us",
+    "title": "about-us - Lincoln Plumbing & Rooter",
+    "desc": "Learn about Lincoln Plumbing & Rooter \u2014 a licensed and insured plumbing company serving San Bernardino and the Inland Empire with experienced technicians and honest pricing.",
+    "forms": [],
+    "slots": [],
+    "chars": 4330,
+    "images": 8
+  },
+  {
+    "slug": "ga-contact",
+    "title": "contact - Lincoln Plumbing & Rooter",
+    "desc": "Contact Lincoln Plumbing & Rooter \u2014 licensed and insured plumbing services in San Bernardino and the Inland Empire. Call, email, or request a free quote online.",
+    "forms": [
+      "dxqfiiA9bB1OLTNaNnRx"
+    ],
+    "slots": [
+      "contact"
+    ],
+    "chars": 2059,
+    "images": 6
+  },
+  {
+    "slug": "ga-garbage-disposal-services",
+    "title": "garbage-disposal-services - Lincoln Plumbing & Rooter",
+    "desc": "Garbage disposal repair, replacement, and installation in San Bernardino and the Inland Empire. Same-day service, upfront pricing. Licensed and insured.",
+    "forms": [
+      "dxqfiiA9bB1OLTNaNnRx"
+    ],
+    "slots": [
+      "final",
+      "hero"
+    ],
+    "chars": 4711,
+    "images": 6
+  },
+  {
+    "slug": "ga-leak-detection",
+    "title": "leak-detection - Lincoln Plumbing & Rooter",
+    "desc": "Advanced leak detection in San Bernardino and the Inland Empire. Find hidden leaks without tearing up your home. Licensed and insured. Get a free quote.",
+    "forms": [
+      "dxqfiiA9bB1OLTNaNnRx"
+    ],
+    "slots": [
+      "final",
+      "hero"
+    ],
+    "chars": 4822,
+    "images": 6
+  },
+  {
+    "slug": "ga-plumbing-services",
+    "title": "Plumbing Services - Lincoln Plumbing & Rooter",
+    "desc": "Reliable plumbing, drain, sewer, and leak detection services in San Bernardino and the Inland Empire. Licensed, insured, and available now. Get a free quote.",
+    "forms": [
+      "dxqfiiA9bB1OLTNaNnRx"
+    ],
+    "slots": [
+      "final",
+      "hero"
+    ],
+    "chars": 4295,
+    "images": 6
+  },
+  {
+    "slug": "ga-tankless-water-heaters",
+    "title": "tankless-water-heaters - Lincoln Plumbing & Rooter",
+    "desc": "Tankless water heater installation in San Bernardino and the Inland Empire. Endless hot water, lower energy bills, more space. Licensed and insured. Get a free quote.",
+    "forms": [
+      "dxqfiiA9bB1OLTNaNnRx"
+    ],
+    "slots": [
+      "final",
+      "hero"
+    ],
+    "chars": 4783,
+    "images": 6
+  },
+  {
+    "slug": "ga-testimonials",
+    "title": "testimonials - Lincoln Plumbing & Rooter",
+    "desc": "See what customers are saying about Lincoln Plumbing & Rooter \u2014 licensed and insured plumbing services in San Bernardino and the Inland Empire.",
+    "forms": [],
+    "slots": [],
+    "chars": 2881,
+    "images": 6
+  },
+  {
+    "slug": "ga-water-heater",
+    "title": "Water Heater - Lincoln Plumbing & Rooter",
+    "desc": "Water heater repair, replacement, and tankless installation in San Bernardino and the Inland Empire. Same-day service, upfront pricing. Licensed and insured.",
+    "forms": [
+      "dxqfiiA9bB1OLTNaNnRx"
+    ],
+    "slots": [
+      "final",
+      "hero"
+    ],
+    "chars": 4751,
+    "images": 6
+  },
+  {
+    "slug": "hydrojetting",
+    "title": "Hydrojetting - Lincoln Plumbing & Rooter",
+    "desc": "Professional hydrojetting in San Bernardino and the Inland Empire. Clear tree roots, grease buildup, and stubborn clogs with high-pressure water jetting. Licensed and insured.",
+    "forms": [
+      "dxqfiiA9bB1OLTNaNnRx"
+    ],
+    "slots": [
+      "final",
+      "hero"
+    ],
+    "chars": 4659,
+    "images": 6
+  },
+  {
+    "slug": "sewer-lines",
+    "title": "Sewer Lines - Lincoln Plumbing & Rooter",
+    "desc": "Sewer line repair and replacement in San Bernardino and the Inland Empire. Camera inspection, trenchless options, and honest pricing. Licensed and insured.",
+    "forms": [
+      "dxqfiiA9bB1OLTNaNnRx"
+    ],
+    "slots": [
+      "final",
+      "hero"
+    ],
+    "chars": 4767,
+    "images": 6
+  }
+]

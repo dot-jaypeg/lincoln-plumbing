@@ -1135,3 +1135,168 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
 @media (max-width: 640px) {
   .kicker-num { display: none; }
 }
+
+/* ==========================================================================
+   Legacy landing pages (/hydrojetting, /ga-water-heater, …)
+   Components used only by the pages generated from the old WordPress site.
+   ========================================================================== */
+
+/* --- hero variant: static photo + form card, instead of the video hero --- */
+.hero-lp { min-height: 0; }
+.hero-lp .hero-media img.hero-video { object-position: center 40%; }
+.hero-lp .container { padding-top: 132px; padding-bottom: 88px; }
+.hero-grid-lines {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: var(--blueprint); background-size: 54px 54px; opacity: 0.5;
+  mask-image: linear-gradient(90deg, transparent, #000 60%);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 60%);
+}
+.hero-split {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
+}
+.hero-split .hero-content { max-width: none; }
+
+.lp-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+.lp-badges span {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.24);
+  border-radius: 999px; padding: 7px 15px; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.03em; text-transform: uppercase; color: var(--white);
+}
+
+.hero-stats { display: flex; flex-wrap: wrap; gap: 36px; margin-top: 40px; }
+.hero-stats div { display: flex; flex-direction: column; }
+.hero-stats b {
+  font-family: var(--font-heading); font-weight: 700; text-transform: uppercase;
+  font-size: 2.1rem; line-height: 1; color: var(--orange-2);
+}
+.hero-stats span { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.74); margin-top: 6px; }
+
+.hero-form-card {
+  background: var(--white); border-radius: var(--radius-lg); padding: 28px;
+  box-shadow: var(--shadow-lg); border-top: 5px solid var(--orange);
+}
+.hero-form-card h2 { font-size: 1.6rem; }
+.hero-form-card p { font-size: 0.9rem; margin-top: 6px; }
+.hero-form-card iframe { display: block; margin-top: 12px; }
+
+/* --- this vs. that comparison --- */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+.compare-card {
+  background: var(--white); border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-lg); padding: 32px 30px;
+}
+.compare-card h3 { font-size: 1.5rem; margin-bottom: 18px; }
+.compare-card ul { list-style: none; display: grid; gap: 12px; }
+.compare-card li {
+  position: relative; padding-left: 30px; font-size: 0.95rem; color: var(--ink-soft);
+}
+.compare-card li::before {
+  content: ""; position: absolute; left: 0; top: 0.45em; width: 14px; height: 14px;
+  border-radius: 50%; border: 2px solid var(--gray-400);
+}
+.compare-card.highlight { border-color: var(--orange); box-shadow: 0 24px 48px -26px rgba(255,123,0,0.5); }
+.compare-card.highlight h3 { color: var(--orange-dark); }
+.compare-card.highlight li::before { border-color: var(--orange); background: var(--orange); }
+
+/* --- numbered process steps --- */
+.step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 8px; }
+.step-card {
+  background: var(--white); border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-lg); padding: 32px 28px;
+}
+.step-card .stepnum {
+  width: 46px; height: 46px; border-radius: var(--radius-md); background: var(--grad-orange);
+  color: var(--white); display: grid; place-items: center; margin-bottom: 18px;
+  font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; line-height: 1;
+  box-shadow: 0 10px 22px -8px rgba(255,123,0,0.7);
+}
+.step-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.step-card p { font-size: 0.94rem; }
+
+/* --- emoji standing in for an icon inside the existing icon chips --- */
+.why-ic.emoji, .info-ic.emoji { font-size: 24px; line-height: 1; }
+
+/* --- GoHighLevel form shells --- */
+.form-shell {
+  background: var(--white); border-radius: var(--radius-lg); padding: 16px;
+  box-shadow: var(--shadow-lg); border-top: 5px solid var(--orange); margin-top: 8px;
+}
+.form-shell iframe { display: block; border-radius: var(--radius-md); }
+.quote-contact { display: flex; justify-content: center; gap: 28px; margin-top: 26px; flex-wrap: wrap; }
+.quote-contact a { color: var(--orange-2); font-weight: 700; font-size: 0.95rem; }
+.quote-contact a:hover { color: var(--white); }
+
+/* --- GoodLeap financing band --- */
+.finance-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 56px; align-items: center; }
+.finance-grid .btn { margin-top: 26px; }
+.finance-grid h2 { margin-top: 16px; }
+.finance-grid p { margin-top: 14px; }
+.finance-note {
+  background: var(--white); border: 1.5px solid var(--gray-200); border-radius: var(--radius-lg);
+  padding: 30px 28px; display: grid; gap: 4px;
+}
+.finance-note strong { font-size: 1rem; }
+.finance-note strong + span { font-size: 0.9rem; color: var(--gray-600); margin-bottom: 14px; }
+.finance-note span:last-child { margin-bottom: 0; }
+
+/* --- cross-links between service pages --- */
+.lp-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 8px; }
+.lp-link {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--white); border: 1.5px solid var(--gray-200); border-radius: var(--radius-md);
+  padding: 18px 20px; font-family: var(--font-heading); font-weight: 700;
+  text-transform: uppercase; font-size: 1.05rem; color: var(--ink);
+  transition: border-color .18s ease, transform .18s ease, color .18s ease;
+}
+.lp-link svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--orange); }
+.lp-link:hover { border-color: var(--orange); color: var(--orange-dark); transform: translateY(-3px); }
+
+/* --- contact page: info cards, map --- */
+.info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.info-card {
+  background: var(--white); border: 1.5px solid var(--gray-200); border-radius: var(--radius-lg);
+  padding: 30px 26px; text-align: center;
+}
+.info-card .info-ic {
+  width: 52px; height: 52px; margin: 0 auto 16px; border-radius: var(--radius-md);
+  background: var(--grad-orange); display: grid; place-items: center;
+  box-shadow: 0 10px 22px -8px rgba(255,123,0,0.7);
+}
+.info-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+.info-card a, .info-card p { font-size: 0.94rem; color: var(--ink-soft); word-break: break-word; }
+.info-card a:hover { color: var(--orange-dark); }
+.form-shell.light { box-shadow: var(--shadow-md); }
+.map-panel { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); min-height: 480px; }
+.map-panel iframe { width: 100%; height: 100%; min-height: 480px; border: 0; display: block; }
+
+/* --- testimonials page: Yelp embeds + review platform buttons --- */
+.yelp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.yelp-slide {
+  background: var(--white); border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-lg); padding: 18px; overflow: hidden;
+}
+.yelp-slide iframe { width: 100% !important; border: 0; display: block; }
+.platform-row { display: flex; justify-content: center; gap: 14px; margin-top: 30px; flex-wrap: wrap; }
+
+@media (max-width: 1024px) {
+  .hero-split { grid-template-columns: 1fr; gap: 40px; }
+  .lp-links, .info-grid { grid-template-columns: repeat(2, 1fr); }
+  .step-grid { grid-template-columns: 1fr; }
+  .finance-grid { grid-template-columns: 1fr; gap: 36px; }
+  .yelp-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .hero-lp .container { padding-top: 108px; padding-bottom: 64px; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .lp-links, .info-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 24px; }
+  .hero-stats b { font-size: 1.7rem; }
+}
+
+/* the hero sets a white text colour for the photo background; the form card and
+   its heading sit on white, so they opt back out */
+.hero-lp .hero-form-card h2 { color: var(--ink); }
+.hero-lp .hero-form-card p { color: var(--gray-600); }
+/* the auto-numbered corner counter on .service-card needs room when the card
+   has no icon above the heading (the legacy "signs" grids) */
+.services-grid .service-card h3 { padding-right: 46px; }
