@@ -16,6 +16,7 @@ import html, json, os, re, sys, importlib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 lp = importlib.import_module('build-legacy-lps')
+import tracking
 
 ROOT = lp.ROOT
 RAW = os.path.join(ROOT, 'content', 'legacy-scrape', 'raw-html-full')
@@ -240,8 +241,10 @@ def head(p, url):
 <link rel="icon" href="/images/logo.png">
 <link rel="preload" href="/fonts/Inter-Variable.ttf?v={lp.V}" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/css/style.css?v={lp.V}">
+{tracking.head(p['slug'])}
 </head>
-<body>'''
+<body>
+{tracking.body(p['slug'])}'''
 
 
 def crumbs(slug, titles, url_for):

@@ -9,7 +9,9 @@ The GoodLeap financing band and the GHL "Meta Form" embeds are carried over.
 Output files are plain, final HTML — same as every other page in public/.
 Run:  python3 tools/build-legacy-lps.py
 """
-import json, os, re, html
+import json, os, re, html, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import tracking
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = json.load(open(os.path.join(ROOT, 'content', 'legacy-scrape', 'pages.json')))
@@ -103,8 +105,10 @@ def head(page):
 <link rel="icon" href="/images/logo.png">
 <link rel="preload" href="/fonts/Inter-Variable.ttf?v={V}" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/css/style.css?v={V}">
+{tracking.head(slug)}
 </head>
-<body>'''
+<body>
+{tracking.body(slug)}'''
 
 
 def chrome_top():

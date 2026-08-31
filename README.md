@@ -82,9 +82,45 @@ Also carried over from the legacy site: the **GoodLeap financing band** (links t
 the client's GoodLeap application) and, on `/ga-testimonials`, the four real
 **Yelp review embeds** (`yelp.com/embed/widgets.js`).
 
-Tracking that was on the legacy pages and is **not** in any of these files yet —
-decide before launch whether to carry it over: GTM `GTM-NB7XCVVG`, GA4
-`G-XL9X7ZMQ2J`, Google Ads `AW-16721660937`, Meta Pixel `1083376654248929`.
+### Tracking
+
+All four tags from the legacy site are wired in, reproduced snippet-for-snippet
+and with the same page distribution the old site used. The snippets live in one
+place, `tools/tracking.py`:
+
+| Tag | ID | Where |
+|---|---|---|
+| Google Tag Manager | `GTM-NB7XCVVG` | every page |
+| GA4 | `G-XL9X7ZMQ2J` | every page |
+| Google Ads | `AW-16721660937` | every page |
+| Meta Pixel | `1083376654248929` | the 8 service LPs, `/lp-job-ad`, `/meta-thank-you` |
+
+The Meta Pixel really was only on those ten pages on the legacy site — the
+paid-traffic ones. It was not on `/ga-about-us`, `/ga-contact` or
+`/ga-testimonials`, and it is not on them here either.
+
+The generated pages pick the tags up from the builders. The six hand-written
+pages get them from a separate script, which strips any existing tracking markup
+before inserting so it is safe to re-run after editing a page:
+
+```bash
+python3 tools/apply-tracking.py
+```
+
+**One thing to fix on Google's side.** The Google Ads snippet carries a
+call-conversion config copied verbatim from the legacy site:
+
+```js
+gtag('config', 'AW-16721660937/BQtCCljq9NUcElmYwaU-', {
+  'phone_conversion_number': '(909)765-0236'
+});
+```
+
+That value tells Google Ads which number on the page to swap for a forwarding
+number. This site displays **909-780-0887**, so the swap will not match anything
+and call conversions will not be recorded until the number is updated both in
+the Google Ads UI and in `ADS_CALL_NUMBER` in `tools/tracking.py`. It was left
+as-is deliberately rather than silently changed.
 
 ### The GHL form's on-submit behaviour
 
