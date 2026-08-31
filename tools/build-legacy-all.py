@@ -81,7 +81,7 @@ def normalise_phone(s):
 
 def clean_body(ec, slug_map):
     """Turn a Divi/WordPress entry-content blob into plain semantic prose."""
-    s = re.sub(r'<(script|style|noscript)\b.*?</\1>', '', ec, flags=re.S | re.I)
+    s = re.sub(r'<(script|style|noscript|svg)\b.*?</\1>', '', ec, flags=re.S | re.I)
     s = re.sub(r'<ul[^>]*class="fuse-subpages".*?</ul>', '', s, flags=re.S)
     s = re.sub(r'<!--.*?-->', '', s, flags=re.S)
 
@@ -96,10 +96,45 @@ def clean_body(ec, slug_map):
                 f'alt="{html.escape(txt(alt.group(1)) if alt else "", quote=True)}" loading="lazy"></figure>')
     s = re.sub(r'<img[^>]*>', fix_img, s)
 
+    # wp-rocket lazy-loaded iframes too: the real URL is in data-lazy-src, and
+    # src is a placeholder. Without this the GHL form embeds stay about:blank.
+    def unlazy_iframe(m):
+        tag = m.group(0)
+        real = re.search(r'data-lazy-src="([^"]+)"', tag)
+        if real:
+            tag = re.sub(r'src="[^"]*"', 'src="' + real.group(1).replace('&#038;', '&') + '"', tag, count=1)
+        return tag
+    s = re.sub(r'<iframe[^>]*>', unlazy_iframe, s)
+
+    # keep imported video playable and lazy
+    s = re.sub(r'<video\b(?![^>]*controls)', '<video controls preload="metadata"', s)
+    s = re.sub(r'src="https://www\.lincolnplumbingandrooter\.com/wp-content/uploads/[^"]*?'
+               r'([^/"]+\.mp4)"', lambda m: f'src="/video/{m.group(1).lower()}"', s)
+
+    # Drop <video> blocks whose file we don't actually have. The two recruiting
+    # videos on /lp-job-ad are already 404 on the legacy site, so importing the
+    # players would just ship two dead boxes. Replaced with a note instead.
+    def video_or_note(m):
+        src = re.search(r'src="(/video/[^"]+)"', m.group(0))
+        if src and os.path.exists(os.path.join(PUBLIC, src.group(1).lstrip('/'))):
+            return m.group(0)
+        return ('<p><em>[PLACEHOLDER — video needed.] This slot held a recruiting '
+                'video on the previous site; the file is missing there too '
+                '(404). Drop the .mp4 in <code>public/video/</code> and point '
+                'this at it.</em></p>')
+    s = re.sub(r'<video\b.*?</video>', video_or_note, s, flags=re.S)
+
     # Divi buttons -> our button
     s = re.sub(r'<a class="et_pb_button[^"]*"([^>]*)>(.*?)</a>',
                lambda m: f'<a{m.group(1)} class="btn btn-primary">{txt(m.group(2)).title()}</a>',
                s, flags=re.S)
+
+    # some legacy pages embed a whole standalone document; drop its scaffolding
+    s = re.sub(r'<!DOCTYPE[^>]*>', '', s, flags=re.I)
+    s = re.sub(r'<head\b[^>]*>.*?</head>', '', s, flags=re.S | re.I)
+    for tag in ['html', 'body', 'main', 'nav', 'title', 'style']:
+        s = re.sub(r'</?' + tag + r'(\s[^>]*)?>', '', s, flags=re.I)
+    s = re.sub(r'<(?:meta|link|base)\b[^>]*/?>', '', s, flags=re.I)
 
     # drop every wrapper element, keep its contents
     for tag in ['div', 'span', 'section', 'article', 'o:p', 'o', 'header', 'footer']:
@@ -115,6 +150,8 @@ def clean_body(ec, slug_map):
         # Cloudflare email obfuscation leaves behind /cdn-cgi/l/email-protection#<hex>
         if '/cdn-cgi/l/email-protection' in u:
             return f'href="mailto:{lp.EMAIL}"'
+        if u in ('', '/'):
+            return 'href="/"'
         if u.startswith('/'):
             p = u.split('#')[0].split('?')[0].strip('/')
             u = slug_map.get(p, '/' + p if p else '/')
@@ -129,10 +166,21 @@ def clean_body(ec, slug_map):
     s = s.replace('lincolnplumbingrooter@gmail.com', lp.EMAIL)
     s = re.sub(r'\[email(?:&#160;|&nbsp;| )?protected\]', lp.EMAIL, s)
 
-    # strip attributes we don't want (keep href and the img src/alt/loading)
-    s = re.sub(r'\s(?:class|style|title|id|width|height|decoding|lang|rel|target|sizes|srcset'
-               r'|data-[\w-]+)="[^"]*"',
-               lambda m: '' if 'class="btn' not in m.group(0) else m.group(0), s)
+    # Strip presentational attributes, but leave embedded media alone: the GHL
+    # form iframes need their style/height/data-* to work at all, and <video>
+    # needs its source and poster.
+    keep_attrs = {'iframe', 'video', 'source', 'track'}
+    attr_junk = re.compile(r'\s(?:class|style|title|id|width|height|decoding|lang|rel|target'
+                           r'|sizes|srcset|data-[\w-]+)="[^"]*"')
+
+    def clean_tag(m):
+        tag, attrs = m.group(1).lower(), m.group(2)
+        if tag in keep_attrs:
+            return m.group(0)
+        if 'class="btn' in attrs:
+            return m.group(0)
+        return f'<{m.group(1)}{attr_junk.sub("", attrs)}>'
+    s = re.sub(r'<(\w+)((?:\s[^>]*)?)>', clean_tag, s)
     s = re.sub(r'<(p|h[1-6]|li|ul|ol|strong|em)>\s*(?:&nbsp;|\s)*</\1>', '', s)
     s = re.sub(r'<h1[^>]*>.*?</h1>', '', s, flags=re.S)   # the template renders the h1
     s = re.sub(r'\s+', ' ', s).strip()
@@ -191,6 +239,10 @@ def extract(path, slug, slug_map):
             'headings': [txt(x) for x in re.findall(r'<h2[^>]*>(.*?)</h2>', body)],
         }
     body = tidy_prose(body, txt(h1.group(1)) if h1 else '')
+    if lp.is_lp(slug):
+        # a paid page links nowhere but its own form, phone and email: turn any
+        # internal link into plain text rather than a route into the organic site
+        body = re.sub(r'<a href="(?:/[^"]*)?"[^>]*>(.*?)</a>', r'\1', body, flags=re.S)
     lead_img = ''
     lead = re.match(r'\s*(?:<p>\s*)?<figure><img src="([^"]+)"[^>]*></figure>\s*(?:</p>)?', body)
     if lead:
@@ -246,7 +298,10 @@ ARROW = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-widt
 
 
 def head(p, url):
-    noindex = '\n<meta name="robots" content="noindex">' if p['slug'] == 'meta-thank-you' else ''
+    # the paid landing pages are kept out of search entirely, so they can't
+    # compete with the organic service pages covering the same ground
+    noindex = ('\n<meta name="robots" content="noindex, follow">'
+               if lp.is_lp(p['slug']) else '')
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -277,6 +332,7 @@ def crumbs(slug, titles, url_for):
 def page_hero(p, slug, titles, url_for):
     img = HERO.get(slug.split('/')[0], 'hero-van.jpg')
     lede = f'<p class="lede">{lp.e(p["description"])}</p>' if p['description'] else ''
+    crumb = '' if lp.is_lp(slug) else crumbs(slug, titles, url_for)
     return f'''
 <section class="hero hero-lp hero-compact">
   <div class="hero-media">
@@ -286,7 +342,7 @@ def page_hero(p, slug, titles, url_for):
   <div class="hero-grid-lines"></div>
   <div class="container">
     <div class="hero-content">
-      {crumbs(slug, titles, url_for)}
+      {crumb}
       <h1>{lp.e(p['h1'] or p['title'])}</h1>
       {lede}
       <div class="hero-ctas">
@@ -349,6 +405,22 @@ def quote(slug):
 
 
 def render_page(p, url, slug, children, titles, url_for):
+    if lp.is_lp(slug):
+        return ''.join([
+            head(p, url), lp.lp_chrome_top(slug), '\n<main>',
+            page_hero(p, slug, titles, url_for),
+            f'''
+<section class="section-tight">
+  <div class="container">
+    <div class="blog-post-body legacy-prose">
+{p['body']}
+    </div>
+  </div>
+</section>
+''',
+            '' if slug == 'meta-thank-you' else quote(slug),
+            lp.finance_band(), '</main>\n', lp.lp_chrome_bottom(slug),
+        ])
     return ''.join([
         head(p, url), lp.chrome_top(), '\n<main>',
         page_hero(p, slug, titles, url_for),
@@ -498,17 +570,9 @@ def site_index(page_slugs, ordered, titles, url_for, hubs):
         </ul>
       </div>
 '''
-    lps = '\n'.join(f'        <li><a href="/{s}">{lp.e(lp.META[s][0])}</a></li>' for s in lp.SERVICE_SLUGS)
-    lpcol = f'''      <div class="index-col">
-        <h3>Service Landing Pages</h3>
-        <ul>
-{lps}
-        </ul>
-      </div>
-'''
     posts = '\n'.join(f'        <li><a href="{url_for(s)}">{lp.e(titles.get(s, s))}</a></li>'
                       for s in ordered)
-    cols = (top + lpcol
+    cols = (top
             + group(lambda s: s.startswith('plumbing-services'), 'Plumbing Services')
             + group(lambda s: s.startswith('drains-and-sewers'), 'Drains & Sewers')
             + group(lambda s: s.startswith('leak-detection'), 'Leak Detection'))
@@ -570,7 +634,22 @@ def plan():
 
     slug_map = {s: url_for(s) for s in page_slugs + post_slugs}
     slug_map.update({'': '/', 'about': '/about', 'contact': '/contact', 'blog': '/blog/'})
-    slug_map.update({s: '/' + s for s in lp.PAGES})
+    # Landing-page slugs deliberately do NOT go in the map as themselves — if a
+    # legacy page linked to one, the link is sent to the organic equivalent so
+    # nothing on the organic site points into the paid funnel.
+    slug_map.update({
+        'ga-plumbing-services': '/plumbing-services/',
+        'ga-garbage-disposal-services': '/plumbing-services/',
+        'drain-cleaning': '/drains-and-sewers/drain-cleaning',
+        'hydrojetting': '/drains-and-sewers/hydro-jetting',
+        'sewer-lines': '/drains-and-sewers/sewer-line-repair',
+        'ga-water-heater': '/plumbing-services/water-heaters/',
+        'ga-tankless-water-heaters': '/plumbing-services/water-heaters/tankless-water-heaters',
+        'ga-leak-detection': '/leak-detection/',
+        'ga-about-us': '/about',
+        'ga-contact': '/contact',
+        'ga-testimonials': '/testimonials',
+    })
     return page_slugs, post_slugs, hubs, children, url_for, path_for, slug_map
 
 
@@ -615,13 +694,14 @@ if __name__ == '__main__':
     # sitemap.xml + robots.txt — the legacy site's robots.txt pointed at a Yoast
     # sitemap index, so search engines will come looking for one here too.
     lp.set_page('sitemap')
+    # organic pages only — the paid landing pages are noindex and deliberately
+    # absent from the sitemap
     static_urls = ['/', '/services', '/gallery', '/about', '/contact', '/blog/', '/sitemap']
-    all_urls = static_urls + ['/' + s for s in lp.PAGES] + [url_for(s) for s in page_slugs] \
-        + [url_for(s) for s in ordered]
+    all_urls = static_urls + [url_for(s) for s in page_slugs] + [url_for(s) for s in ordered]
     seen_u, xml = set(), ['<?xml version="1.0" encoding="UTF-8"?>',
                           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in all_urls:
-        if u in seen_u or u == '/meta-thank-you':
+        if u in seen_u or lp.is_lp(u.strip('/')):
             continue
         seen_u.add(u)
         xml.append(f'  <url><loc>{LEGACY_HOST}{u}</loc></url>')

@@ -134,6 +134,7 @@ def head(page):
 <title>{e(fix(page['title']))}</title>
 <meta name="description" content="{e(fix(page['description']))}">
 <link rel="canonical" href="https://www.lincolnplumbingandrooter.com/{slug}">
+<meta name="robots" content="noindex, follow">
 <link rel="icon" href="/images/logo.png">
 <link rel="preload" href="/fonts/Inter-Variable.ttf?v={V}" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/css/style.css?v={V}">
@@ -214,6 +215,68 @@ def chrome_top():
 '''
 
 
+def lp_chrome_top(slug):
+    """Chrome for a paid landing page. The legacy LPs carried no navigation at
+    all — just an address/phone strip and the logo — so paid traffic had nowhere
+    to go but the form or the phone. This keeps that: nothing here links off the
+    page, so paid visitors never wander into the organic site (and never see the
+    main phone number instead of the tracking one)."""
+    return f"""
+<div class="lp-topstrip">
+  <div class="container">
+    <span>Contractor License #1111400</span>
+    <span>738 S Waterman Ave C45, San Bernardino, CA 92408</span>
+    <span>Open 24 Hours, 7 Days a Week</span>
+  </div>
+</div>
+
+<header class="lp-header">
+  <div class="container">
+    <img src="/images/logo.png" alt="Lincoln Plumbing &amp; Rooter logo">
+    <div class="lp-header-actions">
+      <a href="#quote" class="btn btn-secondary btn-sm">Get A Free Quote</a>
+      <a href="{tel()}" class="btn-call">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{PHONE_SVG}</svg>
+        <span>{phone()}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-call-bar">
+  <a href="{tel()}">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{PHONE_SVG}</svg>
+    24/7 Emergency — Call {phone()}
+  </a>
+</div>
+"""
+
+
+def lp_chrome_bottom(slug):
+    """One-line footer, as the legacy LPs had. No navigation, no links out."""
+    return f"""
+<footer class="lp-footer">
+  <div class="container">
+    <img src="/images/logo.png" alt="Lincoln Plumbing &amp; Rooter logo">
+    <p>
+      <a href="{tel()}">{phone()}</a> &middot;
+      <a href="mailto:{EMAIL}">{EMAIL}</a> &middot;
+      738 S Waterman Ave C45, San Bernardino, CA 92408
+    </p>
+    <p class="lp-footer-legal">
+      &copy; 2026 Lincoln Plumbing &amp; Rooter, INC. All rights reserved.
+      Contractor License #1111400. Licensed &amp; insured. Available 24/7.
+    </p>
+  </div>
+</footer>
+
+<script src="{FORM_JS}"></script>
+
+</body>
+</html>
+"""
+
+
 def chrome_bottom():
     socials = '\n          '.join(
         f'<a href="{h}" target="_blank" rel="noopener" aria-label="{n}">\n'
@@ -250,9 +313,9 @@ def chrome_bottom():
         <ul>
           <li><a href="/plumbing-services/">Plumbing Services</a></li>
           <li><a href="/drains-and-sewers/">Drains &amp; Sewers</a></li>
+          <li><a href="/plumbing-services/water-heaters/">Water Heaters</a></li>
           <li><a href="/leak-detection/">Leak Detection</a></li>
           <li><a href="/service-locations/">Service Locations</a></li>
-          {chr(10).join(f'          <li><a href="/{s}">{e(META[s][0])}</a></li>' for s in SERVICE_SLUGS[:3])}
         </ul>
       </div>
 
@@ -698,7 +761,7 @@ def simple_cta(eyebrow, h2, sub):
 def build(slug):
     set_page(slug)
     p = PAGES[slug]
-    parts = [head(p), chrome_top(), '\n<main>']
+    parts = [head(p), lp_chrome_top(slug), '\n<main>']
 
     if slug == 'ga-about-us':
         parts += [hero(p, form_slot=None), marquee(p['ticker']),
@@ -724,7 +787,7 @@ def build(slug):
                   cross_links(slug), finance_band(),
                   quote_section(p['quote_cta'])]
 
-    parts += ['</main>\n', chrome_bottom()]
+    parts += ['</main>\n', lp_chrome_bottom(slug)]
     out = ''.join(parts)
     out = re.sub(r'\n{3,}', '\n\n', out)
     path = os.path.join(PUBLIC, slug + '.html')

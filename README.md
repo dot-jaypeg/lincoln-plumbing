@@ -116,6 +116,45 @@ gtag('config', 'AW-16721660937/BQtCCljq9NUcElmYwaU-', {
 });
 ```
 
+### One thing to confirm in Google Ads
+
+The legacy site carried **two different conversion labels** for the same
+conversion action — `AW-16721660937/BQtCCljq9NUcElmYwaU-` on all 190 pages (from
+the theme header) and `AW-16721660937/BQtCCIjq9NUcEImYwaU-` on the 11 hand-coded
+landing pages. They differ only in `l` vs `I`, which is the classic
+copy-by-hand mistake, so one of them almost certainly records nothing. This repo
+uses the 190-page variant. Worth confirming against the Ads UI and correcting
+`ADS_CALL_LABEL` in `tools/tracking.py` if it's the wrong one.
+
+## Paid landing pages are isolated
+
+The 13 paid pages are a closed funnel, deliberately sealed off from the organic
+site in both directions:
+
+- **No organic page links to one.** Not from the nav, the footer, `/services`, or
+  `/sitemap`. Where a legacy page's body copy linked to a landing page, the link
+  is remapped to the organic page covering the same service (`/drain-cleaning` →
+  `/drains-and-sewers/drain-cleaning`, `/ga-contact` → `/contact`, and so on).
+- **No landing page links to the organic site.** They get their own chrome —
+  `lp_chrome_top()` / `lp_chrome_bottom()` in `tools/build-legacy-lps.py`: an
+  address strip, a logo, a quote button and the tracking phone number, and a
+  one-line footer. No nav, no breadcrumb. This is how the legacy LPs were built
+  too; their markup had no navigation at all. Internal links inside imported LP
+  body copy are unwrapped to plain text.
+- **`noindex, follow` on all 13, and none of them are in `sitemap.xml`.** This
+  also settles the duplicate-content overlap: `/ga-water-heater` vs
+  `/plumbing-services/water-heaters/`, `/ga-contact` vs `/contact`,
+  `/ga-testimonials` vs `/testimonials` and so on. The organic tree owns those
+  topics; the LPs just serve ads.
+
+They still cross-link *each other* ("Other Services We Offer"), which keeps paid
+visitors inside the paid set.
+
+`LP_SLUGS` in `tools/build-legacy-lps.py` is the single definition of what counts
+as a paid page. Everything above — chrome, phone number, `noindex`, sitemap
+exclusion, link remapping — is driven off it, so moving a page in or out of the
+funnel is a one-line change plus a rebuild.
+
 ## Two phone numbers
 
 | Number | Shown on |
@@ -139,14 +178,8 @@ the page rather than trusting the source.
 If you change a number, change it there and re-run both builders plus
 `python3 tools/apply-tracking.py` — don't hand-edit the pages.
 
-Two things follow from this split that are worth knowing:
-
-- **The LPs are linked from the organic site** (`/services`, the footer's
-  "Browse Services" column, `/sitemap`), so organic visitors can reach a page
-  showing the tracking number. That was also true of the legacy site. Remove
-  those links if you want the paid pages fully isolated.
-- **Clicking from an LP into the main nav** (`/contact`, `/about`, …) shows the
-  main line, since those are organic pages.
+Because the two page sets are fully isolated (above), a visitor can't cross from
+one to the other and see the "wrong" number mid-session.
 
 ### The GHL form's on-submit behaviour
 
@@ -211,7 +244,15 @@ Things worth knowing about it:
   `/drains-and-sewers/*` pages, so they now point at those. `/privacy-policy`
   never had any policy text — it carries a visible **[PLACEHOLDER]** block that
   needs real copy before launch.
-- `/meta-thank-you` is kept `noindex`, as it was on the legacy site.
+- `/meta-thank-you` is kept `noindex`, as it was on the legacy site, and carries
+  no quote form — it's a confirmation page.
+- **`/lp-job-ad` is the one page the generic importer doesn't do justice.** It's
+  a bespoke recruiting LP built around two videos, a lead-gated video unlock and
+  a custom ticker, and flattening it to prose loses that layout. Its two videos
+  are also **404 on the legacy site**, so they couldn't be imported — each slot
+  carries a visible `[PLACEHOLDER — video needed.]` note instead. The page is
+  readable and its GHL application forms work, but it wants a proper hand-build
+  like the other LPs got.
 
 Pages deliberately **not** taken from the legacy site, because this site already
 has its own approved versions at the same URLs: `/` , `/about`, `/contact`.
