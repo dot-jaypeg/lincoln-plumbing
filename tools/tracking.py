@@ -15,9 +15,10 @@ GTM_ID = 'GTM-NB7XCVVG'
 GA4_ID = 'G-XL9X7ZMQ2J'
 ADS_ID = 'AW-16721660937'
 ADS_CALL_LABEL = 'AW-16721660937/BQtCCljq9NUcElmYwaU-'
-# NOTE: kept exactly as it was on the legacy site. Google Ads swaps this number
-# where it appears on the page - and this site displays 909-780-0887, so the swap
-# will not match until this value is updated in Google Ads and here.
+# Google Ads swaps this number wherever it appears on the page. It is the
+# call-tracking line, which is shown only on the landing pages (see LP_PHONE in
+# build-legacy-lps.py) - so the swap fires there and is a no-op on the organic
+# pages, which show the main line. That is the intended behaviour.
 ADS_CALL_NUMBER = '(909)765-0236'
 META_PIXEL_ID = '1083376654248929'
 

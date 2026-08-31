@@ -107,8 +107,8 @@ before inserting so it is safe to re-run after editing a page:
 python3 tools/apply-tracking.py
 ```
 
-**One thing to fix on Google's side.** The Google Ads snippet carries a
-call-conversion config copied verbatim from the legacy site:
+The Google Ads snippet also carries the call-conversion config from the legacy
+site, which pairs with the two phone numbers described below:
 
 ```js
 gtag('config', 'AW-16721660937/BQtCCljq9NUcElmYwaU-', {
@@ -116,11 +116,37 @@ gtag('config', 'AW-16721660937/BQtCCljq9NUcElmYwaU-', {
 });
 ```
 
-That value tells Google Ads which number on the page to swap for a forwarding
-number. This site displays **909-780-0887**, so the swap will not match anything
-and call conversions will not be recorded until the number is updated both in
-the Google Ads UI and in `ADS_CALL_NUMBER` in `tools/tracking.py`. It was left
-as-is deliberately rather than silently changed.
+## Two phone numbers
+
+| Number | Shown on |
+|---|---|
+| **909-780-0887** — main line | the organic site: `/`, `/services`, `/gallery`, `/about`, `/contact`, the whole service tree, the service-location pages, `/blog/` and all 89 posts |
+| **909-765-0236** — Google Ads call-tracking line | the 13 paid landing pages: the 11 legacy LPs plus `/lp-job-ad` and `/meta-thank-you` |
+
+This is what makes the Google Ads `phone_conversion_number` above work: it swaps
+the tracking number, which only ever appears on landing pages, so number
+swapping fires on paid traffic and is a no-op on organic pages.
+
+Both numbers are defined once, at the top of `tools/build-legacy-lps.py`
+(`PHONE`/`TEL` and `LP_PHONE`/`LP_TEL`), together with `LP_SLUGS` — the set of
+pages that count as landing pages. `phone()` and `tel()` return the right one
+for whichever page is being built, and both builders use them, so the header,
+the mobile call bar, every CTA, the footer and the imported body copy all agree
+on a single page. The legacy copy mentions both numbers in half a dozen
+formats; `normalise_phone()` rewrites every one of them to the right number for
+the page rather than trusting the source.
+
+If you change a number, change it there and re-run both builders plus
+`python3 tools/apply-tracking.py` — don't hand-edit the pages.
+
+Two things follow from this split that are worth knowing:
+
+- **The LPs are linked from the organic site** (`/services`, the footer's
+  "Browse Services" column, `/sitemap`), so organic visitors can reach a page
+  showing the tracking number. That was also true of the legacy site. Remove
+  those links if you want the paid pages fully isolated.
+- **Clicking from an LP into the main nav** (`/contact`, `/about`, …) shows the
+  main line, since those are organic pages.
 
 ### The GHL form's on-submit behaviour
 

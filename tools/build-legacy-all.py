@@ -63,6 +63,22 @@ def img_name(u):
     return re.sub(r'[^A-Za-z0-9._-]', '-', os.path.basename(u)).lower()
 
 
+def normalise_phone(s):
+    """Both of the company's numbers turn up in the legacy copy in several
+    formats (the job-ad pages already used the main line). Rewrite every one of
+    them to whichever number the page being built should show — display format
+    first, then the digits inside tel: links, in one pass each so a replacement
+    can't be re-matched by the next pattern."""
+    digits = lp.tel()[4:]
+    # tel: hrefs first, so the display pass can't corrupt one into tel:1909-765-…
+    s = re.sub(r'tel:\+?1?[\s.-]?\(?909\)?[\s.-]?7(?:65[\s.-]?0236|80[\s.-]?0887)',
+               'tel:' + digits, s)
+    # then the human-readable form, skipping anything sitting inside a run of
+    # digits (i.e. the tel: numbers just normalised above)
+    return re.sub(r'(?<!\d)\(?909\)?[\s.-]?7(?:65[\s.-]?0236|80[\s.-]?0887)(?!\d)',
+                  lp.phone(), s)
+
+
 def clean_body(ec, slug_map):
     """Turn a Divi/WordPress entry-content blob into plain semantic prose."""
     s = re.sub(r'<(script|style|noscript)\b.*?</\1>', '', ec, flags=re.S | re.I)
@@ -95,7 +111,7 @@ def clean_body(ec, slug_map):
         if u.startswith(LEGACY_HOST):
             u = u[len(LEGACY_HOST):]
         if u.startswith('tel:'):
-            return f'href="{lp.TEL}"'
+            return f'href="{lp.tel()}"'
         # Cloudflare email obfuscation leaves behind /cdn-cgi/l/email-protection#<hex>
         if '/cdn-cgi/l/email-protection' in u:
             return f'href="mailto:{lp.EMAIL}"'
@@ -106,9 +122,10 @@ def clean_body(ec, slug_map):
     s = re.sub(r'href="([^"]*)"', fix_href, s)
     s = re.sub(r'\shref="mailto:[^"]*"', f' href="mailto:{lp.EMAIL}"', s)
 
-    # legacy contact details -> ours
-    s = s.replace('(909)765-0236', lp.PHONE).replace('(909) 765-0236', lp.PHONE)
-    s = s.replace('909-765-0236', lp.PHONE).replace('9097650236', '19097800887')
+    # legacy contact details -> whichever number this page should show. Both
+    # numbers appear in the legacy copy (the job-ad pages already used the main
+    # line), so normalise either one.
+    s = normalise_phone(s)
     s = s.replace('lincolnplumbingrooter@gmail.com', lp.EMAIL)
     s = re.sub(r'\[email(?:&#160;|&nbsp;| )?protected\]', lp.EMAIL, s)
 
@@ -163,7 +180,7 @@ def extract(path, slug, slug_map):
     body = clean_body(ec, slug_map)
     override = os.path.join(REPO_POSTS, slug + '.html')
     if slug in REPO_META and os.path.exists(override):
-        body = open(override).read().strip()
+        body = normalise_phone(open(override).read().strip())
         m = REPO_META[slug]
         return {
             'slug': slug, 'legacy_url': f'{LEGACY_HOST}/{slug}/',
@@ -181,7 +198,7 @@ def extract(path, slug, slug_map):
         body = body[lead.end():].lstrip()
     if len(txt(body)) < 40:
         if slug == 'privacy-policy':
-            body = PRIVACY_PLACEHOLDER.format(email=lp.EMAIL, phone=lp.PHONE)
+            body = PRIVACY_PLACEHOLDER.format(email=lp.EMAIL, phone=lp.phone())
         elif slug in EMPTY_FALLBACK:
             tgt = EMPTY_FALLBACK[slug]
             label = tgt.split('/')[-1].replace('-', ' ')
@@ -273,7 +290,7 @@ def page_hero(p, slug, titles, url_for):
       <h1>{lp.e(p['h1'] or p['title'])}</h1>
       {lede}
       <div class="hero-ctas">
-        <a href="{lp.TEL}" class="btn btn-primary">Call {lp.PHONE}</a>
+        <a href="{lp.tel()}" class="btn btn-primary">Call {lp.phone()}</a>
         <a href="#quote" class="btn btn-secondary">Get A Free Quote</a>
       </div>
     </div>
@@ -323,7 +340,7 @@ def quote(slug):
       {lp.form(sfx, 700, 'Get A Free Quote')}
     </div>
     <div class="quote-contact">
-      <a href="{lp.TEL}">Call {lp.PHONE}</a>
+      <a href="{lp.tel()}">Call {lp.phone()}</a>
       <a href="mailto:{lp.EMAIL}">Email Us</a>
     </div>
   </div>
@@ -381,7 +398,7 @@ def render_post(p, url, slug, i, related, titles, url_for):
           <p>Licensed, insured, and available 24/7 — with upfront pricing before we start.</p>
         </div>
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="{lp.TEL}" class="btn btn-primary">Call {lp.PHONE}</a>
+          <a href="{lp.tel()}" class="btn btn-primary">Call {lp.phone()}</a>
           <a href="#quote" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5); color:#fff;">Free Estimate</a>
         </div>
       </div>
@@ -562,6 +579,7 @@ if __name__ == '__main__':
 
     pages, titles = {}, {}
     for s in page_slugs + post_slugs:
+        lp.set_page(s)
         p = extract(os.path.join(RAW, s.replace('/', '~') + '.html'), s, slug_map)
         p['is_post'] = s in post_slugs
         p['url'] = url_for(s)
@@ -573,6 +591,7 @@ if __name__ == '__main__':
 
     thin, written = [], 0
     for s in page_slugs:
+        lp.set_page(s)
         out = render_page(pages[s], url_for(s), s, children.get(s, []), titles, url_for)
         os.makedirs(os.path.dirname(path_for(s)), exist_ok=True)
         open(path_for(s), 'w').write(re.sub(r'\n{3,}', '\n\n', out))
@@ -582,6 +601,7 @@ if __name__ == '__main__':
 
     ordered = sorted(post_slugs, key=lambda s: pages[s]['published'] or '0000', reverse=True)
     for i, s in enumerate(ordered):
+        lp.set_page(s)
         related = [ordered[(i + k) % len(ordered)] for k in (1, 2, 3, 4)]
         out = render_post(pages[s], url_for(s), s, i, related, titles, url_for)
         open(path_for(s), 'w').write(re.sub(r'\n{3,}', '\n\n', out))
@@ -589,10 +609,12 @@ if __name__ == '__main__':
         if pages[s]['body_chars'] < 400:
             thin.append((s, pages[s]['body_chars']))
 
+    lp.set_page('blog')
     open(os.path.join(PUBLIC, 'blog', 'index.html'), 'w').write(
         re.sub(r'\n{3,}', '\n\n', blog_index(ordered, pages, titles, url_for)))
     # sitemap.xml + robots.txt — the legacy site's robots.txt pointed at a Yoast
     # sitemap index, so search engines will come looking for one here too.
+    lp.set_page('sitemap')
     static_urls = ['/', '/services', '/gallery', '/about', '/contact', '/blog/', '/sitemap']
     all_urls = static_urls + ['/' + s for s in lp.PAGES] + [url_for(s) for s in page_slugs] \
         + [url_for(s) for s in ordered]
