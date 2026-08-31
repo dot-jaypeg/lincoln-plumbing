@@ -1,11 +1,26 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 
 app.use(express.urlencoded({ extended: true }));
+
+// Section hubs are directories with an index.html (public/plumbing-services/index.html
+// -> /plumbing-services/). Scanned once at boot so the redirect middleware can tell
+// a hub URL from a page URL without hitting the disk on every request.
+const DIR_INDEXES = new Set();
+(function scan(dir, prefix) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const url = `${prefix}${entry.name}/`;
+    if (fs.existsSync(path.join(dir, entry.name, 'index.html'))) DIR_INDEXES.add(url);
+    scan(path.join(dir, entry.name), url);
+  }
+})(PUBLIC_DIR, '/');
+const isDirIndex = p => DIR_INDEXES.has(p);
 
 // ---------------------------------------------------------------------------
 // Clean URLs. Every page on disk is still a plain `.html` file in public/, but
@@ -25,10 +40,25 @@ app.use((req, res, next) => {
   if (pathname.endsWith('.html')) {
     return res.redirect(301, pathname.slice(0, -'.html'.length) + suffix);
   }
-  // trailing slash on anything but the site root or a real directory index
-  if (pathname.length > 1 && pathname.endsWith('/') && pathname !== '/blog/') {
-    return res.redirect(301, pathname.slice(0, -1) + suffix);
+  // Trailing slash: kept for paths that are a real directory with an index.html
+  // (the section hubs — /plumbing-services/, /service-locations/fontana-ca/, …),
+  // stripped for everything else.
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    if (!isDirIndex(pathname)) {
+      return res.redirect(301, pathname.slice(0, -1) + suffix);
+    }
+  } else if (isDirIndex(pathname + '/')) {
+    // ...and added back if it was missing
+    return res.redirect(301, pathname + '/' + suffix);
   }
+
+  // The ten posts that were rewritten for this site used to live at
+  // /blog/<slug>; they are now served at the legacy root-level slug.
+  const post = pathname.match(/^\/blog\/(.+)$/);
+  if (post && post[1] !== 'index' && fs.existsSync(path.join(PUBLIC_DIR, `${post[1]}.html`))) {
+    return res.redirect(301, `/${post[1]}${suffix}`);
+  }
+
   next();
 });
 

@@ -1300,3 +1300,82 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
 /* the auto-numbered corner counter on .service-card needs room when the card
    has no icon above the heading (the legacy "signs" grids) */
 .services-grid .service-card h3 { padding-right: 46px; }
+
+/* ==========================================================================
+   Pages carried over from the legacy WordPress site (service tree, service
+   locations, blog posts) — see tools/build-legacy-all.py
+   ========================================================================== */
+
+/* compact hero for interior pages: no form card, so it doesn't need the height */
+.hero-compact .container { padding-top: 124px; padding-bottom: 72px; }
+.hero-compact .hero-content { max-width: 760px; }
+.hero-compact h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); }
+
+.crumbs {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase;
+}
+.crumbs a { color: rgba(255,255,255,0.72); }
+.crumbs a:hover { color: var(--orange-2); }
+.crumbs span { color: var(--orange-2); }
+.crumbs i { font-style: normal; color: rgba(255,255,255,0.35); }
+
+/* prose imported from the old site: same rhythm as a blog post, plus figures,
+   inline buttons and the occasional h3/h4 and table the legacy copy used */
+.legacy-prose { max-width: 760px; }
+.legacy-prose h2 { margin-top: 44px; margin-bottom: 12px; font-size: 1.45rem; }
+.legacy-prose h2:first-child { margin-top: 0; }
+.legacy-prose h3 { margin-top: 30px; margin-bottom: 10px; font-size: 1.15rem; }
+.legacy-prose h4 { margin-top: 24px; font-size: 1.02rem; }
+.legacy-prose p { margin-top: 16px; }
+.legacy-prose a:not(.btn) {
+  color: var(--orange-dark); font-weight: 600;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;
+}
+.legacy-prose a:not(.btn):hover { color: var(--ink); }
+.legacy-prose ol { margin-top: 16px; padding-left: 22px; display: grid; gap: 10px; }
+.legacy-prose ol li { color: var(--ink-soft); }
+.legacy-prose figure {
+  margin: 34px 0 6px; border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.legacy-prose figure img { width: 100%; display: block; }
+.legacy-prose .btn { margin-top: 26px; }
+.legacy-prose table { width: 100%; margin-top: 24px; border-collapse: collapse; font-size: 0.94rem; }
+.legacy-prose th, .legacy-prose td { padding: 12px 14px; border-bottom: 1px solid var(--gray-200); text-align: left; }
+.legacy-prose th { font-weight: 700; background: var(--gray-100); }
+.legacy-prose blockquote {
+  margin-top: 26px; padding: 20px 24px; border-left: 4px solid var(--orange);
+  background: var(--gray-100); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* /sitemap — the human index of every page */
+.index-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 32px; }
+.index-col h3 {
+  font-size: 1.1rem; padding-bottom: 12px; margin-bottom: 14px;
+  border-bottom: 2px solid var(--orange);
+}
+.index-col ul { list-style: none; display: grid; gap: 9px; }
+.index-col li a { font-size: 0.94rem; color: var(--ink-soft); }
+.index-col li a:hover { color: var(--orange-dark); }
+.index-posts { display: block; columns: 3; column-gap: 32px; }
+.index-posts li { break-inside: avoid; margin-bottom: 9px; }
+
+@media (max-width: 900px) {
+  .index-grid { grid-template-columns: repeat(2, 1fr); }
+  .index-posts { columns: 2; }
+}
+@media (max-width: 600px) {
+  .index-grid { grid-template-columns: 1fr; }
+  .index-posts { columns: 1; }
+  .hero-compact .container { padding-top: 104px; padding-bottom: 56px; }
+}
+
+/* legacy prose images: the old layout had them in narrow side columns, so many
+   originals are tall portraits. Constrain the width rather than the height —
+   cropping would cut the top off the coupon graphics on /specials. */
+.legacy-prose > figure { max-width: 560px; margin-left: auto; margin-right: auto; }
+.prose-figures { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 34px 0 6px; }
+.prose-figures figure { margin: 0; }
+.prose-figures figure img { max-height: 340px; }
+@media (max-width: 600px) { .prose-figures { grid-template-columns: 1fr; } }

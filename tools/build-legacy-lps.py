@@ -201,15 +201,22 @@ def chrome_bottom():
           <li><a href="/services">Our Services</a></li>
           <li><a href="/gallery">Photo Gallery</a></li>
           <li><a href="/blog/">Blog / News</a></li>
+          <li><a href="/specials">Specials</a></li>
+          <li><a href="/testimonials">Testimonials</a></li>
           <li><a href="/about">Our Story</a></li>
           <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/sitemap">Sitemap</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Service Pages</h4>
+        <h4>Browse Services</h4>
         <ul>
-          {chr(10).join(f'          <li><a href="/{s}">{e(META[s][0])}</a></li>' for s in SERVICE_SLUGS[:5])}
+          <li><a href="/plumbing-services/">Plumbing Services</a></li>
+          <li><a href="/drains-and-sewers/">Drains &amp; Sewers</a></li>
+          <li><a href="/leak-detection/">Leak Detection</a></li>
+          <li><a href="/service-locations/">Service Locations</a></li>
+          {chr(10).join(f'          <li><a href="/{s}">{e(META[s][0])}</a></li>' for s in SERVICE_SLUGS[:3])}
         </ul>
       </div>
 
