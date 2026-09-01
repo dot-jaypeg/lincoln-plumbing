@@ -1,0 +1,4 @@
+# Every request to the apex domain -> the same path on www, 301, path and query
+# string preserved. :splat carries the path; Netlify appends the original query
+# string automatically.
+/*    https://www.lincolnplumbingandrooter.com/:splat    301!

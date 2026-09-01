@@ -332,6 +332,39 @@ origin's cache once. It only reaches browsers that actually make a request, so i
 does nothing for one already serving a page out of cache — see the note below.
 Turn it off after a few days; it costs every visitor a cold cache.
 
+## The apex domain
+
+`lincolnplumbingandrooter.com` (no www) is not served by this app. Railway needs
+a CNAME for a custom domain, a CNAME is illegal at a zone apex, and GoDaddy DNS
+has no ALIAS/ANAME record to work around that. What's there instead is GoDaddy
+Domain Forwarding, which only handles the bare root and drops both the path and
+the query string:
+
+```
+https://lincolnplumbingandrooter.com/             -> 301 to the www root, ?gclid dropped
+https://lincolnplumbingandrooter.com/hydrojetting -> 404 (awselb)
+```
+
+Two consequences worth knowing: any ad click that lands on the apex loses its
+`gclid`, and any deep link to the apex is dead. The canonical has always been
+`www` (that's what the old site used and what Google has indexed), so organic
+search is unaffected — the exposure is ad final URLs, Google Business Profile,
+citations and bookmarks.
+
+Options, cheapest first:
+
+1. **Point everything at `www`.** Ad final URLs, GBP, citations. The apex root
+   already redirects, so someone typing the bare domain still lands on the
+   homepage. This alone closes the attribution hole.
+2. **Serve the apex properly without moving DNS** — `tools/apex-redirect/` is a
+   two-file site that 301s the apex to `www` preserving path and query. It goes
+   on any host that serves an apex from a plain A record (Netlify, free), and
+   needs only an A record change in GoDaddy. See that folder's README.
+3. **Move DNS to Cloudflare, keeping the registrar at GoDaddy.** Cloudflare
+   flattens CNAMEs at the apex, so the apex can point straight at Railway.
+   Cleanest long term. Copy every existing record first — especially MX, SPF,
+   DKIM and DMARC — or email breaks the moment the nameservers cut over.
+
 ### If stale markup is still in the wild
 
 A browser holding an HTML response with a live `max-age` doesn't ask the server
