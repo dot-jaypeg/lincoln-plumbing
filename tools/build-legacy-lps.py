@@ -18,7 +18,14 @@ PAGES = json.load(open(os.path.join(ROOT, 'content', 'legacy-scrape', 'pages.jso
 PUBLIC = os.path.join(ROOT, 'public')
 
 # ---------------------------------------------------------------- site config
-V = 'static-4'                       # cache-bust token, must match public/*.html
+# Cache-bust token: a hash of the asset contents, maintained by
+# tools/bump-assets.py. Never hand-edit it — run that script after the builders.
+def _asset_version():
+    f = os.path.join(ROOT, 'content', 'asset-version.txt')
+    return open(f).read().strip() if os.path.exists(f) else 'dev'
+
+
+V = _asset_version()
 # Two numbers, on purpose. The organic site shows the main line; the paid
 # landing pages show the Google Ads call-tracking number, which is also the
 # number the Ads snippet in tools/tracking.py is configured to swap.
@@ -93,16 +100,25 @@ def fix(s):
     return s
 
 
-def form(slot, height, title):
+def form(slot, height, title, lazy=None):
     """The GHL Meta Form embed. Only the id suffix varies per placement so two
-    embeds on one page don't collide — same convention the legacy site used."""
+    embeds on one page don't collide — same convention the legacy site used.
+
+    Form embeds are never lazy-loaded. A `loading="lazy"` iframe is deferred
+    past onLoad, and in a HAR from a real visit the hero embed was never
+    requested at all — the form simply never appeared. There are at most two
+    embeds per page and they are the entire point of the page, so both load
+    eagerly."""
     fid = f'inline-{FORM_ID}-{slot}'
+    if lazy is None:
+        lazy = False
+    loading = ' loading="lazy"' if lazy else ''
     return f'''<iframe src="{FORM_URL}" style="width:100%;height:{height}px;border:none" id="{fid}"
           data-layout="{{'id':'INLINE'}}" data-trigger-type="alwaysShow" data-trigger-value=""
           data-activation-type="alwaysActivated" data-activation-value=""
           data-deactivation-type="neverDeactivate" data-deactivation-value=""
           data-form-name="Meta Form" data-height="{height}" data-layout-iframe-id="{fid}"
-          data-form-id="{FORM_ID}" title="{e(title)}" loading="lazy"></iframe>'''
+          data-form-id="{FORM_ID}" title="{e(title)}"{loading}></iframe>'''
 
 
 # ------------------------------------------------------------------- chrome
@@ -728,7 +744,7 @@ def contact_form_map():
       <h2 style="margin-top:16px;">Send Us A Message</h2>
       <p>Fill out the form and our team will follow up directly, usually within one business day.</p>
       <div class="form-shell light">
-        {form('contact', 700, 'Contact Us')}
+        {form('contact', 700, 'Contact Us', lazy=False)}
       </div>
     </div>
     <div class="map-panel">

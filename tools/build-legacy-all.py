@@ -103,6 +103,9 @@ def clean_body(ec, slug_map):
         real = re.search(r'data-lazy-src="([^"]+)"', tag)
         if real:
             tag = re.sub(r'src="[^"]*"', 'src="' + real.group(1).replace('&#038;', '&') + '"', tag, count=1)
+        # a lazy form embed can end up never being requested at all — see form()
+        if 'link.advancedmarketers.co' in tag:
+            tag = tag.replace(' loading="lazy"', '')
         return tag
     s = re.sub(r'<iframe[^>]*>', unlazy_iframe, s)
 

@@ -7,3 +7,6 @@ node_modules/
 # Everything actually used by the site has already been optimized into public/.
 /references/
 /fonts/
+
+# Debug artifacts (HAR exports contain cookies/PII and are large)
+*.har

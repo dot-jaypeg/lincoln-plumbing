@@ -281,9 +281,68 @@ ffmpeg -i "source.mp4" -vf "scale=1920:-2" -an -c:v libvpx-vp9 -b:v 0 -crf 34 -r
 ffmpeg -ss 00:00:01.2 -i "source.mp4" -frames:v 1 -vf "scale=1920:-2" -q:v 4 public/images/hero-poster.jpg
 ```
 
-## Cache-busting
+## Caching
 
-Asset URLs are versioned (`/css/style.css?v=...`) so browsers fetch fresh CSS/JS/video after a deploy instead of serving a week-old cached copy. Since pages are static HTML now, this version string is baked into the files rather than computed per-request — if you change `style.css`, `main.js`, or the hero video, bump the `?v=` value across `public/*.html` and `public/blog/*.html` (find-and-replace) **and** the `V` constant in `tools/build-legacy-lps.py` (which `tools/build-legacy-all.py` reads too), then re-run both builders, so visitors actually get the update. Currently `static-4`.
+This bit caused a real incident after the platform swap, so it's worth reading
+before changing.
+
+**HTML is never cached.** Pages are served `Cache-Control: no-cache,
+must-revalidate`. They used to be served `public, max-age=604800` — the same
+7-day header as the assets — which meant a returning visitor's browser rendered
+whatever markup it had from its last visit *without contacting the server at
+all*, and no deploy could reach them for a week. `express.static` still sends an
+ETag, so an unchanged page revalidates as a 304 with no body; the cost of this is
+close to nothing.
+
+**Assets are cached forever, and versioned by content hash.** `?v=` is a hash of
+`style.css` + `main.js` + the font, maintained by `tools/bump-assets.py`. It used
+to be a hand-typed token (`?v=static-4`), which is a trap: append to `style.css`,
+forget to bump, and returning visitors keep the old stylesheet under the same URL
+while the new markup expects new classes. A content hash can't drift.
+
+So the build order is:
+
+```bash
+python3 tools/build-legacy-lps.py
+python3 tools/build-legacy-all.py
+python3 tools/apply-tracking.py
+python3 tools/bump-assets.py      # last — it stamps the hash into every page
+```
+
+**Trailing slashes are not redirected.** Both `/hydrojetting` and
+`/hydrojetting/` return 200; `<link rel="canonical">` decides which one is
+indexed. This is deliberate: the old WordPress site permanently redirected
+`/hydrojetting` → `/hydrojetting/`, browsers cache a 301 more or less forever,
+and redirecting the other way makes a returning visitor ping-pong between the two
+until Chrome gives up with `ERR_TOO_MANY_REDIRECTS`. Don't reintroduce a
+slash redirect in either direction.
+
+`.html` URLs still 301 to the clean form — those were never public on the old
+site, so there's no cached redirect to fight.
+
+**Form embeds are never `loading="lazy"`.** A HAR from a real visit showed the
+above-the-fold GoHighLevel iframe never being requested at all — `onLoad`
+completed at 550ms with zero requests to the widget. Lazy iframes are deferred
+past `onLoad` and, on that page, indefinitely. `form()` in
+`tools/build-legacy-lps.py` emits them eagerly.
+
+**Emergency escape hatch.** Setting `CLEAR_SITE_DATA=1` in Railway makes every
+HTML response send `Clear-Site-Data: "cache"`, which tells browsers to drop this
+origin's cache once. It only reaches browsers that actually make a request, so it
+does nothing for one already serving a page out of cache — see the note below.
+Turn it off after a few days; it costs every visitor a cold cache.
+
+### If stale markup is still in the wild
+
+A browser holding an HTML response with a live `max-age` doesn't ask the server
+anything, so nothing deployed here can reach it. What does:
+
+- **Change the URL.** Adding or changing a query parameter on Google Ads
+  destination URLs (`?v=2`) creates a new cache key and serves fresh markup
+  immediately. This is the fix for paid traffic.
+- **Wait it out.** Worst case is 7 days from the visitor's last page view, after
+  which the no-cache header above applies and it can't recur.
+- **A hard reload** (Cmd/Ctrl+Shift+R) for anyone you can reach directly.
 
 ## Deployment
 
