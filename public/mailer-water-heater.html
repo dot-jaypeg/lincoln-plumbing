@@ -60,9 +60,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .coupon-expires { display: block; margin-top: 14px; font-weight: 700; color: var(--blue-dark); font-size: 0.88rem; }
   .coupon-card .btn { margin-top: 22px; }
   @media (max-width: 780px) { .coupon-grid { grid-template-columns: 1fr; } }
+
+  /* This page only: give the closed-funnel LP chrome the homepage's
+     transparent-over-hero header behaviour (see body.page-home in the
+     shared stylesheet) instead of the plain solid lp-header every other
+     landing page uses. Still no nav links out — same chrome, just the
+     homepage's motion. */
+  body.page-mailer .lp-topstrip {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 101;
+    background: transparent; border-bottom: 1px solid rgba(255,255,255,0.15);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  body.page-mailer .lp-topstrip span { color: rgba(255,255,255,0.75); }
+  body.page-mailer .lp-header {
+    position: fixed; top: var(--topbar-height); left: 0; right: 0;
+    background: transparent; border-bottom-color: transparent; box-shadow: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, top 0.3s ease;
+  }
+  body.page-mailer .lp-header-actions .btn-secondary { border-color: rgba(255,255,255,0.7); color: var(--white); }
+  body.page-mailer .lp-header-actions .btn-secondary:hover { background: var(--white); color: var(--ink); }
+  body.page-mailer.scrolled .lp-topstrip { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+  body.page-mailer.scrolled .lp-header {
+    top: 0; background: rgba(255,255,255,0.96); backdrop-filter: saturate(180%) blur(10px);
+    border-bottom-color: var(--gray-200); box-shadow: 0 4px 16px rgba(20,24,31,0.06);
+  }
+  body.page-mailer.scrolled .lp-header-actions .btn-secondary { border-color: var(--blue); color: var(--blue-dark); }
+  body.page-mailer.scrolled .lp-header-actions .btn-secondary:hover { background: var(--blue); color: var(--white); }
+  body.page-mailer section.hero-lp .container { padding-top: 140px; padding-bottom: 100px; }
+  @media (max-width: 860px) {
+    /* The topstrip wraps to multiple lines at this width, which no longer
+       fits the fixed offset below it — hide it here, same as the homepage's
+       own .top-bar at this breakpoint, and let the header alone sit at top:0. */
+    body.page-mailer .lp-topstrip { display: none; }
+    body.page-mailer .lp-header { top: 0; }
+    body.page-mailer section.hero-lp .container { padding-top: 100px; }
+  }
 </style>
 </head>
-<body>
+<body class="page-mailer">
 <!-- tracking:body -->
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NB7XCVVG"
@@ -99,22 +134,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main>
 <section class="hero hero-lp">
   <div class="hero-media">
-    <img src="/images/hero-poster.jpg" alt="Lincoln Plumbing &amp; Rooter technician at work" class="hero-video">
+    <video class="hero-video" autoplay muted loop playsinline poster="/images/hero-poster.jpg?v=2e42961539">
+      <source src="/video/hero-loop.webm?v=2e42961539" type="video/webm">
+      <source src="/video/hero-loop.mp4?v=2e42961539" type="video/mp4">
+    </video>
     <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
   </div>
-  <div class="hero-grid-lines"></div>
+  <svg class="hero-watermark" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M501 74a12 12 0 0 0-20-5l-63 63-45-11-11-45 63-63a12 12 0 0 0-5-20 137 137 0 0 0-172 165L26 383a80 80 0 0 0 113 113l205-205A137 137 0 0 0 501 74zM118 452a28 28 0 1 1 0-56 28 28 0 0 1 0 56z"/></svg>
   <div class="container">
     <div class="hero-content">
-      <div class="lp-badges"><span>✓ You Received This Offer In The Mail</span><span>✓ Licensed &amp; Insured</span><span>✓ Family Owned</span></div>
+      <span class="hero-badge"><span class="dot"></span> You Received This Offer In The Mail</span>
       <h1>Your Pipes, <span class="hl">Our Priority.</span></h1>
       <p class="lede">Call now to lock in your mailer special — an $80 water heater flush or $200 off a new water heater installation. Family-owned, licensed &amp; insured, serving the Inland Empire since 2021.</p>
       <div class="hero-ctas">
         <a href="tel:19093597747" class="btn btn-primary">Call 909-359-7747 to Redeem</a>
         <a href="#offers" class="btn btn-secondary">See Your Offer</a>
       </div>
-      <div class="hero-stats"><div><b>20+</b><span>Years Hands-On Experience</span></div><div><b>24/7</b><span>Emergency Availability</span></div><div><b>5★</b><span>Rated Across The IE</span></div></div>
+      <div class="promo-strip">
+        <div class="promo-chip">
+          <span class="price">$80</span>
+          <span class="label">Water Heater Flush<small>Maintenance special</small></span>
+        </div>
+        <div class="promo-chip">
+          <span class="price">$200</span>
+          <span class="label">Off New Installation<small>Through our company</small></span>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="scroll-cue" aria-hidden="true"><span class="mouse"></span>Scroll</div>
 </section>
 
 <div class="marquee" aria-hidden="true">
@@ -124,22 +173,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<section class="section-tight" id="offers">
+<div class="trust-bar">
   <div class="container">
-    <div class="section-head center">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+      <div class="trust-copy">GoodLeap Financing Available<small>Flexible monthly payment options</small></div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <div class="trust-copy">Family Owned &amp; Operated<small>Two brothers, one mission</small></div>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>
+      <div class="trust-copy">Licensed &amp; Insured<small>Contractor License #1111400</small></div>
+    </div>
+    <div class="trust-item">
+      <div class="stars" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+      </div>
+      <div class="trust-copy">5-Star Rated<small>Google &middot; Yelp &middot; Thumbtack</small></div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="offers">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <span class="kicker-num" aria-hidden="true">01</span>
       <span class="eyebrow">Straight From Your Mailer</span>
       <h2>Redeem Your Water Heater Special</h2>
       <p>Mention this mailer when you call — both offers below are ready for you right now.</p>
     </div>
     <div class="coupon-grid">
-      <div class="coupon-card">
+      <div class="coupon-card" data-reveal>
         <div class="coupon-price"><span class="cur">$</span>80</div>
         <h3>Water Heater Flush / Maintenance Special</h3>
         <p>Offer valid for new residential customers only. Limited-time offer. Restrictions may apply.</p>
         <span class="coupon-expires">Expires 9/30/26</span>
         <a href="tel:19093597747" class="btn btn-primary btn-block">Call to Redeem</a>
       </div>
-      <div class="coupon-card featured">
+      <div class="coupon-card featured" data-reveal style="--reveal-delay:.1s">
         <span class="coupon-tag">Best Value</span>
         <div class="coupon-price"><span class="amt">$200</span><span class="off">OFF</span></div>
         <h3>New Water Heater Installation</h3>
@@ -151,35 +228,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="section-tight bg-ink blueprint-bg">
+<section class="section stat-band bg-black blueprint-bg">
   <div class="container">
-    <div class="section-head center">
-      <span class="eyebrow">Why Lincoln</span>
-      <h2>Why Choose Lincoln Plumbing &amp; Rooter</h2>
+    <div class="section-head center" data-reveal style="margin-bottom:56px;">
+      <span class="eyebrow" style="color:var(--orange-2)">By The Numbers</span>
+      <h2>Built On Experience, Backed By Results</h2>
     </div>
-    <div class="why-grid">
-      <div class="why-tile">
-        <div class="why-ic emoji">⚡</div>
-        <h3>Prompt Response</h3>
-        <p>Fast, effective responses when you need us most — no long waits for hot water.</p>
-      </div>
-      <div class="why-tile">
-        <div class="why-ic emoji">💵</div>
-        <h3>Transparent Pricing</h3>
-        <p>Upfront pricing before we start, no hidden fees, no surprises on your invoice.</p>
-      </div>
-      <div class="why-tile">
-        <div class="why-ic emoji">📋</div>
-        <h3>Licensed &amp; Insured</h3>
-        <p>Fully licensed and insured for your protection and peace of mind.</p>
-      </div>
+    <div class="counter-row" data-reveal>
+      <div class="counter-item"><div class="num" data-count="20" data-suffix="+"><span class="val">0</span><span class="suf">+</span></div><div class="lbl">Years Hands-On Experience</div></div>
+      <div class="counter-item"><div class="num" data-count="24" data-suffix="/7"><span class="val">0</span><span class="suf">/7</span></div><div class="lbl">Emergency Availability</div></div>
+      <div class="counter-item"><div class="num" data-count="100" data-suffix="%"><span class="val">0</span><span class="suf">%</span></div><div class="lbl">Family Owned &amp; Operated</div></div>
+      <div class="counter-item"><div class="num" data-count="5" data-suffix="★"><span class="val">0</span><span class="suf">★</span></div><div class="lbl">Star-Rated Across The IE</div></div>
     </div>
   </div>
 </section>
 
-<section class="section-tight">
+<section class="section">
   <div class="container" style="max-width:840px;">
-    <div class="testimonial-card">
+    <div class="section-head center" data-reveal>
+      <span class="kicker-num" aria-hidden="true">02</span>
+      <span class="eyebrow">Reputation</span>
+      <h2>Rated 5 Stars Across the Inland Empire</h2>
+      <p>Don't just take our word for it — here's what a neighbor had to say.</p>
+    </div>
+    <div class="testimonial-card" data-reveal>
       <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
       <p>&quot;Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don&#x27;t need plumbing services again, I definitely be calling them.&quot;</p>
       <div class="testimonial-author"><strong>— Ericka M.</strong></div>
@@ -187,20 +259,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="section-tight area-band slash-top slash-bottom">
+<section class="area-band section slash-top">
   <div class="container">
-    <span class="eyebrow" style="color:rgba(255,255,255,0.9);">Where We Work</span>
-    <h2 style="color:#fff; margin-top:16px;">Serving The Entire Inland Empire</h2>
-    <p class="lede" style="color:rgba(255,255,255,0.9); max-width:720px;">Same-day and 24/7 emergency plumbing across San Bernardino, Riverside, and every neighborhood in between. If you're in the IE, we're already in your corner.</p>
-    <div class="city-cloud">
-      <span class="city-chip">San Bernardino</span>
+    <div class="area-head section-head" data-reveal style="max-width:720px;">
+      <span class="eyebrow">Proudly Local</span>
+      <h2>Serving the Entire Inland Empire</h2>
+      <p>Same-day and 24/7 emergency plumbing across San Bernardino, Riverside, and every neighborhood in between. If you're in the IE, we're already in your corner.</p>
+    </div>
+    <div class="city-cloud" data-reveal>
+      <span class="city-chip solid">San Bernardino</span>
       <span class="city-chip">Riverside</span>
       <span class="city-chip">Fontana</span>
       <span class="city-chip">Rialto</span>
       <span class="city-chip">Colton</span>
-      <span class="city-chip">Redlands</span>
+      <span class="city-chip solid">Redlands</span>
       <span class="city-chip">Highland</span>
+      <span class="city-chip">Loma Linda</span>
+      <span class="city-chip">Grand Terrace</span>
+      <span class="city-chip">Yucaipa</span>
+      <span class="city-chip solid">Moreno Valley</span>
+      <span class="city-chip">Bloomington</span>
       <span class="city-chip">Rancho Cucamonga</span>
+      <span class="city-chip">Ontario</span>
     </div>
   </div>
 </section>
@@ -222,19 +302,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="section-tight bg-black blueprint-bg" id="redeem">
-  <div class="container" style="max-width:840px;">
-    <div class="section-head center">
-      <span class="eyebrow">Ready When You Are</span>
-      <h2>Ready To Redeem Your Mailer Offer?</h2>
-      <p>Our team is on call 24/7 across the Inland Empire — call now to schedule your water heater service. Both offers expire 9/30/26.</p>
-    </div>
-    <div style="display:flex; justify-content:center;">
-      <a href="tel:19093597747" class="btn btn-primary">Call 909-359-7747</a>
-    </div>
-    <div class="quote-contact">
-      <a href="tel:19093597747">Call 909-359-7747</a>
-      <a href="mailto:contact@lincolnp.com">Email Us</a>
+<section class="section-tight">
+  <div class="container">
+    <div class="cta-band" data-reveal>
+      <div>
+        <h2>Ready to redeem your mailer offer?</h2>
+        <p>Our team is on call 24/7 across the Inland Empire — both offers expire 9/30/26.</p>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="tel:19093597747" class="btn btn-primary">Call 909-359-7747</a>
+      </div>
     </div>
   </div>
 </section>
@@ -256,6 +333,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </p>
   </div>
 </footer>
+
+<script src="/js/main.js?v=2e42961539"></script>
 
 </body>
 </html>
