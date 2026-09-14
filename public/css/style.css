@@ -742,6 +742,8 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
 .footer-bottom .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
 .footer-bottom p { color: rgba(255,255,255,0.45); font-size: 0.8rem; }
 .footer-license { color: rgba(255,255,255,0.45); font-size: 0.8rem; }
+.footer-legal-links a { color: rgba(255,255,255,0.45); font-size: 0.8rem; text-decoration: underline; }
+.footer-legal-links a:hover { color: #fff; }
 
 /* ---- Mobile call bar ------------------------------------------------------------ */
 .mobile-call-bar {

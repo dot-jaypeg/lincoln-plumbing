@@ -285,14 +285,74 @@ EMPTY_FALLBACK = {
     'leak-detection/sewer-line-repair': 'drains-and-sewers/sewer-line-repair',
     'leak-detection/sewer-line-replacement': 'drains-and-sewers/sewer-line-replacement',
 }
-PRIVACY_PLACEHOLDER = """<p><strong>[PLACEHOLDER — needs client copy.]</strong> This page existed on the
-previous site but had no privacy policy text on it. Replace this block with the
-real policy before launch.</p>
-<p>If you need a starting point, it should cover: what information the site
-collects (contact-form submissions, analytics, and advertising cookies), how it
-is used and who it is shared with, how long it is kept, and how to request
-deletion. Questions in the meantime: <a href="mailto:{email}">{email}</a> or
-{phone}.</p>"""
+PRIVACY_PLACEHOLDER = """<p><em>Last updated: September 14, 2026</em></p>
+<p>Lincoln Plumbing &amp; Rooter, INC ("Lincoln Plumbing," "we," "us," or "our")
+respects your privacy. This policy explains what information we collect through
+this website, how we use it, and the choices you have.</p>
+
+<h2>Information We Collect</h2>
+<p>We collect information you provide directly, such as when you submit a
+contact or estimate-request form: your name, phone number, email address,
+service address, and details about the service you need. We also collect
+information automatically when you visit the site, including your IP address,
+browser and device type, pages viewed, and referring source, through cookies
+and similar tracking technologies.</p>
+
+<h2>How We Use Your Information</h2>
+<ul>
+<li>To respond to service requests, schedule appointments, and follow up on quotes</li>
+<li>To communicate with you about your service, billing, or account</li>
+<li>To improve our website, services, and marketing</li>
+<li>To measure the performance of our advertising campaigns</li>
+</ul>
+
+<h2>Cookies &amp; Tracking Technologies</h2>
+<p>This site uses cookies and similar technologies through Google Tag Manager,
+Google Analytics (GA4), and Google Ads to understand site traffic and measure
+ad performance. A small number of advertising landing pages also use the Meta
+(Facebook/Instagram) Pixel. These tools may collect information about your
+device and browsing behavior on this site. You can control or disable cookies
+through your browser settings; doing so may limit some site features.</p>
+
+<h2>Third-Party Service Providers</h2>
+<p>We share information with service providers who help us operate our
+business and this website, including our customer relationship management /
+form provider (GoHighLevel), Google (Analytics, Ads, Tag Manager), Meta, and
+our website hosting provider. These providers process information on our
+behalf and are not permitted to use it for their own independent purposes.</p>
+
+<h2>How We Share Information</h2>
+<p>We do not sell your personal information. We share information only with
+the service providers described above, or when required to do so by law, to
+protect our rights, or in connection with a business transfer.</p>
+
+<h2>Data Retention</h2>
+<p>We retain information for as long as needed to respond to your request,
+provide our services, and meet legal, accounting, or reporting requirements.</p>
+
+<h2>Your Choices &amp; Rights</h2>
+<p>You may opt out of Google's advertising cookies through
+<a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ads Settings</a>
+and of Meta's ad personalization through your
+<a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener">Facebook Ad Preferences</a>.
+California residents have the right to request access to, or deletion of,
+personal information we hold about you, and the right to know what information
+we collect and how it is used. We do not sell personal information, so there
+is nothing to opt out of in that regard. To exercise any of these rights,
+contact us using the information below.</p>
+
+<h2>Children's Privacy</h2>
+<p>This website is not directed at children under 13, and we do not knowingly
+collect personal information from children.</p>
+
+<h2>Changes to This Policy</h2>
+<p>We may update this policy from time to time. The "Last updated" date above
+reflects the most recent revision.</p>
+
+<h2>Contact Us</h2>
+<p>Questions about this policy or your information can be sent to
+<a href="mailto:{email}">{email}</a> or {phone}, or mailed to 738 S Waterman
+Ave C45, San Bernardino, CA 92408.</p>"""
 
 
 ARROW = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
