@@ -10,6 +10,47 @@
 <link rel="icon" href="/images/logo.png">
 <link rel="preload" href="/fonts/Inter-Variable.ttf?v=2e42961539" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/css/style.css?v=2e42961539">
+<style>
+  :root{
+    --steel:#181818;
+    --paper:#faf8f3;
+    --paper-2:#f1ede2;
+    --orange:#f4831f;
+    --orange-2:#ffb703;
+    --rust:#7a3213;
+    --ink:#2a2a2a;
+    --sub:#6b6558;
+  }
+  .btn-call .btn-call-text{display:flex; flex-direction:column; line-height:1.15;}
+  .btn-call .btn-call-cta{font-size:12px; letter-spacing:1px; text-transform:uppercase; color:#151515; font-weight:700;}
+  .btn-call .btn-call-number{font-size:17px; letter-spacing:.5px;}
+  .header-call-group{display:flex; flex-direction:column; align-items:flex-end; gap:4px;}
+  .header-call-sub{font-family:'Barlow Condensed'; font-size:11.5px; letter-spacing:.5px; text-transform:uppercase; color:#b9b4a8;}
+  @media (max-width: 700px){ .header-call-sub{display:none;} }
+
+  .btn-emergency{
+    display:flex; flex-direction:column; align-items:center; gap:2px; padding:16px 34px;
+    animation:pulse-ring 2.2s ease-in-out infinite;
+  }
+  .btn-emergency .btn-cta-text{font-size:15px; letter-spacing:1px;}
+  .btn-emergency .btn-phone-number{font-size:21px; letter-spacing:.5px; font-family:'Anton'; text-transform:none;}
+  @keyframes pulse-ring{
+    0%{box-shadow:0 4px 0 var(--rust), 0 0 0 0 rgba(244,131,31,.5);}
+    70%{box-shadow:0 4px 0 var(--rust), 0 0 0 12px rgba(244,131,31,0);}
+    100%{box-shadow:0 4px 0 var(--rust), 0 0 0 0 rgba(244,131,31,0);}
+  }
+
+  .hero-form-card{padding:20px !important;}
+  .hero-form-card h2{font-size:20px !important; margin-bottom:6px !important;}
+  .hero-form-card p{font-size:13.5px !important; margin-bottom:10px !important;}
+  .hero-form-card .callback-urgency{color:var(--rust); font-weight:700; margin-bottom:14px;}
+  .hero-form-card .callback-urgency a{color:var(--rust); text-decoration:underline;}
+
+  /* Common Problems section now has 6 cards instead of 4 — override external grid column count */
+  .services-grid{grid-template-columns:repeat(3, 1fr) !important;}
+  @media (max-width: 980px){ .services-grid{grid-template-columns:repeat(2, 1fr) !important;} }
+  @media (max-width: 600px){ .services-grid{grid-template-columns:1fr !important;} }
+</style>
 <!-- tracking:head -->
 <!-- Google tag (gtag.js) - GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XL9X7ZMQ2J"></script>
@@ -70,10 +111,16 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
     <img src="/images/logo.png" alt="Lincoln Plumbing &amp; Rooter logo">
     <div class="lp-header-actions">
       <a href="#quote" class="btn btn-secondary btn-sm">Get A Free Quote</a>
-      <a href="tel:19097650236" class="btn-call">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>909-765-0236</span>
-      </a>
+      <div class="header-call-group">
+        <a href="tel:19097650236" class="btn-call">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="btn-call-text">
+            <span class="btn-call-cta">Call Now — Available 24/7</span>
+            <span class="btn-call-number">909-765-0236</span>
+          </span>
+        </a>
+        <span class="header-call-sub">At Your Door in 60 Minutes or Less</span>
+      </div>
     </div>
   </div>
 </header>
@@ -94,24 +141,32 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
   <div class="hero-grid-lines"></div>
   <div class="container hero-split">
     <div class="hero-content">
-      <div class="lp-badges"><span>✓ Licensed &amp; Insured</span><span>✓ Open 24/7</span><span>✓ Same-Day Service</span></div>
-      <h1>Reliable Plumbing,<br><span class="hl">Done Right</span></h1>
-      <p class="lede">From leaky faucets to full sewer line repairs, Lincoln Plumbing &amp; Rooter has been the trusted plumber for San Bernardino and the Inland Empire. Fast response, honest pricing, no surprises.</p>
+      <div class="lp-badges"><span>✓ Licensed &amp; Insured</span><span>✓ Open 24/7</span><span>✓ 60-Minute Arrival</span></div>
+      <h1>Need a Plumber in San Bernardino?<br><span class="hl">At Your Door in 60 Minutes or Less.</span></h1>
+      <p class="lede">Burst pipe, overflowing toilet, or backed-up drain? Get 24/7 emergency plumbing help across San Bernardino and the Inland Empire. Call Lincoln Plumbing &amp; Rooter now to get help on the way.</p>
       <div class="hero-ctas">
-        <a href="tel:19097650236" class="btn btn-primary">Call 909-765-0236</a>
+        <a href="tel:19097650236" class="btn btn-primary btn-emergency">
+          <span class="btn-cta-text">Call Now — Get Emergency Help</span>
+          <span class="btn-phone-number">909-765-0236</span>
+        </a>
         <a href="#quote" class="btn btn-secondary">Get A Free Quote</a>
       </div>
       <div class="hero-stats"><div><b>24/7</b><span>Emergency Service</span></div><div><b>100%</b><span>Licensed &amp; Insured</span></div><div><b>5★</b><span>Customer Rated</span></div></div>
     </div>
       <div class="hero-form-card">
-        <h2>Get A Free Quote</h2>
-        <p>Tell us what's going on — our team follows up directly.</p>
-        <iframe src="https://link.advancedmarketers.co/widget/form/dxqfiiA9bB1OLTNaNnRx" style="width:100%;height:640px;border:none" id="inline-dxqfiiA9bB1OLTNaNnRx-hero"
+        <h2>Prefer a Callback?</h2>
+        <p class="callback-urgency">For immediate help, call <a href="tel:19097650236">909-765-0236</a>.</p>
+        <p>Leave your info below and our team calls you back.</p>
+        <!-- NOTE: Name/Phone/Description fields, required-Phone-not-Email, and file-upload
+             placement are controlled inside the GHL form builder for form ID
+             dxqfiiA9bB1OLTNaNnRx, not in this HTML. Update the field config and the
+             submit button label ("Request a Callback") directly in GoHighLevel. -->
+        <iframe src="https://link.advancedmarketers.co/widget/form/dxqfiiA9bB1OLTNaNnRx" style="width:100%;height:480px;border:none" id="inline-dxqfiiA9bB1OLTNaNnRx-hero"
           data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
           data-activation-type="alwaysActivated" data-activation-value=""
           data-deactivation-type="neverDeactivate" data-deactivation-value=""
-          data-form-name="Meta Form" data-height="640" data-layout-iframe-id="inline-dxqfiiA9bB1OLTNaNnRx-hero"
-          data-form-id="dxqfiiA9bB1OLTNaNnRx" title="Get A Free Quote"></iframe>
+          data-form-name="Meta Form" data-height="480" data-layout-iframe-id="inline-dxqfiiA9bB1OLTNaNnRx-hero"
+          data-form-id="dxqfiiA9bB1OLTNaNnRx" title="Request A Callback"></iframe>
       </div>
   </div>
 </section>
@@ -125,30 +180,40 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
 <section class="section-tight bg-soft">
   <div class="container">
       <div class="section-head center">
-        <span class="eyebrow">What We Do</span>
-        <h2>Our Services</h2>
-        <p>Whether it&#x27;s a minor leak or a major sewer line issue, our team has the expertise to handle it all — built to fix the immediate problem and prevent the next one.</p>
+        <span class="eyebrow">Emergency Plumbing</span>
+        <h2>Common Problems We Fix Fast</h2>
+        <p>If you're dealing with any of this right now, don't wait — call and we'll get help on the way.</p>
       </div>
     <div class="services-grid">
         <div class="service-card">
-          <h3>Plumbing Services</h3>
-          <p>General plumbing covering everything from minor repairs to major installations — faucets, toilets, sinks, and more.</p>
-          <a class="service-link" href="/ga-plumbing-services">Learn more <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <h3>Burst Pipes</h3>
+          <p>Water everywhere and no time to lose — we shut it down and stop the damage fast.</p>
+          <a class="service-link" href="tel:19097650236">Call now <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
         <div class="service-card">
-          <h3>Drains &amp; Sewers</h3>
-          <p>Keeping your drains and sewers flowing smoothly with expert cleaning, repair, and blockage prevention.</p>
-          <a class="service-link" href="/drain-cleaning">Learn more <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        </div>
-        <div class="service-card">
-          <h3>Leak Detection</h3>
-          <p>Advanced leak detection that identifies and fixes hidden leaks fast — saving you water damage and costly repairs.</p>
+          <h3>Active Leaks</h3>
+          <p>Hidden or visible, an active leak needs to be found and stopped before it causes real damage.</p>
           <a class="service-link" href="/ga-leak-detection">Learn more <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
         <div class="service-card">
-          <h3>Sewer Line Repair</h3>
-          <p>Specialized sewer line repair addressing breaks, blockages, and deterioration to restore full function.</p>
+          <h3>Overflowing Toilets</h3>
+          <p>A toilet that won't stop overflowing is a same-day emergency — we're on it.</p>
+          <a class="service-link" href="tel:19097650236">Call now <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div class="service-card">
+          <h3>Clogged Drains</h3>
+          <p>Slow or fully blocked drains cleared fast, without unnecessary guesswork.</p>
+          <a class="service-link" href="/drain-cleaning">Learn more <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div class="service-card">
+          <h3>Sewer Backups</h3>
+          <p>Sewage backing up into your home or yard is urgent — we diagnose and fix it right.</p>
           <a class="service-link" href="/sewer-lines">Learn more <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div class="service-card">
+          <h3>Water Heater Problems</h3>
+          <p>No hot water, leaks, or strange noises from your tank — repaired or replaced fast.</p>
+          <a class="service-link" href="/ga-water-heater">Learn more <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
     </div>
   </div>
