@@ -153,6 +153,10 @@
     .lp-header-actions .btn-quote-outline{display:none;}
     .mobile-call-bar{display:block;}
   }
+  @media (max-width: 767px){
+    .lp-topstrip .container{flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:6px;}
+    .topstrip-left, .topstrip-social{justify-content:center;}
+  }
   @media (max-width: 600px){
     .lp-topstrip .container{justify-content:center; text-align:center;}
     .services-grid{grid-template-columns:1fr;}
@@ -184,7 +188,12 @@
     100%{box-shadow:0 4px 0 var(--rust), 0 0 0 0 rgba(244,131,31,0);}
   }
 
-  .hero-split{grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr) !important; align-items:start !important;}
+  @media (min-width: 981px){
+    .hero-split{grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr) !important; align-items:start !important;}
+  }
+  @media (max-width: 980px){
+    .hero-split{grid-template-columns:1fr !important; text-align:center !important;}
+  }
   .hero-content{min-width:0;}
   .hero-content h1{font-size:clamp(26px, 3.4vw, 40px) !important; line-height:1.15 !important;}
   .hero-form-card{padding:0 !important; background:transparent !important; box-shadow:none !important; border:none !important;}
@@ -200,6 +209,14 @@
   .services-grid{grid-template-columns:repeat(3, 1fr) !important;}
   @media (max-width: 980px){ .services-grid{grid-template-columns:repeat(2, 1fr) !important;} }
   @media (max-width: 600px){ .services-grid{grid-template-columns:1fr !important;} }
+
+  @media (max-width: 480px){
+    .lp-header .container{flex-wrap:wrap; gap:12px;}
+    .lp-header img{height:38px;}
+    .btn-call{font-size:14.5px; padding:9px 16px;}
+    .btn-emergency{padding:14px 20px;}
+    .btn-emergency .btn-phone-number{font-size:18px;}
+  }
 </style>
 <!-- tracking:head -->
 <!-- Google tag (gtag.js) - GA4 -->
