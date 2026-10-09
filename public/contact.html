@@ -337,12 +337,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="footer-bottom">
     <div class="container">
       <p>&copy; 2026 Lincoln Plumbing &amp; Rooter, INC. All rights reserved.</p>
-      <p class="footer-license">Contractor License #1111400</p>
+      <p class="footer-legal-links"><a href="/privacy-policy">Privacy Policy</a></p>
     </div>
   </div>
 </footer>
 
 <script src="/js/main.js?v=2e42961539"></script>
+<script>
+  // Redirect to the thank-you page after either contact form submits.
+  // NOTE: this is a client-side redirect via fetch — it does not depend on or
+  // change whatever server-side code actually processes the POST to /contact.
+  // If that backend already issues its own redirect, this may be redundant;
+  // I don't have visibility into that server logic from this file.
+  document.querySelectorAll('form[action="/contact"]').forEach(function(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var data = new FormData(form);
+      fetch(form.action, { method: 'POST', body: data })
+        .catch(function(err){ console.error('Contact form submission error:', err); })
+        .finally(function(){
+          window.location.href = 'https://www.lincolnplumbingandrooter.com/thank-you';
+        });
+    });
+  });
+</script>
 
 </body>
 </html>
