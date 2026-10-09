@@ -20,6 +20,14 @@ ADS_CALL_LABEL = 'AW-16721660937/BQtCCljq9NUcElmYwaU-'
 # build-legacy-lps.py) - so the swap fires there and is a no-op on the organic
 # pages, which show the main line. That is the intended behaviour.
 ADS_CALL_NUMBER = '(909)765-0236'
+# Conversion label for the main organic line (909-780-0887), shown site-wide.
+MAIN_CALL_LABEL = 'AW-16721660937/oj6tCMzeopcdEImYwaU-'
+MAIN_CALL_NUMBER = '(909)780-0887'
+# Conversion label for the Google Business Profile tracking line. This number
+# isn't shown anywhere on the site - it's what GBP itself displays - so the
+# config is just there to record conversions, with no number swap to fire.
+GBP_CALL_LABEL = 'AW-16721660937/yy13COq3mpcdEImYwaU-'
+GBP_CALL_NUMBER = '(909)675-1272'
 META_PIXEL_ID = '1083376654248929'
 
 # pages that carried the Meta Pixel on the legacy site
@@ -50,6 +58,12 @@ def head(slug=None):
 <script>
   gtag('config', '{ADS_CALL_LABEL}', {{
     'phone_conversion_number': '{ADS_CALL_NUMBER}'
+  }});
+  gtag('config', '{MAIN_CALL_LABEL}', {{
+    'phone_conversion_number': '{MAIN_CALL_NUMBER}'
+  }});
+  gtag('config', '{GBP_CALL_LABEL}', {{
+    'phone_conversion_number': '{GBP_CALL_NUMBER}'
   }});
 </script>
 <!-- Google Tag Manager -->
