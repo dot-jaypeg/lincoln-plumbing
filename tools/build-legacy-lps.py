@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate the 11 legacy-slug landing pages into public/ from
-content/legacy-scrape/pages.json (produced by tools/parse-legacy.py).
+content/legacy-scrape/pages.json (produced by tools/parse-legacy.py), plus the
+new landing pages in content/new-lps.json (e.g. /toilet-overflow).
 
 The legacy WordPress site's copy is retained verbatim; only the chrome
 (header/footer/nav), the design system, and the phone/email are this site's.
@@ -15,6 +16,9 @@ import tracking
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = json.load(open(os.path.join(ROOT, 'content', 'legacy-scrape', 'pages.json')))
+# Landing pages written for this site (no legacy original), same shape as
+# pages.json and rendered with the same service-LP template.
+PAGES.update(json.load(open(os.path.join(ROOT, 'content', 'new-lps.json'))))
 PUBLIC = os.path.join(ROOT, 'public')
 
 # ---------------------------------------------------------------- site config
@@ -73,6 +77,7 @@ META = {
     'ga-garbage-disposal-services': ('Garbage Disposal', 'work-kitchen-repair.jpg'),
     'hydrojetting':                ('Hydrojetting', 'work-commercial-drain.jpg'),
     'ga-leak-detection':           ('Leak Detection', 'work-attic-access.jpg'),
+    'toilet-overflow':             ('Toilet Overflow', 'work-bathroom-vanity.jpg'),  # content/new-lps.json
 }
 # the eight service LPs, in the order they cross-link each other
 SERVICE_SLUGS = ['ga-plumbing-services', 'drain-cleaning', 'hydrojetting', 'sewer-lines',
@@ -812,6 +817,9 @@ def build(slug):
 
 
 if __name__ == '__main__':
-    for slug in PAGES:
+    # `build-legacy-lps.py toilet-overflow` rebuilds just that page. Prefer it:
+    # /ga-plumbing-services has been hand-edited since it was generated, and a
+    # full rebuild overwrites it.
+    for slug in sys.argv[1:] or PAGES:
         path, n = build(slug)
         print(f'{os.path.basename(path):34} {n:>7,} bytes')

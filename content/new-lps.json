@@ -1,0 +1,84 @@
+{
+  "toilet-overflow": {
+    "slug": "toilet-overflow",
+    "title": "Toilet Overflow Repair - Lincoln Plumbing & Rooter",
+    "description": "Toilet overflowing or backing up? Lincoln Plumbing & Rooter clears the clog and fixes the cause 24/7 in San Bernardino and the Inland Empire. Licensed and insured. Get a free quote.",
+    "hero": {
+      "badges": ["✓ Open 24/7", "✓ Licensed & Insured", "✓ Upfront Pricing"],
+      "h1_lines": ["Toilet Overflowing?", "We'll Stop It Today."],
+      "lede": "Clogged, backing up, or flooding the floor — Lincoln Plumbing & Rooter clears it and fixes what caused it, day or night. Serving San Bernardino and the Inland Empire.",
+      "stats": [
+        {"value": "24/7", "label": "Emergency Service"},
+        {"value": "100%", "label": "Licensed & Insured"},
+        {"value": "5★", "label": "Customer Rated"}
+      ]
+    },
+    "ticker": ["🚽 Toilet Overflow Repair", "⏱️ Open 24/7", "🔧 Licensed & Insured", "💰 Upfront Pricing", "📹 Camera Inspection"],
+    "signs": {
+      "eyebrow": "Sound Familiar?",
+      "h2": "Why Toilets Overflow",
+      "sub": "A plunger fixes the easy ones. When it doesn't — or it keeps coming back — something bigger is going on.",
+      "cards": [
+        {"title": "A Stubborn Clog", "body": "Too much paper, wipes, or a dropped object stuck in the trap where a plunger can't reach."},
+        {"title": "It Keeps Happening", "body": "Repeat overflows usually mean a partial blockage in the drain line, not just the toilet."},
+        {"title": "Other Drains Back Up", "body": "Gurgling tubs or water coming up in the shower point to a main sewer line problem."},
+        {"title": "Tree Roots & Old Pipes", "body": "Roots and aging pipes narrow the sewer line until waste has nowhere to go but up."}
+      ]
+    },
+    "services": {"eyebrow": "", "h2": "", "sub": "", "cards": []},
+    "compare": {
+      "eyebrow": "Overflowing Right Now?",
+      "h2": "Do This First, Then Call Us",
+      "sub": "A few seconds now can save your floors, subfloor, and the ceiling below.",
+      "cards": [
+        {"classes": "compare-card", "title": "Stop The Water", "items": [
+          "Turn the valve on the wall behind the toilet clockwise until it stops",
+          "Valve stuck? Lift the tank lid and pull the float up",
+          "Don't flush again — every flush adds more water",
+          "Hold off on sinks and showers if other drains are slow"
+        ]},
+        {"classes": "compare-card highlight", "title": "Call Lincoln Plumbing & Rooter", "items": [
+          "Open 24 hours a day, 7 days a week",
+          "We find the real cause — toilet, drain line, or main sewer",
+          "Upfront pricing before we start, no hidden fees",
+          "Licensed and insured, Contractor License #1111400"
+        ]}
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {"num": "1", "title": "Call Or Book Online", "body": "Reach out and tell us what's going on — we're open 24/7 and get you scheduled fast."},
+        {"num": "2", "title": "We Find The Real Cause", "body": "Our techs figure out whether it's the toilet, the drain, or the main line before recommending any work."},
+        {"num": "3", "title": "We Fix It & Confirm", "body": "We clear it, test the flush, make sure everything drains right, and walk you through upfront pricing before we start."}
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Choose Lincoln Plumbing & Rooter",
+      "sub": "",
+      "cards": [
+        {"icon": "⚡", "title": "Prompt Response", "body": "Toilets don't overflow on a schedule — we answer nights, weekends, and holidays."},
+        {"icon": "💵", "title": "Transparent Pricing", "body": "Upfront pricing before we start, no hidden fees, no surprises on your invoice."},
+        {"icon": "📋", "title": "Licensed & Insured", "body": "Fully licensed and insured for your protection and peace of mind."}
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Toilet Repair In The Inland Empire",
+      "sub": "At Lincoln Plumbing & Rooter, we handle overflowing and clogged toilets for both residential and commercial clients throughout the Inland Empire and surrounding areas.",
+      "chips": ["San Bernardino", "Riverside", "Rancho Cucamonga", "Fontana", "Redlands", "Highland"]
+    },
+    "quote_cta": {
+      "eyebrow": "Ready When You Are",
+      "h2": "Get Your Free Quote Today",
+      "sub": "Fill out the form below and our team will follow up directly — or give us a call anytime."
+    }
+  }
+}

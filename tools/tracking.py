@@ -35,6 +35,7 @@ PIXEL_PAGES = {
     'ga-plumbing-services', 'drain-cleaning', 'hydrojetting', 'sewer-lines',
     'ga-water-heater', 'ga-tankless-water-heaters', 'ga-leak-detection',
     'ga-garbage-disposal-services', 'lp-job-ad', 'meta-thank-you',
+    'toilet-overflow',              # new paid LP (content/new-lps.json)
 }
 
 HEAD_MARKER = '<!-- tracking:head -->'

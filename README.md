@@ -50,6 +50,13 @@ destinations keep working:
 `/ga-water-heater` · `/ga-tankless-water-heaters` · `/ga-leak-detection` ·
 `/ga-garbage-disposal-services` · `/ga-about-us` · `/ga-testimonials` · `/ga-contact`
 
+**New LPs** (no legacy original) use the same template: add the page's content to
+`content/new-lps.json` (same shape as `pages.json`), add the slug to `META` in
+`tools/build-legacy-lps.py` and to `PIXEL_PAGES` in `tools/tracking.py`, then build
+just that page — `python3 tools/build-legacy-lps.py <slug>`. Don't run a full rebuild:
+`/ga-plumbing-services` has been hand-edited since it was generated and would be
+overwritten. First one: `/toilet-overflow`.
+
 The `ga-` prefix on seven of them is inherited from the old site and is kept
 deliberately — do not "clean it up" without 301s in place.
 
