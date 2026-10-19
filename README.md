@@ -155,6 +155,38 @@ as a paid page. Everything above — chrome, phone number, `noindex`, sitemap
 exclusion, link remapping — is driven off it, so moving a page in or out of the
 funnel is a one-line change plus a rebuild.
 
+## lp. subdomain landing pages
+
+`lp.lincolnplumbingandrooter.com` is served by this same app and Railway service. `server.js` checks the
+`Host` header: on the `lp.` host it serves `lp/`, which sits outside `public/` so the www site can never serve
+these pages (and vice versa — `/about` on `lp.` is a 404).
+
+| URL on `lp.` | File |
+|---|---|
+| `/toilet-overflow/` | `lp/toilet-overflow/index.html` |
+| `/thank-you/` (noindex) | `lp/thank-you/index.html` |
+| `/` | 302 to the www homepage, query string kept |
+| anything else | `lp/404.html` |
+
+- **No slash redirects.** `/toilet-overflow` and `/toilet-overflow/` both return 200, so `?gclid` on an ad click can never be dropped by a redirect.
+- **Design:** `/css/style.css`, `/fonts/` and `/images/` are shared from `public/` (only those three folders).
+  LP-only CSS is `lp/css/lp.css`. Pages use the call-tracking line **909-765-0236** and the same GTM / GA4 /
+  Google Ads / Meta Pixel snippets as the paid pages in `public/`. All are `noindex`.
+- **Asset hash:** `python3 tools/bump-assets.py` stamps `lp/` pages with their own hash (main assets + `lp.css` +
+  `lead-form.js`), so an LP tweak doesn't bust the cache on every organic page. Run it after editing either LP file.
+- **Lead form:** posts straight from the browser to the GHL inbound webhook (`GHL_WEBHOOK_URL` in
+  `lp/js/lead-form.js`). No server hop. On a 2xx the visitor goes to `/thank-you/`, which fires GA4
+  `generate_lead`, Meta `Lead` and a `lp_lead_submitted` dataLayer push, once and only after a real submission,
+  all with the same `event_id` sent to GHL. Payload: `first_name`, `last_name`, `full_name`, `phone` (E.164),
+  `email`, `service_needed`, `message`, `form_source` (`LP Toilet Overflow - Hero` / `- Footer`), `form_name`
+  (page slug), `form_id`, `page_url`, `submitted_at`, `source`, and first-touch `utm_*`, `gclid`, `fbclid`,
+  `referrer`, `landing_page`, `event_id`. Renaming a field or dropdown option changes what GHL receives.
+- **No Google Ads form conversion label exists yet** (same as the rest of the site). Once one does, add
+  `gtag('event','conversion',{send_to:'AW-16721660937/<label>'})` to the script in `lp/thank-you/index.html`.
+- **New LP:** copy `lp/toilet-overflow/` to `lp/<slug>/`; update copy, `canonical`/`og:url`, the hidden
+  `Source` values and dropdown options; run `tools/bump-assets.py`. No routing changes needed.
+- Local test: `PORT=4310 node server.js`, then `curl -H "Host: lp.lincolnplumbingandrooter.com" localhost:4310/toilet-overflow/`.
+
 ## Two phone numbers
 
 | Number | Shown on |

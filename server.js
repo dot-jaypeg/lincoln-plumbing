@@ -22,6 +22,56 @@ const DIR_INDEXES = new Set();
 })(PUBLIC_DIR, '/');
 const isDirIndex = p => DIR_INDEXES.has(p);
 
+// Caching. Assets are versioned in their URL (/css/style.css?v=<hash>, see
+// tools/bump-assets.py), so they can be cached hard. HTML must NOT be: it was
+// previously served with max-age=604800, which pinned every visitor to whatever
+// markup was live when they first landed and meant a deploy couldn't reach them
+// for a week. Pages now always revalidate — cheap, because express.static still
+// sends an ETag, so an unchanged page is a 304 with no body.
+const IMMUTABLE = /\.(?:css|js|png|jpe?g|gif|svg|webp|avif|ico|woff2?|ttf|eot|mp4|webm)$/i;
+function setCacheHeaders(res, filePath) {
+  if (IMMUTABLE.test(filePath)) {
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+  } else {
+    res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Ad landing pages on lp.lincolnplumbingandrooter.com. They live in lp/, outside
+// public/, so the www site can never serve them. On the lp. host:
+//   /                   -> 302 to the www homepage (query string kept)
+//   /toilet-overflow    -> lp/toilet-overflow/index.html, with or without the
+//                          trailing slash. Never redirected: a redirect here
+//                          would risk dropping ?gclid off an ad click.
+//   /css, /fonts, /images that lp/ doesn't have -> shared from public/, so the
+//                          LPs use the site's one design system
+//   anything else       -> lp/404.html
+// ---------------------------------------------------------------------------
+const LP_DIR = path.join(__dirname, 'lp');
+const LP_HOST = /^lp\./i;
+const lpStatic = express.static(LP_DIR, { redirect: false, etag: true, lastModified: true, setHeaders: setCacheHeaders });
+const lpShared = express.static(PUBLIC_DIR, { index: false, redirect: false, etag: true, lastModified: true, setHeaders: setCacheHeaders });
+
+app.use((req, res, next) => {
+  if (!LP_HOST.test(req.hostname || '')) return next();
+
+  const [pathname, query = ''] = req.url.split('?');
+  const suffix = query ? `?${query}` : '';
+  const notFound = () => res.status(404).set('Cache-Control', 'no-store').sendFile(path.join(LP_DIR, '404.html'));
+
+  if (pathname === '/') return res.redirect(302, `https://www.lincolnplumbingandrooter.com/${suffix}`);
+  if (!path.extname(pathname) && !pathname.endsWith('/') &&
+      fs.existsSync(path.join(LP_DIR, path.normalize(pathname), 'index.html'))) {
+    req.url = pathname + '/' + suffix;
+  }
+
+  lpStatic(req, res, () => {
+    if (/^\/(?:css|fonts|images)\//.test(pathname)) return lpShared(req, res, notFound);
+    notFound();
+  });
+});
+
 // ---------------------------------------------------------------------------
 // Clean URLs. Every page on disk is still a plain `.html` file in public/, but
 // it is served without the extension: /hydrojetting, /ga-water-heater, /about.
@@ -66,27 +116,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// ---------------------------------------------------------------------------
-// Caching. Assets are versioned in their URL (/css/style.css?v=static-4), so
-// they can be cached hard. HTML must NOT be: it was previously served with
-// max-age=604800, which pinned every visitor to whatever markup was live when
-// they first landed and meant a deploy couldn't reach them for a week. Pages
-// now always revalidate — cheap, because express.static still sends an ETag, so
-// an unchanged page is a 304 with no body.
-// ---------------------------------------------------------------------------
-const IMMUTABLE = /\.(?:css|js|png|jpe?g|gif|svg|webp|avif|ico|woff2?|ttf|eot|mp4|webm)$/i;
-
 app.use(express.static(PUBLIC_DIR, {
   extensions: ['html'],           // what makes /about resolve to public/about.html
   etag: true,
   lastModified: true,
-  setHeaders(res, filePath) {
-    if (IMMUTABLE.test(filePath)) {
-      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    } else {
-      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
-    }
-  },
+  setHeaders: setCacheHeaders,    // see "Caching" above
 }));
 
 // One-shot escape hatch for browsers still holding cached markup from the old
