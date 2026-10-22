@@ -2,7 +2,9 @@
 """Apply tools/tracking.py to the hand-written pages in public/.
 
 The generated pages get their tags from the builders. These six are edited by
-hand, so the tags are injected here instead.
+hand, so the tags are injected here instead. The paid landing pages are
+refreshed here too, in place, so a tracking change reaches them without a
+rebuild (which would clobber the hand-edited /ga-plumbing-services).
 
 Safe to re-run: every existing tracking script/noscript/comment is stripped
 first — matched on the tag IDs and the gtag/fbq/dataLayer globals, so the site's
@@ -20,6 +22,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PUBLIC = os.path.join(ROOT, 'public')
 HAND_WRITTEN = ['index.html', 'services.html', 'gallery.html',
                 'about.html', 'contact.html', '404.html']
+LANDING_PAGES = [f'{slug}.html' for slug in sorted(tracking.LP_GTM_PAGES)
+                 if os.path.exists(os.path.join(PUBLIC, f'{slug}.html'))]
 
 # what marks a chunk of markup as belonging to a tracking tag
 FINGERPRINTS = (tracking.GTM_ID, tracking.LP_GTM_ID, tracking.GA4_ID, tracking.ADS_ID, tracking.META_PIXEL_ID,
@@ -40,7 +44,7 @@ def strip(s):
 
 
 changed = []
-for name in HAND_WRITTEN:
+for name in HAND_WRITTEN + LANDING_PAGES:
     path = os.path.join(PUBLIC, name)
     original = open(path).read()
 

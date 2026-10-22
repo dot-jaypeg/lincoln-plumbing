@@ -2,6 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google Ads call line -->
+<script>
+  // Every paid LP's GHL form redirects here, so this page has no call line of
+  // its own: it shows the line of the LP the lead came from, which the LP left
+  // in localStorage (tools/tracking.py). Pushed before GTM loads so the call
+  // tags in GTM-KF82PPKL, which trigger on call_line, see it on the first event.
+  var CALL_LINES = {
+    '909-765-0236': 'tel:19097650236',
+    '909-280-7894': 'tel:+19092807894'
+  };
+  var callLine = '909-765-0236';
+  try {
+    var stored = localStorage.getItem('call_line');
+    if (CALL_LINES[stored]) callLine = stored;
+  } catch (e) {}
+  window.dataLayer = window.dataLayer || [];
+  dataLayer.push({'call_line': callLine});
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -85,9 +103,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1>You're All Set — <span class="hl">Help Is On The Way</span></h1>
     <p class="lede">Thanks for reaching out to Lincoln Plumbing &amp; Rooter. Your request just landed in our inbox and a real person from our team will be calling you back shortly.</p>
     <div class="confirm-ctas">
-      <a href="tel:19097650236" class="btn btn-primary">Call 909-765-0236 Now</a>
+      <a href="tel:19097650236" class="btn btn-primary" id="call-cta">Call 909-765-0236 Now</a>
       <a href="/" class="btn btn-secondary">Back To Home</a>
     </div>
+    <script>
+      // Inline, so the number is in place before GTM's call tag scans the page.
+      (function () {
+        var a = document.getElementById('call-cta');
+        a.href = CALL_LINES[callLine];
+        a.textContent = 'Call ' + callLine + ' Now';
+      })();
+    </script>
   </div>
 </section>
 </main>
