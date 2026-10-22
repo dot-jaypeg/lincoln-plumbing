@@ -37,8 +37,13 @@ PHONE = '909-780-0887'               # main line — organic pages
 TEL = 'tel:19097800887'
 LP_PHONE = '909-765-0236'            # call-tracking line — landing pages only
 LP_TEL = 'tel:19097650236'
+# Landing pages that run on their own Google Ads call number: slug -> (display, tel).
+# Any slug not listed here shows the shared LP_PHONE / LP_TEL line above.
+LP_OWN_LINE = {
+    'toilet-overflow': ('909-280-7894', 'tel:+19092807894'),   # Google Ads Call - Flooded Toilets
+}
 
-_page = None                         # slug currently being rendered
+_page = None                        # slug currently being rendered
 
 
 def set_page(slug):
@@ -52,10 +57,16 @@ def is_lp(slug=None):
 
 
 def phone(slug=None):
+    slug = slug if slug is not None else _page
+    if slug in LP_OWN_LINE:
+        return LP_OWN_LINE[slug][0]
     return LP_PHONE if is_lp(slug) else PHONE
 
 
 def tel(slug=None):
+    slug = slug if slug is not None else _page
+    if slug in LP_OWN_LINE:
+        return LP_OWN_LINE[slug][1]
     return LP_TEL if is_lp(slug) else TEL
 EMAIL = 'contact@lincolnp.com'
 FORM_ID = 'dxqfiiA9bB1OLTNaNnRx'     # GHL "Meta Form" — same form on every legacy page
