@@ -115,7 +115,16 @@ before inserting so it is safe to re-run after editing a page:
 python3 tools/apply-tracking.py
 ```
 
-The Google Ads snippet also carries the call-conversion config from the legacy
+**Call tracking on the paid LPs lives in GTM-KF82PPKL, not on the page.** The
+container has one "Calls from Website" tag per call line, and each LP publishes
+the line it shows as `call_line` in the dataLayer (`LP_CALL_LINES` in
+`tools/tracking.py`). The GTM triggers key on that, so a line's tag fires only
+where that line is shown. The LP also remembers its line in localStorage, so
+the shared `/thank-you` page the GHL form redirects to can show the right
+number and push the same `call_line`. Re-apply after a change with
+`python3 tools/apply-tracking.py`, which refreshes the LPs in place.
+
+On the organic pages, the Google Ads snippet also carries the call-conversion config from the legacy
 site, which pairs with the two phone numbers described below:
 
 ```js

@@ -25,13 +25,32 @@ LP_GTM_PAGES = {
 
 def gtm_id(slug=None):
     return LP_GTM_ID if slug in LP_GTM_PAGES else GTM_ID
+
+
+# Google Ads call line each paid LP shows. GTM-KF82PPKL owns call tracking on the
+# LPs: it has one "Calls from Website" tag per line, and each must fire only
+# where its own line is shown. So the LPs publish their line to the dataLayer as
+# `call_line` (the GTM triggers key on it) and remember it in localStorage, so
+# the shared /thank-you page the GHL form redirects to can show - and report -
+# the line of the LP the lead came from. Keep in step with LP_PHONE /
+# LP_OWN_LINE in build-legacy-lps.py and CALL_LINES in public/thank-you.html.
+LP_CALL_LINE = '909-765-0236'
+LP_CALL_LINES = {
+    'toilet-overflow': '909-280-7894',
+}
+
+
+def call_line(slug=None):
+    return LP_CALL_LINES.get(slug, LP_CALL_LINE)
+
+
 GA4_ID = 'G-XL9X7ZMQ2J'
 ADS_ID = 'AW-16721660937'
 ADS_CALL_LABEL = 'AW-16721660937/BQtCCljq9NUcElmYwaU-'
-# Google Ads swaps this number wherever it appears on the page. It is the
-# call-tracking line, which is shown only on the landing pages (see LP_PHONE in
-# build-legacy-lps.py) - so the swap fires there and is a no-op on the organic
-# pages, which show the main line. That is the intended behaviour.
+# Google Ads swaps this number wherever it appears on the page. It is the LPs'
+# call-tracking line, but the LPs no longer carry these hard-coded configs (see
+# head()): their call tracking is in GTM-KF82PPKL. On the organic pages, which
+# show the main line, this config is a no-op.
 ADS_CALL_NUMBER = '(909)765-0236'
 # Conversion label for the main organic line (909-780-0887), shown site-wide.
 MAIN_CALL_LABEL = 'AW-16721660937/oj6tCMzeopcdEImYwaU-'
@@ -57,17 +76,19 @@ BODY_MARKER = '<!-- tracking:body -->'
 
 def head(slug=None):
     """Everything that went in <head>, in the legacy site's order."""
-    out = f'''{HEAD_MARKER}
-<!-- Google tag (gtag.js) - GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
+    if slug in LP_GTM_PAGES:
+        # Call tracking on the LPs is GTM-KF82PPKL's job (see LP_CALL_LINES).
+        # The hard-coded configs below would swap (909)765-0236 on every LP
+        # regardless of GTM's triggers, so the LPs only publish their line.
+        ads = f'''<!-- Google Ads call line -->
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
-  gtag('js', new Date());
-
-  gtag('config', '{GA4_ID}');
+  dataLayer.push({{'call_line': '{call_line(slug)}'}});
+  try {{ localStorage.setItem('call_line', '{call_line(slug)}'); }} catch (e) {{}}
 </script>
-<!-- Google Ads -->
+'''
+    else:
+        ads = f'''<!-- Google Ads -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={ADS_ID}"></script>
 <script>
   gtag('config', '{ADS_CALL_LABEL}', {{
@@ -80,7 +101,18 @@ def head(slug=None):
     'phone_conversion_number': '{GBP_CALL_NUMBER}'
   }});
 </script>
-<!-- Google Tag Manager -->
+'''
+    out = f'''{HEAD_MARKER}
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+
+  gtag('config', '{GA4_ID}');
+</script>
+{ads}<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
 new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
