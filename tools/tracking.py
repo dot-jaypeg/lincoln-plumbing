@@ -12,6 +12,19 @@ to the hand-written pages in public/ by tools/apply-tracking.py.
 """
 
 GTM_ID = 'GTM-NB7XCVVG'
+# The paid landing pages run on their own container instead of GTM_ID.
+# Same set as LP_SLUGS in build-legacy-lps.py — keep the two in step.
+LP_GTM_ID = 'GTM-KF82PPKL'
+LP_GTM_PAGES = {
+    'ga-plumbing-services', 'sewer-lines', 'ga-tankless-water-heaters', 'ga-testimonials',
+    'ga-water-heater', 'ga-about-us', 'ga-contact', 'drain-cleaning',
+    'ga-garbage-disposal-services', 'hydrojetting', 'ga-leak-detection', 'toilet-overflow',
+    'lp-job-ad', 'meta-thank-you',
+}
+
+
+def gtm_id(slug=None):
+    return LP_GTM_ID if slug in LP_GTM_PAGES else GTM_ID
 GA4_ID = 'G-XL9X7ZMQ2J'
 ADS_ID = 'AW-16721660937'
 ADS_CALL_LABEL = 'AW-16721660937/BQtCCljq9NUcElmYwaU-'
@@ -72,7 +85,7 @@ def head(slug=None):
 new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-}})(window,document,'script','dataLayer','{GTM_ID}');</script>
+}})(window,document,'script','dataLayer','{gtm_id(slug)}');</script>
 <!-- End Google Tag Manager -->'''
     if slug in PIXEL_PAGES:
         out += f'''
@@ -97,7 +110,7 @@ def body(slug=None):
     """Everything that went immediately after <body>."""
     out = f'''{BODY_MARKER}
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM_ID}"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={gtm_id(slug)}"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->'''
     if slug in PIXEL_PAGES:

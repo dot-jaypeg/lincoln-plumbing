@@ -22,7 +22,7 @@ HAND_WRITTEN = ['index.html', 'services.html', 'gallery.html',
                 'about.html', 'contact.html', '404.html']
 
 # what marks a chunk of markup as belonging to a tracking tag
-FINGERPRINTS = (tracking.GTM_ID, tracking.GA4_ID, tracking.ADS_ID, tracking.META_PIXEL_ID,
+FINGERPRINTS = (tracking.GTM_ID, tracking.LP_GTM_ID, tracking.GA4_ID, tracking.ADS_ID, tracking.META_PIXEL_ID,
                 'dataLayer', 'gtag(', 'fbq(', 'googletagmanager.com', 'connect.facebook.net',
                 'facebook.com/tr')
 COMMENTS = re.compile(
