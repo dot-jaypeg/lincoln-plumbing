@@ -101,7 +101,7 @@ place, `tools/tracking.py`:
 | Google Tag Manager (LPs) | `GTM-KF82PPKL` | the paid landing pages (`LP_GTM_PAGES` in `tools/tracking.py`, same set as `LP_SLUGS`), plus `/thank-you` (hand-written; the GHL form redirects there) |
 | GA4 | `G-XL9X7ZMQ2J` | every page |
 | Google Ads | `AW-16721660937` | every page |
-| Meta Pixel | `1083376654248929` | every page, plus `/thank-you`, except `/ga-thank-you` (pixel removed there on purpose in 154df59) and `/lp-door-hangers` (carries no tracking at all) |
+| Meta Pixel | `1083376654248929` | every page, including `/thank-you`, `/ga-thank-you` and `/lp-door-hangers` (the last three by hand) |
 
 On the legacy site the Meta Pixel was only on the paid-traffic pages; it now
 loads site-wide. The builders pick it up from `tools/tracking.py`.
