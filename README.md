@@ -52,7 +52,7 @@ destinations keep working:
 
 **New LPs** (no legacy original) use the same template: add the page's content to
 `content/new-lps.json` (same shape as `pages.json`), add the slug to `META` in
-`tools/build-legacy-lps.py` and to `PIXEL_PAGES` in `tools/tracking.py`, then build
+`tools/build-legacy-lps.py` and to `LP_GTM_PAGES` in `tools/tracking.py`, then build
 just that page — `python3 tools/build-legacy-lps.py <slug>`. Don't run a full rebuild:
 `/ga-plumbing-services` has been hand-edited since it was generated and would be
 overwritten. First one: `/toilet-overflow`.
@@ -101,11 +101,10 @@ place, `tools/tracking.py`:
 | Google Tag Manager (LPs) | `GTM-KF82PPKL` | the paid landing pages (`LP_GTM_PAGES` in `tools/tracking.py`, same set as `LP_SLUGS`), plus `/thank-you` (hand-written; the GHL form redirects there) |
 | GA4 | `G-XL9X7ZMQ2J` | every page |
 | Google Ads | `AW-16721660937` | every page |
-| Meta Pixel | `1083376654248929` | the 8 service LPs, `/lp-job-ad`, `/meta-thank-you` |
+| Meta Pixel | `1083376654248929` | every page, plus `/thank-you`, except `/ga-thank-you` (pixel removed there on purpose in 154df59) and `/lp-door-hangers` (carries no tracking at all) |
 
-The Meta Pixel really was only on those ten pages on the legacy site — the
-paid-traffic ones. It was not on `/ga-about-us`, `/ga-contact` or
-`/ga-testimonials`, and it is not on them here either.
+On the legacy site the Meta Pixel was only on the paid-traffic pages; it now
+loads site-wide. The builders pick it up from `tools/tracking.py`.
 
 The generated pages pick the tags up from the builders. The six hand-written
 pages get them from a separate script, which strips any existing tracking markup
