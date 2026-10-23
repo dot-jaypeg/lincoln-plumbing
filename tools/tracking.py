@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """The legacy site's analytics/advertising tags, reproduced as they were installed.
 
-Distribution on the old site, which this mirrors exactly:
+Distribution:
   * Google Tag Manager, GA4 and Google Ads  -> every page
-  * Meta Pixel                              -> only the paid-traffic pages
-                                               (the 8 service LPs, /lp-job-ad,
-                                               /meta-thank-you)
+  * Meta Pixel                              -> every page (the legacy site had
+                                               it on the paid LPs only)
 
 Consumed by tools/build-legacy-lps.py and tools/build-legacy-all.py, and applied
 to the hand-written pages in public/ by tools/apply-tracking.py.
@@ -62,14 +61,6 @@ GBP_CALL_LABEL = 'AW-16721660937/yy13COq3mpcdEImYwaU-'
 GBP_CALL_NUMBER = '(909)675-1272'
 META_PIXEL_ID = '1083376654248929'
 
-# pages that carried the Meta Pixel on the legacy site
-PIXEL_PAGES = {
-    'ga-plumbing-services', 'drain-cleaning', 'hydrojetting', 'sewer-lines',
-    'ga-water-heater', 'ga-tankless-water-heaters', 'ga-leak-detection',
-    'ga-garbage-disposal-services', 'lp-job-ad', 'meta-thank-you',
-    'toilet-overflow',              # new paid LP (content/new-lps.json)
-}
-
 HEAD_MARKER = '<!-- tracking:head -->'
 BODY_MARKER = '<!-- tracking:body -->'
 
@@ -118,9 +109,7 @@ new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 }})(window,document,'script','dataLayer','{gtm_id(slug)}');</script>
-<!-- End Google Tag Manager -->'''
-    if slug in PIXEL_PAGES:
-        out += f'''
+<!-- End Google Tag Manager -->
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -144,9 +133,7 @@ def body(slug=None):
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={gtm_id(slug)}"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->'''
-    if slug in PIXEL_PAGES:
-        out += f'''
+<!-- End Google Tag Manager (noscript) -->
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id={META_PIXEL_ID}&ev=PageView&noscript=1" /></noscript>'''
     return out
