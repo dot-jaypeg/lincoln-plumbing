@@ -98,7 +98,7 @@ place, `tools/tracking.py`:
 | Tag | ID | Where |
 |---|---|---|
 | Google Tag Manager | `GTM-NB7XCVVG` | every page except the paid landing pages |
-| Google Tag Manager (LPs) | `GTM-KF82PPKL` | the paid landing pages (`LP_GTM_PAGES` in `tools/tracking.py`, same set as `LP_SLUGS`), plus `/thank-you` (hand-written; the GHL form redirects there) |
+| Google Tag Manager (LPs) | `GTM-KF82PPKL` | the paid landing pages (`LP_GTM_PAGES` in `tools/tracking.py`, same set as `LP_SLUGS`), plus the two hand-written thank-you pages the GHL form redirects to, `/thank-you` and `/ga-thank-you` |
 | GA4 | `G-XL9X7ZMQ2J` | every page |
 | Google Ads | `AW-16721660937` | every page |
 | Meta Pixel | `1083376654248929` | every page, including `/thank-you`, `/ga-thank-you` and `/lp-door-hangers` (the last three by hand) |
