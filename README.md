@@ -57,6 +57,12 @@ just that page — `python3 tools/build-legacy-lps.py <slug>`. Don't run a full 
 `/ga-plumbing-services` has been hand-edited since it was generated and would be
 overwritten. First one: `/toilet-overflow`.
 
+Each LP with a form also has its own thank-you page, `/<slug>-thank-you`, showing
+only that LP's call line and firing the Google Ads lead conversion. They're built
+from `public/ga-thank-you.html` by `python3 tools/build-lp-thank-you.py` — re-run it
+after editing that page. Each LP's GHL form redirect has to point at its own page;
+`/ga-thank-you` stays as the shared fallback.
+
 The `ga-` prefix on seven of them is inherited from the old site and is kept
 deliberately — do not "clean it up" without 301s in place.
 

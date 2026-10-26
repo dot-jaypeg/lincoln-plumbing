@@ -43,6 +43,15 @@ def call_line(slug=None):
     return LP_CALL_LINES.get(slug, LP_CALL_LINE)
 
 
+# Hard-coded Google Ads call configs that Google asked for on individual LPs, on
+# top of GTM-KF82PPKL. Each page swaps only its own line. /ga-thank-you is
+# hand-written and carries its own copy plus the lead-form conversion event.
+LP_ADS_CALL_CONFIGS = {
+    'ga-plumbing-services': ('AW-16721660937/BQtCCIjq9NUcEImYwaU-', '(909)765-0236'),
+    'toilet-overflow': ('AW-16721660937/5dP7CJTmo6YdEImYwaU-', '(909) 280-7894'),
+}
+
+
 GA4_ID = 'G-XL9X7ZMQ2J'
 ADS_ID = 'AW-16721660937'
 ADS_CALL_LABEL = 'AW-16721660937/BQtCCljq9NUcElmYwaU-'
@@ -76,6 +85,17 @@ def head(slug=None):
   window.dataLayer = window.dataLayer || [];
   dataLayer.push({{'call_line': '{call_line(slug)}'}});
   try {{ localStorage.setItem('call_line', '{call_line(slug)}'); }} catch (e) {{}}
+</script>
+'''
+        if slug in LP_ADS_CALL_CONFIGS:
+            label, number = LP_ADS_CALL_CONFIGS[slug]
+            ads += f'''<!-- Google tag (gtag.js) - Google Ads -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={ADS_ID}"></script>
+<script>
+  gtag('config', '{ADS_ID}');
+  gtag('config', '{label}', {{
+    'phone_conversion_number': '{number}'
+  }});
 </script>
 '''
     else:
