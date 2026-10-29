@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thank You - Lincoln Plumbing &amp; Rooter</title>
-<meta name="description" content="Thanks for reaching out to Lincoln Plumbing & Rooter. Our team will follow up shortly, or call 909-765-0236 for immediate help.">
+<meta name="description" content="Thanks for reaching out to Lincoln Plumbing & Rooter. Our team will follow up shortly, or call (909) 765-0236 for immediate help.">
 <link rel="canonical" href="https://www.lincolnplumbingandrooter.com/ga-thank-you">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/images/logo.png">
@@ -125,6 +125,30 @@ fbq('init', '1083376654248929');
 fbq('track', 'PageView');
 </script>
 <!-- End Meta Pixel Code -->
+<!-- tracking:call-click -->
+<!-- Event snippet for Call from Ads conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-16721660937/93JoCN-UkfIaEImYwaU-',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+<script>
+  // Report every tel: click, leaving the browser to dial as normal.
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('a[href^="tel:"]')) gtag_report_conversion();
+  });
+</script>
+<!-- /tracking:call-click -->
 </head>
 <body>
 <!-- tracking:body -->
@@ -145,7 +169,7 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
     <h1>You're All Set — <span class="hl">Help Is On The Way</span></h1>
     <p class="lede">Thanks for reaching out to Lincoln Plumbing &amp; Rooter. Your request just landed in our inbox and a real person from our team will be calling you back shortly.</p>
     <div class="confirm-ctas">
-      <a href="tel:19097650236" class="btn btn-primary" id="call-cta">Call 909-765-0236 Now</a>
+      <a href="tel:19097650236" class="btn btn-primary" id="call-cta">Call (909) 765-0236 Now</a>
       <a href="/" class="btn btn-secondary">Back To Home</a>
     </div>
     <script>
@@ -153,7 +177,7 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
       (function () {
         var a = document.getElementById('call-cta');
         a.href = CALL_LINES[callLine];
-        a.textContent = 'Call ' + callLine + ' Now';
+        a.textContent = 'Call ' + callLine.replace(/^(\d{3})-/, '($1) ') + ' Now';
       })();
     </script>
   </div>

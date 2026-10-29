@@ -69,9 +69,63 @@ MAIN_CALL_NUMBER = '(909)780-0887'
 GBP_CALL_LABEL = 'AW-16721660937/yy13COq3mpcdEImYwaU-'
 GBP_CALL_NUMBER = '(909)675-1272'
 META_PIXEL_ID = '1083376654248929'
+# "Call from Ads" click-to-call conversion. Google's event snippet, verbatim, on
+# every page; a click on any tel: link reports it. Unlike the phone_conversion_number
+# configs above it swaps no numbers.
+CALL_CLICK_LABEL = 'AW-16721660937/93JoCN-UkfIaEImYwaU-'
 
 HEAD_MARKER = '<!-- tracking:head -->'
 BODY_MARKER = '<!-- tracking:body -->'
+CALL_CLICK_START = '<!-- tracking:call-click -->'
+CALL_CLICK_END = '<!-- /tracking:call-click -->'
+
+
+def call_click(page):
+    """The "Call from Ads" block for a page whose other markup is `page`.
+
+    The event snippet needs gtag() and a configured AW-16721660937 on the page,
+    so whichever of those `page` lacks is added in front of it: /thank-you and
+    /lp-door-hangers have no Google tag at all, most LPs load only GA4, and the
+    organic pages configure only the call labels."""
+    tag = ''
+    if 'function gtag(' not in page:
+        tag += '''  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+'''
+    if f"gtag('config', '{ADS_ID}')" not in page:
+        tag += f"  gtag('config', '{ADS_ID}');\n"
+    if f'gtag/js?id={ADS_ID}' not in page:
+        tag = f'<script async src="https://www.googletagmanager.com/gtag/js?id={ADS_ID}"></script>\n' \
+            + (f'<script>\n{tag}</script>\n' if tag else '')
+    elif tag:
+        tag = f'<script>\n{tag}</script>\n'
+    if tag:
+        tag = '<!-- Google tag (gtag.js) - Google Ads -->\n' + tag
+    return f'''{CALL_CLICK_START}
+{tag}<!-- Event snippet for Call from Ads conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {{
+  var callback = function () {{
+    if (typeof(url) != 'undefined') {{
+      window.location = url;
+    }}
+  }};
+  gtag('event', 'conversion', {{
+      'send_to': '{CALL_CLICK_LABEL}',
+      'event_callback': callback
+  }});
+  return false;
+}}
+</script>
+<script>
+  // Report every tel: click, leaving the browser to dial as normal.
+  document.addEventListener('click', function (e) {{
+    if (e.target.closest && e.target.closest('a[href^="tel:"]')) gtag_report_conversion();
+  }});
+</script>
+{CALL_CLICK_END}'''
 
 
 def head(slug=None):
@@ -113,8 +167,7 @@ def head(slug=None):
   }});
 </script>
 '''
-    out = f'''{HEAD_MARKER}
-<!-- Google tag (gtag.js) - GA4 -->
+    google = f'''<!-- Google tag (gtag.js) - GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -123,7 +176,10 @@ def head(slug=None):
 
   gtag('config', '{GA4_ID}');
 </script>
-{ads}<!-- Google Tag Manager -->
+{ads}'''
+    out = f'''{HEAD_MARKER}
+{google}{call_click(google)}
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
 new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=

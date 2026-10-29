@@ -38,6 +38,34 @@ head -->
     'phone_conversion_number': '(909)675-1272'
   });
 </script>
+<!-- tracking:call-click -->
+<!-- Google tag (gtag.js) - Google Ads -->
+<script>
+  gtag('config', 'AW-16721660937');
+</script>
+<!-- Event snippet for Call from Ads conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-16721660937/93JoCN-UkfIaEImYwaU-',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+<script>
+  // Report every tel: click, leaving the browser to dial as normal.
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('a[href^="tel:"]')) gtag_report_conversion();
+  });
+</script>
+<!-- /tracking:call-click -->
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
