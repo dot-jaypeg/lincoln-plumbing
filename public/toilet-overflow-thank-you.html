@@ -112,6 +112,30 @@ fbq('init', '1083376654248929');
 fbq('track', 'PageView');
 </script>
 <!-- End Meta Pixel Code -->
+<!-- tracking:call-click -->
+<!-- Event snippet for Call from Ads conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-16721660937/93JoCN-UkfIaEImYwaU-',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+<script>
+  // Report every tel: click, leaving the browser to dial as normal.
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('a[href^="tel:"]')) gtag_report_conversion();
+  });
+</script>
+<!-- /tracking:call-click -->
 </head>
 <body>
 <!-- tracking:body -->
