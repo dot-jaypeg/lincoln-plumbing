@@ -172,13 +172,20 @@ def card_grid(cards):
   </table>'''
 
 
-def checklist(items, dark=False):
+def checklist(items, dark=False, mark='&#10003;', mark_bg=ORANGE, mark_color=BLACK):
+    """Icon list. Defaults to orange check marks; xlist() is the gray "x" version."""
     c = 'rgba(255,255,255,0.88)' if dark else INK_SOFT
     rows = ''.join(f'''<tr>
-      <td valign="top" width="30" style="padding:0 0 12px;"><span style="display:inline-block;width:20px;height:20px;border-radius:10px;background:{ORANGE};color:{BLACK};font-family:Arial,sans-serif;font-size:13px;line-height:20px;font-weight:700;text-align:center;">&#10003;</span></td>
+      <td valign="top" width="30" style="padding:0 0 12px;"><span style="display:inline-block;width:20px;height:20px;border-radius:10px;background:{mark_bg};color:{mark_color};font-family:Arial,sans-serif;font-size:13px;line-height:20px;font-weight:700;text-align:center;">{mark}</span></td>
       <td valign="top" style="padding:0 0 12px;font-family:{BODY_FONT};font-size:15px;line-height:21px;color:{c};">{it}</td>
     </tr>''' for it in items)
     return f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">{rows}</table>'
+
+
+def xlist(items):
+    """Same layout as checklist(), with gray "x" marks for the downside column."""
+    return checklist(items, mark='<span style="font-size:18px;line-height:20px;">&times;</span>',
+                     mark_bg=GRAY_200, mark_color=INK_SOFT)
 
 
 def offer_box(tag, big, sub, items=None, note=''):
@@ -468,9 +475,7 @@ def checkup():
         section(f'''<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
       <td valign="top" width="50%" class="stack" style="padding-right:12px;">
         <p style="margin:0 0 14px;font-family:{HEAD_FONT};font-size:22px;line-height:26px;font-weight:700;text-transform:uppercase;color:{GRAY_600};">Without a checkup</p>
-        <p style="margin:0 0 10px;font-family:{BODY_FONT};font-size:15px;line-height:22px;color:{INK_SOFT};">&times;&nbsp; Slow leaks run up the water bill for months</p>
-        <p style="margin:0 0 10px;font-family:{BODY_FONT};font-size:15px;line-height:22px;color:{INK_SOFT};">&times;&nbsp; A worn shut-off fails when you need it</p>
-        <p style="margin:0 0 22px;font-family:{BODY_FONT};font-size:15px;line-height:22px;color:{INK_SOFT};">&times;&nbsp; Problems show up at the worst time</p>
+        {xlist(['Slow leaks run up the water bill for months', 'A worn shut-off fails when you need it', 'Problems show up at the worst time'])}
       </td>
       <td valign="top" width="50%" class="stack" style="padding-left:12px;">
         <p style="margin:0 0 14px;font-family:{HEAD_FONT};font-size:22px;line-height:26px;font-weight:700;text-transform:uppercase;color:{ORANGE_DARK};">With a Lincoln checkup</p>
