@@ -35,7 +35,6 @@ def gtm_id(slug=None):
 # LP_OWN_LINE in build-legacy-lps.py and CALL_LINES in public/thank-you.html.
 LP_CALL_LINE = '909-765-0236'
 LP_CALL_LINES = {
-    'toilet-overflow': '909-280-7894',
 }
 
 
@@ -48,7 +47,8 @@ def call_line(slug=None):
 # hand-written and carries its own copy plus the lead-form conversion event.
 LP_ADS_CALL_CONFIGS = {
     'ga-plumbing-services': ('AW-16721660937/BQtCCIjq9NUcEImYwaU-', '(909)765-0236'),
-    'toilet-overflow': ('AW-16721660937/5dP7CJTmo6YdEImYwaU-', '(909) 280-7894'),
+    # "Flooded Toilets" label; the page moved from (909) 280-7894 to the shared line on 2026-11-03.
+    'toilet-overflow': ('AW-16721660937/5dP7CJTmo6YdEImYwaU-', '(909)765-0236'),
 }
 
 
