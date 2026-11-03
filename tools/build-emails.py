@@ -346,7 +346,7 @@ def holiday():
              "Full houses, big meals and back-to-back showers are hard on drains and water heaters. "
              "A quick visit now means no backed-up sink on the big day and no cold showers while family's in town.",
              'Book My Holiday Prep', u('hero')),
-        hero_image('email-holiday.jpg', 'Lincoln Plumbing & Rooter technician working under a bathroom sink', u('image')),
+        hero_image('email-holiday.jpg', 'Lincoln Plumbing & Rooter technician working under a kitchen sink', u('image')),
         section(heading('Pick Your Prep', 'Two ways to get ready',
                         'Book one or both. You get upfront pricing before any work starts.')
                 + two_offers(('Drain Clean', 'Kitchen &amp; bath',
@@ -408,7 +408,7 @@ def water_heater():
              "Check the label on the side of the tank. Most tank water heaters last about 8 to 12 years, "
              "and they rarely give much warning before they quit.",
              'Book My Free Inspection', u('hero')),
-        hero_image('email-water-heater.jpg', 'Lincoln Plumbing & Rooter service van', u('image')),
+        hero_image('email-water-heater.jpg', 'Lincoln Plumbing & Rooter technician Ivan in a safety vest', u('image')),
         section(heading('Find Your Number', 'What your water heater’s age means',
                         'The manufacture date is usually printed on the label or in the serial number.')
                 + f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:28px;">{tier_rows}</table>',
@@ -451,7 +451,7 @@ def checkup():
              "Thank you for trusting Lincoln Plumbing &amp; Rooter. It's been a while since we've seen you, "
              "so we're offering returning customers special savings on a whole-home plumbing inspection.",
              'Book My Checkup', u('hero')),
-        hero_image('email-checkup.jpg', 'Lincoln Plumbing & Rooter service van', u('image')),
+        hero_image('email-checkup.jpg', 'Two Lincoln Plumbing & Rooter technicians in the company shop', u('image')),
         # CONFIRM: loyalty discount amount not in the brief. Put it in the big line once confirmed.
         section(offer_box('Returning customers only', 'Loyalty savings on a whole-home inspection',
                           'One visit, every major part of your plumbing, with a clear rundown of what’s working and what isn’t.',

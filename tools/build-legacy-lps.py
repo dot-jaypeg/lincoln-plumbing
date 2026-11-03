@@ -96,9 +96,9 @@ META = {
     'ga-leak-detection':           ('Leak Detection', 'work-attic-access.jpg'),
     'toilet-overflow':             ('Toilet Overflow', 'work-bathroom-vanity.jpg'),  # content/new-lps.json
     # Email-campaign offer pages (content/new-lps.json). Not paid LPs: see EMAIL_SLUGS.
-    'holiday-plumbing-prep':       ('Holiday Plumbing Prep', 'work-kitchen-drain.jpg'),
-    'water-heater-checkup':        ('Water Heater Checkup', 'work-attic-access.jpg'),
-    'plumbing-checkup':            ('Plumbing Checkup', 'work-prep.jpg'),
+    'holiday-plumbing-prep':       ('Holiday Plumbing Prep', 'lp-holiday-prep.jpg'),
+    'water-heater-checkup':        ('Water Heater Checkup', 'lp-water-heater-checkup.jpg'),
+    'plumbing-checkup':            ('Plumbing Checkup', 'lp-plumbing-checkup.jpg'),
     'refer-a-neighbor':            ('Refer A Neighbor', 'team-two-techs.jpg'),
 }
 # Offer pages the email campaigns link to. They use the LP template but are not
