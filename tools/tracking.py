@@ -26,6 +26,30 @@ def gtm_id(slug=None):
     return LP_GTM_ID if slug in LP_GTM_PAGES else GTM_ID
 
 
+# LPs that load LP_GTM_ID with the tag Google sent on 2026-11-03, verbatim, in
+# place of the standard GTM snippet.
+LP_GTM_TAG_PAGES = {'toilet-overflow', 'ga-plumbing-services'}
+
+
+def gtm_snippet(slug=None):
+    if slug in LP_GTM_TAG_PAGES:
+        return f'''<!-- Google Tag Manager -->
+<script async src="https://www.googletagmanager.com/gtm.js?id={LP_GTM_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+</script>
+<!-- End Google Tag Manager -->'''
+    return f'''<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
+new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+}})(window,document,'script','dataLayer','{gtm_id(slug)}');</script>
+<!-- End Google Tag Manager -->'''
+
+
 # Google Ads call line each paid LP shows. GTM-KF82PPKL owns call tracking on the
 # LPs: it has one "Calls from Website" tag per line, and each must fire only
 # where its own line is shown. So the LPs publish their line to the dataLayer as
@@ -179,13 +203,7 @@ def head(slug=None):
 {ads}'''
     out = f'''{HEAD_MARKER}
 {google}{call_click(google)}
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
-new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-}})(window,document,'script','dataLayer','{gtm_id(slug)}');</script>
-<!-- End Google Tag Manager -->
+{gtm_snippet(slug)}
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
