@@ -27,9 +27,10 @@ if '--base' in sys.argv:
     OUT = sys.argv[sys.argv.index('--base') + 2] if len(sys.argv) > sys.argv.index('--base') + 2 else OUT
 
 # ---------------------------------------------------------------- brand facts
-# Same facts the site shows. PHONE is the main line (909) 780-0887.
-PHONE_DISPLAY = '909-780-0887'
-PHONE_E164 = '+19097800887'
+# The emails' own call line (given 2026-11-03), also shown on their offer pages
+# (EMAIL_PHONE in build-legacy-lps.py). The rest of the site shows 909-780-0887.
+PHONE_DISPLAY = '909-766-9716'
+PHONE_E164 = '+19097669716'
 TEL = f'tel:{PHONE_E164}'
 EMAIL = 'contact@lincolnp.com'
 ADDRESS = '738 S Waterman Ave C45, San Bernardino, CA 92408'

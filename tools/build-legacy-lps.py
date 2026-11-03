@@ -62,6 +62,8 @@ def phone(slug=None):
     slug = slug if slug is not None else _page
     if slug in LP_OWN_LINE:
         return LP_OWN_LINE[slug][0]
+    if slug in EMAIL_SLUGS:
+        return EMAIL_PHONE
     return LP_PHONE if is_lp(slug) else PHONE
 
 
@@ -69,6 +71,8 @@ def tel(slug=None):
     slug = slug if slug is not None else _page
     if slug in LP_OWN_LINE:
         return LP_OWN_LINE[slug][1]
+    if slug in EMAIL_SLUGS:
+        return EMAIL_TEL
     return LP_TEL if is_lp(slug) else TEL
 EMAIL = 'contact@lincolnp.com'
 FORM_ID = 'dxqfiiA9bB1OLTNaNnRx'     # GHL "Meta Form" — same form on every legacy page
@@ -98,10 +102,14 @@ META = {
     'refer-a-neighbor':            ('Refer A Neighbor', 'team-two-techs.jpg'),
 }
 # Offer pages the email campaigns link to. They use the LP template but are not
-# paid landing pages: they show the main line (PHONE), load the organic GTM
+# paid landing pages: they show the email line (EMAIL_PHONE), load the organic GTM
 # container, and stay out of tools/tracking.py's LP_GTM_PAGES.
 EMAIL_SLUGS = {'holiday-plumbing-prep', 'water-heater-checkup', 'plumbing-checkup',
                'refer-a-neighbor'}
+# The email campaigns' call line, shown on their offer pages (and in the emails,
+# PHONE_DISPLAY in tools/build-emails.py). Given 2026-11-03.
+EMAIL_PHONE = '909-766-9716'
+EMAIL_TEL = 'tel:+19097669716'
 # the eight service LPs, in the order they cross-link each other
 SERVICE_SLUGS = ['ga-plumbing-services', 'drain-cleaning', 'hydrojetting', 'sewer-lines',
                  'ga-water-heater', 'ga-tankless-water-heaters', 'ga-leak-detection',

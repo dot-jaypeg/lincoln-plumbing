@@ -16,8 +16,8 @@ Four customer email blasts for Lincoln Plumbing & Rooter, each with its own offe
 - 600px table layout with inline styles, a VML button fallback for Outlook, and a single-column stack under 620px wide. Each file is about 28 KB, well under Gmail's 102 KB clipping limit.
 - No merge tags and no personalization, so they work in any email platform.
 - Images load from `https://www.lincolnplumbingandrooter.com/images/email/`. **They won't load until this branch is merged and deployed.**
-- Every call link uses the main line, 909-780-0887 (`tel:+19097800887`). Every button goes to that email's offer page, tagged `utm_source=email`.
-- The offer pages use the paid-LP template, but they show the main line and load the organic GTM container (`EMAIL_SLUGS` in `tools/build-legacy-lps.py`). They are `noindex` and use the same GHL Meta Form as the other LPs.
+- Every call link uses the email line, 909-766-9716 (`tel:+19097669716`), which the offer pages show too. The rest of the site stays on 909-780-0887. Every button goes to that email's offer page, tagged `utm_source=email`.
+- The offer pages use the paid-LP template, but they show the email line and load the organic GTM container (`EMAIL_SLUGS` in `tools/build-legacy-lps.py`). They are `noindex` and use the same GHL Meta Form as the other LPs.
 
 ## Subject lines and preheaders
 
