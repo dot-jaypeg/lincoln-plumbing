@@ -19,6 +19,9 @@ LP_GTM_PAGES = {
     'ga-water-heater', 'ga-about-us', 'ga-contact', 'drain-cleaning',
     'ga-garbage-disposal-services', 'hydrojetting', 'ga-leak-detection', 'toilet-overflow',
     'lp-job-ad', 'meta-thank-you',
+    # Email-campaign offer pages (EMAIL_SLUGS in build-legacy-lps.py). Not in
+    # LP_SLUGS, since they show the email line, but tracked like any other LP.
+    'holiday-plumbing-prep', 'water-heater-checkup', 'plumbing-checkup', 'refer-a-neighbor',
 }
 
 
@@ -61,6 +64,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 # LP_OWN_LINE in build-legacy-lps.py and CALL_LINES in public/thank-you.html.
 LP_CALL_LINE = '909-765-0236'
 LP_CALL_LINES = {
+    # Email campaigns' line (EMAIL_PHONE in build-legacy-lps.py), given 2026-11-03.
+    # GTM-KF82PPKL has no call tag for it yet.
+    'holiday-plumbing-prep': '909-766-9716',
+    'water-heater-checkup': '909-766-9716',
+    'plumbing-checkup': '909-766-9716',
+    'refer-a-neighbor': '909-766-9716',
 }
 
 

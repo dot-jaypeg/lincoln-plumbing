@@ -80,5 +80,651 @@
       "h2": "Get Your Free Quote Today",
       "sub": "Fill out the form below and our team will follow up directly — or give us a call anytime."
     }
+  },
+  "holiday-plumbing-prep": {
+    "slug": "holiday-plumbing-prep",
+    "_email": "Email 1 - Holiday-proof your plumbing",
+    "_confirm": "No price or book-by date given. Copy says 'book before the holidays'. Get the offer price and a firm book-by date from the client, then add them to hero.lede and compare.",
+    "title": "Holiday Plumbing Prep - Lincoln Plumbing & Rooter",
+    "description": "Get your drains and water heater ready for holiday guests. Lincoln Plumbing & Rooter offers pre-holiday drain cleaning and water heater flushes across the Inland Empire. Call 909-766-9716.",
+    "hero": {
+      "badges": [
+        "✓ Book Before The Holidays",
+        "✓ Licensed & Insured",
+        "✓ Upfront Pricing"
+      ],
+      "h1_lines": [
+        "Holiday-Proof",
+        "Your Plumbing."
+      ],
+      "lede": "Full houses, big meals and back-to-back showers put real strain on your drains and water heater. Book a pre-holiday drain clean or water heater flush now, before the calendar fills up.",
+      "stats": [
+        {
+          "value": "24/7",
+          "label": "Emergency Service"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "5★",
+          "label": "Customer Rated"
+        }
+      ]
+    },
+    "ticker": [
+      "🦃 Pre-Holiday Drain Cleaning",
+      "🔥 Water Heater Flush",
+      "⏱️ Open 24/7",
+      "🔧 Licensed & Insured",
+      "💰 Upfront Pricing"
+    ],
+    "signs": {
+      "eyebrow": "Why Now",
+      "h2": "Where Holidays Hit Your Plumbing",
+      "sub": "Most holiday plumbing calls come from the same few places. A little prep now keeps them off your list.",
+      "cards": [
+        {
+          "title": "Kitchen Drains",
+          "body": "Grease, peels and food scraps from holiday cooking build up fast in the kitchen line and the disposal."
+        },
+        {
+          "title": "Extra Showers",
+          "body": "Houseguests mean back-to-back showers. A water heater full of sediment runs out of hot water sooner."
+        },
+        {
+          "title": "Guest Bathrooms",
+          "body": "Toilets and tubs that see little use the rest of the year get worked hard all at once."
+        },
+        {
+          "title": "Main Sewer Line",
+          "body": "When every fixture in the house is running, a partial blockage in the main line shows itself."
+        }
+      ]
+    },
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "compare": {
+      "eyebrow": "Pick Your Prep",
+      "h2": "Two Ways To Get Ready",
+      "sub": "Book one or both. We'll confirm pricing upfront before any work starts.",
+      "cards": [
+        {
+          "classes": "compare-card",
+          "title": "Pre-Holiday Drain Clean",
+          "items": [
+            "Kitchen, bathroom or main line",
+            "Clears grease and buildup before guests arrive",
+            "Camera inspection available if a line keeps clogging",
+            "Upfront pricing before we start"
+          ]
+        },
+        {
+          "classes": "compare-card highlight",
+          "title": "Water Heater Flush",
+          "items": [
+            "Flushes out sediment that cuts hot-water capacity",
+            "Checks the pressure relief valve and connections",
+            "Helps the tank run quieter and more efficiently",
+            "Upfront pricing before we start"
+          ]
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "num": "1",
+          "title": "Call Or Book Online",
+          "body": "Call or fill out the form and pick a time before the holidays."
+        },
+        {
+          "num": "2",
+          "title": "We Show Up Ready",
+          "body": "A licensed tech arrives on time with the equipment to finish the job in one visit."
+        },
+        {
+          "num": "3",
+          "title": "You Get A Straight Answer",
+          "body": "We tell you what we found, what we did, and anything worth keeping an eye on."
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Homeowners Choose Lincoln",
+      "sub": "",
+      "cards": [
+        {
+          "icon": "⚡",
+          "title": "Open 24/7",
+          "body": "Nights, weekends and holidays — we answer, and we show up."
+        },
+        {
+          "icon": "💵",
+          "title": "Upfront Pricing",
+          "body": "You see the price before we start. No hidden fees, no surprises on your invoice."
+        },
+        {
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Contractor License #1111400. Fully licensed and insured for your protection."
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Holiday Plumbing Prep In The Inland Empire",
+      "sub": "Lincoln Plumbing & Rooter serves homeowners throughout San Bernardino, Riverside and the surrounding Inland Empire.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Book Before The Holidays",
+      "h2": "Reserve Your Pre-Holiday Visit",
+      "sub": "Fill out the form and our team will follow up to book your time — or call us anytime."
+    }
+  },
+  "water-heater-checkup": {
+    "slug": "water-heater-checkup",
+    "_email": "Email 2 - How old is your water heater?",
+    "_confirm": "Free inspection is from the brief; confirm with the client. No replacement discount amount given, so none is advertised.",
+    "title": "Free Water Heater Inspection - Lincoln Plumbing & Rooter",
+    "description": "Is your water heater 8 years or older? Book a free water heater inspection with Lincoln Plumbing & Rooter in San Bernardino and the Inland Empire. Call 909-766-9716.",
+    "hero": {
+      "badges": [
+        "✓ Free Inspection",
+        "✓ Licensed & Insured",
+        "✓ Upfront Pricing"
+      ],
+      "h1_lines": [
+        "How Old Is Your",
+        "Water Heater?"
+      ],
+      "lede": "If it's 8 years or older, it's time to take a look. Book a free water heater inspection and find out whether yours has years left — or is about to quit on a cold morning.",
+      "stats": [
+        {
+          "value": "Free",
+          "label": "Inspection"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "24/7",
+          "label": "Emergency Service"
+        }
+      ]
+    },
+    "ticker": [
+      "🔥 Free Water Heater Inspection",
+      "🛠️ Repair & Replacement",
+      "⚡ Tankless Options",
+      "💰 Upfront Pricing",
+      "💳 Financing Available"
+    ],
+    "signs": {
+      "eyebrow": "The 60-Second Age Check",
+      "h2": "Signs It's Time For A Look",
+      "sub": "Most tank water heaters last roughly 8 to 12 years. The age is usually on the label on the side of the tank.",
+      "cards": [
+        {
+          "title": "8+ Years Old",
+          "body": "Past the 8-year mark, tanks are more likely to leak. An inspection tells you where yours stands."
+        },
+        {
+          "title": "Rusty Or Cloudy Water",
+          "body": "Discolored hot water can mean corrosion inside the tank."
+        },
+        {
+          "title": "Popping Or Rumbling",
+          "body": "Noise usually means sediment has built up on the bottom of the tank."
+        },
+        {
+          "title": "Runs Out Fast",
+          "body": "Hot water that doesn't last like it used to is a common sign of a tired heater."
+        }
+      ]
+    },
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "compare": {
+      "eyebrow": "What You Get",
+      "h2": "Your Free Inspection",
+      "sub": "No pressure, no obligation. Just a clear answer about your water heater.",
+      "cards": [
+        {
+          "classes": "compare-card",
+          "title": "What We Check",
+          "items": [
+            "Age, condition and signs of corrosion or leaks",
+            "Pressure relief valve and water connections",
+            "Sediment buildup and burner or elements",
+            "Venting and code issues on gas units"
+          ]
+        },
+        {
+          "classes": "compare-card highlight",
+          "title": "What You Walk Away With",
+          "items": [
+            "An honest repair-or-replace recommendation",
+            "Upfront pricing if anything needs work",
+            "Tank and tankless replacement options",
+            "Flexible financing through GoodLeap"
+          ]
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "num": "1",
+          "title": "Call Or Book Online",
+          "body": "Call or fill out the form and pick a time that works for you."
+        },
+        {
+          "num": "2",
+          "title": "We Show Up Ready",
+          "body": "A licensed tech inspects your water heater top to bottom."
+        },
+        {
+          "num": "3",
+          "title": "You Get A Straight Answer",
+          "body": "You get an honest recommendation and upfront pricing — the choice is yours."
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Homeowners Choose Lincoln",
+      "sub": "",
+      "cards": [
+        {
+          "icon": "⚡",
+          "title": "Open 24/7",
+          "body": "Nights, weekends and holidays — we answer, and we show up."
+        },
+        {
+          "icon": "💵",
+          "title": "Upfront Pricing",
+          "body": "You see the price before we start. No hidden fees, no surprises on your invoice."
+        },
+        {
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Contractor License #1111400. Fully licensed and insured for your protection."
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Water Heater Service In The Inland Empire",
+      "sub": "Lincoln Plumbing & Rooter inspects, repairs and replaces water heaters throughout San Bernardino, Riverside and the surrounding Inland Empire.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Free Inspection",
+      "h2": "Book Your Free Water Heater Inspection",
+      "sub": "Fill out the form and our team will follow up to schedule — or call us anytime."
+    }
+  },
+  "plumbing-checkup": {
+    "slug": "plumbing-checkup",
+    "_email": "Email 3 - Annual plumbing checkup (returning customers)",
+    "_confirm": "No loyalty discount amount given. Copy says 'returning-customer savings'. Get the amount from the client.",
+    "title": "Annual Plumbing Checkup - Lincoln Plumbing & Rooter",
+    "description": "Returning customers save on a whole-home plumbing inspection from Lincoln Plumbing & Rooter in San Bernardino and the Inland Empire. Licensed and insured. Call 909-766-9716.",
+    "hero": {
+      "badges": [
+        "✓ Returning-Customer Savings",
+        "✓ Licensed & Insured",
+        "✓ Upfront Pricing"
+      ],
+      "h1_lines": [
+        "It's Been A While.",
+        "Let's Check In."
+      ],
+      "lede": "Thank you for trusting Lincoln Plumbing & Rooter. As a returning customer, you get special savings on a whole-home plumbing inspection — the easy way to catch small problems before they turn into big repairs.",
+      "stats": [
+        {
+          "value": "Whole",
+          "label": "Home Inspection"
+        },
+        {
+          "value": "100%",
+          "label": "Licensed & Insured"
+        },
+        {
+          "value": "24/7",
+          "label": "Emergency Service"
+        }
+      ]
+    },
+    "ticker": [
+      "🏠 Whole-Home Inspection",
+      "💧 Leak Check",
+      "🔥 Water Heater Check",
+      "🚿 Drains & Fixtures",
+      "💰 Upfront Pricing"
+    ],
+    "signs": {
+      "eyebrow": "What We Cover",
+      "h2": "Your Whole-Home Inspection",
+      "sub": "One visit, every major part of your plumbing.",
+      "cards": [
+        {
+          "title": "Water Heater",
+          "body": "Age, sediment, pressure relief valve and connections."
+        },
+        {
+          "title": "Leaks & Pressure",
+          "body": "Hidden drips, running toilets and water pressure that's too high for your pipes."
+        },
+        {
+          "title": "Drains & Sewer",
+          "body": "Slow drains, gurgling and early signs of a main-line blockage."
+        },
+        {
+          "title": "Fixtures & Valves",
+          "body": "Faucets, shut-off valves and supply lines that are wearing out."
+        }
+      ]
+    },
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "compare": {
+      "eyebrow": "Why Once A Year",
+      "h2": "Small Fixes Now Beat Big Repairs Later",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "compare-card",
+          "title": "Without A Checkup",
+          "items": [
+            "Slow leaks run up the water bill for months",
+            "A worn shut-off valve fails when you need it",
+            "Sediment shortens your water heater's life",
+            "Problems show up at the worst possible time"
+          ]
+        },
+        {
+          "classes": "compare-card highlight",
+          "title": "With A Lincoln Checkup",
+          "items": [
+            "A written list of what's working and what isn't",
+            "Upfront pricing on anything worth fixing",
+            "No pressure — you decide what to do and when",
+            "Returning-customer savings on the inspection"
+          ]
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "num": "1",
+          "title": "Call Or Book Online",
+          "body": "Call or fill out the form and let us know you're a returning customer."
+        },
+        {
+          "num": "2",
+          "title": "We Show Up Ready",
+          "body": "A licensed tech walks your home and checks every major system."
+        },
+        {
+          "num": "3",
+          "title": "You Get A Straight Answer",
+          "body": "You get a clear rundown and upfront pricing on anything that needs attention."
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Homeowners Choose Lincoln",
+      "sub": "",
+      "cards": [
+        {
+          "icon": "⚡",
+          "title": "Open 24/7",
+          "body": "Nights, weekends and holidays — we answer, and we show up."
+        },
+        {
+          "icon": "💵",
+          "title": "Upfront Pricing",
+          "body": "You see the price before we start. No hidden fees, no surprises on your invoice."
+        },
+        {
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Contractor License #1111400. Fully licensed and insured for your protection."
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Plumbing Inspections In The Inland Empire",
+      "sub": "Lincoln Plumbing & Rooter serves homeowners throughout San Bernardino, Riverside and the surrounding Inland Empire.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Welcome Back",
+      "h2": "Book Your Annual Checkup",
+      "sub": "Fill out the form and mention you're a returning customer — or call us anytime."
+    }
+  },
+  "refer-a-neighbor": {
+    "slug": "refer-a-neighbor",
+    "_email": "Email 4 - Refer a neighbor ($25 give / $25 get)",
+    "_confirm": "$25/$25 is from the brief. Confirm how the client tracks referrals and when the reward applies.",
+    "title": "Refer A Neighbor, Get $25 Off - Lincoln Plumbing & Rooter",
+    "description": "Referred by a neighbor? Get $25 off your first service with Lincoln Plumbing & Rooter, and they get $25 off too. Serving San Bernardino and the Inland Empire. Call 909-766-9716.",
+    "hero": {
+      "badges": [
+        "✓ $25 Off For You",
+        "✓ $25 Off For Your Neighbor",
+        "✓ Licensed & Insured"
+      ],
+      "h1_lines": [
+        "A Neighbor Sent You.",
+        "You Both Save $25."
+      ],
+      "lede": "Someone who trusts Lincoln Plumbing & Rooter sent you our way. Book your first service, mention who referred you, and you'll each get $25 off.",
+      "stats": [
+        {
+          "value": "$25",
+          "label": "Off For You"
+        },
+        {
+          "value": "$25",
+          "label": "Off For Them"
+        },
+        {
+          "value": "24/7",
+          "label": "Emergency Service"
+        }
+      ]
+    },
+    "ticker": [
+      "🤝 $25 Off For You",
+      "🏡 $25 Off For Your Neighbor",
+      "⏱️ Open 24/7",
+      "🔧 Licensed & Insured",
+      "💰 Upfront Pricing"
+    ],
+    "signs": {
+      "eyebrow": "We Can Help With",
+      "h2": "Whatever Your Home Needs",
+      "sub": "Your $25 applies to your first service with us.",
+      "cards": [
+        {
+          "title": "Drain Cleaning",
+          "body": "Slow or clogged kitchen, bathroom and main-line drains."
+        },
+        {
+          "title": "Water Heaters",
+          "body": "Repair, replacement and tankless installation."
+        },
+        {
+          "title": "Leak Detection",
+          "body": "Finding hidden leaks before they damage walls and floors."
+        },
+        {
+          "title": "Emergency Plumbing",
+          "body": "Open 24/7 for the problems that can't wait."
+        }
+      ]
+    },
+    "services": {
+      "eyebrow": "",
+      "h2": "",
+      "sub": "",
+      "cards": []
+    },
+    "compare": {
+      "eyebrow": "How It Works",
+      "h2": "Give $25, Get $25",
+      "sub": "",
+      "cards": [
+        {
+          "classes": "compare-card",
+          "title": "For You",
+          "items": [
+            "Book your first service with Lincoln",
+            "Mention the neighbor or friend who referred you",
+            "Get $25 off your service"
+          ]
+        },
+        {
+          "classes": "compare-card highlight",
+          "title": "For Your Neighbor",
+          "items": [
+            "They get $25 off their next service",
+            "A thank-you for sending you our way",
+            "Already a customer? Refer someone too"
+          ]
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Simple Process",
+      "h2": "How It Works",
+      "sub": "",
+      "cards": [
+        {
+          "num": "1",
+          "title": "Call Or Book Online",
+          "body": "Call or fill out the form and tell us who referred you."
+        },
+        {
+          "num": "2",
+          "title": "We Show Up Ready",
+          "body": "A licensed tech arrives on time and finds the real cause of the problem."
+        },
+        {
+          "num": "3",
+          "title": "You Get A Straight Answer",
+          "body": "Upfront pricing before we start — with your $25 off applied."
+        }
+      ]
+    },
+    "why": {
+      "eyebrow": "Why Lincoln",
+      "h2": "Why Homeowners Choose Lincoln",
+      "sub": "",
+      "cards": [
+        {
+          "icon": "⚡",
+          "title": "Open 24/7",
+          "body": "Nights, weekends and holidays — we answer, and we show up."
+        },
+        {
+          "icon": "💵",
+          "title": "Upfront Pricing",
+          "body": "You see the price before we start. No hidden fees, no surprises on your invoice."
+        },
+        {
+          "icon": "📋",
+          "title": "Licensed & Insured",
+          "body": "Contractor License #1111400. Fully licensed and insured for your protection."
+        }
+      ]
+    },
+    "testimonial": {
+      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
+      "who": "— Ericka M."
+    },
+    "area": {
+      "eyebrow": "Where We Work",
+      "h2": "Serving Your Neighborhood",
+      "sub": "Lincoln Plumbing & Rooter serves homeowners throughout San Bernardino, Riverside and the surrounding Inland Empire.",
+      "chips": [
+        "San Bernardino",
+        "Riverside",
+        "Rancho Cucamonga",
+        "Fontana",
+        "Redlands",
+        "Highland"
+      ]
+    },
+    "quote_cta": {
+      "eyebrow": "Claim Your $25",
+      "h2": "Book Your First Service",
+      "sub": "Fill out the form and tell us who referred you — or call us anytime."
+    }
   }
 }
