@@ -27,7 +27,9 @@ def gtm_id(slug=None):
 
 
 # LPs that load LP_GTM_ID with the tag Google sent on 2026-11-03, verbatim, in
-# place of the standard GTM snippet.
+# place of the standard GTM snippet. The container carries their Google Ads
+# (AW-16721660937) and GA4 (G-V31B5WPEKM), so these pages have no hard-coded
+# Google tags: no GA4_ID, no LP_ADS_CALL_CONFIGS, no call-click block.
 LP_GTM_TAG_PAGES = {'toilet-overflow', 'ga-plumbing-services'}
 
 
@@ -201,9 +203,18 @@ def head(slug=None):
   gtag('config', '{GA4_ID}');
 </script>
 {ads}'''
+    if slug in LP_GTM_TAG_PAGES:
+        google = f'''<!-- Google Ads call line -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  dataLayer.push({{'call_line': '{call_line(slug)}'}});
+  try {{ localStorage.setItem('call_line', '{call_line(slug)}'); }} catch (e) {{}}
+</script>
+'''
+    else:
+        google += call_click(google) + '\n'
     out = f'''{HEAD_MARKER}
-{google}{call_click(google)}
-{gtm_snippet(slug)}
+{google}{gtm_snippet(slug)}
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)

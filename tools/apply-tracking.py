@@ -8,7 +8,8 @@ rebuild (which would clobber the hand-edited /ga-plumbing-services).
 
 Every other page in public/ (the generated pages, the per-LP thank-you pages,
 /thank-you, /lp-door-hangers ...) gets the "Call from Ads" call-click block
-(tracking.call_click) in place, without touching the rest of its tags.
+(tracking.call_click) in place, without touching the rest of its tags -- except
+tracking.LP_GTM_TAG_PAGES, whose Google tags all live in GTM.
 
 Safe to re-run: every existing tracking script/noscript/comment is stripped
 first — matched on the tag IDs and the gtag/fbq/dataLayer globals, so the site's
@@ -75,6 +76,8 @@ for name in HAND_WRITTEN + LANDING_PAGES:
 CALL_CLICK = re.compile(re.escape(tracking.CALL_CLICK_START) + '.*?' + re.escape(tracking.CALL_CLICK_END), re.S)
 for path in sorted(glob.glob(os.path.join(PUBLIC, '**', '*.html'), recursive=True)):
     name = os.path.relpath(path, PUBLIC)
+    if name[:-5] in tracking.LP_GTM_TAG_PAGES:   # GTM owns their Google tags
+        continue
     original = open(path).read()
     m = CALL_CLICK.search(original)
     if m:
