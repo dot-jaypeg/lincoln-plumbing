@@ -101,9 +101,10 @@ META = {
     'plumbing-checkup':            ('Plumbing Checkup', 'lp-plumbing-checkup.jpg'),
     'refer-a-neighbor':            ('Refer A Neighbor', 'team-two-techs.jpg'),
 }
-# Offer pages the email campaigns link to. They use the LP template but are not
-# paid landing pages: they show the email line (EMAIL_PHONE), load the organic GTM
-# container, and stay out of tools/tracking.py's LP_GTM_PAGES.
+# Offer pages the email campaigns link to. Paid-LP template and tracking (they
+# are in tools/tracking.py's LP_GTM_PAGES: GTM-KF82PPKL, call_line, the GHL Meta
+# Form redirecting to /thank-you), noindex like every LP, but kept out of
+# LP_SLUGS so they show the email line (EMAIL_PHONE) rather than LP_PHONE.
 EMAIL_SLUGS = {'holiday-plumbing-prep', 'water-heater-checkup', 'plumbing-checkup',
                'refer-a-neighbor'}
 # The email campaigns' call line, shown on their offer pages (and in the emails,

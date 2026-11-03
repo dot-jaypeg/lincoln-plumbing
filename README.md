@@ -57,6 +57,12 @@ just that page — `python3 tools/build-legacy-lps.py <slug>`. Don't run a full 
 `/ga-plumbing-services` has been hand-edited since it was generated and would be
 overwritten. First one: `/toilet-overflow`.
 
+**Email offer pages** (`/holiday-plumbing-prep`, `/water-heater-checkup`,
+`/plumbing-checkup`, `/refer-a-neighbor`) are built the same way and tracked like
+any paid LP (`LP_GTM_PAGES`), but they're in `EMAIL_SLUGS` in the builder, so they
+show the email line, 909-766-9716, instead of 909-765-0236. The emails that link to
+them are in `email-campaigns/` (see its README).
+
 Each LP with a form also has its own thank-you page, `/<slug>-thank-you`, showing
 only that LP's call line and firing the Google Ads lead conversion. They're built
 from `public/ga-thank-you.html` by `python3 tools/build-lp-thank-you.py` — re-run it

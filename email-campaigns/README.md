@@ -17,7 +17,7 @@ Four customer email blasts for Lincoln Plumbing & Rooter, each with its own offe
 - No merge tags and no personalization, so they work in any email platform.
 - Images load from `https://www.lincolnplumbingandrooter.com/images/email/`. **They won't load until this branch is merged and deployed.**
 - Every call link uses the email line, 909-766-9716 (`tel:+19097669716`), which the offer pages show too. The rest of the site stays on 909-780-0887. Every button goes to that email's offer page, tagged `utm_source=email`.
-- The offer pages use the paid-LP template, but they show the email line and load the organic GTM container (`EMAIL_SLUGS` in `tools/build-legacy-lps.py`). They are `noindex` and use the same GHL Meta Form as the other LPs.
+- The offer pages are set up like any other paid LP. They are `noindex`, use the GHL Meta Form (which redirects to `/thank-you`), and load GTM-KF82PPKL with `call_line` 909-766-9716. They also load GA4 and the Meta Pixel. They're listed in `EMAIL_SLUGS` in `tools/build-legacy-lps.py`, so they show the email line, not 909-765-0236. **GTM-KF82PPKL has no call tag for 909-766-9716 yet.**
 
 ## Subject lines and preheaders
 
