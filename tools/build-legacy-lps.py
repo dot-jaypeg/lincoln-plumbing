@@ -75,9 +75,11 @@ def tel(slug=None):
         return EMAIL_TEL
     return LP_TEL if is_lp(slug) else TEL
 EMAIL = 'contact@lincolnp.com'
-FORM_ID = 'dxqfiiA9bB1OLTNaNnRx'     # GHL "Meta Form" — same form on every legacy page
-FORM_URL = f'https://link.advancedmarketers.co/widget/form/{FORM_ID}'
-FORM_JS = 'https://link.advancedmarketers.co/js/form_embed.js'
+# The public Yelp listing (biz.yelp.com is the owner's login page).
+YELP = 'https://www.yelp.com/biz/lincoln-plumbing-and-rooter-san-bernardino-2'
+LEGAL_LINKS = ('<a href="/privacy-policy">Privacy Policy</a> '
+               '<a href="/terms">Terms</a> '
+               '<a href="/accessibility">Accessibility</a>')
 GOODLEAP = ('https://www.goodleap.dev/lincolnplumbingandrooterinc/'
             'f5744564-ccff-4b24-838a-3f5c50c41422')
 
@@ -137,25 +139,74 @@ def fix(s):
     return s
 
 
-def form(slot, height, title, lazy=None):
-    """The GHL Meta Form embed. Only the id suffix varies per placement so two
-    embeds on one page don't collide — same convention the legacy site used.
+SERVICES = ['Water Heater', 'Drain Cleaning / Hydrojetting', 'Sewer Line / Slab Leak',
+            'Leak Detection', 'General Plumbing Repair', 'Emergency / 24-7 Service', 'Other']
 
-    Form embeds are never lazy-loaded. A `loading="lazy"` iframe is deferred
-    past onLoad, and in a HAR from a real visit the hero embed was never
-    requested at all — the form simply never appeared. There are at most two
-    embeds per page and they are the entire point of the page, so both load
-    eagerly."""
-    fid = f'inline-{FORM_ID}-{slot}'
-    if lazy is None:
-        lazy = False
-    loading = ' loading="lazy"' if lazy else ''
-    return f'''<iframe src="{FORM_URL}" style="width:100%;height:{height}px;border:none" id="{fid}"
-          data-layout="{{'id':'INLINE'}}" data-trigger-type="alwaysShow" data-trigger-value=""
-          data-activation-type="alwaysActivated" data-activation-value=""
-          data-deactivation-type="neverDeactivate" data-deactivation-value=""
-          data-form-name="Meta Form" data-height="{height}" data-layout-iframe-id="{fid}"
-          data-form-id="{FORM_ID}" title="{e(title)}"{loading}></iframe>'''
+
+def thank_you(slug=None):
+    """Where a successful lead goes. Paid LPs with their own thank-you page
+    (tools/build-lp-thank-you.py) use it, so the conversion fires with that
+    page's call line; everything else uses /thank-you."""
+    slug = slug if slug is not None else _page
+    if slug and os.path.exists(os.path.join(PUBLIC, f'{slug}-thank-you.html')):
+        return f'/{slug}-thank-you'
+    return '/thank-you'
+
+
+def form(slot, title, compact=False, source=None):
+    """The site's one lead form. Posts from the browser straight to the GHL
+    inbound webhook (public/js/lead-form.js) and was the GHL "Meta Form" iframe
+    until 2026-11. Field names are what the GHL workflow maps, so keep them
+    stable. `slot` keeps ids unique when a page has two forms. `compact` drops
+    the message box for the footer and hero placements."""
+    p = f'lf-{slot}'
+
+    def field(name, label, control, full=False, required=True, note=''):
+        req = ' <span class="req">(required)</span>' if required else ' <span class="opt">(optional)</span>'
+        return f'''
+        <div class="field{' full' if full else ''}">
+          <label for="{p}-{name}">{label}{req}</label>
+          {control}
+          <p class="field-error" id="{p}-{name}-err" hidden></p>{note}
+        </div>'''
+
+    def inp(name, typ, auto, required=True, extra=''):
+        r = ' required' if required else ''
+        return (f'<input type="{typ}" id="{p}-{name}" name="{name}" autocomplete="{auto}"'
+                f' aria-describedby="{p}-{name}-err"{r}{extra}>')
+
+    opts = ''.join(f'<option>{e(o)}</option>' for o in SERVICES)
+    fields = ''.join([
+        field('first_name', 'First name', inp('first_name', 'text', 'given-name')),
+        field('last_name', 'Last name', inp('last_name', 'text', 'family-name')),
+        field('phone', 'Phone', inp('phone', 'tel', 'tel', extra=' inputmode="tel"')),
+        field('email', 'Email', inp('email', 'email', 'email')),
+        field('postal_code', 'ZIP code', inp('postal_code', 'text', 'postal-code',
+                                            extra=' inputmode="numeric" maxlength="5"')),
+        field('service', 'Service needed',
+              f'<select id="{p}-service" name="service" aria-describedby="{p}-service-err" required>'
+              f'<option value="">Select a service</option>{opts}</select>'),
+        '' if compact else field('message', "Tell us what's going on",
+              f'<textarea id="{p}-message" name="message" rows="4" aria-describedby="{p}-message-err"></textarea>',
+              full=True, required=False),
+    ])
+    return f'''<form class="lead-form{' lead-form-compact' if compact else ''}" id="{p}" data-lead-form data-thank-you="{thank_you()}" data-phone="{phone()}" aria-label="{e(title)}">
+      <input type="hidden" name="form_source" value="{e(source or title)}">
+      <div class="form-hp" aria-hidden="true"><label for="{p}-company_website">Company website</label><input type="text" id="{p}-company_website" name="company_website" tabindex="-1" autocomplete="off"></div>
+      <div class="form-grid">{fields}
+      </div>
+      <label class="sms-consent" for="{p}-sms_consent">
+        <input type="checkbox" id="{p}-sms_consent" name="sms_consent" value="yes">
+        <span>Optional: I agree to receive text messages from Lincoln Plumbing &amp; Rooter, INC about my request and appointments. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of purchase. See our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms">Terms</a>.</span>
+      </label>
+      <p class="form-status" data-form-status role="alert" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block">{e(title)}</button>
+      <p class="form-call">Or call <a href="{tel()}">{phone()}</a></p>
+    </form>'''
+
+
+LEAD_JS = f'''<script src="/js/lead-config.js"></script>
+<script src="/js/lead-form.js?v={V}"></script>'''
 
 
 # ------------------------------------------------------------------- chrome
@@ -166,7 +217,7 @@ SOCIALS = [
      '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>'),
     ('https://tiktok.com/@lincoln.plumbing1', 'TikTok',
      '<path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>'),
-    ('https://biz.yelp.com/biz_info/-3HGIlGrV7CohN7PS1fmqg', 'Yelp',
+    (YELP, 'Yelp',
      '<path d="M12 2l2.6 5.9 6.4.6-4.9 4.2 1.5 6.3L12 15.9 6.4 19l1.5-6.3-4.9-4.2 6.4-.6z"/>'),
 ]
 PHONE_SVG = ('<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 '
@@ -212,7 +263,7 @@ def chrome_top():
     </div>
     <div class="top-bar-social">
       <a href="https://share.google/dAugpVXgXkDwGv2dv" target="_blank" rel="noopener">Google Reviews</a>
-      <a href="https://biz.yelp.com/biz_info/-3HGIlGrV7CohN7PS1fmqg" target="_blank" rel="noopener">Yelp</a>
+      <a href="{YELP}" target="_blank" rel="noopener">Yelp</a>
       <a href="https://instagram.com/lincolnplumbingandrooterinc" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.facebook.com/profile.php?id=61578362589475" target="_blank" rel="noopener">Facebook</a>
     </div>
@@ -320,10 +371,11 @@ def lp_chrome_bottom(slug):
       &copy; 2026 Lincoln Plumbing &amp; Rooter, INC. All rights reserved.
       Contractor License #1111400. Licensed &amp; insured. Available 24/7.
     </p>
+    <p class="lp-footer-links">{LEGAL_LINKS}</p>
   </div>
 </footer>
 
-<script src="{FORM_JS}"></script>
+{LEAD_JS}
 
 </body>
 </html>
@@ -387,13 +439,13 @@ def chrome_bottom():
   <div class="footer-bottom">
     <div class="container">
       <p>&copy; 2026 Lincoln Plumbing &amp; Rooter, INC. All rights reserved.</p>
-      <p class="footer-legal-links"><a href="/privacy-policy">Privacy Policy</a></p>
+      <p class="footer-legal-links">{LEGAL_LINKS}</p>
     </div>
   </div>
 </footer>
 
 <script src="/js/main.js?v={V}"></script>
-<script src="{FORM_JS}"></script>
+{LEAD_JS}
 
 </body>
 </html>
@@ -418,7 +470,7 @@ def hero(page, form_slot='hero'):
       <div class="hero-form-card">
         <h2>Get A Free Quote</h2>
         <p>Tell us what's going on — our team follows up directly.</p>
-        {form(form_slot, 640, 'Get A Free Quote')}
+        {form(form_slot, 'Get A Free Quote', compact=True)}
       </div>'''
     return f'''
 <section class="hero hero-lp">
@@ -616,7 +668,7 @@ def cross_links(slug):
 '''
 
 
-def quote_section(d, slot='final', height=700):
+def quote_section(d, slot='final'):
     d = d or {}
     return f'''
 <section class="section-tight bg-black blueprint-bg" id="quote">
@@ -627,7 +679,7 @@ def quote_section(d, slot='final', height=700):
       <p>{e(fix(d.get('sub') or "Fill out the form below and our team will follow up directly — or give us a call anytime."))}</p>
     </div>
     <div class="form-shell">
-      {form(slot, height, 'Get A Free Quote')}
+      {form(slot, 'Get A Free Quote')}
     </div>
     <div class="quote-contact">
       <a href="{tel()}">Call {phone()}</a>
@@ -781,7 +833,7 @@ def contact_form_map():
       <h2 style="margin-top:16px;">Send Us A Message</h2>
       <p>Fill out the form and our team will follow up directly, usually within one business day.</p>
       <div class="form-shell light">
-        {form('contact', 700, 'Contact Us', lazy=False)}
+        {form('contact', 'Send Request', source='Contact Us')}
       </div>
     </div>
     <div class="map-panel">

@@ -126,7 +126,6 @@
   .form-section h2{font-size:clamp(26px,3.5vw,38px); margin-top:10px; color:#fff;}
   .form-section p.lede{color:#c9c5ba; max-width:520px; margin:14px auto 30px; font-size:16px; line-height:1.6;}
   .form-shell{max-width:560px; margin:0 auto; background:#fff; border-radius:10px; overflow:hidden;}
-  .form-shell iframe{width:100%; height:411px; border:none; display:block;}
 
   /* ---------- FOOTER ---------- */
   footer{background:#111; color:#8f8a7d; padding:28px 0; text-align:center; font-size:13px;}
@@ -141,6 +140,27 @@
     .voucher{padding:26px 20px;}
     .call-block .phone-link{flex-direction:column; gap:6px;}
   }
+  /* lead form (public/js/lead-form.js); this page doesn't load style.css */
+  .form-shell{padding:24px; text-align:left;}
+  .lead-form .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .lead-form .field{display:flex; flex-direction:column; gap:6px;}
+  .lead-form .field label{font-size:13px; font-weight:700; color:#3d4552;}
+  .lead-form .field label .req, .lead-form .field label .opt{font-weight:500; color:#5b6472;}
+  .lead-form input, .lead-form select{font:inherit; font-size:16px; padding:12px 14px; border:1.5px solid #d5d9e0; border-radius:6px; background:#fff; color:#14181f;}
+  .lead-form input:focus-visible, .lead-form select:focus-visible{outline:3px solid #147ef0; outline-offset:2px;}
+  .lead-form [aria-invalid="true"]{border-color:#c0392b;}
+  .lead-form .field-error{color:#b42318; font-size:13px; font-weight:600;}
+  .lead-form .form-hp{position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden;}
+  .lead-form{position:relative;}
+  .lead-form .sms-consent{display:flex; gap:10px; align-items:flex-start; margin-top:16px; font-size:12px; line-height:1.5; color:#5b6472;}
+  .lead-form .sms-consent input{width:18px; height:18px; padding:0; flex-shrink:0; accent-color:var(--orange);}
+  .lead-form .sms-consent a{text-decoration:underline;}
+  .lead-form .form-status{margin-top:14px; padding:12px 14px; border-radius:6px; background:#fdecea; color:#8a1c12; font-size:14px; font-weight:600;}
+  .lead-form .btn{width:100%; justify-content:center; margin-top:16px; min-height:48px;}
+  .lead-form .form-call{margin-top:12px; text-align:center; font-size:14px; color:#5b6472;}
+  .lead-form .form-call a{color:var(--rust); font-weight:700; text-decoration:underline;}
+  footer .legal a{color:#c9c4b8; text-decoration:underline; margin:0 8px;}
+  @media (max-width:600px){ .lead-form .form-grid{grid-template-columns:1fr;} }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -307,25 +327,49 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
     <h2>Get Your Neighbor Discount</h2>
     <p class="lede">Fill out the form below and we'll follow up to get you scheduled.</p>
     <div class="form-shell">
-      <iframe
-        src="https://link.advancedmarketers.co/widget/form/dxW8C2rdnDw19pS2uBhD"
-        style="width:100%;height:100%;border:none;border-radius:0px"
-        id="inline-dxW8C2rdnDw19pS2uBhD"
-        data-layout="{'id':'INLINE'}"
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name="LP Form"
-        data-height="411"
-        data-layout-iframe-id="inline-dxW8C2rdnDw19pS2uBhD"
-        data-form-id="dxW8C2rdnDw19pS2uBhD"
-        data-cookie-consent="true"
-        data-cookie-consent-provider="auto"
-        title="LP Form">
-      </iframe>
+      <form class="lead-form lead-form-compact" id="lf-claim" data-lead-form data-thank-you="/thank-you" data-phone="909-858-6036" aria-label="Claim My Discount">
+      <input type="hidden" name="form_source" value="Door Hanger Offer">
+      <div class="form-hp" aria-hidden="true"><label for="lf-claim-company_website">Company website</label><input type="text" id="lf-claim-company_website" name="company_website" tabindex="-1" autocomplete="off"></div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="lf-claim-first_name">First name <span class="req">(required)</span></label>
+          <input type="text" id="lf-claim-first_name" name="first_name" autocomplete="given-name" aria-describedby="lf-claim-first_name-err" required>
+          <p class="field-error" id="lf-claim-first_name-err" hidden></p>
+        </div>
+        <div class="field">
+          <label for="lf-claim-last_name">Last name <span class="req">(required)</span></label>
+          <input type="text" id="lf-claim-last_name" name="last_name" autocomplete="family-name" aria-describedby="lf-claim-last_name-err" required>
+          <p class="field-error" id="lf-claim-last_name-err" hidden></p>
+        </div>
+        <div class="field">
+          <label for="lf-claim-phone">Phone <span class="req">(required)</span></label>
+          <input type="tel" id="lf-claim-phone" name="phone" autocomplete="tel" aria-describedby="lf-claim-phone-err" required inputmode="tel">
+          <p class="field-error" id="lf-claim-phone-err" hidden></p>
+        </div>
+        <div class="field">
+          <label for="lf-claim-email">Email <span class="req">(required)</span></label>
+          <input type="email" id="lf-claim-email" name="email" autocomplete="email" aria-describedby="lf-claim-email-err" required>
+          <p class="field-error" id="lf-claim-email-err" hidden></p>
+        </div>
+        <div class="field">
+          <label for="lf-claim-postal_code">ZIP code <span class="req">(required)</span></label>
+          <input type="text" id="lf-claim-postal_code" name="postal_code" autocomplete="postal-code" aria-describedby="lf-claim-postal_code-err" required inputmode="numeric" maxlength="5">
+          <p class="field-error" id="lf-claim-postal_code-err" hidden></p>
+        </div>
+        <div class="field">
+          <label for="lf-claim-service">Service needed <span class="req">(required)</span></label>
+          <select id="lf-claim-service" name="service" aria-describedby="lf-claim-service-err" required><option value="">Select a service</option><option>Water Heater</option><option>Drain Cleaning / Hydrojetting</option><option>Sewer Line / Slab Leak</option><option>Leak Detection</option><option>General Plumbing Repair</option><option>Emergency / 24-7 Service</option><option>Other</option></select>
+          <p class="field-error" id="lf-claim-service-err" hidden></p>
+        </div>
+      </div>
+      <label class="sms-consent" for="lf-claim-sms_consent">
+        <input type="checkbox" id="lf-claim-sms_consent" name="sms_consent" value="yes">
+        <span>Optional: I agree to receive text messages from Lincoln Plumbing &amp; Rooter, INC about my request and appointments. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of purchase. See our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms">Terms</a>.</span>
+      </label>
+      <p class="form-status" data-form-status role="alert" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block">Claim My Discount</button>
+      <p class="form-call">Or call <a href="tel:19098586036">909-858-6036</a></p>
+    </form>
     </div>
   </div>
 </section>
@@ -334,9 +378,11 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
   <div class="container">
     <p><a href="tel:19098586036">909-858-6036</a> &middot; 738 S Waterman Ave C45, San Bernardino, CA 92408</p>
     <p>&copy; 2026 Lincoln Plumbing &amp; Rooter, INC. All rights reserved. Contractor License #1111400.</p>
+    <p class="legal"><a href="/privacy-policy">Privacy Policy</a> <a href="/terms">Terms</a> <a href="/accessibility">Accessibility</a></p>
   </div>
 </footer>
 
-<script src="https://link.advancedmarketers.co/js/form_embed.js"></script>
+<script src="/js/lead-config.js"></script>
+<script src="/js/lead-form.js?v=ef649cb669"></script>
 </body>
 </html>

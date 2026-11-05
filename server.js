@@ -6,8 +6,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 
-app.use(express.urlencoded({ extended: true }));
-
 // Section hubs are directories with an index.html (public/plumbing-services/index.html
 // -> /plumbing-services/). Scanned once at boot so the routing below can tell a hub
 // URL from a page URL without hitting the disk on every request.
@@ -66,6 +64,20 @@ app.use((req, res, next) => {
   next();
 });
 
+// Lead forms post straight from the browser to the GHL inbound webhook
+// (public/js/lead-form.js). The URL lives in the GHL_WEBHOOK_URL Railway
+// variable rather than in the repo, and reaches the page as this tiny script.
+// It is not a secret (any visitor can read it), it just isn't hard-coded.
+const GHL_WEBHOOK_URL = (process.env.GHL_WEBHOOK_URL || '').trim();
+if (!GHL_WEBHOOK_URL) {
+  console.warn('GHL_WEBHOOK_URL is not set: lead forms will show the phone number instead of sending.');
+}
+app.get('/js/lead-config.js', (req, res) => {
+  res.type('application/javascript')
+    .set('Cache-Control', 'no-cache, must-revalidate')
+    .send(`window.LEAD_WEBHOOK_URL = ${JSON.stringify(GHL_WEBHOOK_URL)};\n`);
+});
+
 // ---------------------------------------------------------------------------
 // Caching. Assets are versioned in their URL (/css/style.css?v=static-4), so
 // they can be cached hard. HTML must NOT be: it was previously served with
@@ -101,29 +113,6 @@ if (process.env.CLEAR_SITE_DATA === '1') {
     next();
   });
 }
-
-// The site is otherwise pure static HTML/CSS/JS (public/). This is the one
-// dynamic endpoint: the footer mini-form and the /contact page form POST here.
-// The landing pages generated from the legacy site use the embedded GoHighLevel
-// "Meta Form" instead, which posts straight to the CRM and never touches this.
-// TODO: wire this up to email/CRM delivery once credentials are available — for
-// now it just logs and redirects back with a success flag.
-app.post('/contact', (req, res) => {
-  const { name, phone, email, service, message } = req.body;
-
-  console.log('New contact form submission:', {
-    name,
-    phone,
-    email,
-    service,
-    message,
-    receivedAt: new Date().toISOString()
-  });
-
-  const referer = req.get('Referer') || '/contact';
-  const separator = referer.includes('?') ? '&' : '?';
-  res.redirect(`${referer}${separator}sent=1`);
-});
 
 app.use((req, res) => {
   res.status(404)

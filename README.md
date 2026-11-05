@@ -7,7 +7,7 @@ Pure static HTML/CSS/JS site for Lincoln Plumbing & Rooter, serving San Bernardi
 - **Every page is a real, plain `.html` file** in `public/` — open any of them in a text editor and you'll see complete, final markup, no templating syntax, no build step to run to read or edit them.
 - **URLs have no `.html` extension.** `public/hydrojetting.html` is served at `/hydrojetting`. `server.js` 301-redirects both older shapes to that canonical form: `/hydrojetting.html` → `/hydrojetting`, and `/hydrojetting/` → `/hydrojetting` (the old WordPress URLs all had a trailing slash). Internal links throughout `public/` are already extensionless — keep new ones that way.
 - **`public/css/style.css`** is the entire design system (fonts, colors, layout, components). **`public/js/main.js`** handles the mobile nav drawer, the scroll-triggered header state on the homepage, and the contact-form success toast.
-- **`server.js`** is a small Express app whose only jobs are: (1) serve the `public/` folder as static files with clean URLs, (2) 301 the legacy `.html` / trailing-slash URLs to their canonical form, and (3) handle the one dynamic thing a static site can't do on its own — receiving `POST /contact` from the contact forms. It does not template or generate any HTML.
+- **`server.js`** is a small Express app whose only jobs are: (1) serve the `public/` folder as static files with clean URLs, (2) 301 the legacy `.html` / trailing-slash URLs to their canonical form, and (3) serve `/js/lead-config.js`, which hands the lead forms the GHL webhook URL from the `GHL_WEBHOOK_URL` Railway variable. It does not template or generate any HTML, and it never sees a lead.
 
 ## Local development
 
@@ -37,7 +37,7 @@ content/repo-posts/                        the 10 pre-swap rewritten posts
 tools/parse-legacy.py                      raw-html/ -> pages.json
 tools/build-legacy-lps.py                  pages.json -> public/<slug>.html
 tools/build-legacy-all.py                  raw-html-full/ -> everything else
-server.js         static file server, clean-URL redirects, POST /contact handler
+server.js         static file server, clean-URL redirects, /js/lead-config.js
 ```
 
 ## Legacy landing pages
@@ -87,13 +87,10 @@ builder is re-run, so anything structural belongs in `tools/build-legacy-lps.py`
 
 Two things about these pages differ from the rest of the site on purpose:
 
-- **Lead capture is the client's GoHighLevel form, not `POST /contact`.** One
-  form ("Meta Form", id `dxqfiiA9bB1OLTNaNnRx`, on `link.advancedmarketers.co`)
-  is embedded twice per service page — once in the hero, once in the `#quote`
-  section — plus once on `/ga-contact`. Only the iframe id suffix differs
-  (`-hero`, `-final`, `-contact`) so two embeds on one page don't collide.
-  `https://link.advancedmarketers.co/js/form_embed.js` at the end of the body is
-  what resizes them.
+- **Lead capture is the same native form as the rest of the site** (see
+  [Lead forms](#lead-forms)). Until 2026-11 these pages embedded the GHL "Meta
+  Form" iframe, which had a required file-upload field and arrived in GHL looking
+  like a job application.
 - **Their footer has a "Service Pages" column instead of the mini request-service
   form**, so an LP has exactly one lead path rather than two competing ones.
 
@@ -209,18 +206,6 @@ If you change a number, change it there and re-run both builders plus
 Because the two page sets are fully isolated (above), a visitor can't cross from
 one to the other and see the "wrong" number mid-session.
 
-### The GHL form's on-submit behaviour
-
-Read straight out of the form's own config: `actionType: "2"`, `redirectUrl: ""`
-— **the form does not redirect anywhere.** On submit it swaps the iframe for
-GoHighLevel's stock inline message, *"😊 We appreciate your feedback! Thank you
-for taking the time to complete this form."* That is generic survey wording, not
-plumbing-lead wording. `/meta-thank-you` (below) exists but nothing in the form
-points at it. Worth fixing in GHL, not here.
-
-The form is also protected by Cloudflare Turnstile, so it can't be submitted by
-a script — test submissions have to be done by hand in a browser.
-
 ## Everything else from the legacy site
 
 The other 178 pages in the old sitemap — the service tree, the service-location
@@ -292,11 +277,39 @@ Since there's no templating layer, editing content means editing the relevant `.
 - **Site-wide bits** (phone number, address, nav, footer) are duplicated across every page — the header/nav/footer markup is identical in each `.html` file. If you change one (e.g. the phone number), use a project-wide find-and-replace across `public/*.html` and `public/blog/*.html` rather than editing pages one at a time — and update the constants at the top of `tools/build-legacy-lps.py` too, or the next build of the landing pages will put the old value back.
 - **Adding a blog post**: copy an existing `public/blog/<slug>.html`, edit its content, and add a matching card (image/title/excerpt/link) to `public/blog/index.html` and to the "From the Blog" section in `public/index.html`.
 
-## Contact form
+## Lead forms
 
-`POST /contact` (used by both the footer mini-form on every page and the full form on `contact.html`) currently logs submissions to the server console and redirects back to the referring page with `?sent=1`. `public/js/main.js` watches for that query param and shows a success toast client-side (there's no server-rendered confirmation anymore, since pages are static).
+Every form on the site (organic footer and `/contact`, the LP hero and `#quote`
+forms, `/ga-plumbing-services`, `/lp-door-hangers`) is the same native form,
+`form()` in `tools/build-legacy-lps.py`, handled by `public/js/lead-form.js`.
+It posts JSON **straight from the browser to Lincoln's GHL inbound webhook**
+(workflow "ENDPOINT - website-forms"). There is no server hop.
 
-It is **not yet wired to email or a CRM** — hook it up to an email service (e.g. Resend, SendGrid) or HouseCall Pro's API once credentials are available, inside the `app.post('/contact', ...)` handler in `server.js`.
+- **The webhook URL is a Railway variable, `GHL_WEBHOOK_URL`**, not in the repo.
+  `server.js` serves it as `/js/lead-config.js`. If it's unset, forms don't send:
+  they show "please call us at …" and the server logs a warning at boot.
+- **Fields** (keep these names, the GHL workflow maps them): `first_name`,
+  `last_name`, `full_name`, `phone` (E.164), `email`, `postal_code`, `service`,
+  `message`, `sms_consent` (yes/no, unticked by default), `form_source`,
+  `form_name` (page slug), `form_id`, `page_url`, `submitted_at`, `event_id`, and
+  attribution: `utm_*`, `gclid`, `gbraid`, `wbraid`, `fbclid`, `landing_page`,
+  `referrer`. The latest ad-tagged landing replaces stored attribution; it expires
+  after 90 days.
+- **On a 2xx** it pushes `generate_lead` (with `event_id`) and sends the visitor to
+  the form's `data-thank-you` page: `/<slug>-thank-you` for an LP that has one,
+  otherwise `/thank-you`. Those pages fire the Google Ads lead conversion. On any
+  failure the visitor stays put and sees the phone number.
+- Honeypot field `company_website`; `form_start` is pushed on first input.
+
+The six hand-written pages and the hand-built LPs carry the same markup; if you
+change `form()`, update those too.
+
+## Legal pages
+
+`/privacy-policy` (with the SMS section), `/terms` (website + SMS program terms)
+and `/accessibility` are generated by `tools/build-legacy-all.py`
+(`PRIVACY_PLACEHOLDER`, `TERMS`, `ACCESSIBILITY`). Every footer links all three,
+LPs and thank-you pages included (`LEGAL_LINKS` in `tools/build-legacy-lps.py`).
 
 ## Homepage hero video
 

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility | Lincoln Plumbing &amp; Rooter</title>
+<meta name="description" content="How Lincoln Plumbing &amp; Rooter makes this website usable for everyone, and how to get help.">
+<link rel="canonical" href="https://www.lincolnplumbingandrooter.com/accessibility">
+<link rel="icon" href="/images/logo.png">
+<link rel="preload" href="/fonts/Inter-Variable.ttf?v=ef649cb669" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/css/style.css?v=ef649cb669">
+<!-- tracking:head -->
+<!-- Google tag (gtag.js) - GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XL9X7ZMQ2J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XL9X7ZMQ2J');
+</script>
+<!-- Google Ads -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16721660937"></script>
+<script>
+  gtag('config', 'AW-16721660937/BQtCCljq9NUcElmYwaU-', {
+    'phone_conversion_number': '(909)765-0236'
+  });
+  gtag('config', 'AW-16721660937/oj6tCMzeopcdEImYwaU-', {
+    'phone_conversion_number': '(909)780-0887'
+  });
+  gtag('config', 'AW-16721660937/yy13COq3mpcdEImYwaU-', {
+    'phone_conversion_number': '(909)675-1272'
+  });
+</script>
+<!-- tracking:call-click -->
+<!-- Google tag (gtag.js) - Google Ads -->
+<script>
+  gtag('config', 'AW-16721660937');
+</script>
+<!-- Event snippet for Call from Ads conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-16721660937/93JoCN-UkfIaEImYwaU-',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+<script>
+  // Report every tel: click, leaving the browser to dial as normal.
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('a[href^="tel:"]')) gtag_report_conversion();
+  });
+</script>
+<!-- /tracking:call-click -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NB7XCVVG');</script>
+<!-- End Google Tag Manager -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1083376654248929');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<!-- tracking:body -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NB7XCVVG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /></noscript>
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <span>Contractor License #1111400</span>
+      <a href="/contact">738 S Waterman Ave C45, San Bernardino, CA 92408</a>
+    </div>
+    <div class="top-bar-social">
+      <a href="https://share.google/dAugpVXgXkDwGv2dv" target="_blank" rel="noopener">Google Reviews</a>
+      <a href="https://www.yelp.com/biz/lincoln-plumbing-and-rooter-san-bernardino-2" target="_blank" rel="noopener">Yelp</a>
+      <a href="https://instagram.com/lincolnplumbingandrooterinc" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61578362589475" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="brand" aria-label="Lincoln Plumbing &amp; Rooter home">
+      <img src="/images/logo.png" alt="Lincoln Plumbing &amp; Rooter logo">
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/services">Services</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/blog/">Blog</a>
+      <a href="/about">Our Story</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#quote" class="btn btn-secondary">Book Free Estimate</a>
+      <a href="tel:19097800887" class="btn-call">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>909-780-0887</span>
+      </a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" aria-hidden="true">
+  <div class="mobile-nav-top">
+    <img src="/images/logo.png" alt="Lincoln Plumbing &amp; Rooter logo">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-nav-links" aria-label="Mobile">
+    <a href="/">Home</a>
+    <a href="/services">Services</a>
+    <a href="/gallery">Gallery</a>
+    <a href="/blog/">Blog</a>
+    <a href="/about">Our Story</a>
+    <a href="/contact">Contact</a>
+  </nav>
+  <div class="mobile-nav-cta">
+    <a href="tel:19097800887" class="btn btn-primary btn-block">Call 909-780-0887</a>
+    <a href="#quote" class="btn btn-secondary btn-block">Book a Free Estimate</a>
+  </div>
+</div>
+
+<div class="mobile-call-bar">
+  <a href="tel:19097800887">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    24/7 Emergency — Call 909-780-0887
+  </a>
+</div>
+
+<main>
+<section class="hero hero-lp hero-compact">
+  <div class="hero-media">
+    <img src="/images/hero-van.jpg" alt="" class="hero-video">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-grid-lines"></div>
+  <div class="container">
+    <div class="hero-content">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <i>/</i> <span>Accessibility</span></nav>
+      <h1>Accessibility</h1>
+      <p class="lede">How Lincoln Plumbing &amp; Rooter makes this website usable for everyone, and how to get help.</p>
+      <div class="hero-ctas">
+        <a href="tel:19097800887" class="btn btn-primary">Call 909-780-0887</a>
+        <a href="#quote" class="btn btn-secondary">Get A Free Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="blog-post-body legacy-prose">
+<p>Lincoln Plumbing &amp; Rooter, INC wants everyone to be
+able to use this website, including people who use screen readers, keyboard
+navigation, voice control, magnification or captions.</p>
+
+<h2>Our Standard</h2>
+<p>We're working to meet the Web Content Accessibility Guidelines (WCAG) 2.2,
+Level AA, and we check the site with automated tools and by hand.</p>
+
+<h2>What We've Done</h2>
+<ul>
+<li>Text alternatives for meaningful images</li>
+<li>Keyboard access to menus, links and forms</li>
+<li>Labeled form fields with clear error messages</li>
+<li>Pages that work when zoomed and on small screens</li>
+</ul>
+
+<h2>Known Limitations</h2>
+<ul>
+<li>The homepage shows a short, silent background video that loops and has
+no pause control. It's decorative and carries no information.</li>
+<li>Some pages include content from other companies that we don't control,
+such as Google Maps, Yelp review widgets and our financing partner's
+application.</li>
+</ul>
+
+<h2>Need Help or Found a Barrier?</h2>
+<p>If anything on this site is hard to use, or you'd like information in a
+different format, contact us and we'll help:</p>
+<ul>
+<li>Phone: <a href="tel:19097800887">909-780-0887</a></li>
+<li>Email: <a href="mailto:contact@lincolnp.com">contact@lincolnp.com</a></li>
+</ul>
+<p>Please tell us the page and what went wrong. We aim to respond within 2
+business days. You can always call us to request a quote or service instead
+of using an online form.</p>
+<p><em>Last updated: November 6, 2026</em></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="/images/logo.png" alt="Lincoln Plumbing &amp; Rooter logo">
+        <p>Family-owned and operated, serving the Inland Empire with honest, high-quality plumbing since 2021.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/lincolnplumbingandrooterinc" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61578362589475" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://tiktok.com/@lincoln.plumbing1" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+          <a href="https://www.yelp.com/biz/lincoln-plumbing-and-rooter-san-bernardino-2" target="_blank" rel="noopener" aria-label="Yelp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 5.9 6.4.6-4.9 4.2 1.5 6.3L12 15.9 6.4 19l1.5-6.3-4.9-4.2 6.4-.6z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/services">Our Services</a></li>
+          <li><a href="/gallery">Photo Gallery</a></li>
+          <li><a href="/blog/">Blog / News</a></li>
+          <li><a href="/specials">Specials</a></li>
+          <li><a href="/testimonials">Testimonials</a></li>
+          <li><a href="/about">Our Story</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/sitemap">Sitemap</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Browse Services</h4>
+        <ul>
+          <li><a href="/plumbing-services/">Plumbing Services</a></li>
+          <li><a href="/drains-and-sewers/">Drains &amp; Sewers</a></li>
+          <li><a href="/plumbing-services/water-heaters/">Water Heaters</a></li>
+          <li><a href="/leak-detection/">Leak Detection</a></li>
+          <li><a href="/service-locations/">Service Locations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:19097800887">909-780-0887</a></li>
+          <li><a href="mailto:contact@lincolnp.com">contact@lincolnp.com</a></li>
+          <li><address>738 S Waterman Ave C45<br>San Bernardino, CA 92408</address></li>
+          <li>24/7 — Emergency Service Available Around the Clock</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2026 Lincoln Plumbing &amp; Rooter, INC. All rights reserved.</p>
+      <p class="footer-legal-links"><a href="/privacy-policy">Privacy Policy</a> <a href="/terms">Terms</a> <a href="/accessibility">Accessibility</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js?v=ef649cb669"></script>
+<script src="/js/lead-config.js"></script>
+<script src="/js/lead-form.js?v=ef649cb669"></script>
+
+</body>
+</html>
