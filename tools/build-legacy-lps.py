@@ -41,8 +41,8 @@ LP_TEL = 'tel:19097650236'
 # Any slug not listed here shows the shared LP_PHONE / LP_TEL line above.
 # Add a new line to LP_CALL_LINES in tools/tracking.py and CALL_LINES in
 # public/thank-you.html too, and give it its own trigger in GTM-KF82PPKL.
-# /toilet-overflow ran on (909) 280-7894 until 2026-11-03; it now shows LP_PHONE.
 LP_OWN_LINE = {
+    'toilet-overflow': ('(909) 280-7894', 'tel:+19092807894'),   # Google Ads Call - Flooded Toilets
 }
 
 _page = None                        # slug currently being rendered
