@@ -84,6 +84,7 @@ function gtag_report_conversion(url) {
 <style>
   /* /specials only: the Featured and Seasonal coupons, rebuilt from images as HTML. */
   .special-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 34px 0 10px; align-items: start; }
+  .special-cards + .special-cards { margin-top: 26px; align-items: stretch; }
   .special-card { border-radius: 22px; overflow: hidden; background: var(--ink); color: #fff;
     box-shadow: 0 18px 40px rgba(11,13,17,0.18); position: relative; }
   .special-card::after { content: ''; position: absolute; inset: 8px; border: 1.5px dashed rgba(255,255,255,0.45);
@@ -245,10 +246,30 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
       <p class="special-card-fine">Limited-time offer. Restrictions may apply. Call today to schedule your $80 water heater maintenance service.</p>
     </div>
   </article>
-</div><h2>10% Off for Seniors, First Responders, Veterans, and First-Time Customers</h2>
-<p>Special offers cannot be combined with other discounts</p>
-<h2>$39 Drain Cleaning Special for New Residential Customers</h2> Accessible clean-out required and<br /> Camera line inspection must be permitted</p>
-<p>Special offers cannot be combined with other discounts
+</div>
+<!-- The two text offers, as cards matching the Featured/Seasonal coupons. Card head labels are new; offer copy is unchanged. -->
+<div class="special-cards">
+  <article class="special-card" aria-labelledby="special-discount">
+    <h2 class="special-card-head" id="special-discount">Customer Discount</h2>
+    <div class="special-card-body">
+      <p class="special-card-price">10% Off</p>
+      <h3>For Seniors, First Responders, Veterans, and First-Time Customers</h3>
+      <p class="special-card-fine">Special offers cannot be combined with other discounts</p>
+    </div>
+  </article>
+  <article class="special-card" aria-labelledby="special-drain">
+    <h2 class="special-card-head" id="special-drain">Drain Special</h2>
+    <div class="special-card-body">
+      <p class="special-card-price">$39</p>
+      <h3>Drain Cleaning Special for New Residential Customers</h3>
+      <ul>
+        <li>Accessible clean-out required</li>
+        <li>Camera line inspection must be permitted</li>
+      </ul>
+      <p class="special-card-fine">Special offers cannot be combined with other discounts</p>
+    </div>
+  </article>
+</div>
     </div>
   </div>
 </section>
