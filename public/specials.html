@@ -81,6 +81,28 @@ function gtag_report_conversion(url) {
   });
 </script>
 <!-- /tracking:call-click -->
+<style>
+  /* /specials only: the Featured and Seasonal coupons, rebuilt from images as HTML. */
+  .special-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 34px 0 10px; align-items: start; }
+  .special-card { border-radius: 22px; overflow: hidden; background: var(--ink); color: #fff;
+    box-shadow: 0 18px 40px rgba(11,13,17,0.18); position: relative; }
+  .special-card::after { content: ''; position: absolute; inset: 8px; border: 1.5px dashed rgba(255,255,255,0.45);
+    border-radius: 16px; pointer-events: none; }
+  .blog-post-body .special-card-head { margin: 0; padding: 26px 20px 22px; background: var(--grad-orange); color: var(--black);
+    font-family: 'Antonio', sans-serif; font-weight: 700; text-transform: uppercase; text-align: center;
+    font-size: clamp(2rem, 4.4vw, 2.6rem); line-height: 1; letter-spacing: 0.01em; }
+  .special-card-body { padding: 26px 26px 30px; text-align: center; }
+  .blog-post-body .special-card-body .special-card-price { margin: 0; font-family: 'Antonio', sans-serif; font-weight: 700; text-transform: uppercase;
+    color: var(--gold); font-size: clamp(2.4rem, 5vw, 3rem); line-height: 1; }
+  .special-card h3 { margin-top: 10px; color: #fff; font-size: 1.2rem; }
+  .blog-post-body .special-card-body p { margin-top: 12px; color: rgba(255,255,255,0.86); font-size: 0.92rem; line-height: 1.6; }
+  .special-card strong { color: #fff; }
+  .blog-post-body .special-card ul { margin-top: 16px; gap: 8px; text-align: left; }
+  .blog-post-body .special-card ul li { color: rgba(255,255,255,0.9); font-size: 0.9rem; line-height: 1.45; }
+  .blog-post-body .special-card ul li::before { background: var(--gold); top: 7px; }
+  .blog-post-body .special-card-body .special-card-fine { margin-top: 18px; font-size: 0.8rem; font-style: italic; color: rgba(255,255,255,0.72); }
+  @media (max-width: 700px) { .special-cards { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
 <!-- tracking:body -->
@@ -185,8 +207,45 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
 <section class="section-tight">
   <div class="container">
     <div class="blog-post-body legacy-prose">
-<div class="prose-figures"><figure><img src="/images/legacy/feature-speacial-coupon.png" alt="Featured Special" loading="lazy"></figure>
-<figure><img src="/images/legacy/season-speacial-coupon.png" alt="Seasonal Special" loading="lazy"></figure></div><h2>10% Off for Seniors, First Responders, Veterans, and First-Time Customers</h2>
+<!-- Rebuilt in HTML from the old coupon images (feature-/season-speacial-coupon.png); copy is verbatim from them. -->
+<div class="special-cards">
+  <article class="special-card" aria-labelledby="special-featured">
+    <h2 class="special-card-head" id="special-featured">Featured Special</h2>
+    <div class="special-card-body">
+      <p class="special-card-price">$200 Off</p>
+      <h3>New Water Heater Installation</h3>
+      <p>Upgrade your home with a reliable, energy-efficient water heater and save big. For a limited time, new residential customers receive <strong>$200 off any new water heater installation</strong> when we provide the unit.</p>
+      <ul>
+        <li>Applies to both <strong>standard tank</strong> and <strong>tankless water heaters</strong></li>
+        <li>Professional installation by licensed plumbers</li>
+        <li>Safe removal and disposal of your old unit</li>
+        <li>Full setup and testing to ensure peak performance</li>
+        <li>Backed by our satisfaction guarantee</li>
+      </ul>
+      <p class="special-card-fine">Offer valid for new residential customers only. Must purchase water heater through our company. Restrictions may apply. Call today to schedule your installation and claim your $200 savings.</p>
+    </div>
+  </article>
+  <article class="special-card" aria-labelledby="special-seasonal">
+    <h2 class="special-card-head" id="special-seasonal">Seasonal Special</h2>
+    <div class="special-card-body">
+      <p class="special-card-price">$80</p>
+      <h3>Water Heater Maintenance Special</h3>
+      <p>Keep your water heater running efficiently and extend its lifespan with our complete maintenance service. For just $80, our licensed plumbers will:</p>
+      <ul>
+        <li>Perform a <strong>full tank flush</strong> to remove sediment buildup</li>
+        <li>Inspect for leaks, rust, and corrosion</li>
+        <li>Test the temperature &amp; pressure relief (T&amp;P) valve</li>
+        <li>Check thermostat settings and heating elements (electric units)</li>
+        <li>Inspect burner and pilot light operation (gas units)</li>
+        <li>Examine the anode rod for signs of wear</li>
+        <li>Ensure proper venting and overall safety</li>
+        <li>Tighten loose connections and check water pressure</li>
+      </ul>
+      <p>This service helps improve efficiency, reduces the risk of breakdowns, and gives you peace of mind knowing your system is safe and reliable.</p>
+      <p class="special-card-fine">Limited-time offer. Restrictions may apply. Call today to schedule your $80 water heater maintenance service.</p>
+    </div>
+  </article>
+</div><h2>10% Off for Seniors, First Responders, Veterans, and First-Time Customers</h2>
 <p>Special offers cannot be combined with other discounts</p>
 <h2>$39 Drain Cleaning Special for New Residential Customers</h2> Accessible clean-out required and<br /> Camera line inspection must be permitted</p>
 <p>Special offers cannot be combined with other discounts
