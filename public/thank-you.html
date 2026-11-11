@@ -101,15 +101,25 @@ fbq('track', 'PageView');
     .confirm-ctas{flex-direction:column; align-items:stretch;}
   }
 </style>
-<!-- tracking:call-click -->
-<!-- Google tag (gtag.js) - Google Ads -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16721660937"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'AW-16721660937');
 </script>
+<script>
+  gtag('config', 'AW-16721660937/BQtCCIjq9NUcEImYwaU-', {
+    'phone_conversion_number': '(909)765-0236'
+  });
+</script>
+<!-- Event snippet for AM Lead Form / thank-you conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-16721660937/AZdYCOSk4dUcEImYwaU-'});
+</script>
+<!-- tracking:call-click -->
 <!-- Event snippet for Call from Ads conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
@@ -149,7 +159,7 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
       <svg width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M1 13L12 24L33 1" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <span class="eyebrow" style="color:var(--orange-2);">Request Received</span>
-    <h1>You're All Set — <span class="hl">Help Is On The Way</span></h1>
+    <h1>You're All Set. <span class="hl">Help Is On The Way</span></h1>
     <p class="lede">Thanks for reaching out to Lincoln Plumbing &amp; Rooter. Your request just landed in our inbox and a real person from our team will be calling you back shortly.</p>
     <div class="confirm-ctas">
       <a href="tel:19097650236" class="btn btn-primary" id="call-cta">Call (909) 765-0236 Now</a>

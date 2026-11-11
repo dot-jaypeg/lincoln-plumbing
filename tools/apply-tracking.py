@@ -8,8 +8,9 @@ rebuild (which would clobber the hand-edited /ga-plumbing-services).
 
 Every other page in public/ (the generated pages, the per-LP thank-you pages,
 /thank-you, /lp-door-hangers ...) gets the "Call from Ads" call-click block
-(tracking.call_click) in place, without touching the rest of its tags -- except
-tracking.LP_GTM_TAG_PAGES, whose Google tags all live in GTM.
+(tracking.call_click) in place, without touching the rest of its tags.
+tracking.LP_GTM_TAG_PAGES get the event snippet only, since GTM loads their
+Google tag.
 
 Safe to re-run: every existing tracking script/noscript/comment is stripped
 first — matched on the tag IDs and the gtag/fbq/dataLayer globals, so the site's
@@ -48,6 +49,11 @@ def strip(s):
     return COMMENTS.sub('', s)
 
 
+# what every page looked like before this run, so the report lists only files
+# whose final content changed (the LP pass strips the call-click block that the
+# call-click pass then puts back)
+BEFORE = {p: open(p).read() for p in glob.glob(os.path.join(PUBLIC, '**', '*.html'), recursive=True)}
+
 changed = []
 for name in HAND_WRITTEN + LANDING_PAGES:
     path = os.path.join(PUBLIC, name)
@@ -76,15 +82,14 @@ for name in HAND_WRITTEN + LANDING_PAGES:
 CALL_CLICK = re.compile(re.escape(tracking.CALL_CLICK_START) + '.*?' + re.escape(tracking.CALL_CLICK_END), re.S)
 for path in sorted(glob.glob(os.path.join(PUBLIC, '**', '*.html'), recursive=True)):
     name = os.path.relpath(path, PUBLIC)
-    if name[:-5] in tracking.LP_GTM_TAG_PAGES:   # GTM owns their Google tags
-        continue
+    gtm_tag = name[:-5] in tracking.LP_GTM_TAG_PAGES   # GTM loads their Google tag
     original = open(path).read()
     m = CALL_CLICK.search(original)
     if m:
         rest = original[:m.start()] + original[m.end():]
-        s = original[:m.start()] + tracking.call_click(rest) + original[m.end():]
+        s = original[:m.start()] + tracking.call_click(rest, gtm_tag) + original[m.end():]
     elif '</head>' in original:
-        s = original.replace('</head>', tracking.call_click(original) + '\n</head>', 1)
+        s = original.replace('</head>', tracking.call_click(original, gtm_tag) + '\n</head>', 1)
     else:
         print(f'  SKIPPED {name}: no </head> for the call-click block')
         continue
@@ -93,4 +98,5 @@ for path in sorted(glob.glob(os.path.join(PUBLIC, '**', '*.html'), recursive=Tru
         if name not in changed:
             changed.append(name)
 
+changed = [n for n in changed if open(os.path.join(PUBLIC, n)).read() != BEFORE.get(os.path.join(PUBLIC, n))]
 print(f'tracking applied; {len(changed)} file(s) rewritten: ' + (', '.join(changed) or 'none'))

@@ -32,7 +32,9 @@ def gtm_id(slug=None):
 # LPs that load LP_GTM_ID with the tag Google sent on 2026-11-03, verbatim, in
 # place of the standard GTM snippet. The container carries their Google Ads
 # (AW-16721660937) and GA4 (G-V31B5WPEKM), so these pages have no hard-coded
-# Google tags: no GA4_ID, no LP_ADS_CALL_CONFIGS, no call-click block.
+# Google tags: no GA4_ID, no LP_ADS_CALL_CONFIGS. They do carry the Call from
+# Ads event snippet (added 2026-11-11 on request), but without its own gtag.js
+# loader or AW config: call_click(page, gtm_tag=True).
 LP_GTM_TAG_PAGES = {'toilet-overflow', 'ga-plumbing-services'}
 
 
@@ -116,22 +118,30 @@ CALL_CLICK_START = '<!-- tracking:call-click -->'
 CALL_CLICK_END = '<!-- /tracking:call-click -->'
 
 
-def call_click(page):
+def call_click(page, gtm_tag=False):
     """The "Call from Ads" block for a page whose other markup is `page`.
+
+    With gtm_tag=True (tracking.LP_GTM_TAG_PAGES) the page's Google Ads tag is
+    loaded by GTM, so only the event snippet is emitted: adding gtag.js and the
+    AW config here would load the Google tag a second time.
 
     The event snippet needs gtag() and a configured AW-16721660937 on the page,
     so whichever of those `page` lacks is added in front of it: /thank-you and
     /lp-door-hangers have no Google tag at all, most LPs load only GA4, and the
     organic pages configure only the call labels."""
     tag = ''
-    if 'function gtag(' not in page:
+    if gtm_tag:
+        pass
+    elif 'function gtag(' not in page:
         tag += '''  window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 '''
-    if f"gtag('config', '{ADS_ID}')" not in page:
+    if not gtm_tag and f"gtag('config', '{ADS_ID}')" not in page:
         tag += f"  gtag('config', '{ADS_ID}');\n"
-    if f'gtag/js?id={ADS_ID}' not in page:
+    if gtm_tag:
+        pass
+    elif f'gtag/js?id={ADS_ID}' not in page:
         tag = f'<script async src="https://www.googletagmanager.com/gtag/js?id={ADS_ID}"></script>\n' \
             + (f'<script>\n{tag}</script>\n' if tag else '')
     elif tag:
