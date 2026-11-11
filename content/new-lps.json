@@ -729,175 +729,134 @@
   },
   "drain-cleaning-special": {
     "slug": "drain-cleaning-special",
-    "_source": "ClickUp 86bd1ugjz (2026-11-11): drain cleaning LP like Capri's, CTAs '$39 drain cleaning', 'same day service', '24/7 Emergency', '#1 rated in San Bernardino'.",
-    "_confirm": "'#1 Rated In San Bernardino' is the client's claim from the task, not verified. Google Ads can disapprove unsubstantiated superlatives; get the source (e.g. Google/Yelp ranking) or soften it. Offer terms are copied from /specials; no end date given (the mailer version expires 11/30/26).",
-    "title": "$39 Drain Cleaning - Lincoln Plumbing & Rooter",
+    "layout": "flyer",
+    "_source": "ClickUp 86bd1ugjz (2026-11-11): drain cleaning LP like Capri's, CTAs '$39 drain cleaning', 'same day service', '24/7 Emergency', '#1 rated in San Bernardino'. Flyer layout per Matthew, after octoplumbers.com/120-drain-cleaning and capridrains.com.",
+    "_confirm": "'#1 Rated In San Bernardino' is the client's claim, not verified; Google Ads can disapprove unsubstantiated superlatives. Offer terms copied from /specials; no end date given. hero.image and coupon.image are placeholders until the generated images arrive (set coupon.image to switch from the HTML coupon).",
+    "title": "$39 Drain Cleaning in San Bernardino | Lincoln Plumbing & Rooter",
     "description": "$39 drain cleaning for new residential customers in San Bernardino. Same-day service, 24/7 emergency plumbing, licensed and insured. Call Lincoln Plumbing & Rooter today.",
     "hero": {
-      "badges": [
-        "✓ #1 Rated In San Bernardino",
-        "✓ Same-Day Service",
-        "✓ 24/7 Emergency"
-      ],
-      "h1_lines": [
-        "$39 Drain Cleaning.",
-        "Same-Day Service."
-      ],
-      "lede": "Slow, clogged or backed-up drain? Lincoln Plumbing & Rooter clears it today for just $39, with 24/7 emergency service across San Bernardino and the Inland Empire.",
-      "stats": [
-        {
-          "value": "$39",
-          "label": "Drain Cleaning"
-        },
-        {
-          "value": "Same-Day",
-          "label": "Service"
-        },
-        {
-          "value": "24/7",
-          "label": "Emergency"
-        }
-      ]
+      "image": "hero-van.jpg",
+      "image_position": "center 62%",
+      "alt": "Lincoln Plumbing & Rooter service van parked outside a San Bernardino home",
+      "sticker": "#1 Rated In San Bernardino",
+      "plate": "24/7 Emergency Plumbing",
+      "plate_small": "CA License #1111400"
     },
-    "offer": {
-      "tag": "Limited-Time Special",
-      "price": "39",
-      "title": "Drain Cleaning Special",
-      "body": "For new residential customers. Same-day appointments, and 24/7 emergency service when it can't wait.",
-      "terms": [
-        "Accessible clean-out required",
-        "Camera line inspection must be permitted",
-        "Cannot be combined with other discounts"
-      ]
-    },
-    "ticker": [
-      "💲 $39 Drain Cleaning",
-      "⏱️ Same-Day Service",
-      "🚨 24/7 Emergency",
-      "🏆 #1 Rated In San Bernardino",
-      "🔧 Licensed & Insured"
+    "h1": [
+      "$39 Drain Cleaning",
+      "in San Bernardino"
     ],
-    "signs": {
-      "eyebrow": "Sound Familiar?",
-      "h2": "Signs You Need Drain Cleaning",
-      "sub": "Small drain problems turn into big, expensive ones fast. If you're dealing with any of these, it's time to call.",
-      "cards": [
-        {
-          "title": "Slow Draining",
-          "body": "Water pooling in sinks, tubs or showers instead of draining normally."
-        },
-        {
-          "title": "Bad Odors",
-          "body": "Sewer-like smells coming from drains or fixtures that won't go away."
-        },
-        {
-          "title": "Gurgling Sounds",
-          "body": "Bubbling or gurgling when water drains or the toilet flushes."
-        },
-        {
-          "title": "Recurring Clogs",
-          "body": "Drains that clog again and again, no matter how often you clear them."
-        }
-      ]
+    "coupon": {
+      "image": "",
+      "alt": "$39 drain cleaning special. Same-day service, 24/7 emergency, #1 rated in San Bernardino.",
+      "kicker": "Drain Cleaning",
+      "price": "39",
+      "pill": "Same-Day Service",
+      "ribbon": "#1 Rated In San Bernardino",
+      "strip": "24/7 Emergency Service"
     },
+    "alert": "Plumbing emergency? Call us any time. Emergency service is available 24/7.",
+    "terms": "$39 drain cleaning for new residential customers. Accessible clean-out required and camera line inspection must be permitted. Cannot be combined with other discounts.",
     "services": {
-      "eyebrow": "",
-      "h2": "",
-      "sub": "",
-      "cards": []
-    },
-    "compare": {
-      "eyebrow": "Why Call Today",
-      "h2": "Don't Wait On A Clog",
-      "sub": "A partial clog only gets worse, and it usually picks the worst time to back up.",
-      "cards": [
-        {
-          "classes": "compare-card",
-          "title": "If You Wait",
-          "items": [
-            "Slow drains turn into full backups",
-            "Store-bought chemicals can damage older pipes",
-            "A main-line clog can back up into tubs and floors",
-            "Small fixes become big repair bills"
-          ]
-        },
-        {
-          "classes": "compare-card highlight",
-          "title": "Call Lincoln Plumbing & Rooter",
-          "items": [
-            "$39 drain cleaning for new residential customers",
-            "Same-day service, and 24/7 for emergencies",
-            "Upfront pricing before we start, no hidden fees",
-            "Licensed and insured, Contractor License #1111400"
-          ]
-        }
-      ]
-    },
-    "how": {
-      "eyebrow": "Simple Process",
-      "h2": "How It Works",
-      "sub": "",
-      "cards": [
-        {
-          "num": "1",
-          "title": "Call Or Book Online",
-          "body": "Tell us what's going on and mention the $39 special. We'll get you on the schedule, often the same day."
-        },
-        {
-          "num": "2",
-          "title": "We Find The Cause",
-          "body": "Our techs find what's causing the clog, with a camera line inspection, before recommending any work."
-        },
-        {
-          "num": "3",
-          "title": "We Clear It & Confirm",
-          "body": "We clear the line, make sure everything drains right, and go over upfront pricing before any extra work."
-        }
+      "h2": "Services",
+      "sub": "If it drains, leaks or heats water, Lincoln can fix it.",
+      "items": [
+        "Drain cleaning",
+        "Hydro jetting",
+        "Sewer line repair",
+        "Camera line inspection",
+        "Leak detection",
+        "Slab leak repair",
+        "Water heater repair & installation",
+        "Tankless water heaters",
+        "Garbage disposals",
+        "24/7 emergency plumbing"
       ]
     },
     "why": {
-      "eyebrow": "Why Lincoln",
-      "h2": "Why Choose Lincoln Plumbing & Rooter",
-      "sub": "",
+      "h2": "Why Choose Lincoln?",
       "cards": [
         {
-          "icon": "⚡",
+          "icon": "tag",
+          "title": "$39 Drain Cleaning",
+          "body": "Our drain cleaning special for new residential customers in San Bernardino."
+        },
+        {
+          "icon": "bolt",
           "title": "Same-Day Service",
-          "body": "Most drain calls are handled the same day, and we answer 24/7 for emergencies."
+          "body": "Same-day appointments for clogged, slow and backed-up drains."
         },
         {
-          "icon": "💵",
-          "title": "Transparent Pricing",
-          "body": "Upfront pricing before we start, no hidden fees, no surprises on your invoice."
+          "icon": "clock",
+          "title": "24/7 Emergency",
+          "body": "Backups don't wait. We answer nights, weekends and holidays."
         },
         {
-          "icon": "📋",
+          "icon": "shield",
           "title": "Licensed & Insured",
-          "body": "Fully licensed and insured for your protection and peace of mind."
+          "body": "California Contractor License #1111400."
+        },
+        {
+          "icon": "home",
+          "title": "Family Owned",
+          "body": "Family owned and operated, serving the Inland Empire since 2021."
+        },
+        {
+          "icon": "card",
+          "title": "Upfront Pricing",
+          "body": "You approve the price before we start. No surprise fees."
         }
       ]
     },
-    "testimonial": {
-      "quote": "\"Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don't need plumbing services again, I definitely be calling them.\"",
-      "who": "— Ericka M."
-    },
-    "area": {
-      "eyebrow": "Where We Work",
-      "h2": "Drain Cleaning In San Bernardino & The Inland Empire",
-      "sub": "Lincoln Plumbing & Rooter clears clogged and slow drains for homes and businesses across San Bernardino and the surrounding Inland Empire.",
-      "chips": [
-        "San Bernardino",
-        "Riverside",
-        "Rancho Cucamonga",
-        "Fontana",
-        "Redlands",
-        "Highland"
+    "jobs": {
+      "h2": "Real Lincoln Jobs",
+      "tag": "Our work, not stock photos",
+      "items": [
+        {
+          "image": "work-commercial-drain.jpg",
+          "alt": "Lincoln technician clearing a commercial drain",
+          "caption": "Commercial drain clearing"
+        },
+        {
+          "image": "work-kitchen-drain.jpg",
+          "alt": "Lincoln technician working on a kitchen sink drain",
+          "caption": "Kitchen drain repair"
+        },
+        {
+          "image": "gallery-vanity-repair.jpg",
+          "alt": "Lincoln technician repairing a bathroom vanity drain",
+          "caption": "Bathroom vanity drain"
+        }
       ]
     },
-    "quote_cta": {
-      "eyebrow": "Claim Your $39 Drain Cleaning",
-      "h2": "Get Your Free Quote Today",
-      "sub": "Fill out the form below and our team will follow up directly, or give us a call anytime, 24/7."
+    "reviews": {
+      "h2": "What Customers Say",
+      "sub": "5-star reviews from real Lincoln customers",
+      "items": [
+        {
+          "quote": "Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced found the problem right away, and even though I hope i don't need plumbing services again I definitely be calling them.",
+          "who": "Ericka M.",
+          "service": "Clear a clogged or slow drain"
+        },
+        {
+          "quote": "They are extremely professional and very accommodating to our company's needs. They always show up on time and ensure that any issue we may have is resolved. We know that we can depend on them any time and highly recommend their services.",
+          "who": "Angie R.",
+          "service": "Clear a clogged or slow drain"
+        },
+        {
+          "quote": "Really appreciated the customer service the technicians gave. Very easy to communicate and job was finished without any complaints. Thank you Ivan and Noel!!",
+          "who": "Jasmine S.",
+          "service": "Install or replace a bathtub"
+        }
+      ]
+    },
+    "cta": {
+      "h2": "Can't Talk Right Now?",
+      "sub": "Leave your details and we'll call you back. The $39 drain cleaning price is already on your request.",
+      "alert": "Plumbing emergency? Call us any time. Emergency service is available 24/7.",
+      "form_h": "Call Me Back",
+      "form_sub": "Tell us what's going on and we'll call you right back.",
+      "promo": "$39 Drain Cleaning"
     }
   }
 }

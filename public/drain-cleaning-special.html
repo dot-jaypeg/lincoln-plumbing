@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$39 Drain Cleaning - Lincoln Plumbing &amp; Rooter</title>
+<title>$39 Drain Cleaning in San Bernardino | Lincoln Plumbing &amp; Rooter</title>
 <meta name="description" content="$39 drain cleaning for new residential customers in San Bernardino. Same-day service, 24/7 emergency plumbing, licensed and insured. Call Lincoln Plumbing &amp; Rooter today.">
 <link rel="canonical" href="https://www.lincolnplumbingandrooter.com/drain-cleaning-special">
 <meta name="robots" content="noindex, follow">
@@ -11,28 +11,152 @@
 <link rel="preload" href="/fonts/Inter-Variable.ttf?v=2e42961539" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/css/style.css?v=2e42961539">
 <style>
-  .lp-offer { background: var(--orange-light); padding: 44px 0; }
-  .lp-offer-card { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 28px 36px;
-    align-items: center; background: var(--ink); color: #fff; border-radius: 22px; padding: 30px 36px; }
-  .lp-offer-card::after { content: ''; position: absolute; inset: 8px; border: 1.5px dashed rgba(255,255,255,0.4);
-    border-radius: 16px; pointer-events: none; }
-  .lp-offer-price { font-family: var(--font-heading); font-weight: 700; line-height: 0.9; font-size: clamp(4rem, 9vw, 6.2rem);
-    background: var(--grad-fire); -webkit-background-clip: text; background-clip: text; color: transparent; display: flex; }
-  .lp-offer-price .cur { font-size: 0.42em; margin-top: 0.2em; }
-  .lp-offer-tag { display: inline-block; background: var(--grad-orange); color: var(--black); font-weight: 700;
-    font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
-  .lp-offer-copy h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 10px; }
-  .lp-offer-copy p { color: rgba(255,255,255,0.86); margin-top: 8px; font-size: 0.98rem; }
-  .lp-offer-terms { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 12px; padding: 0; list-style: none; }
-  .lp-offer-terms li { color: rgba(255,255,255,0.72); font-size: 0.82rem; }
-  .lp-offer-terms li::before { content: '\2713'; margin-right: 6px; color: var(--gold); }
-  .lp-offer-actions { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; }
-  .lp-offer-actions .btn-secondary { color: #fff; border-color: rgba(255,255,255,0.75); }
-  .lp-offer-actions .btn-secondary:hover { background: #fff; color: var(--ink); }
+  .fl { --fl-navy: #0a2047; --fl-navy-2: #123a7a; --fl-cream: #f6f1e7; --fl-red: #d92d20; }
+  .fl-head { position: sticky; top: 0; z-index: 50; background: linear-gradient(#26262a, #121212);
+    border-bottom: 3px solid var(--orange); }
+  .fl-head .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px; }
+  .fl-head img { height: 54px; width: auto; }
+  .fl-open { display: flex; align-items: center; gap: 8px; color: #fff; font-weight: 700; font-size: 0.82rem;
+    letter-spacing: 0.06em; text-transform: uppercase; }
+  .fl-open::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: #22c55e;
+    box-shadow: 0 0 0 4px rgba(34,197,94,0.25); }
+  .fl-head-actions { display: flex; gap: 10px; align-items: center; }
+  .fl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px;
+    padding: 10px 20px; border-radius: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em;
+    text-decoration: none; border: 2px solid transparent; line-height: 1.1; }
+  .fl-btn-call { background: linear-gradient(180deg, #ff9d2e, #e85f00); color: #fff; border-color: #b84a00;
+    box-shadow: 0 4px 0 #8a3800, 0 10px 24px rgba(232,95,0,0.35); text-shadow: 0 1px 0 rgba(0,0,0,0.3); }
+  .fl-btn-call:hover { filter: brightness(1.06); color: #fff; }
+  .fl-btn-dark { background: #000; color: #fff; border-color: rgba(255,255,255,0.35); }
+  .fl-btn-dark:hover { background: #fff; color: #000; }
+  .fl-btn svg { flex: none; }
+  .fl-btn-xl { width: 100%; font-size: clamp(1.35rem, 4.6vw, 1.9rem); padding: 18px 22px; border-radius: 14px; }
+  .fl :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .skip-link { position: absolute; left: 12px; top: -60px; z-index: 100; background: #fff; color: #000;
+    padding: 10px 16px; border-radius: 8px; font-weight: 700; }
+  .skip-link:focus { top: 12px; }
+
+  .fl-hero { position: relative; background: #121212; height: clamp(250px, 40vw, 600px); overflow: hidden; }
+  .fl-hero > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .fl-sticker { position: absolute; top: 18px; left: clamp(12px, 4vw, 48px); transform: rotate(-6deg);
+    background: #fff; color: #111; border: 3px solid #111; border-radius: 12px; padding: 8px 14px; text-align: center;
+    font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; line-height: 1.05;
+    box-shadow: 4px 4px 0 #111; font-size: clamp(0.8rem, 1.6vw, 1.15rem); }
+  .fl-sticker .stars { color: #f5a400; letter-spacing: 2px; display: block; font-size: 1.1em; }
+  .fl-plate { position: absolute; left: 50%; bottom: clamp(14px, 3vw, 36px); transform: translateX(-50%);
+    background: rgba(10,10,10,0.82); border: 2px solid var(--orange); border-radius: 10px; color: #fff;
+    padding: 8px 22px; text-align: center; white-space: nowrap; font-family: var(--font-heading); font-weight: 700;
+    text-transform: uppercase; font-style: italic; font-size: clamp(1rem, 2.6vw, 1.9rem); letter-spacing: 0.02em; }
+  .fl-plate small { display: block; font-size: 0.5em; color: var(--orange-2); font-style: normal; letter-spacing: 0.12em; }
+
+  .fl-h { font-family: var(--font-heading); font-weight: 700; font-style: italic; text-transform: uppercase;
+    letter-spacing: 0.01em; line-height: 1; color: #111; text-align: center; font-size: clamp(2rem, 5vw, 3rem); }
+  .fl-sub { text-align: center; color: var(--orange-dark); font-family: var(--font-heading); font-weight: 700;
+    font-style: italic; text-transform: uppercase; font-size: clamp(1rem, 2.4vw, 1.3rem); margin-top: 6px; }
+  .fl-sec { padding: clamp(48px, 7vw, 72px) 0; }
+  .fl-cream { background: var(--fl-cream); }
+  .fl-white { background: #fff; }
+  .fl-stone { background: #e9e6e1; }
+
+  .fl-offer .container { max-width: 520px; text-align: center; }
+  .fl-offer h1 { font-family: var(--font-heading); font-weight: 700; font-style: italic; text-transform: uppercase;
+    font-size: clamp(1.6rem, 5vw, 2.3rem); line-height: 1.05; color: #111; margin-bottom: 18px; }
+  .fl-offer h1 span { color: var(--orange-dark); display: block; }
+  .fl-coupon-wrap { border: 3px solid #111; border-radius: 16px; padding: 6px; background: #111;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.28); transform: rotate(-1deg); }
+  .fl-coupon-wrap img { width: 100%; height: auto; display: block; border-radius: 11px; }
+  .fl-coupon { position: relative; overflow: hidden; border-radius: 11px; color: #fff; padding: 30px 18px 0;
+    background:
+      radial-gradient(circle at 18% 22%, rgba(120,200,255,0.55) 0 3px, transparent 4px),
+      radial-gradient(circle at 82% 16%, rgba(120,200,255,0.55) 0 4px, transparent 5px),
+      radial-gradient(circle at 90% 46%, rgba(120,200,255,0.45) 0 3px, transparent 4px),
+      radial-gradient(circle at 10% 58%, rgba(120,200,255,0.45) 0 5px, transparent 6px),
+      radial-gradient(ellipse at 50% 112%, #59b8ff 0%, rgba(30,120,230,0.6) 30%, transparent 62%),
+      linear-gradient(180deg, var(--fl-navy-2) 0%, var(--fl-navy) 70%); }
+  .fl-coupon-kicker { font-family: var(--font-heading); font-weight: 700; font-style: italic; text-transform: uppercase;
+    font-size: clamp(2.2rem, 9vw, 3.3rem); line-height: 0.95; text-shadow: 3px 3px 0 #000, 0 0 18px rgba(0,0,0,0.4); }
+  .fl-coupon-price { font-family: var(--font-heading); font-weight: 700; font-style: italic; line-height: 0.85;
+    font-size: clamp(6.5rem, 30vw, 9.5rem); color: #fff; margin-top: 6px;
+    text-shadow: 0 4px 0 #e85f00, 0 8px 0 #8a3800, 0 14px 26px rgba(0,0,0,0.55); }
+  .fl-coupon-price sup { font-size: 0.45em; vertical-align: top; position: relative; top: 0.18em; }
+  .fl-coupon-pill { display: inline-block; margin-top: 16px; background: #000; border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 999px; padding: 6px 16px; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .fl-coupon-ribbon { margin: 16px -30px 0; transform: rotate(-3deg); background: linear-gradient(90deg, #e85f00, #ff9d2e, #e85f00);
+    color: #fff; padding: 10px 30px; font-family: var(--font-heading); font-weight: 700; font-style: italic; text-transform: uppercase;
+    font-size: clamp(1.25rem, 5vw, 1.7rem); text-shadow: 2px 2px 0 rgba(0,0,0,0.45); box-shadow: 0 6px 14px rgba(0,0,0,0.35); }
+  .fl-coupon-drain { display: block; margin: 16px auto 4px; width: 62%; max-width: 230px; height: auto; }
+  .fl-coupon-strip { margin: 0 -18px; background: #000; padding: 10px; font-weight: 800; font-size: 0.82rem;
+    letter-spacing: 0.08em; text-transform: uppercase; }
+  .fl-offer .fl-btn-xl { margin-top: 26px; }
+  .fl-alert { display: flex; gap: 10px; align-items: flex-start; text-align: left; margin-top: 14px; border: 2px solid var(--orange);
+    background: #fff; border-radius: 10px; padding: 10px 14px; color: var(--fl-red); font-weight: 700; font-size: 0.92rem; line-height: 1.35; }
+  .fl-alert::before { content: ''; flex: none; width: 10px; height: 10px; margin-top: 5px; border-radius: 50%; background: var(--fl-red);
+    box-shadow: 0 0 0 4px rgba(217,45,32,0.18); }
+  .fl-fine { margin-top: 14px; font-size: 0.82rem; color: #4a4a4a; line-height: 1.5; }
+  .fl-fine a { color: var(--orange-dark); font-weight: 700; }
+
+  .fl-list { list-style: none; padding: 0; margin: 34px auto 0; max-width: 760px; display: grid;
+    grid-template-columns: 1fr 1fr; gap: 0 34px; }
+  .fl-list li { display: flex; gap: 10px; align-items: center; padding: 11px 0; border-bottom: 1px solid #e3ded4;
+    font-weight: 700; color: #1b1b1b; }
+  .fl-list li svg { flex: none; color: var(--blue); }
+
+  .fl-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
+  .fl-card { background: #fff; border: 2px solid var(--orange); border-radius: 12px; padding: 20px; }
+  .fl-card .ic { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px;
+    background: var(--orange-light); color: var(--orange-dark); border: 1px solid #f3c99b; }
+  .fl-card h3 { margin-top: 14px; font-size: 1.05rem; color: #111; }
+  .fl-card p { margin-top: 6px; font-size: 0.92rem; color: #4a4a4a; line-height: 1.5; }
+
+  .fl-row-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  .fl-row-head .fl-h { text-align: left; }
+  .fl-tag { background: #fff; border: 1px solid #cfc8bb; border-radius: 999px; padding: 6px 14px; font-size: 0.74rem;
+    font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #333; }
+  .fl-jobs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .fl-job { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #d9d3c7; }
+  .fl-job img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  .fl-job p { display: flex; gap: 8px; align-items: center; padding: 12px 14px; font-weight: 700; color: #1b1b1b; font-size: 0.95rem; }
+  .fl-job p svg { color: var(--success); flex: none; }
+
+  .fl-reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .fl-review { background: #fff; border-radius: 14px; padding: 22px; border: 1px solid #e3e3e3;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+  .fl-review .stars { color: #f5a400; letter-spacing: 3px; font-size: 1.05rem; }
+  .fl-review blockquote { margin: 12px 0 0; color: #222; line-height: 1.55; font-size: 0.95rem; flex: 1; }
+  .fl-review cite { display: block; margin-top: 16px; font-style: normal; font-weight: 800; color: #111; }
+  .fl-review cite small { display: block; font-weight: 600; color: #666; margin-top: 2px; }
+
+  .fl-cta { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+  .fl-cta .fl-h { text-align: left; }
+  .fl-cta-copy p { margin-top: 14px; color: #333; font-size: 1.02rem; line-height: 1.55; }
+  .fl-cta-copy .fl-btn-call { margin-top: 22px; font-size: 1.25rem; padding: 14px 24px; }
+  .fl-form { background: linear-gradient(#1f1f23, #111); border-radius: 16px; padding: 22px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .fl-form h2 { font-family: var(--font-heading); font-weight: 700; font-style: italic; text-transform: uppercase; color: #fff;
+    font-size: clamp(1.7rem, 4vw, 2.2rem); line-height: 1; }
+  .fl-form > p { color: rgba(255,255,255,0.75); margin-top: 6px; font-size: 0.92rem; }
+  .fl-form-promo { display: flex; gap: 10px; align-items: center; margin-top: 14px; border: 1px dashed var(--orange-2);
+    background: rgba(255,123,0,0.12); border-radius: 10px; padding: 10px 12px; color: #fff; font-weight: 800; font-size: 0.86rem;
+    text-transform: uppercase; letter-spacing: 0.03em; }
+  .fl-form-promo small { display: block; color: var(--orange-2); font-size: 0.7rem; letter-spacing: 0.1em; }
+  .fl-form-frame { margin-top: 14px; background: #fff; border-radius: 12px; overflow: hidden; }
+  .fl-form-note { margin-top: 12px; text-align: center; color: rgba(255,255,255,0.75); font-size: 0.9rem; }
+  .fl-form-note a { color: var(--orange-2); font-weight: 800; }
+
   @media (max-width: 900px) {
-    .lp-offer-card { grid-template-columns: 1fr; text-align: center; padding: 30px 22px; gap: 18px; }
-    .lp-offer-price { justify-content: center; }
-    .lp-offer-terms { justify-content: center; }
+    .fl-open { display: none; }
+    .fl-head .fl-btn-dark { display: none; }
+    .fl-cards, .fl-jobs, .fl-reviews { grid-template-columns: 1fr 1fr; }
+    .fl-cta { grid-template-columns: 1fr; }
+    .fl-cta .fl-h, .fl-cta-copy { text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .fl-head img { height: 44px; }
+    .fl-head .fl-btn-call { padding: 8px 12px; font-size: 0.9rem; }
+    .fl-list { grid-template-columns: 1fr; }
+    .fl-cards, .fl-jobs, .fl-reviews { grid-template-columns: 1fr; }
+    .fl-row-head { justify-content: center; }
+    .fl-row-head .fl-h { text-align: center; }
+    .fl-plate { white-space: normal; width: max-content; max-width: 92%; }
   }
 </style>
 <!-- tracking:head -->
@@ -110,297 +234,188 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /></noscript>
-<div class="lp-topstrip">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="fl-head">
   <div class="container">
-    <span>Contractor License #1111400</span>
-    <span>738 S Waterman Ave C45, San Bernardino, CA 92408</span>
-    <span>Open 24 Hours, 7 Days a Week</span>
-  </div>
-</div>
-
-<header class="lp-header">
-  <div class="container">
-    <img src="/images/logo.png" alt="Lincoln Plumbing &amp; Rooter logo">
-    <div class="lp-header-actions">
-      <a href="#quote" class="btn btn-secondary btn-sm">Get A Free Quote</a>
-      <a href="tel:19097650236" class="btn-call">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>909-765-0236</span>
-      </a>
+    <img src="/images/logo.png" alt="Lincoln Plumbing &amp; Rooter">
+    <span class="fl-open">Open Now &middot; Emergency Line 24/7</span>
+    <div class="fl-head-actions">
+      <a href="tel:19097650236" class="fl-btn fl-btn-call"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>909-765-0236</a>
+      <a href="#quote" class="fl-btn fl-btn-dark">Get A Free Quote</a>
     </div>
   </div>
 </header>
 
 <div class="mobile-call-bar">
   <a href="tel:19097650236">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    24/7 Emergency — Call 909-765-0236
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    24/7 Emergency: Call 909-765-0236
   </a>
 </div>
 
-<main>
-<section class="hero hero-lp">
-  <div class="hero-media">
-    <img src="/images/work-kitchen-drain.jpg" alt="Lincoln Plumbing &amp; Rooter technician at work" class="hero-video">
-    <div class="hero-overlay"></div>
-  </div>
-  <div class="hero-grid-lines"></div>
-  <div class="container hero-split">
-    <div class="hero-content">
-      <div class="lp-badges"><span>✓ #1 Rated In San Bernardino</span><span>✓ Same-Day Service</span><span>✓ 24/7 Emergency</span></div>
-      <h1>$39 Drain Cleaning.<br><span class="hl">Same-Day Service.</span></h1>
-      <p class="lede">Slow, clogged or backed-up drain? Lincoln Plumbing &amp; Rooter clears it today for just $39, with 24/7 emergency service across San Bernardino and the Inland Empire.</p>
-      <div class="hero-ctas">
-        <a href="tel:19097650236" class="btn btn-primary">Call 909-765-0236</a>
-        <a href="#quote" class="btn btn-secondary">Get A Free Quote</a>
+<main id="main" class="fl">
+<section class="fl-hero">
+  <img src="/images/hero-van.jpg" alt="Lincoln Plumbing &amp; Rooter service van parked outside a San Bernardino home" style="object-position:center 62%" fetchpriority="high">
+  <div class="fl-sticker"><span class="stars" aria-hidden="true">★★★★★</span>#1 Rated In San Bernardino</div>
+  <div class="fl-plate">24/7 Emergency Plumbing<small>CA License #1111400</small></div>
+</section>
+
+<section class="fl-sec fl-cream fl-offer" id="offer">
+  <div class="container">
+    <h1>$39 Drain Cleaning <span>in San Bernardino</span></h1>
+    <div class="fl-coupon-wrap">
+      <div class="fl-coupon" role="img" aria-label="$39 drain cleaning special. Same-day service, 24/7 emergency, #1 rated in San Bernardino.">
+        <div class="fl-coupon-kicker" aria-hidden="true">Drain Cleaning</div>
+        <div class="fl-coupon-price" aria-hidden="true"><sup>$</sup>39</div>
+        <div class="fl-coupon-pill" aria-hidden="true">Same-Day Service</div>
+        <div class="fl-coupon-ribbon" aria-hidden="true">#1 Rated In San Bernardino</div>
+        <svg class="fl-coupon-drain" viewBox="0 0 240 120" aria-hidden="true">
+          <g stroke="#bfe6ff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+            <path d="M120 70 Q120 30 120 6"/><path d="M120 70 Q98 34 72 14"/><path d="M120 70 Q142 34 168 14"/>
+            <path d="M120 70 Q80 46 40 40"/><path d="M120 70 Q160 46 200 40"/>
+          </g>
+          <ellipse cx="120" cy="92" rx="92" ry="22" fill="#9aa4b1" stroke="#e6ebf1" stroke-width="4"/>
+          <ellipse cx="120" cy="92" rx="70" ry="15" fill="#2b313a"/>
+          <g stroke="#c9d1db" stroke-width="5">
+            <line x1="72" y1="92" x2="168" y2="92"/><line x1="88" y1="81" x2="88" y2="103"/>
+            <line x1="104" y1="78" x2="104" y2="106"/><line x1="120" y1="77" x2="120" y2="107"/>
+            <line x1="136" y1="78" x2="136" y2="106"/><line x1="152" y1="81" x2="152" y2="103"/>
+          </g>
+        </svg>
+        <div class="fl-coupon-strip" aria-hidden="true">24/7 Emergency Service</div>
       </div>
-      <div class="hero-stats"><div><b>$39</b><span>Drain Cleaning</span></div><div><b>Same-Day</b><span>Service</span></div><div><b>24/7</b><span>Emergency</span></div></div>
     </div>
-      <div class="hero-form-card">
-        <h2>Get A Free Quote</h2>
-        <p>Tell us what's going on — our team follows up directly.</p>
-        <iframe src="https://link.advancedmarketers.co/widget/form/dxqfiiA9bB1OLTNaNnRx" style="width:100%;height:640px;border:none" id="inline-dxqfiiA9bB1OLTNaNnRx-hero"
+    <a href="tel:19097650236" class="fl-btn fl-btn-call fl-btn-xl"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>909-765-0236</a>
+    <p class="fl-alert">Plumbing emergency? Call us any time. Emergency service is available 24/7.</p>
+    <p class="fl-fine">$39 drain cleaning for new residential customers. Accessible clean-out required and camera line inspection must be permitted. Cannot be combined with other discounts. <a href="#quote">Or request service online</a></p>
+  </div>
+</section>
+
+<section class="fl-sec fl-white">
+  <div class="container">
+    <h2 class="fl-h">Services</h2>
+    <p class="fl-sub">If it drains, leaks or heats water, Lincoln can fix it.</p>
+    <ul class="fl-list">
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></svg>Drain cleaning</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></svg>Hydro jetting</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></svg>Sewer line repair</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></svg>Camera line inspection</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></svg>Leak detection</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></svg>Slab leak repair</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></svg>Water heater repair &amp; installation</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></svg>Tankless water heaters</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></svg>Garbage disposals</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></svg>24/7 emergency plumbing</li>
+    </ul>
+  </div>
+</section>
+
+<section class="fl-sec fl-cream">
+  <div class="container">
+    <h2 class="fl-h">Why Choose Lincoln?</h2>
+    <div class="fl-cards">
+      <div class="fl-card">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></div>
+        <h3>$39 Drain Cleaning</h3>
+        <p>Our drain cleaning special for new residential customers in San Bernardino.</p>
+      </div>
+      <div class="fl-card">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h3>Same-Day Service</h3>
+        <p>Same-day appointments for clogged, slow and backed-up drains.</p>
+      </div>
+      <div class="fl-card">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>24/7 Emergency</h3>
+        <p>Backups don&#x27;t wait. We answer nights, weekends and holidays.</p>
+      </div>
+      <div class="fl-card">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <h3>Licensed &amp; Insured</h3>
+        <p>California Contractor License #1111400.</p>
+      </div>
+      <div class="fl-card">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div>
+        <h3>Family Owned</h3>
+        <p>Family owned and operated, serving the Inland Empire since 2021.</p>
+      </div>
+      <div class="fl-card">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+        <h3>Upfront Pricing</h3>
+        <p>You approve the price before we start. No surprise fees.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fl-sec fl-stone">
+  <div class="container">
+    <div class="fl-row-head">
+      <h2 class="fl-h">Real Lincoln Jobs</h2>
+      <span class="fl-tag">Our work, not stock photos</span>
+    </div>
+    <div class="fl-jobs">
+      <figure class="fl-job">
+        <img src="/images/work-commercial-drain.jpg" alt="Lincoln technician clearing a commercial drain" loading="lazy">
+        <p><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Commercial drain clearing</p>
+      </figure>
+      <figure class="fl-job">
+        <img src="/images/work-kitchen-drain.jpg" alt="Lincoln technician working on a kitchen sink drain" loading="lazy">
+        <p><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kitchen drain repair</p>
+      </figure>
+      <figure class="fl-job">
+        <img src="/images/gallery-vanity-repair.jpg" alt="Lincoln technician repairing a bathroom vanity drain" loading="lazy">
+        <p><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Bathroom vanity drain</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="fl-sec fl-white">
+  <div class="container">
+    <h2 class="fl-h">What Customers Say</h2>
+    <p class="fl-sub">5-star reviews from real Lincoln customers</p>
+    <div class="fl-reviews">
+      <figure class="fl-review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>&ldquo;Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced found the problem right away, and even though I hope i don&#x27;t need plumbing services again I definitely be calling them.&rdquo;</blockquote>
+        <figcaption><cite>Ericka M.<small>Clear a clogged or slow drain</small></cite></figcaption>
+      </figure>
+      <figure class="fl-review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>&ldquo;They are extremely professional and very accommodating to our company&#x27;s needs. They always show up on time and ensure that any issue we may have is resolved. We know that we can depend on them any time and highly recommend their services.&rdquo;</blockquote>
+        <figcaption><cite>Angie R.<small>Clear a clogged or slow drain</small></cite></figcaption>
+      </figure>
+      <figure class="fl-review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>&ldquo;Really appreciated the customer service the technicians gave. Very easy to communicate and job was finished without any complaints. Thank you Ivan and Noel!!&rdquo;</blockquote>
+        <figcaption><cite>Jasmine S.<small>Install or replace a bathtub</small></cite></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="fl-sec fl-cream" id="quote">
+  <div class="container fl-cta">
+    <div class="fl-cta-copy">
+      <h2 class="fl-h">Can&#x27;t Talk Right Now?</h2>
+      <p>Leave your details and we&#x27;ll call you back. The $39 drain cleaning price is already on your request.</p>
+      <a href="tel:19097650236" class="fl-btn fl-btn-call"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>909-765-0236</a>
+      <p class="fl-alert">Plumbing emergency? Call us any time. Emergency service is available 24/7.</p>
+    </div>
+    <div class="fl-form">
+      <h2>Call Me Back</h2>
+      <p>Tell us what&#x27;s going on and we&#x27;ll call you right back.</p>
+      <div class="fl-form-promo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg><span><small>Offer Applied</small>$39 Drain Cleaning</span></div>
+      <div class="fl-form-frame">
+        <iframe src="https://link.advancedmarketers.co/widget/form/dxqfiiA9bB1OLTNaNnRx" style="width:100%;height:640px;border:none" id="inline-dxqfiiA9bB1OLTNaNnRx-final"
           data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
           data-activation-type="alwaysActivated" data-activation-value=""
           data-deactivation-type="neverDeactivate" data-deactivation-value=""
-          data-form-name="Meta Form" data-height="640" data-layout-iframe-id="inline-dxqfiiA9bB1OLTNaNnRx-hero"
-          data-form-id="dxqfiiA9bB1OLTNaNnRx" title="Get A Free Quote"></iframe>
+          data-form-name="Meta Form" data-height="640" data-layout-iframe-id="inline-dxqfiiA9bB1OLTNaNnRx-final"
+          data-form-id="dxqfiiA9bB1OLTNaNnRx" title="Call Me Back"></iframe>
       </div>
-  </div>
-</section>
-
-<section class="lp-offer" aria-labelledby="lp-offer-title">
-  <div class="container">
-    <div class="lp-offer-card">
-      <div class="lp-offer-price" aria-hidden="true"><span class="cur">$</span>39</div>
-      <div class="lp-offer-copy">
-        <span class="lp-offer-tag">Limited-Time Special</span>
-        <h2 id="lp-offer-title">$39 Drain Cleaning Special</h2>
-        <p>For new residential customers. Same-day appointments, and 24/7 emergency service when it can&#x27;t wait.</p>
-        <ul class="lp-offer-terms"><li>Accessible clean-out required</li><li>Camera line inspection must be permitted</li><li>Cannot be combined with other discounts</li></ul>
-      </div>
-      <div class="lp-offer-actions">
-        <a href="tel:19097650236" class="btn btn-primary">Call 909-765-0236</a>
-        <a href="#quote" class="btn btn-secondary">Get A Free Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>💲 $39 Drain Cleaning<i>/</i>⏱️ Same-Day Service<i>/</i>🚨 24/7 Emergency<i>/</i>🏆 #1 Rated In San Bernardino<i>/</i>🔧 Licensed &amp; Insured<i>/</i></span><span>💲 $39 Drain Cleaning<i>/</i>⏱️ Same-Day Service<i>/</i>🚨 24/7 Emergency<i>/</i>🏆 #1 Rated In San Bernardino<i>/</i>🔧 Licensed &amp; Insured<i>/</i></span>
-  </div>
-</div>
-
-<section class="section-tight bg-soft">
-  <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow">Sound Familiar?</span>
-        <h2>Signs You Need Drain Cleaning</h2>
-        <p>Small drain problems turn into big, expensive ones fast. If you&#x27;re dealing with any of these, it&#x27;s time to call.</p>
-      </div>
-    <div class="services-grid">
-        <div class="service-card">
-          <h3>Slow Draining</h3>
-          <p>Water pooling in sinks, tubs or showers instead of draining normally.</p>
-        </div>
-        <div class="service-card">
-          <h3>Bad Odors</h3>
-          <p>Sewer-like smells coming from drains or fixtures that won&#x27;t go away.</p>
-        </div>
-        <div class="service-card">
-          <h3>Gurgling Sounds</h3>
-          <p>Bubbling or gurgling when water drains or the toilet flushes.</p>
-        </div>
-        <div class="service-card">
-          <h3>Recurring Clogs</h3>
-          <p>Drains that clog again and again, no matter how often you clear them.</p>
-        </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight">
-  <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow">Why Call Today</span>
-        <h2>Don&#x27;t Wait On A Clog</h2>
-        <p>A partial clog only gets worse, and it usually picks the worst time to back up.</p>
-      </div>
-    <div class="compare-grid">
-        <div class="compare-card">
-          <h3>If You Wait</h3>
-          <ul>
-            <li>Slow drains turn into full backups</li>
-            <li>Store-bought chemicals can damage older pipes</li>
-            <li>A main-line clog can back up into tubs and floors</li>
-            <li>Small fixes become big repair bills</li>
-          </ul>
-        </div>
-        <div class="compare-card highlight">
-          <h3>Call Lincoln Plumbing &amp; Rooter</h3>
-          <ul>
-            <li>$39 drain cleaning for new residential customers</li>
-            <li>Same-day service, and 24/7 for emergencies</li>
-            <li>Upfront pricing before we start, no hidden fees</li>
-            <li>Licensed and insured, Contractor License #1111400</li>
-          </ul>
-        </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight bg-soft">
-  <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow">Simple Process</span>
-        <h2>How It Works</h2>
-        
-      </div>
-    <div class="step-grid">
-        <div class="step-card">
-          <div class="stepnum">1</div>
-          <h3>Call Or Book Online</h3>
-          <p>Tell us what&#x27;s going on and mention the $39 special. We&#x27;ll get you on the schedule, often the same day.</p>
-        </div>
-        <div class="step-card">
-          <div class="stepnum">2</div>
-          <h3>We Find The Cause</h3>
-          <p>Our techs find what&#x27;s causing the clog, with a camera line inspection, before recommending any work.</p>
-        </div>
-        <div class="step-card">
-          <div class="stepnum">3</div>
-          <h3>We Clear It &amp; Confirm</h3>
-          <p>We clear the line, make sure everything drains right, and go over upfront pricing before any extra work.</p>
-        </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight bg-ink blueprint-bg">
-  <div class="container">
-      <div class="section-head center">
-        <span class="eyebrow">Why Lincoln</span>
-        <h2>Why Choose Lincoln Plumbing &amp; Rooter</h2>
-        
-      </div>
-    <div class="why-grid">
-        <div class="why-tile">
-          <div class="why-ic emoji">⚡</div>
-          <h3>Same-Day Service</h3>
-          <p>Most drain calls are handled the same day, and we answer 24/7 for emergencies.</p>
-        </div>
-        <div class="why-tile">
-          <div class="why-ic emoji">💵</div>
-          <h3>Transparent Pricing</h3>
-          <p>Upfront pricing before we start, no hidden fees, no surprises on your invoice.</p>
-        </div>
-        <div class="why-tile">
-          <div class="why-ic emoji">📋</div>
-          <h3>Licensed &amp; Insured</h3>
-          <p>Fully licensed and insured for your protection and peace of mind.</p>
-        </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight">
-  <div class="container" style="max-width:840px;">
-    <div class="testimonial-card">
-      <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-      <p>&quot;Clear a Clogged or Slow Drain — Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced, found the problem right away, and even though I hope I don&#x27;t need plumbing services again, I definitely be calling them.&quot;</p>
-      <div class="testimonial-author"><strong>— Ericka M.</strong></div>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight area-band slash-top slash-bottom">
-  <div class="container">
-    <span class="eyebrow" style="color:rgba(255,255,255,0.9);">Where We Work</span>
-    <h2 style="color:#fff; margin-top:16px;">Drain Cleaning In San Bernardino &amp; The Inland Empire</h2>
-    <p class="lede" style="color:rgba(255,255,255,0.9); max-width:720px;">Lincoln Plumbing &amp; Rooter clears clogged and slow drains for homes and businesses across San Bernardino and the surrounding Inland Empire.</p>
-    <div class="city-cloud">
-        <span class="city-chip">San Bernardino</span>
-        <span class="city-chip">Riverside</span>
-        <span class="city-chip">Rancho Cucamonga</span>
-        <span class="city-chip">Fontana</span>
-        <span class="city-chip">Redlands</span>
-        <span class="city-chip">Highland</span>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight">
-  <div class="container">
-    <div class="section-head center">
-      <span class="eyebrow">More From Lincoln</span>
-      <h2>Other Services We Offer</h2>
-    </div>
-    <div class="lp-links">
-        <a class="lp-link" href="/ga-plumbing-services">Plumbing Services
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="lp-link" href="/drain-cleaning">Drain Cleaning
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="lp-link" href="/hydrojetting">Hydrojetting
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="lp-link" href="/sewer-lines">Sewer Lines
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="lp-link" href="/ga-water-heater">Water Heaters
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="lp-link" href="/ga-tankless-water-heaters">Tankless Water Heaters
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="lp-link" href="/ga-leak-detection">Leak Detection
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="lp-link" href="/ga-garbage-disposal-services">Garbage Disposal
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight bg-soft finance-band">
-  <div class="container finance-grid">
-    <div>
-      <span class="eyebrow">Financing</span>
-      <h2>Flexible Payment Options With GoodLeap</h2>
-      <p>We have partnered with GoodLeap to offer flexible payment options for your project. GoodLeap uses a soft credit check until funding and the highest score from all 3 bureaus to see if you qualify. It also takes just a few minutes to get started.</p>
-      <a href="https://www.goodleap.dev/lincolnplumbingandrooterinc/f5744564-ccff-4b24-838a-3f5c50c41422" target="_blank" rel="noopener" class="btn btn-primary">Get Started</a>
-    </div>
-    <div class="finance-note">
-      <strong>Soft credit check</strong>
-      <span>No impact to your score until funding</span>
-      <strong>Minutes to apply</strong>
-      <span>Uses the highest score from all 3 bureaus</span>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight bg-black blueprint-bg" id="quote">
-  <div class="container" style="max-width:900px;">
-    <div class="section-head center">
-      <span class="eyebrow">Claim Your $39 Drain Cleaning</span>
-      <h2>Get Your Free Quote Today</h2>
-      <p>Fill out the form below and our team will follow up directly, or give us a call anytime, 24/7.</p>
-    </div>
-    <div class="form-shell">
-      <iframe src="https://link.advancedmarketers.co/widget/form/dxqfiiA9bB1OLTNaNnRx" style="width:100%;height:700px;border:none" id="inline-dxqfiiA9bB1OLTNaNnRx-final"
-          data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
-          data-activation-type="alwaysActivated" data-activation-value=""
-          data-deactivation-type="neverDeactivate" data-deactivation-value=""
-          data-form-name="Meta Form" data-height="700" data-layout-iframe-id="inline-dxqfiiA9bB1OLTNaNnRx-final"
-          data-form-id="dxqfiiA9bB1OLTNaNnRx" title="Get A Free Quote"></iframe>
-    </div>
-    <div class="quote-contact">
-      <a href="tel:19097650236">Call 909-765-0236</a>
-      <a href="mailto:contact@lincolnp.com">Email Us</a>
+      <p class="fl-form-note">Or call <a href="tel:19097650236">909-765-0236</a></p>
     </div>
   </div>
 </section>

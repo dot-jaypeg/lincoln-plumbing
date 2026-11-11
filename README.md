@@ -57,10 +57,12 @@ just that page — `python3 tools/build-legacy-lps.py <slug>`. Don't run a full 
 `/ga-plumbing-services` has been hand-edited since it was generated and would be
 overwritten. First one: `/toilet-overflow`.
 
-An LP can carry an optional `"offer"` block (`tag`, `price`, `title`, `body`, `terms`):
-it renders as a coupon band straight under the hero, with the call and quote buttons
-on it, like the offer strip on Capri's LPs. First one: `/drain-cleaning-special`
-($39 drain cleaning).
+An LP with `"layout": "flyer"` gets the promo "flyer" page instead of the service-LP
+template: full-width hero photo, one big coupon with a big call button, services list,
+icon cards, real job photos, reviews and a call-me-back form (modelled on Octo's
+/120-drain-cleaning and capridrains.com). Set `hero.image` and `coupon.image` to swap
+in generated art; with no `coupon.image` the coupon is drawn in HTML. First one:
+`/drain-cleaning-special` ($39 drain cleaning).
 
 **Email offer pages** (`/holiday-plumbing-prep`, `/water-heater-checkup`,
 `/plumbing-checkup`, `/refer-a-neighbor`) are built the same way and tracked like
