@@ -95,6 +95,7 @@ META = {
     'hydrojetting':                ('Hydrojetting', 'work-commercial-drain.jpg'),
     'ga-leak-detection':           ('Leak Detection', 'work-attic-access.jpg'),
     'toilet-overflow':             ('Toilet Overflow', 'work-bathroom-vanity.jpg'),  # content/new-lps.json
+    'drain-cleaning-special':      ('$39 Drain Cleaning', 'work-kitchen-drain.jpg'),  # content/new-lps.json
     # Email-campaign offer pages (content/new-lps.json). Not paid LPs: see EMAIL_SLUGS.
     'holiday-plumbing-prep':       ('Holiday Plumbing Prep', 'lp-holiday-prep.jpg'),
     'water-heater-checkup':        ('Water Heater Checkup', 'lp-water-heater-checkup.jpg'),
@@ -191,7 +192,7 @@ def head(page):
 <link rel="icon" href="/images/logo.png">
 <link rel="preload" href="/fonts/Inter-Variable.ttf?v={V}" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/css/style.css?v={V}">
-{tracking.head(slug)}
+{OFFER_CSS if page.get('offer') else ''}{tracking.head(slug)}
 </head>
 <body>
 {tracking.body(slug)}'''
@@ -438,6 +439,63 @@ def hero(page, form_slot='hero'):
       </div>
       {'<div class="hero-stats">' + stats + '</div>' if stats else ''}
     </div>{formcard}
+  </div>
+</section>
+'''
+
+
+# Promo band under the hero, for LPs with an "offer" in content/new-lps.json
+# (first: /drain-cleaning-special). Same idea as the lp-offer strip on Capri's
+# LPs: the price is the first thing after the hero, with a call button on it.
+# Styles live here, not in style.css, so adding it doesn't re-hash every page.
+OFFER_CSS = """<style>
+  .lp-offer { background: var(--orange-light); padding: 44px 0; }
+  .lp-offer-card { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 28px 36px;
+    align-items: center; background: var(--ink); color: #fff; border-radius: 22px; padding: 30px 36px; }
+  .lp-offer-card::after { content: ''; position: absolute; inset: 8px; border: 1.5px dashed rgba(255,255,255,0.4);
+    border-radius: 16px; pointer-events: none; }
+  .lp-offer-price { font-family: var(--font-heading); font-weight: 700; line-height: 0.9; font-size: clamp(4rem, 9vw, 6.2rem);
+    background: var(--grad-fire); -webkit-background-clip: text; background-clip: text; color: transparent; display: flex; }
+  .lp-offer-price .cur { font-size: 0.42em; margin-top: 0.2em; }
+  .lp-offer-tag { display: inline-block; background: var(--grad-orange); color: var(--black); font-weight: 700;
+    font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
+  .lp-offer-copy h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 10px; }
+  .lp-offer-copy p { color: rgba(255,255,255,0.86); margin-top: 8px; font-size: 0.98rem; }
+  .lp-offer-terms { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 12px; padding: 0; list-style: none; }
+  .lp-offer-terms li { color: rgba(255,255,255,0.72); font-size: 0.82rem; }
+  .lp-offer-terms li::before { content: '\\2713'; margin-right: 6px; color: var(--gold); }
+  .lp-offer-actions { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; }
+  .lp-offer-actions .btn-secondary { color: #fff; border-color: rgba(255,255,255,0.75); }
+  .lp-offer-actions .btn-secondary:hover { background: #fff; color: var(--ink); }
+  @media (max-width: 900px) {
+    .lp-offer-card { grid-template-columns: 1fr; text-align: center; padding: 30px 22px; gap: 18px; }
+    .lp-offer-price { justify-content: center; }
+    .lp-offer-terms { justify-content: center; }
+  }
+</style>
+"""
+
+
+def offer(d):
+    if not d:
+        return ''
+    terms = ''.join(f'<li>{e(fix(t))}</li>' for t in d.get('terms', []))
+    return f'''
+<section class="lp-offer" aria-labelledby="lp-offer-title">
+  <div class="container">
+    <div class="lp-offer-card">
+      <div class="lp-offer-price" aria-hidden="true"><span class="cur">$</span>{e(d['price'])}</div>
+      <div class="lp-offer-copy">
+        <span class="lp-offer-tag">{e(fix(d['tag']))}</span>
+        <h2 id="lp-offer-title">${e(d['price'])} {e(fix(d['title']))}</h2>
+        <p>{e(fix(d['body']))}</p>
+        {'<ul class="lp-offer-terms">' + terms + '</ul>' if terms else ''}
+      </div>
+      <div class="lp-offer-actions">
+        <a href="{tel()}" class="btn btn-primary">Call {phone()}</a>
+        <a href="#quote" class="btn btn-secondary">Get A Free Quote</a>
+      </div>
+    </div>
   </div>
 </section>
 '''
@@ -833,7 +891,7 @@ def build(slug):
         parts += [hero(p, form_slot=None), info_cards(p), contact_form_map(),
                   cross_links(slug), finance_band()]
     else:
-        parts += [hero(p), marquee(p['ticker']),
+        parts += [hero(p), offer(p.get('offer')), marquee(p['ticker']),
                   signs(p['signs']), services_grid(p['services']),
                   compare(p['compare']), steps(p['how']), why(p['why']),
                   testimonial(p['testimonial']), area(p['area']),

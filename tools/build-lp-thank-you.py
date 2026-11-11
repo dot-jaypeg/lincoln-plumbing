@@ -24,7 +24,7 @@ LP_FORM_SLUGS = [
     'ga-plumbing-services', 'sewer-lines', 'ga-tankless-water-heaters',
     'ga-water-heater', 'ga-contact', 'drain-cleaning',
     'ga-garbage-disposal-services', 'hydrojetting', 'ga-leak-detection',
-    'toilet-overflow',
+    'toilet-overflow', 'drain-cleaning-special',
 ]
 
 # Google Ads call configs per call line, as Google sent them.
