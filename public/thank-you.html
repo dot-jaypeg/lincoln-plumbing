@@ -101,15 +101,25 @@ fbq('track', 'PageView');
     .confirm-ctas{flex-direction:column; align-items:stretch;}
   }
 </style>
-<!-- tracking:call-click -->
-<!-- Google tag (gtag.js) - Google Ads -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16721660937"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'AW-16721660937');
 </script>
+<script>
+  gtag('config', 'AW-16721660937/BQtCCIjq9NUcEImYwaU-', {
+    'phone_conversion_number': '(909)765-0236'
+  });
+</script>
+<!-- Event snippet for AM Lead Form / thank-you conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-16721660937/AZdYCOSk4dUcEImYwaU-'});
+</script>
+<!-- tracking:call-click -->
 <!-- Event snippet for Call from Ads conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
