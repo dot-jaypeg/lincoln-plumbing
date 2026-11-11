@@ -731,24 +731,26 @@
     "slug": "drain-cleaning-special",
     "layout": "flyer",
     "_source": "ClickUp 86bd1ugjz (2026-11-11): drain cleaning LP like Capri's, CTAs '$39 drain cleaning', 'same day service', '24/7 Emergency', '#1 rated in San Bernardino'. Flyer layout per Matthew, after octoplumbers.com/120-drain-cleaning and capridrains.com.",
-    "_confirm": "'#1 Rated In San Bernardino' is the client's claim, not verified; Google Ads can disapprove unsubstantiated superlatives. Offer terms copied from /specials; no end date given. hero.image and coupon.image are placeholders until the generated images arrive (set coupon.image to switch from the HTML coupon).",
+    "_confirm": "'#1 Rated In San Bernardino' is the client's claim, not verified; Google Ads can disapprove unsubstantiated superlatives. Offer terms copied from /specials; no end date given. hero.image and coupon.image are AI-generated (Matthew, 2026-11-11); the van lettering in the hero is garbled.",
     "title": "$39 Drain Cleaning in San Bernardino | Lincoln Plumbing & Rooter",
     "description": "$39 drain cleaning for new residential customers in San Bernardino. Same-day service, 24/7 emergency plumbing, licensed and insured. Call Lincoln Plumbing & Rooter today.",
     "hero": {
-      "image": "hero-van.jpg",
-      "image_position": "center 62%",
-      "alt": "Lincoln Plumbing & Rooter service van parked outside a San Bernardino home",
+      "image": "lp-drain-special-hero.jpg",
+      "image_position": "center 40%",
+      "alt": "Lincoln Plumbing & Rooter plumbers in front of a service van on a San Bernardino street, with the mountains behind",
       "sticker": "#1 Rated In San Bernardino",
-      "plate": "24/7 Emergency Plumbing",
-      "plate_small": "CA License #1111400"
+      "plate": "",
+      "plate_small": ""
     },
     "h1": [
       "$39 Drain Cleaning",
       "in San Bernardino"
     ],
     "coupon": {
-      "image": "",
-      "alt": "$39 drain cleaning special. Same-day service, 24/7 emergency, #1 rated in San Bernardino.",
+      "image": "lp-drain-special-coupon.jpg",
+      "width": 1000,
+      "height": 1241,
+      "alt": "Drain cleaning $39. Same-day service. 24/7 emergency service.",
       "kicker": "Drain Cleaning",
       "price": "39",
       "pill": "Same-Day Service",

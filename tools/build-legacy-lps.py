@@ -1060,7 +1060,7 @@ DRAIN_SVG = """<svg class="fl-coupon-drain" viewBox="0 0 240 120" aria-hidden="t
 def flyer_offer(p):
     c = p['coupon']
     if c.get('image'):
-        art = f'<img src="/images/{e(c["image"])}" alt="{e(fix(c["alt"]))}" width="1024" height="1280">'
+        art = f'<img src="/images/{e(c["image"])}" alt="{e(fix(c["alt"]))}" width="{c.get("width", 1000)}" height="{c.get("height", 1250)}">'
     else:
         art = f"""<div class="fl-coupon" role="img" aria-label="{e(fix(c['alt']))}">
         <div class="fl-coupon-kicker" aria-hidden="true">{e(fix(c['kicker']))}</div>
