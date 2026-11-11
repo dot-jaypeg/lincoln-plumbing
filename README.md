@@ -57,6 +57,13 @@ just that page — `python3 tools/build-legacy-lps.py <slug>`. Don't run a full 
 `/ga-plumbing-services` has been hand-edited since it was generated and would be
 overwritten. First one: `/toilet-overflow`.
 
+An LP with `"layout": "flyer"` gets the promo "flyer" page instead of the service-LP
+template: full-width hero photo, one big coupon with a big call button, services list,
+icon cards, real job photos, reviews and a call-me-back form (modelled on Octo's
+/120-drain-cleaning and capridrains.com). Set `hero.image` and `coupon.image` to swap
+in generated art; with no `coupon.image` the coupon is drawn in HTML. First one:
+`/drain-cleaning-special` ($39 drain cleaning).
+
 **Email offer pages** (`/holiday-plumbing-prep`, `/water-heater-checkup`,
 `/plumbing-checkup`, `/refer-a-neighbor`) are built the same way and tracked like
 any paid LP (`LP_GTM_PAGES`), but they're in `EMAIL_SLUGS` in the builder, so they

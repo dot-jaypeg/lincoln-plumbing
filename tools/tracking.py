@@ -18,7 +18,7 @@ LP_GTM_PAGES = {
     'ga-plumbing-services', 'sewer-lines', 'ga-tankless-water-heaters', 'ga-testimonials',
     'ga-water-heater', 'ga-about-us', 'ga-contact', 'drain-cleaning',
     'ga-garbage-disposal-services', 'hydrojetting', 'ga-leak-detection', 'toilet-overflow',
-    'lp-job-ad', 'meta-thank-you',
+    'drain-cleaning-special', 'lp-job-ad', 'meta-thank-you',
     # Email-campaign offer pages (EMAIL_SLUGS in build-legacy-lps.py). Not in
     # LP_SLUGS, since they show the email line, but tracked like any other LP.
     'holiday-plumbing-prep', 'water-heater-checkup', 'plumbing-checkup', 'refer-a-neighbor',

@@ -95,6 +95,7 @@ META = {
     'hydrojetting':                ('Hydrojetting', 'work-commercial-drain.jpg'),
     'ga-leak-detection':           ('Leak Detection', 'work-attic-access.jpg'),
     'toilet-overflow':             ('Toilet Overflow', 'work-bathroom-vanity.jpg'),  # content/new-lps.json
+    'drain-cleaning-special':      ('$39 Drain Cleaning', 'work-kitchen-drain.jpg'),  # content/new-lps.json
     # Email-campaign offer pages (content/new-lps.json). Not paid LPs: see EMAIL_SLUGS.
     'holiday-plumbing-prep':       ('Holiday Plumbing Prep', 'lp-holiday-prep.jpg'),
     'water-heater-checkup':        ('Water Heater Checkup', 'lp-water-heater-checkup.jpg'),
@@ -191,7 +192,7 @@ def head(page):
 <link rel="icon" href="/images/logo.png">
 <link rel="preload" href="/fonts/Inter-Variable.ttf?v={V}" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/css/style.css?v={V}">
-{tracking.head(slug)}
+{FLYER_CSS if page.get('layout') == 'flyer' else ''}{tracking.head(slug)}
 </head>
 <body>
 {tracking.body(slug)}'''
@@ -810,13 +811,397 @@ def simple_cta(eyebrow, h2, sub):
 '''
 
 
+# ------------------------------------------------------------- flyer layout
+# Promo LPs with "layout": "flyer" in content/new-lps.json (first:
+# /drain-cleaning-special). Modelled on the Octo /120-drain-cleaning and
+# capridrains.com promo pages: full-width hero photo, one big poster-style
+# coupon with a big call button under it, a short services list, icon cards,
+# real job photos, reviews and a call-me-back form. Same GHL Meta Form, call
+# line and tracking as every other LP; only the page body differs.
+#
+# The hero and coupon take an image when one exists ("hero_image",
+# "coupon.image"). Until then the coupon is drawn in HTML/CSS. Styles are
+# inlined in <head> so style.css (and every page's asset hash) is untouched.
+FLYER_CSS = """<style>
+  .fl { --fl-navy: #0a2047; --fl-navy-2: #123a7a; --fl-cream: #f6f1e7; --fl-red: #d92d20; }
+  .fl-head { position: sticky; top: 0; z-index: 50; background: linear-gradient(#26262a, #121212);
+    border-bottom: 3px solid var(--orange); }
+  .fl-head .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px; }
+  .fl-head img { height: 54px; width: auto; }
+  .fl-open { display: flex; align-items: center; gap: 8px; color: #fff; font-weight: 700; font-size: 0.82rem;
+    letter-spacing: 0.06em; text-transform: uppercase; }
+  .fl-open::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: #22c55e;
+    box-shadow: 0 0 0 4px rgba(34,197,94,0.25); }
+  .fl-head-actions { display: flex; gap: 10px; align-items: center; }
+  .fl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px;
+    padding: 10px 20px; border-radius: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em;
+    text-decoration: none; border: 2px solid transparent; line-height: 1.1; }
+  .fl-btn-call { background: linear-gradient(180deg, #ff9d2e, #e85f00); color: #fff; border-color: #b84a00;
+    box-shadow: 0 4px 0 #8a3800, 0 10px 24px rgba(232,95,0,0.35); text-shadow: 0 1px 0 rgba(0,0,0,0.3); }
+  .fl-btn-call:hover { filter: brightness(1.06); color: #fff; }
+  .fl-btn-dark { background: #000; color: #fff; border-color: rgba(255,255,255,0.35); }
+  .fl-btn-dark:hover { background: #fff; color: #000; }
+  .fl-btn svg { flex: none; }
+  .fl-btn-xl { width: 100%; font-size: clamp(1.35rem, 4.6vw, 1.9rem); padding: 18px 22px; border-radius: 14px; }
+  .fl :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .skip-link { position: absolute; left: 12px; top: -60px; z-index: 100; background: #fff; color: #000;
+    padding: 10px 16px; border-radius: 8px; font-weight: 700; }
+  .skip-link:focus { top: 12px; }
+
+  .fl-hero { position: relative; background: #121212; height: clamp(250px, 40vw, 600px); overflow: hidden; }
+  .fl-hero > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .fl-sticker { position: absolute; top: 18px; left: clamp(12px, 4vw, 48px); transform: rotate(-6deg);
+    background: #fff; color: #111; border: 3px solid #111; border-radius: 12px; padding: 8px 14px; text-align: center;
+    font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; line-height: 1.05;
+    box-shadow: 4px 4px 0 #111; font-size: clamp(0.8rem, 1.6vw, 1.15rem); }
+  .fl-sticker .stars { color: #f5a400; letter-spacing: 2px; display: block; font-size: 1.1em; }
+  .fl-plate { position: absolute; left: 50%; bottom: clamp(14px, 3vw, 36px); transform: translateX(-50%);
+    background: rgba(10,10,10,0.82); border: 2px solid var(--orange); border-radius: 10px; color: #fff;
+    padding: 8px 22px; text-align: center; white-space: nowrap; font-family: var(--font-heading); font-weight: 700;
+    text-transform: uppercase; font-style: italic; font-size: clamp(1rem, 2.6vw, 1.9rem); letter-spacing: 0.02em; }
+  .fl-plate small { display: block; font-size: 0.5em; color: var(--orange-2); font-style: normal; letter-spacing: 0.12em; }
+
+  .fl-h { font-family: var(--font-heading); font-weight: 700; font-style: italic; text-transform: uppercase;
+    letter-spacing: 0.01em; line-height: 1; color: #111; text-align: center; font-size: clamp(2rem, 5vw, 3rem); }
+  .fl-sub { text-align: center; color: var(--orange-dark); font-family: var(--font-heading); font-weight: 700;
+    font-style: italic; text-transform: uppercase; font-size: clamp(1rem, 2.4vw, 1.3rem); margin-top: 6px; }
+  .fl-sec { padding: clamp(48px, 7vw, 72px) 0; }
+  .fl-cream { background: var(--fl-cream); }
+  .fl-white { background: #fff; }
+  .fl-stone { background: #e9e6e1; }
+
+  .fl-offer .container { max-width: 520px; text-align: center; }
+  .fl-offer h1 { font-family: var(--font-heading); font-weight: 700; font-style: italic; text-transform: uppercase;
+    font-size: clamp(1.6rem, 5vw, 2.3rem); line-height: 1.05; color: #111; margin-bottom: 18px; }
+  .fl-offer h1 span { color: var(--orange-dark); display: block; }
+  .fl-coupon-wrap { border: 3px solid #111; border-radius: 16px; padding: 6px; background: #111;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.28); transform: rotate(-1deg); }
+  .fl-coupon-wrap img { width: 100%; height: auto; display: block; border-radius: 11px; }
+  .fl-coupon { position: relative; overflow: hidden; border-radius: 11px; color: #fff; padding: 30px 18px 0;
+    background:
+      radial-gradient(circle at 18% 22%, rgba(120,200,255,0.55) 0 3px, transparent 4px),
+      radial-gradient(circle at 82% 16%, rgba(120,200,255,0.55) 0 4px, transparent 5px),
+      radial-gradient(circle at 90% 46%, rgba(120,200,255,0.45) 0 3px, transparent 4px),
+      radial-gradient(circle at 10% 58%, rgba(120,200,255,0.45) 0 5px, transparent 6px),
+      radial-gradient(ellipse at 50% 112%, #59b8ff 0%, rgba(30,120,230,0.6) 30%, transparent 62%),
+      linear-gradient(180deg, var(--fl-navy-2) 0%, var(--fl-navy) 70%); }
+  .fl-coupon-kicker { font-family: var(--font-heading); font-weight: 700; font-style: italic; text-transform: uppercase;
+    font-size: clamp(2.2rem, 9vw, 3.3rem); line-height: 0.95; text-shadow: 3px 3px 0 #000, 0 0 18px rgba(0,0,0,0.4); }
+  .fl-coupon-price { font-family: var(--font-heading); font-weight: 700; font-style: italic; line-height: 0.85;
+    font-size: clamp(6.5rem, 30vw, 9.5rem); color: #fff; margin-top: 6px;
+    text-shadow: 0 4px 0 #e85f00, 0 8px 0 #8a3800, 0 14px 26px rgba(0,0,0,0.55); }
+  .fl-coupon-price sup { font-size: 0.45em; vertical-align: top; position: relative; top: 0.18em; }
+  .fl-coupon-pill { display: inline-block; margin-top: 16px; background: #000; border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 999px; padding: 6px 16px; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .fl-coupon-ribbon { margin: 16px -30px 0; transform: rotate(-3deg); background: linear-gradient(90deg, #e85f00, #ff9d2e, #e85f00);
+    color: #fff; padding: 10px 30px; font-family: var(--font-heading); font-weight: 700; font-style: italic; text-transform: uppercase;
+    font-size: clamp(1.25rem, 5vw, 1.7rem); text-shadow: 2px 2px 0 rgba(0,0,0,0.45); box-shadow: 0 6px 14px rgba(0,0,0,0.35); }
+  .fl-coupon-drain { display: block; margin: 16px auto 4px; width: 62%; max-width: 230px; height: auto; }
+  .fl-coupon-strip { margin: 0 -18px; background: #000; padding: 10px; font-weight: 800; font-size: 0.82rem;
+    letter-spacing: 0.08em; text-transform: uppercase; }
+  .fl-offer .fl-btn-xl { margin-top: 26px; }
+  .fl-alert { display: flex; gap: 10px; align-items: flex-start; text-align: left; margin-top: 14px; border: 2px solid var(--orange);
+    background: #fff; border-radius: 10px; padding: 10px 14px; color: var(--fl-red); font-weight: 700; font-size: 0.92rem; line-height: 1.35; }
+  .fl-alert::before { content: ''; flex: none; width: 10px; height: 10px; margin-top: 5px; border-radius: 50%; background: var(--fl-red);
+    box-shadow: 0 0 0 4px rgba(217,45,32,0.18); }
+  .fl-fine { margin-top: 14px; font-size: 0.82rem; color: #4a4a4a; line-height: 1.5; }
+  .fl-fine a { color: var(--orange-dark); font-weight: 700; }
+
+  .fl-list { list-style: none; padding: 0; margin: 34px auto 0; max-width: 760px; display: grid;
+    grid-template-columns: 1fr 1fr; gap: 0 34px; }
+  .fl-list li { display: flex; gap: 10px; align-items: center; padding: 11px 0; border-bottom: 1px solid #e3ded4;
+    font-weight: 700; color: #1b1b1b; }
+  .fl-list li svg { flex: none; color: var(--blue); }
+
+  .fl-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
+  .fl-card { background: #fff; border: 2px solid var(--orange); border-radius: 12px; padding: 20px; }
+  .fl-card .ic { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px;
+    background: var(--orange-light); color: var(--orange-dark); border: 1px solid #f3c99b; }
+  .fl-card h3 { margin-top: 14px; font-size: 1.05rem; color: #111; }
+  .fl-card p { margin-top: 6px; font-size: 0.92rem; color: #4a4a4a; line-height: 1.5; }
+
+  .fl-row-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  .fl-row-head .fl-h { text-align: left; }
+  .fl-tag { background: #fff; border: 1px solid #cfc8bb; border-radius: 999px; padding: 6px 14px; font-size: 0.74rem;
+    font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #333; }
+  .fl-jobs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .fl-job { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #d9d3c7; }
+  .fl-job img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  .fl-job p { display: flex; gap: 8px; align-items: center; padding: 12px 14px; font-weight: 700; color: #1b1b1b; font-size: 0.95rem; }
+  .fl-job p svg { color: var(--success); flex: none; }
+
+  .fl-reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .fl-review { background: #fff; border-radius: 14px; padding: 22px; border: 1px solid #e3e3e3;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+  .fl-review .stars { color: #f5a400; letter-spacing: 3px; font-size: 1.05rem; }
+  .fl-review blockquote { margin: 12px 0 0; color: #222; line-height: 1.55; font-size: 0.95rem; flex: 1; }
+  .fl-review cite { display: block; margin-top: 16px; font-style: normal; font-weight: 800; color: #111; }
+  .fl-review cite small { display: block; font-weight: 600; color: #666; margin-top: 2px; }
+
+  .fl-cta { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+  .fl-cta .fl-h { text-align: left; }
+  .fl-cta-copy p { margin-top: 14px; color: #333; font-size: 1.02rem; line-height: 1.55; }
+  .fl-cta-copy .fl-btn-call { margin-top: 22px; font-size: 1.25rem; padding: 14px 24px; }
+  .fl-form { background: linear-gradient(#1f1f23, #111); border-radius: 16px; padding: 22px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .fl-form h2 { font-family: var(--font-heading); font-weight: 700; font-style: italic; text-transform: uppercase; color: #fff;
+    font-size: clamp(1.7rem, 4vw, 2.2rem); line-height: 1; }
+  .fl-form > p { color: rgba(255,255,255,0.75); margin-top: 6px; font-size: 0.92rem; }
+  .fl-form-promo { display: flex; gap: 10px; align-items: center; margin-top: 14px; border: 1px dashed var(--orange-2);
+    background: rgba(255,123,0,0.12); border-radius: 10px; padding: 10px 12px; color: #fff; font-weight: 800; font-size: 0.86rem;
+    text-transform: uppercase; letter-spacing: 0.03em; }
+  .fl-form-promo small { display: block; color: var(--orange-2); font-size: 0.7rem; letter-spacing: 0.1em; }
+  .fl-form-frame { margin-top: 14px; background: #fff; border-radius: 12px; overflow: hidden; }
+  .fl-form-note { margin-top: 12px; text-align: center; color: rgba(255,255,255,0.75); font-size: 0.9rem; }
+  .fl-form-note a { color: var(--orange-2); font-weight: 800; }
+
+  @media (max-width: 900px) {
+    .fl-open { display: none; }
+    .fl-head .fl-btn-dark { display: none; }
+    .fl-cards, .fl-jobs, .fl-reviews { grid-template-columns: 1fr 1fr; }
+    .fl-cta { grid-template-columns: 1fr; }
+    .fl-cta .fl-h, .fl-cta-copy { text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .fl-head img { height: 44px; }
+    .fl-head .fl-btn-call { padding: 8px 12px; font-size: 0.9rem; }
+    .fl-list { grid-template-columns: 1fr; }
+    .fl-cards, .fl-jobs, .fl-reviews { grid-template-columns: 1fr; }
+    .fl-row-head { justify-content: center; }
+    .fl-row-head .fl-h { text-align: center; }
+    .fl-plate { white-space: normal; width: max-content; max-width: 92%; }
+  }
+</style>
+"""
+
+# Small line icons (24x24, stroke) for the flyer's lists and cards.
+ICONS = {
+    'drop':   '<path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/>',
+    'check':  '<polyline points="20 6 9 17 4 12"/>',
+    'tag':    '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+    'clock':  '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+    'shield': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>',
+    'home':   '<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+    'bolt':   '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+    'pin':    '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+    'card':   '<rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>',
+    'star':   '<polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/>',
+}
+
+
+def icon(name, size=18):
+    return (f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[name]}</svg>')
+
+
+def call_btn(cls='fl-btn fl-btn-call', size=20):
+    return (f'<a href="{tel()}" class="{cls}"><svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" '
+            f'stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+            f'{PHONE_SVG}</svg>{phone()}</a>')
+
+
+def flyer_top():
+    return f"""
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="fl-head">
+  <div class="container">
+    <img src="/images/logo.png" alt="Lincoln Plumbing &amp; Rooter">
+    <span class="fl-open">Open Now &middot; Emergency Line 24/7</span>
+    <div class="fl-head-actions">
+      {call_btn()}
+      <a href="#quote" class="fl-btn fl-btn-dark">Get A Free Quote</a>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-call-bar">
+  <a href="{tel()}">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{PHONE_SVG}</svg>
+    24/7 Emergency: Call {phone()}
+  </a>
+</div>
+"""
+
+
+def flyer_hero(p):
+    h = p['hero']
+    sticker = ''
+    if h.get('sticker'):
+        sticker = (f'<div class="fl-sticker"><span class="stars" aria-hidden="true">★★★★★</span>'
+                   f'{e(fix(h["sticker"]))}</div>')
+    plate = ''
+    if h.get('plate'):
+        plate = (f'<div class="fl-plate">{e(fix(h["plate"]))}'
+                 f'{"<small>" + e(fix(h["plate_small"])) + "</small>" if h.get("plate_small") else ""}</div>')
+    pos = h.get('image_position', 'center')
+    return f"""
+<section class="fl-hero">
+  <img src="/images/{e(h['image'])}" alt="{e(fix(h['alt']))}" style="object-position:{e(pos)}" fetchpriority="high">
+  {sticker}
+  {plate}
+</section>
+"""
+
+
+DRAIN_SVG = """<svg class="fl-coupon-drain" viewBox="0 0 240 120" aria-hidden="true">
+          <g stroke="#bfe6ff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+            <path d="M120 70 Q120 30 120 6"/><path d="M120 70 Q98 34 72 14"/><path d="M120 70 Q142 34 168 14"/>
+            <path d="M120 70 Q80 46 40 40"/><path d="M120 70 Q160 46 200 40"/>
+          </g>
+          <ellipse cx="120" cy="92" rx="92" ry="22" fill="#9aa4b1" stroke="#e6ebf1" stroke-width="4"/>
+          <ellipse cx="120" cy="92" rx="70" ry="15" fill="#2b313a"/>
+          <g stroke="#c9d1db" stroke-width="5">
+            <line x1="72" y1="92" x2="168" y2="92"/><line x1="88" y1="81" x2="88" y2="103"/>
+            <line x1="104" y1="78" x2="104" y2="106"/><line x1="120" y1="77" x2="120" y2="107"/>
+            <line x1="136" y1="78" x2="136" y2="106"/><line x1="152" y1="81" x2="152" y2="103"/>
+          </g>
+        </svg>"""
+
+
+def flyer_offer(p):
+    c = p['coupon']
+    if c.get('image'):
+        art = f'<img src="/images/{e(c["image"])}" alt="{e(fix(c["alt"]))}" width="{c.get("width", 1000)}" height="{c.get("height", 1250)}">'
+    else:
+        art = f"""<div class="fl-coupon" role="img" aria-label="{e(fix(c['alt']))}">
+        <div class="fl-coupon-kicker" aria-hidden="true">{e(fix(c['kicker']))}</div>
+        <div class="fl-coupon-price" aria-hidden="true"><sup>$</sup>{e(c['price'])}</div>
+        <div class="fl-coupon-pill" aria-hidden="true">{e(fix(c['pill']))}</div>
+        <div class="fl-coupon-ribbon" aria-hidden="true">{e(fix(c['ribbon']))}</div>
+        {DRAIN_SVG}
+        <div class="fl-coupon-strip" aria-hidden="true">{e(fix(c['strip']))}</div>
+      </div>"""
+    h1 = p['h1']
+    return f"""
+<section class="fl-sec fl-cream fl-offer" id="offer">
+  <div class="container">
+    <h1>{e(fix(h1[0]))} <span>{e(fix(h1[1]))}</span></h1>
+    <div class="fl-coupon-wrap">
+      {art}
+    </div>
+    {call_btn('fl-btn fl-btn-call fl-btn-xl', 30)}
+    <p class="fl-alert">{e(fix(p['alert']))}</p>
+    <p class="fl-fine">{e(fix(p['terms']))} <a href="#quote">Or request service online</a></p>
+  </div>
+</section>
+"""
+
+
+def flyer_services(d):
+    items = '\n'.join(f'      <li>{icon("drop")}{e(fix(i))}</li>' for i in d['items'])
+    return f"""
+<section class="fl-sec fl-white">
+  <div class="container">
+    <h2 class="fl-h">{e(fix(d['h2']))}</h2>
+    <p class="fl-sub">{e(fix(d['sub']))}</p>
+    <ul class="fl-list">
+{items}
+    </ul>
+  </div>
+</section>
+"""
+
+
+def flyer_why(d):
+    cards = '\n'.join(f"""      <div class="fl-card">
+        <div class="ic">{icon(c['icon'], 20)}</div>
+        <h3>{e(fix(c['title']))}</h3>
+        <p>{e(fix(c['body']))}</p>
+      </div>""" for c in d['cards'])
+    return f"""
+<section class="fl-sec fl-cream">
+  <div class="container">
+    <h2 class="fl-h">{e(fix(d['h2']))}</h2>
+    <div class="fl-cards">
+{cards}
+    </div>
+  </div>
+</section>
+"""
+
+
+def flyer_jobs(d):
+    items = '\n'.join(f"""      <figure class="fl-job">
+        <img src="/images/{e(j['image'])}" alt="{e(fix(j['alt']))}" loading="lazy">
+        <p>{icon('check')}{e(fix(j['caption']))}</p>
+      </figure>""" for j in d['items'])
+    return f"""
+<section class="fl-sec fl-stone">
+  <div class="container">
+    <div class="fl-row-head">
+      <h2 class="fl-h">{e(fix(d['h2']))}</h2>
+      <span class="fl-tag">{e(fix(d['tag']))}</span>
+    </div>
+    <div class="fl-jobs">
+{items}
+    </div>
+  </div>
+</section>
+"""
+
+
+def flyer_reviews(d):
+    items = '\n'.join(f"""      <figure class="fl-review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>&ldquo;{e(r['quote'])}&rdquo;</blockquote>
+        <figcaption><cite>{e(r['who'])}<small>{e(r['service'])}</small></cite></figcaption>
+      </figure>""" for r in d['items'])
+    return f"""
+<section class="fl-sec fl-white">
+  <div class="container">
+    <h2 class="fl-h">{e(fix(d['h2']))}</h2>
+    <p class="fl-sub">{e(fix(d['sub']))}</p>
+    <div class="fl-reviews">
+{items}
+    </div>
+  </div>
+</section>
+"""
+
+
+def flyer_cta(d):
+    return f"""
+<section class="fl-sec fl-cream" id="quote">
+  <div class="container fl-cta">
+    <div class="fl-cta-copy">
+      <h2 class="fl-h">{e(fix(d['h2']))}</h2>
+      <p>{e(fix(d['sub']))}</p>
+      {call_btn()}
+      <p class="fl-alert">{e(fix(d['alert']))}</p>
+    </div>
+    <div class="fl-form">
+      <h2>{e(fix(d['form_h']))}</h2>
+      <p>{e(fix(d['form_sub']))}</p>
+      <div class="fl-form-promo">{icon('tag', 20)}<span><small>Offer Applied</small>{e(fix(d['promo']))}</span></div>
+      <div class="fl-form-frame">
+        {form('final', 640, d['form_h'])}
+      </div>
+      <p class="fl-form-note">Or call <a href="{tel()}">{phone()}</a></p>
+    </div>
+  </div>
+</section>
+"""
+
+
+def build_flyer(p):
+    return [flyer_top(), '\n<main id="main" class="fl">',
+            flyer_hero(p), flyer_offer(p), flyer_services(p['services']),
+            flyer_why(p['why']), flyer_jobs(p['jobs']), flyer_reviews(p['reviews']),
+            flyer_cta(p['cta'])]
+
+
 # ------------------------------------------------------------------- assembly
 def build(slug):
     set_page(slug)
     p = PAGES[slug]
-    parts = [head(p), lp_chrome_top(slug), '\n<main>']
+    parts = [head(p)]
+    if p.get('layout') == 'flyer':
+        parts += build_flyer(p)
+    else:
+        parts += [lp_chrome_top(slug), '\n<main>']
 
-    if slug == 'ga-about-us':
+    if p.get('layout') == 'flyer':
+        pass
+    elif slug == 'ga-about-us':
         parts += [hero(p, form_slot=None), marquee(p['ticker']),
                   commitment_section(), why(p['why']), stats_band(p['stats_grid']),
                   services_grid(p['services']), testimonial(p['testimonial']),

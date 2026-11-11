@@ -726,5 +726,139 @@
       "h2": "Book Your First Service",
       "sub": "Fill out the form and tell us who referred you — or call us anytime."
     }
+  },
+  "drain-cleaning-special": {
+    "slug": "drain-cleaning-special",
+    "layout": "flyer",
+    "_source": "ClickUp 86bd1ugjz (2026-11-11): drain cleaning LP like Capri's, CTAs '$39 drain cleaning', 'same day service', '24/7 Emergency', '#1 rated in San Bernardino'. Flyer layout per Matthew, after octoplumbers.com/120-drain-cleaning and capridrains.com.",
+    "_confirm": "'#1 Rated In San Bernardino' is the client's claim, not verified; Google Ads can disapprove unsubstantiated superlatives. Offer terms copied from /specials; no end date given. hero.image and coupon.image are AI-generated (Matthew, 2026-11-11); the van lettering in the hero is garbled.",
+    "title": "$39 Drain Cleaning in San Bernardino | Lincoln Plumbing & Rooter",
+    "description": "$39 drain cleaning for new residential customers in San Bernardino. Same-day service, 24/7 emergency plumbing, licensed and insured. Call Lincoln Plumbing & Rooter today.",
+    "hero": {
+      "image": "lp-drain-special-hero.jpg",
+      "image_position": "center 40%",
+      "alt": "Lincoln Plumbing & Rooter plumbers in front of a service van on a San Bernardino street, with the mountains behind",
+      "sticker": "#1 Rated In San Bernardino",
+      "plate": "",
+      "plate_small": ""
+    },
+    "h1": [
+      "$39 Drain Cleaning",
+      "in San Bernardino"
+    ],
+    "coupon": {
+      "image": "lp-drain-special-coupon.jpg",
+      "width": 1000,
+      "height": 1241,
+      "alt": "Drain cleaning $39. Same-day service. 24/7 emergency service.",
+      "kicker": "Drain Cleaning",
+      "price": "39",
+      "pill": "Same-Day Service",
+      "ribbon": "#1 Rated In San Bernardino",
+      "strip": "24/7 Emergency Service"
+    },
+    "alert": "Plumbing emergency? Call us any time. Emergency service is available 24/7.",
+    "terms": "$39 drain cleaning for new residential customers. Accessible clean-out required and camera line inspection must be permitted. Cannot be combined with other discounts.",
+    "services": {
+      "h2": "Services",
+      "sub": "If it drains, leaks or heats water, Lincoln can fix it.",
+      "items": [
+        "Drain cleaning",
+        "Hydro jetting",
+        "Sewer line repair",
+        "Camera line inspection",
+        "Leak detection",
+        "Slab leak repair",
+        "Water heater repair & installation",
+        "Tankless water heaters",
+        "Garbage disposals",
+        "24/7 emergency plumbing"
+      ]
+    },
+    "why": {
+      "h2": "Why Choose Lincoln?",
+      "cards": [
+        {
+          "icon": "tag",
+          "title": "$39 Drain Cleaning",
+          "body": "Our drain cleaning special for new residential customers in San Bernardino."
+        },
+        {
+          "icon": "bolt",
+          "title": "Same-Day Service",
+          "body": "Same-day appointments for clogged, slow and backed-up drains."
+        },
+        {
+          "icon": "clock",
+          "title": "24/7 Emergency",
+          "body": "Backups don't wait. We answer nights, weekends and holidays."
+        },
+        {
+          "icon": "shield",
+          "title": "Licensed & Insured",
+          "body": "California Contractor License #1111400."
+        },
+        {
+          "icon": "home",
+          "title": "Family Owned",
+          "body": "Family owned and operated, serving the Inland Empire since 2021."
+        },
+        {
+          "icon": "card",
+          "title": "Upfront Pricing",
+          "body": "You approve the price before we start. No surprise fees."
+        }
+      ]
+    },
+    "jobs": {
+      "h2": "Real Lincoln Jobs",
+      "tag": "Our work, not stock photos",
+      "items": [
+        {
+          "image": "work-commercial-drain.jpg",
+          "alt": "Lincoln technician clearing a commercial drain",
+          "caption": "Commercial drain clearing"
+        },
+        {
+          "image": "work-kitchen-drain.jpg",
+          "alt": "Lincoln technician working on a kitchen sink drain",
+          "caption": "Kitchen drain repair"
+        },
+        {
+          "image": "gallery-vanity-repair.jpg",
+          "alt": "Lincoln technician repairing a bathroom vanity drain",
+          "caption": "Bathroom vanity drain"
+        }
+      ]
+    },
+    "reviews": {
+      "h2": "What Customers Say",
+      "sub": "5-star reviews from real Lincoln customers",
+      "items": [
+        {
+          "quote": "Lincoln Plumbing quickly responded and made this process easy and affordable. Ivan and Noel are very professional and experienced found the problem right away, and even though I hope i don't need plumbing services again I definitely be calling them.",
+          "who": "Ericka M.",
+          "service": "Clear a clogged or slow drain"
+        },
+        {
+          "quote": "They are extremely professional and very accommodating to our company's needs. They always show up on time and ensure that any issue we may have is resolved. We know that we can depend on them any time and highly recommend their services.",
+          "who": "Angie R.",
+          "service": "Clear a clogged or slow drain"
+        },
+        {
+          "quote": "Really appreciated the customer service the technicians gave. Very easy to communicate and job was finished without any complaints. Thank you Ivan and Noel!!",
+          "who": "Jasmine S.",
+          "service": "Install or replace a bathtub"
+        }
+      ]
+    },
+    "cta": {
+      "h2": "Can't Talk Right Now?",
+      "sub": "Leave your details and we'll call you back. The $39 drain cleaning price is already on your request.",
+      "alert": "Plumbing emergency? Call us any time. Emergency service is available 24/7.",
+      "form_h": "Call Me Back",
+      "form_sub": "Tell us what's going on and we'll call you right back.",
+      "promo": "$39 Drain Cleaning"
+    }
   }
 }
