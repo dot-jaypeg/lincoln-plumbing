@@ -177,5 +177,18 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
 </section>
 </main>
 
+<footer class="lp-footer">
+  <div class="container">
+    <p class="lp-footer-links"><a href="/privacy-policy">Privacy Policy</a> <a href="/terms">Terms</a> <a href="/accessibility">Accessibility</a></p>
+  </div>
+</footer>
+<script>
+  (function () {
+    var n = ''; try { n = sessionStorage.getItem('lead_first_name') || ''; } catch (e) {}
+    var p = document.querySelector('.confirm-hero .lede');
+    if (n && p) p.textContent = p.textContent.replace('Thanks for reaching out', 'Thanks, ' + n + ', for reaching out');
+  })();
+</script>
+
 </body>
 </html>

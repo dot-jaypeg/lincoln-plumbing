@@ -1425,3 +1425,46 @@ body.page-home.scrolled .nav-toggle { color: inherit; }
   .lp-header-actions .btn-sm { display: none; }
 }
 
+
+/* --- lead forms (public/js/lead-form.js) --- */
+.lead-form .form-grid { gap: 14px; }
+.lead-form .field { min-width: 0; }
+.lead-form .field input, .lead-form .field select, .lead-form .field textarea { width: 100%; min-width: 0; }
+.field label .req, .field label .opt { font-weight: 500; color: var(--gray-600); }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible,
+.sms-consent input:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.field [aria-invalid="true"] { border-color: #c0392b; }
+.field-error { color: #b42318; font-size: 0.8rem; font-weight: 600; }
+.form-hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.lead-form { position: relative; text-align: left; }
+.sms-consent { display: flex; gap: 10px; align-items: flex-start; margin-top: 16px; font-size: 0.74rem; line-height: 1.5; color: var(--gray-600); }
+.sms-consent input { width: 18px; height: 18px; margin-top: 1px; flex-shrink: 0; accent-color: var(--orange); }
+.sms-consent a { color: inherit; text-decoration: underline; }
+.form-status { margin-top: 14px; padding: 12px 14px; border-radius: var(--radius-sm); background: #fdecea; color: #8a1c12; font-size: 0.88rem; font-weight: 600; }
+.lead-form .btn-block { margin-top: 16px; min-height: 48px; }
+.lead-form .btn[disabled] { opacity: 0.7; cursor: progress; }
+.form-call { margin-top: 12px; text-align: center; font-size: 0.9rem; color: var(--gray-600); }
+.form-call a { color: var(--orange-dark); font-weight: 700; text-decoration: underline; }
+.form-shell { padding: 26px; }
+/* dark footer variant */
+.footer-form .field label .req, .footer-form .field label .opt,
+.footer-form .sms-consent, .footer-form .form-call { color: rgba(255,255,255,0.68); }
+.footer-form .field-error { color: #ffb4a8; }
+.footer-form .form-call a { color: var(--orange-2, #ffb547); }
+@media (max-width: 600px) { .form-shell { padding: 18px; } }
+.footer-legal-links, .lp-footer-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.lp-footer .lp-footer-links { justify-content: center; margin-top: 14px; }
+.lp-footer .lp-footer-links a { font-weight: 600; color: rgba(255,255,255,0.72); text-decoration: underline; }
+
+/* --- phone widths: keep the header row (logo, call button, menu) inside the
+   viewport; at 390px it summed to ~410px and the page scrolled sideways --- */
+@media (max-width: 480px) {
+  .site-header .container { gap: 10px; padding-left: 16px; padding-right: 16px; }
+  .site-header .btn-call { padding: 10px 14px; gap: 8px; font-size: 0.95rem; }
+  .hero-ctas .btn { white-space: normal; text-align: center; }
+  /* homepage story: the button and the 132px seal don't fit side by side */
+  .story-signoff { flex-wrap: wrap; }
+}
+@media (max-width: 360px) {
+  .site-header .btn-call svg { display: none; }
+}

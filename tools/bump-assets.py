@@ -23,7 +23,7 @@ PUBLIC = os.path.join(ROOT, 'public')
 VERSION_FILE = os.path.join(ROOT, 'content', 'asset-version.txt')
 
 # assets whose URLs carry ?v=... in the markup
-HASHED = ['css/style.css', 'js/main.js', 'fonts/Inter-Variable.ttf']
+HASHED = ['css/style.css', 'js/main.js', 'js/lead-form.js', 'fonts/Inter-Variable.ttf']
 
 
 def compute():

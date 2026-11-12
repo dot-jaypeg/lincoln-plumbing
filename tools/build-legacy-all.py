@@ -32,7 +32,8 @@ REPO_META = (json.load(open(os.path.join(REPO_POSTS, '_meta.json')))
              if os.path.exists(os.path.join(REPO_POSTS, '_meta.json')) else {})
 
 # pages this site already owns with its own copy, or that the LP builder made
-SKIP = {'', 'about', 'contact', 'blog'} | set(lp.PAGES.keys())
+# lp-job-ad was deleted on purpose (an unused recruiting page); don't regenerate it.
+SKIP = {'', 'about', 'contact', 'blog', 'lp-job-ad'} | set(lp.PAGES.keys())
 
 # hero photo per top-level area
 HERO = {
@@ -279,21 +280,24 @@ def extract(path, slug, slug_map):
 
 # legacy pages whose entry-content is empty on the live site. The first three are
 # duplicates of populated pages elsewhere in the tree; privacy-policy never had
-# any text at all.
+# any text at all, so its policy is written here (PRIVACY_PLACEHOLDER).
 EMPTY_FALLBACK = {
     'leak-detection/rooter-services': 'drains-and-sewers/rooter-services',
     'leak-detection/sewer-line-repair': 'drains-and-sewers/sewer-line-repair',
     'leak-detection/sewer-line-replacement': 'drains-and-sewers/sewer-line-replacement',
 }
-PRIVACY_PLACEHOLDER = """<p><em>Last updated: September 14, 2026</em></p>
+PRIVACY_PLACEHOLDER = """<p><em>Last updated: November 6, 2026</em></p>
 <p>Lincoln Plumbing &amp; Rooter, INC ("Lincoln Plumbing," "we," "us," or "our")
 respects your privacy. This policy explains what information we collect through
 this website, how we use it, and the choices you have.</p>
 
 <h2>Information We Collect</h2>
 <p>We collect information you provide directly, such as when you submit a
-contact or estimate-request form: your name, phone number, email address,
-service address, and details about the service you need. We also collect
+contact or estimate-request form: your first and last name, phone number,
+email address, ZIP code, the service you need, any message you write, and
+whether you agreed to receive text messages. When you call or text us, we
+receive your phone number and the content of the call or message, and calls
+may be recorded for quality and training. We also collect
 information automatically when you visit the site, including your IP address,
 browser and device type, pages viewed, and referring source, through cookies
 and similar tracking technologies.</p>
@@ -306,11 +310,28 @@ and similar tracking technologies.</p>
 <li>To measure the performance of our advertising campaigns</li>
 </ul>
 
+<h2>Text Messages (SMS)</h2>
+<p>If you tick the optional text-message box on one of our forms, or text us
+first, you agree to receive text messages from Lincoln Plumbing &amp; Rooter,
+INC about your request, estimates, appointments and service. Message frequency
+varies. Message and data rates may apply. Reply <strong>STOP</strong> to any
+message to opt out, or <strong>HELP</strong> for help. Consent to receive text
+messages is not a condition of any purchase.</p>
+<p>We use your mobile number only to send the messages you agreed to. <strong>We
+do not sell, rent or share your mobile number or your text-messaging consent
+with third parties or affiliates for their marketing or promotional
+purposes.</strong> We share them only with the service providers that deliver
+our messages for us (such as our CRM and messaging provider), who may not use
+them for any other purpose. See our <a href="/terms">Terms</a> for the full
+text-messaging program terms.</p>
+
 <h2>Cookies &amp; Tracking Technologies</h2>
 <p>This site uses cookies and similar technologies through Google Tag Manager,
 Google Analytics (GA4), and Google Ads to understand site traffic and measure
-ad performance. A small number of advertising landing pages also use the Meta
-(Facebook/Instagram) Pixel. These tools may collect information about your
+ad performance, and the Meta (Facebook/Instagram) Pixel to measure our Meta
+ads. When you arrive from an ad, we keep the ad's click identifiers and
+campaign tags with your form request so we can tell which ads bring in
+customers. These tools may collect information about your
 device and browsing behavior on this site. You can control or disable cookies
 through your browser settings; doing so may limit some site features.</p>
 
@@ -322,8 +343,8 @@ our website hosting provider. These providers process information on our
 behalf and are not permitted to use it for their own independent purposes.</p>
 
 <h2>How We Share Information</h2>
-<p>We do not sell your personal information. We share information only with
-the service providers described above, or when required to do so by law, to
+<p>We do not sell or share your personal information for money. We share
+information only with the service providers described above, or when required to do so by law, to
 protect our rights, or in connection with a business transfer.</p>
 
 <h2>Data Retention</h2>
@@ -353,6 +374,133 @@ reflects the most recent revision.</p>
 <p>Questions about this policy or your information can be sent to
 <a href="mailto:{email}">{email}</a> or {phone}, or mailed to 738 S Waterman
 Ave C45, San Bernardino, CA 92408.</p>"""
+
+
+TERMS = """<p><em>Last updated: November 6, 2026</em></p>
+<p>These terms apply to your use of www.lincolnplumbingandrooter.com, which is
+run by Lincoln Plumbing &amp; Rooter, INC ("Lincoln Plumbing," "we," "us"),
+738 S Waterman Ave C45, San Bernardino, CA 92408, Contractor License
+#1111400. By using the site you agree to them.</p>
+
+<h2>Text-Messaging Program</h2>
+<p><strong>Program:</strong> Lincoln Plumbing &amp; Rooter, INC sends text
+messages about service requests, estimates, appointment scheduling and
+reminders, and follow-up on work we've done for you.</p>
+<p><strong>How you join:</strong> by ticking the optional text-message box on a
+form on this site, or by texting us first. Ticking the box is never required
+to request a quote or book service.</p>
+<p><strong>Frequency and cost:</strong> message frequency varies with your
+request. Message and data rates may apply, according to your mobile plan.</p>
+<p><strong>Opting out:</strong> reply <strong>STOP</strong> to any message to
+stop receiving texts. We'll send one message confirming you've been
+unsubscribed and none after that. Reply <strong>HELP</strong> for help, or
+contact us at {phone} or <a href="mailto:{email}">{email}</a>.</p>
+<p><strong>Carriers:</strong> mobile carriers are not liable for delayed or
+undelivered messages.</p>
+<p><strong>Privacy:</strong> we do not sell or share your mobile number or
+text-messaging consent with third parties for their marketing. See our
+<a href="/privacy-policy">Privacy Policy</a>.</p>
+
+<h2>Quotes, Prices and Specials</h2>
+<p>Information on this site, including prices, specials and offers, describes
+our services in general. A quote is confirmed only after we've seen the job,
+and every job is governed by the written estimate or work order you approve.
+Specials may have conditions and end dates shown with the offer.</p>
+
+<h2>Plumbing Information on This Site</h2>
+<p>Articles and tips on this site are general information, not advice for
+your specific home or business. For anything involving gas, sewage or
+water damage, call a licensed plumber.</p>
+
+<h2>Third-Party Links</h2>
+<p>Links to other sites, such as reviews, social media and our financing
+partner, are provided for convenience. Those sites have their own terms and
+privacy policies, and we aren't responsible for their content.</p>
+
+<h2>Site Content</h2>
+<p>The text, photos and logos on this site belong to Lincoln Plumbing &amp;
+Rooter, INC and may not be copied for commercial use without permission.</p>
+
+<h2>Disclaimer and Limitation of Liability</h2>
+<p>The site is provided "as is." To the extent the law allows, we aren't
+liable for any loss arising from your use of the site itself. This does not
+limit any rights you have under California law or under your agreement with
+us for work we perform.</p>
+
+<h2>Governing Law</h2>
+<p>These terms are governed by the laws of the State of California.</p>
+
+<h2>Changes and Contact</h2>
+<p>We may update these terms; the date above shows the latest version.
+Questions: {phone}, <a href="mailto:{email}">{email}</a>, or by mail to 738 S
+Waterman Ave C45, San Bernardino, CA 92408.</p>"""
+
+ACCESSIBILITY = """<p>Lincoln Plumbing &amp; Rooter, INC wants everyone to be
+able to use this website, including people who use screen readers, keyboard
+navigation, voice control, magnification or captions.</p>
+
+<h2>Our Standard</h2>
+<p>We're working to meet the Web Content Accessibility Guidelines (WCAG) 2.2,
+Level AA, and we check the site with automated tools and by hand.</p>
+
+<h2>What We've Done</h2>
+<ul>
+<li>Text alternatives for meaningful images</li>
+<li>Keyboard access to menus, links and forms</li>
+<li>Labeled form fields with clear error messages</li>
+<li>Pages that work when zoomed and on small screens</li>
+</ul>
+
+<h2>Known Limitations</h2>
+<ul>
+<li>The homepage shows a short, silent background video that loops and has
+no pause control. It's decorative and carries no information.</li>
+<li>Some pages include content from other companies that we don't control,
+such as Google Maps, Yelp review widgets and our financing partner's
+application.</li>
+</ul>
+
+<h2>Need Help or Found a Barrier?</h2>
+<p>If anything on this site is hard to use, or you'd like information in a
+different format, contact us and we'll help:</p>
+<ul>
+<li>Phone: <a href="{tel}">{phone}</a></li>
+<li>Email: <a href="mailto:{email}">{email}</a></li>
+</ul>
+<p>Please tell us the page and what went wrong. We aim to respond within 2
+business days. You can always call us to request a quote or service instead
+of using an online form.</p>
+<p><em>Last updated: November 6, 2026</em></p>"""
+
+# Pages with no legacy original: slug -> (title, h1, description, body).
+LEGAL_PAGES = {
+    'terms': ('Terms of Use & SMS Terms | Lincoln Plumbing & Rooter', 'Terms of Use',
+              'Website terms and text-messaging program terms for Lincoln Plumbing & Rooter, INC.',
+              TERMS),
+    'accessibility': ('Accessibility | Lincoln Plumbing & Rooter', 'Accessibility',
+                      'How Lincoln Plumbing & Rooter makes this website usable for everyone, and how to get help.',
+                      ACCESSIBILITY),
+}
+
+
+def render_legal(slug):
+    title, h1, desc, body = LEGAL_PAGES[slug]
+    p = {'slug': slug, 'title': title, 'h1': h1, 'description': desc,
+         'body': body.format(phone=lp.phone(), tel=lp.tel(), email=lp.EMAIL)}
+    return ''.join([
+        head(p, f'/{slug}'), lp.chrome_top(), '\n<main>',
+        page_hero(p, slug, {slug: h1}, lambda s: f'/{s}'),
+        f'''
+<section class="section-tight">
+  <div class="container">
+    <div class="blog-post-body legacy-prose">
+{p['body']}
+    </div>
+  </div>
+</section>
+''',
+        '</main>\n', lp.chrome_bottom(),
+    ])
 
 
 ARROW = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
@@ -456,7 +604,7 @@ def quote(slug):
       <p>Fill out the form below and our team will follow up directly — or give us a call anytime.</p>
     </div>
     <div class="form-shell">
-      {lp.form(sfx, 700, 'Get A Free Quote')}
+      {lp.form(sfx, 'Get A Free Quote')}
     </div>
     <div class="quote-contact">
       <a href="{lp.tel()}">Call {lp.phone()}</a>
@@ -630,6 +778,9 @@ def site_index(page_slugs, ordered, titles, url_for, hubs):
           <li><a href="/blog/">Blog / News</a></li>
           <li><a href="/specials">Specials</a></li>
           <li><a href="/testimonials">Testimonials</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms</a></li>
+          <li><a href="/accessibility">Accessibility</a></li>
         </ul>
       </div>
 '''
@@ -751,6 +902,11 @@ if __name__ == '__main__':
         if pages[s]['body_chars'] < 400:
             thin.append((s, pages[s]['body_chars']))
 
+    for s in LEGAL_PAGES:
+        lp.set_page(s)
+        open(os.path.join(PUBLIC, s + '.html'), 'w').write(re.sub(r'\n{3,}', '\n\n', render_legal(s)))
+        written += 1
+
     lp.set_page('blog')
     open(os.path.join(PUBLIC, 'blog', 'index.html'), 'w').write(
         re.sub(r'\n{3,}', '\n\n', blog_index(ordered, pages, titles, url_for)))
@@ -759,7 +915,8 @@ if __name__ == '__main__':
     lp.set_page('sitemap')
     # organic pages only — the paid landing pages are noindex and deliberately
     # absent from the sitemap
-    static_urls = ['/', '/services', '/gallery', '/about', '/contact', '/blog/', '/sitemap']
+    static_urls = ['/', '/services', '/gallery', '/about', '/contact', '/blog/', '/sitemap',
+                   '/terms', '/accessibility']
     all_urls = static_urls + [url_for(s) for s in page_slugs] + [url_for(s) for s in ordered]
     seen_u, xml = set(), ['<?xml version="1.0" encoding="UTF-8"?>',
                           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
