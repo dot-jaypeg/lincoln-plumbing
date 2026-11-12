@@ -65,13 +65,13 @@ app.use((req, res, next) => {
 });
 
 // Lead forms post straight from the browser to the GHL inbound webhook
-// (public/js/lead-form.js). The URL lives in the GHL_WEBHOOK_URL Railway
-// variable rather than in the repo, and reaches the page as this tiny script.
-// It is not a secret (any visitor can read it), it just isn't hard-coded.
-const GHL_WEBHOOK_URL = (process.env.GHL_WEBHOOK_URL || '').trim();
-if (!GHL_WEBHOOK_URL) {
-  console.warn('GHL_WEBHOOK_URL is not set: lead forms will show the phone number instead of sending.');
-}
+// (public/js/lead-form.js), workflow "ENDPOINT - website-forms" in Lincoln's
+// sub-account. The URL reaches the page as this tiny script. It is not a
+// secret (any visitor can read it). Setting GHL_WEBHOOK_URL in Railway
+// overrides the default, e.g. if the workflow is ever recreated.
+const DEFAULT_GHL_WEBHOOK_URL =
+  'https://services.leadconnectorhq.com/hooks/QeLlWa6Rmzs1Q584Ohy4/webhook-trigger/121151a3-3803-42d8-bb5f-085f06fa057e';
+const GHL_WEBHOOK_URL = (process.env.GHL_WEBHOOK_URL || DEFAULT_GHL_WEBHOOK_URL).trim();
 app.get('/js/lead-config.js', (req, res) => {
   res.type('application/javascript')
     .set('Cache-Control', 'no-cache, must-revalidate')
