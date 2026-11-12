@@ -7,7 +7,7 @@ Pure static HTML/CSS/JS site for Lincoln Plumbing & Rooter, serving San Bernardi
 - **Every page is a real, plain `.html` file** in `public/` — open any of them in a text editor and you'll see complete, final markup, no templating syntax, no build step to run to read or edit them.
 - **URLs have no `.html` extension.** `public/hydrojetting.html` is served at `/hydrojetting`. `server.js` 301-redirects both older shapes to that canonical form: `/hydrojetting.html` → `/hydrojetting`, and `/hydrojetting/` → `/hydrojetting` (the old WordPress URLs all had a trailing slash). Internal links throughout `public/` are already extensionless — keep new ones that way.
 - **`public/css/style.css`** is the entire design system (fonts, colors, layout, components). **`public/js/main.js`** handles the mobile nav drawer, the scroll-triggered header state on the homepage, and the contact-form success toast.
-- **`server.js`** is a small Express app whose only jobs are: (1) serve the `public/` folder as static files with clean URLs, (2) 301 the legacy `.html` / trailing-slash URLs to their canonical form, and (3) serve `/js/lead-config.js`, which hands the lead forms the GHL webhook URL from the `GHL_WEBHOOK_URL` Railway variable. It does not template or generate any HTML, and it never sees a lead.
+- **`server.js`** is a small Express app whose only jobs are: (1) serve the `public/` folder as static files with clean URLs, (2) 301 the legacy `.html` / trailing-slash URLs to their canonical form, and (3) serve `/js/lead-config.js`, which hands the lead forms the GHL webhook URL. It does not template or generate any HTML, and it never sees a lead.
 
 ## Local development
 
@@ -293,9 +293,10 @@ forms, `/ga-plumbing-services`, `/lp-door-hangers`) is the same native form,
 It posts JSON **straight from the browser to Lincoln's GHL inbound webhook**
 (workflow "ENDPOINT - website-forms"). There is no server hop.
 
-- **The webhook URL is a Railway variable, `GHL_WEBHOOK_URL`**, not in the repo.
-  `server.js` serves it as `/js/lead-config.js`. If it's unset, forms don't send:
-  they show "please call us at …" and the server logs a warning at boot.
+- **The webhook URL** is `DEFAULT_GHL_WEBHOOK_URL` in `server.js` (workflow
+  "ENDPOINT - website-forms" in Lincoln's GHL), served to the page as
+  `/js/lead-config.js`. A `GHL_WEBHOOK_URL` Railway variable overrides it, e.g.
+  if the workflow is ever recreated.
 - **Fields** (keep these names, the GHL workflow maps them): `first_name`,
   `last_name`, `full_name`, `phone` (E.164), `email`, `postal_code`, `service`,
   `message`, `sms_consent` (yes/no, unticked by default), `form_source`,
