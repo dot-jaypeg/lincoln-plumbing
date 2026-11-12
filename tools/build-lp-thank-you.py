@@ -24,13 +24,13 @@ LP_FORM_SLUGS = [
     'ga-plumbing-services', 'sewer-lines', 'ga-tankless-water-heaters',
     'ga-water-heater', 'ga-contact', 'drain-cleaning',
     'ga-garbage-disposal-services', 'hydrojetting', 'ga-leak-detection',
-    'toilet-overflow',
+    'toilet-overflow', 'drain-cleaning-special',
 ]
 
 # Google Ads call configs per call line, as Google sent them.
 CALL_CONFIGS = {
     '909-765-0236': ('AW-16721660937/BQtCCIjq9NUcEImYwaU-', '(909)765-0236'),
-    # 909-280-7894 ("Flooded Toilets", /toilet-overflow) retired 2026-11-03.
+    '909-280-7894': ('AW-16721660937/5dP7CJTmo6YdEImYwaU-', '(909) 280-7894'),
 }
 LEAD_CONVERSION = 'AW-16721660937/AZdYCOSk4dUcEImYwaU-'
 

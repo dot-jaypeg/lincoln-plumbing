@@ -57,6 +57,13 @@ just that page — `python3 tools/build-legacy-lps.py <slug>`. Don't run a full 
 `/ga-plumbing-services` has been hand-edited since it was generated and would be
 overwritten. First one: `/toilet-overflow`.
 
+An LP with `"layout": "flyer"` gets the promo "flyer" page instead of the service-LP
+template: full-width hero photo, one big coupon with a big call button, services list,
+icon cards, real job photos, reviews and a call-me-back form (modelled on Octo's
+/120-drain-cleaning and capridrains.com). Set `hero.image` and `coupon.image` to swap
+in generated art; with no `coupon.image` the coupon is drawn in HTML. First one:
+`/drain-cleaning-special` ($39 drain cleaning).
+
 **Email offer pages** (`/holiday-plumbing-prep`, `/water-heater-checkup`,
 `/plumbing-checkup`, `/refer-a-neighbor`) are built the same way and tracked like
 any paid LP (`LP_GTM_PAGES`), but they're in `EMAIL_SLUGS` in the builder, so they
@@ -186,6 +193,7 @@ funnel is a one-line change plus a rebuild.
 |---|---|
 | **909-780-0887** — main line | the organic site: `/`, `/services`, `/gallery`, `/about`, `/contact`, the whole service tree, the service-location pages, `/blog/` and all 89 posts |
 | **909-765-0236** — Google Ads call-tracking line | the 13 paid landing pages: the 11 legacy LPs plus `/lp-job-ad` and `/meta-thank-you` |
+| **909-280-7894** — Google Ads Call - Flooded Toilets | `/toilet-overflow` and `/toilet-overflow-thank-you` only (its own campaign, "AM \| LB \| Toilet Overflow \| Search"; reconfirmed by the phone check 2026-11-06) |
 
 This is what makes the Google Ads `phone_conversion_number` above work: it swaps
 the tracking number, which only ever appears on landing pages, so number
