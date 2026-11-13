@@ -42,7 +42,9 @@ LP_TEL = 'tel:19097650236'
 # Add a new line to LP_CALL_LINES in tools/tracking.py and CALL_LINES in
 # public/thank-you.html too, and give it its own trigger in GTM-KF82PPKL.
 LP_OWN_LINE = {
-    'toilet-overflow': ('(909) 280-7894', 'tel:+19092807894'),   # Google Ads Call - Flooded Toilets
+    # Shows the LP line, written as given on 2026-11-12, with no phone-swap
+    # config of its own (it ran (909) 280-7894 until then).
+    'toilet-overflow': ('(909) 765-0236', 'tel:+19097650236'),
 }
 
 _page = None                        # slug currently being rendered
