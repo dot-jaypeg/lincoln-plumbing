@@ -269,14 +269,17 @@ Things worth knowing about it:
   no quote form — it's a confirmation page.
 - **`/lp-job-ad` is the hiring LP for the Meta recruiting ads**, hand-built in
   `public/lp-job-ad.html` (deleted 2026-09 as unused, rebuilt 2026-11-17). It is
-  not generated. Edit it directly; `build-legacy-all.py` skips it. Its application form
+  not generated. Edit it directly; `build-legacy-all.py` skips it. It keeps the
+  **legacy page's own design** (dark/cream, Anton + Barlow Condensed, hazard bar,
+  work-order "ticket") and is self-contained: its CSS is inline and it does not
+  load `/css/style.css`. Its application form
   is the GHL "Meta Form" iframe (`dxqfiiA9bB1OLTNaNnRx`, with resume upload), not
   the site's native lead form, because this form collects job applications, not service leads.
   Applicants should land on `/meta-thank-you`. **That redirect is set in GHL on the form,
   not in this repo.** As of 2026-11-17 the form redirects to `/thank-you`, which fires
   the Google Ads lead conversion, so it needs changing in GHL. The legacy page's two
-  hiring videos were already 404, so the page ships photo-only. Add them back
-  when the footage turns up. Pay is listed as "competitive, based on experience"; add a range once the client confirms one.
+  hiring videos were already 404, so a crew photo fills the video slot (the
+  old video gate is dropped). Add them back when the footage turns up. Pay is listed as "competitive, based on experience"; add a range once the client confirms one.
 
 Pages deliberately **not** taken from the legacy site, because this site already
 has its own approved versions at the same URLs: `/` , `/about`, `/contact`.
