@@ -267,13 +267,16 @@ Things worth knowing about it:
   needs real copy before launch.
 - `/meta-thank-you` is kept `noindex`, as it was on the legacy site, and carries
   no quote form — it's a confirmation page.
-- **`/lp-job-ad` is the one page the generic importer doesn't do justice.** It's
-  a bespoke recruiting LP built around two videos, a lead-gated video unlock and
-  a custom ticker, and flattening it to prose loses that layout. Its two videos
-  are also **404 on the legacy site**, so they couldn't be imported — each slot
-  carries a visible `[PLACEHOLDER — video needed.]` note instead. The page is
-  readable and its GHL application forms work, but it wants a proper hand-build
-  like the other LPs got.
+- **`/lp-job-ad` is the hiring LP for the Meta recruiting ads**, hand-built in
+  `public/lp-job-ad.html` (deleted 2026-09 as unused, rebuilt 2026-11-17). It is
+  not generated. Edit it directly; `build-legacy-all.py` skips it. Its application form
+  is the GHL "Meta Form" iframe (`dxqfiiA9bB1OLTNaNnRx`, with resume upload), not
+  the site's native lead form, because this form collects job applications, not service leads.
+  Applicants should land on `/meta-thank-you`. **That redirect is set in GHL on the form,
+  not in this repo.** As of 2026-11-17 the form redirects to `/thank-you`, which fires
+  the Google Ads lead conversion, so it needs changing in GHL. The legacy page's two
+  hiring videos were already 404, so the page ships photo-only. Add them back
+  when the footage turns up. Pay is listed as "competitive, based on experience"; add a range once the client confirms one.
 
 Pages deliberately **not** taken from the legacy site, because this site already
 has its own approved versions at the same URLs: `/` , `/about`, `/contact`.

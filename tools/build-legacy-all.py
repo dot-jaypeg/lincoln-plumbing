@@ -32,7 +32,8 @@ REPO_META = (json.load(open(os.path.join(REPO_POSTS, '_meta.json')))
              if os.path.exists(os.path.join(REPO_POSTS, '_meta.json')) else {})
 
 # pages this site already owns with its own copy, or that the LP builder made
-# lp-job-ad was deleted on purpose (an unused recruiting page); don't regenerate it.
+# lp-job-ad is hand-built (public/lp-job-ad.html, reactivated 2026-11-17 for the
+# Meta hiring ads); the generic importer would flatten it, so don't regenerate it.
 SKIP = {'', 'about', 'contact', 'blog', 'lp-job-ad'} | set(lp.PAGES.keys())
 
 # hero photo per top-level area
