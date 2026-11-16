@@ -11,7 +11,7 @@
 <meta property="og:title" content="Now Hiring: Apprentice &amp; Journeyman Plumbers | Lincoln Plumbing &amp; Rooter">
 <meta property="og:description" content="Take-home vehicle, new equipment, real benefits and a crew that has your back. Apply in 2 minutes.">
 <meta property="og:url" content="https://www.lincolnplumbingandrooter.com/lp-job-ad">
-<meta property="og:image" content="https://www.lincolnplumbingandrooter.com/images/team-training.jpg">
+<meta property="og:image" content="https://www.lincolnplumbingandrooter.com/images/team-two-techs.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,7 +75,15 @@
   }
 
   /* ---------- HERO ---------- */
-  .hero{position:relative; overflow:hidden; background:var(--steel); color:#fff; padding:56px 0 70px;}
+  .hero{position:relative; overflow:hidden; background:var(--steel); color:#fff; padding:72px 0 88px; min-height:min(640px, calc(100svh - 74px)); display:flex; align-items:center;}
+  .hero > .wrap{position:relative; z-index:1; width:100%;}
+  .hero-content{max-width:620px;}
+  /* Crew photo behind the hero: right side on desktop, faded into the dark so the headline stays readable. */
+  .hero-bg{position:absolute; top:0; right:0; bottom:0; width:58%; z-index:0;}
+  .hero-bg img{width:100%; height:100%; object-fit:cover; object-position:50% 30%;}
+  .hero-bg::after{content:''; position:absolute; inset:0;
+    background:linear-gradient(90deg, var(--steel) 0%, rgba(24,24,24,.86) 18%, rgba(24,24,24,.35) 55%, rgba(24,24,24,.15) 100%),
+               linear-gradient(0deg, rgba(24,24,24,.55) 0%, rgba(24,24,24,0) 35%);}
   .brandline{display:flex; align-items:center; gap:12px; margin-bottom:26px;}
   .brandline img{height:44px; width:auto;}
   .brandline .dot{width:10px; height:10px; background:var(--orange-2); border-radius:50%;}
@@ -87,14 +95,7 @@
   .hero-ctas .sub{font-family:'Barlow Condensed', sans-serif; font-size:15px; color:#a9a49a; letter-spacing:.5px;}
 
   /* ---------- "STRAIGHT FROM THE SHOP" ---------- */
-  .vsl-grid{display:flex; flex-direction:column; align-items:center; text-align:center; margin-top:50px;}
-  .vsl-media{margin-bottom:44px;}
-  .vsl-media{width:100%; display:flex; justify-content:center;}
-  .vsl-card{
-    width:100%; max-width:960px; border-radius:14px; overflow:hidden; border:1px solid #363636;
-    box-shadow:0 40px 80px rgba(0,0,0,.55); background:#000;
-  }
-  .vsl-card img{width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; object-position:50% 40%;}
+  .shop-section{background:var(--steel-2); color:#fff; text-align:center; border-top:1px solid #2c2c2c;}
   .vsl-copy{max-width:640px; margin:0 auto;}
   .vsl-copy .eyebrow{color:var(--orange-2);}
   .vsl-copy h2{font-size:clamp(30px,4vw,46px); margin:10px 0 16px; color:var(--orange); line-height:1.1;}
@@ -188,6 +189,10 @@
     body{padding-bottom:54px;}
   }
   @media (max-width: 860px){
+    .hero{min-height:0;}
+    .hero-bg{width:100%;}
+    .hero-bg img{object-position:50% 25%;}
+    .hero-bg::after{background:linear-gradient(180deg, rgba(24,24,24,.72) 0%, rgba(24,24,24,.84) 55%, rgba(24,24,24,.94) 100%);}
     .fit-grid{grid-template-columns:1fr;}
     .ticket-row{flex-direction:column; gap:4px;}
     .ticket-row dd{text-align:left;}
@@ -285,35 +290,38 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
 <main id="main">
 <!-- ================= HERO ================= -->
 <section class="hero">
+  <div class="hero-bg">
+    <img src="/images/team-two-techs.jpg" alt="" width="933" height="1400" fetchpriority="high">
+  </div>
   <div class="wrap">
-    <div class="brandline"><img src="/images/legacy/header-logo-min.png" alt="Lincoln Plumbing &amp; Rooter" width="81" height="44"><span class="dot" aria-hidden="true"></span><span>Now Hiring</span></div>
-    <h1 class="display">Build a real<br>career <span class="accent">under the pipe</span></h1>
-    <p class="lede">We're a growing plumbing company looking for driven apprentice and journeyman plumbers. New equipment, a take-home vehicle, real benefits, and a team that watches out for each other.</p>
-    <div class="hero-ctas">
-      <a href="#apply" class="btn">Apply Now →</a>
-      <span class="sub">Takes 2 minutes</span>
+    <div class="hero-content">
+      <div class="brandline"><img src="/images/legacy/header-logo-min.png" alt="Lincoln Plumbing &amp; Rooter" width="81" height="44"><span class="dot" aria-hidden="true"></span><span>Now Hiring</span></div>
+      <h1 class="display">Build a real<br>career <span class="accent">under the pipe</span></h1>
+      <p class="lede">We're a growing plumbing company looking for driven apprentice and journeyman plumbers. New equipment, a take-home vehicle, real benefits, and a team that watches out for each other.</p>
+      <div class="hero-ctas">
+        <a href="#apply" class="btn">Apply Now →</a>
+        <span class="sub">Takes 2 minutes</span>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="vsl-grid">
-      <!-- The legacy page had two hiring videos here (Hiring-AD.mp4, Hiring-VSL-2.mp4); both were already 404
-           on the old site. Swap this photo card for a <video> when the footage turns up. -->
-      <div class="vsl-media">
-        <div class="vsl-card">
-          <img src="/images/team-meeting.jpg" alt="The Lincoln Plumbing &amp; Rooter crew in uniform at a team meeting in the shop" width="1400" height="933">
-        </div>
-      </div>
-      <div class="vsl-copy">
-        <div class="eyebrow">Straight From The Shop</div>
-        <h2>Hear it from the guys already on the crew</h2>
-        <p>No corporate script. Just what it's actually like working at Lincoln Plumbing &amp; Rooter: the pay, the equipment, and why the team sticks around.</p>
-        <ul>
-          <li>Top techs are earning strong, uncapped income. It's up to you</li>
-          <li>All-new equipment and tools, kept in top condition</li>
-          <li>A take-home vehicle so you're not stuck shuttling drain gear</li>
-          <li>Real benefits and paid days off</li>
-          <li>A team culture where everybody watches out for each other</li>
-        </ul>
-      </div>
+<!-- ================= STRAIGHT FROM THE SHOP ================= -->
+<!-- The legacy page had two hiring videos above this copy (Hiring-AD.mp4, Hiring-VSL-2.mp4); both were already
+     404 on the old site. Add a <video> here when the footage turns up. -->
+<section class="shop-section section">
+  <div class="wrap">
+    <div class="vsl-copy">
+      <div class="eyebrow">Straight From The Shop</div>
+      <h2>Hear it from the guys already on the crew</h2>
+      <p>No corporate script. Just what it's actually like working at Lincoln Plumbing &amp; Rooter: the pay, the equipment, and why the team sticks around.</p>
+      <ul>
+        <li>Top techs are earning strong, uncapped income. It's up to you</li>
+        <li>All-new equipment and tools, kept in top condition</li>
+        <li>A take-home vehicle so you're not stuck shuttling drain gear</li>
+        <li>Real benefits and paid days off</li>
+        <li>A team culture where everybody watches out for each other</li>
+      </ul>
     </div>
   </div>
 </section>
