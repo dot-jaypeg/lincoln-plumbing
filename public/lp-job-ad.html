@@ -94,16 +94,29 @@
   .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
   .hero-ctas .sub{font-family:'Barlow Condensed', sans-serif; font-size:15px; color:#a9a49a; letter-spacing:.5px;}
 
-  /* ---------- "STRAIGHT FROM THE SHOP" ---------- */
-  .shop-section{background:var(--steel-2); color:#fff; text-align:center; border-top:1px solid #2c2c2c;}
-  .vsl-copy{max-width:640px; margin:0 auto;}
-  .vsl-copy .eyebrow{color:var(--orange-2);}
-  .vsl-copy h2{font-size:clamp(30px,4vw,46px); margin:10px 0 16px; color:var(--orange); line-height:1.1;}
-  .vsl-copy p{color:var(--muted-dark); font-size:17px; line-height:1.65; margin-bottom:16px;}
-  .vsl-copy ul{list-style:none; margin-top:22px; display:inline-block; text-align:left;}
-  .vsl-copy li{display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; font-size:16px; color:#e7e3d8;}
-  .vsl-copy li::before{content:'✓'; color:var(--orange-2); font-weight:800; flex:none; margin-top:1px;}
+  /* ---------- SECTION HEADS (shared) ---------- */
+  .section{padding:92px 0;}
+  .sec-head{text-align:center; max-width:720px; margin:0 auto 44px;}
+  .sec-head .eyebrow{display:inline-block; color:var(--rust);}
+  .sec-head h2{font-family:'Anton', sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:.5px; line-height:1.02;
+    font-size:clamp(34px,4.6vw,54px); margin:12px 0 0; color:#1c1c1c;}
+  .sec-head h2 .accent{color:#b0560b;} /* darker orange: --orange on cream is ~2.3:1, this keeps WCAG AA for large text */
+  .sec-head p{margin-top:16px; font-size:17px; line-height:1.65; color:var(--muted-paper);}
+  .on-dark .sec-head .eyebrow{color:#fff;}
+  .on-dark .sec-head h2{color:#fff;}
+  .on-dark .sec-head h2 .accent{color:var(--orange-2);}
+  .on-dark .sec-head p{color:#e9e6de;}
+  .shop-section .sec-head h2 .accent{color:#fff;} /* client: this section's heading is all white */
 
+  /* ---------- "STRAIGHT FROM THE SHOP" ---------- */
+  .shop-section{background:var(--steel-2); color:#fff; border-top:1px solid #2c2c2c;
+    background-image:radial-gradient(ellipse 60% 80% at 50% 0%, rgba(244,131,31,.10), rgba(244,131,31,0) 70%);}
+  .perk-grid{list-style:none; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; max-width:1040px; margin:0 auto;}
+  .perk{display:flex; gap:14px; align-items:flex-start; padding:22px 22px; border-radius:10px;
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); color:#fff; font-size:16px; line-height:1.5;}
+  .perk::before{content:'✓'; flex:none; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:var(--orange); color:#111; font-weight:800; font-size:14px;}
+  
   /* ---------- TICKER ---------- */
   .ticker-wrap{background:var(--orange); overflow:hidden; border-top:3px solid #111; border-bottom:3px solid #111;}
   .ticker{
@@ -114,56 +127,52 @@
   .ticker span{padding:0 28px; display:inline-flex; align-items:center; gap:10px;}
   @keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
 
-  /* ---------- SECTIONS ---------- */
-  .section{padding:76px 0;}
-  .section .eyebrow{color:var(--rust);}
-  .section h2{font-size:clamp(30px,4vw,46px); margin:10px 0 16px; line-height:1.1;}
-  /* The legacy page used --orange here; on cream that's ~2.3:1, so a darker orange keeps WCAG AA (3:1 large text). */
-  .ticket-section h2, .fit-section h2{color:#b0560b; font-weight:600;}
-
   /* ---------- WORK ORDER TICKET ---------- */
   .ticket-section{background:var(--paper-2);}
-  .ticket{background:var(--paper); border:2px solid #1c1c1c; border-radius:6px; box-shadow:8px 8px 0 var(--rust); overflow:hidden;}
+  .ticket{max-width:760px; margin:0 auto; background:var(--paper); border:2px solid #1c1c1c; border-radius:8px; box-shadow:10px 10px 0 var(--rust); overflow:hidden;}
   .ticket-head{
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
-    background:#1c1c1c; color:#fff; padding:16px 26px;
+    background:#1c1c1c; color:#fff; padding:14px 24px;
     font-family:'Barlow Condensed'; text-transform:uppercase; letter-spacing:2px; font-size:14px;
   }
   .ticket-head .stamp{
-    color:var(--orange-2); font-family:'Anton'; font-size:20px; letter-spacing:1px;
-    border:2px solid var(--orange-2); padding:3px 12px; border-radius:4px; transform:rotate(-3deg);
+    color:var(--orange-2); font-family:'Anton'; font-size:18px; letter-spacing:1px;
+    border:2px solid var(--orange-2); padding:2px 12px; border-radius:4px; transform:rotate(-3deg);
   }
-  .ticket-body{padding:30px 26px 10px; margin:0;}
-  .ticket-row{display:flex; justify-content:space-between; gap:18px; padding:16px 0; border-bottom:1px dashed #b9b2a0;}
+  .ticket-body{padding:8px 24px; margin:0;}
+  .ticket-row{display:grid; grid-template-columns:130px 1fr; gap:16px; align-items:baseline; padding:13px 0; border-bottom:1px dashed #c4bca9;}
   .ticket-row:last-child{border-bottom:none;}
-  .ticket-row dt{font-family:'Barlow Condensed'; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; font-size:15px; color:var(--muted-paper); max-width:280px;}
-  .ticket-row dd{font-weight:600; font-size:16px; text-align:right; color:#1c1c1c;}
+  .ticket-row dt{font-family:'Barlow Condensed'; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; font-size:15px; color:var(--muted-paper);}
+  .ticket-row dd{font-weight:600; font-size:16px; color:#1c1c1c;}
   .ticket-foot{
-    background:#efe8d8; padding:16px 26px; display:flex; justify-content:space-between; align-items:center;
-    flex-wrap:wrap; gap:12px; font-family:'Barlow Condensed'; font-size:14px; letter-spacing:.5px; color:#5f5847;
+    background:#efe8d8; padding:12px 24px; display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:8px; font-family:'Barlow Condensed'; font-size:14px; letter-spacing:.5px; color:#5f5847; border-top:1px solid #ddd3bd;
   }
+  .ticket-foot b{color:#3f7d4a; font-weight:700;}
 
   /* ---------- WHO WE WANT ---------- */
   .fit-section{background:var(--paper);}
-  .fit-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:22px; margin-top:30px;}
-  .fit-card{background:#fff; border:1px solid #e2dbc9; border-radius:8px; padding:26px 24px; border-left:5px solid var(--orange);}
-  .fit-card h3{font-family:'Barlow Condensed'; text-transform:uppercase; letter-spacing:1px; font-size:20px; margin-bottom:8px; color:#1c1c1c;}
-  .fit-card p{font-size:15px; color:var(--muted-paper); line-height:1.55;}
+  .fit-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; max-width:1040px; margin:0 auto;}
+  .fit-card{position:relative; background:#fff; border:1px solid #e6dfcd; border-radius:10px; padding:28px 28px 26px 84px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04), 0 12px 28px -18px rgba(60,40,10,.25); transition:transform .18s ease, box-shadow .18s ease;}
+  .fit-card:hover{transform:translateY(-3px); box-shadow:0 1px 2px rgba(0,0,0,.04), 0 20px 36px -18px rgba(60,40,10,.35);}
+  .fit-num{position:absolute; left:26px; top:24px; font-family:'Anton'; font-size:34px; line-height:1; color:#b0560b;}
+  .fit-card h3{font-family:'Barlow Condensed'; text-transform:uppercase; letter-spacing:1px; font-size:21px; margin-bottom:6px; color:#1c1c1c;}
+  .fit-card p{font-size:15px; color:var(--muted-paper); line-height:1.6;}
 
   /* ---------- APPLY ---------- */
-  .apply-section{background:var(--steel); color:#fff; text-align:center;}
-  .apply-section .eyebrow{color:var(--orange-2);}
-  .apply-section h2{font-size:clamp(30px,4.5vw,48px); color:var(--orange);}
-  .apply-section h2 span{color:var(--orange-2);}
-  .apply-section p.lede{color:var(--muted-dark); max-width:600px; margin:14px auto 34px; font-size:17px; line-height:1.6;}
-  .form-shell{max-width:600px; margin:0 auto; background:#fff; border-radius:8px; overflow:hidden;}
+  .apply-section{background:var(--steel); color:#fff;
+    background-image:radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,183,3,.08), rgba(255,183,3,0) 70%);}
+  .form-shell{max-width:620px; margin:0 auto; background:#fff; border-radius:12px; overflow:hidden; border-top:5px solid var(--orange);
+    box-shadow:0 30px 70px -20px rgba(0,0,0,.7);}
   .form-shell iframe{width:100%; min-height:760px; border:none; display:block;}
-  .contact-row{display:flex; justify-content:center; gap:26px; flex-wrap:wrap; margin-top:34px;}
+  .contact-row{display:flex; justify-content:center; gap:28px; flex-wrap:wrap; margin-top:30px;}
   .contact-row a{
     display:inline-flex; align-items:center; min-height:44px;
-    font-family:'Barlow Condensed'; letter-spacing:1px; text-transform:uppercase; font-size:16px;
-    color:#e7e3d8; text-decoration:none; border-bottom:2px solid var(--orange);
+    font-family:'Barlow Condensed'; letter-spacing:1px; text-transform:uppercase; font-size:17px; font-weight:600;
+    color:#fff; text-decoration:none; border-bottom:2px solid var(--orange);
   }
+  .contact-row a:hover{color:var(--orange-2);}
 
   /* ---------- FOOTER ---------- */
   footer{background:#111; color:#a39e91; padding:30px 0 34px; text-align:center; font-size:13px; line-height:1.7;}
@@ -188,19 +197,28 @@
     .mobile-bar .m-apply{background:var(--orange); color:#111;}
     body{padding-bottom:54px;}
   }
+  @media (max-width: 1020px) and (min-width: 861px){
+    .perk-grid{grid-template-columns:repeat(2, 1fr);}
+  }
   @media (max-width: 860px){
     .hero{min-height:0;}
     .hero-bg{width:100%;}
     .hero-bg img{object-position:50% 25%;}
     .hero-bg::after{background:linear-gradient(180deg, rgba(24,24,24,.72) 0%, rgba(24,24,24,.84) 55%, rgba(24,24,24,.94) 100%);}
     .fit-grid{grid-template-columns:1fr;}
-    .ticket-row{flex-direction:column; gap:4px;}
-    .ticket-row dd{text-align:left;}
+    .section{padding:68px 0;}
+    .sec-head{margin-bottom:32px;}
+    .perk-grid{grid-template-columns:1fr; gap:12px;}
+    .ticket-row{grid-template-columns:1fr; gap:2px; padding:11px 0;}
+    .ticket{box-shadow:6px 6px 0 var(--rust);}
+    .fit-card{padding:24px 22px 22px 72px;}
+    .fit-num{left:22px; font-size:30px;}
   }
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     .ticker{animation:none;}
-    .btn{transition:none;}
+    .btn, .fit-card{transition:none;}
+    .fit-card:hover{transform:none;}
   }
 </style>
 <!-- tracking:head -->
@@ -309,20 +327,21 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
 <!-- ================= STRAIGHT FROM THE SHOP ================= -->
 <!-- The legacy page had two hiring videos above this copy (Hiring-AD.mp4, Hiring-VSL-2.mp4); both were already
      404 on the old site. Add a <video> here when the footage turns up. -->
-<section class="shop-section section">
+<section class="shop-section section on-dark">
   <div class="wrap">
-    <div class="vsl-copy">
+    <div class="sec-head">
       <div class="eyebrow">Straight From The Shop</div>
-      <h2>Hear it from the guys already on the crew</h2>
+      <h2>Hear it from the guys <span class="accent">already on the crew</span></h2>
       <p>No corporate script. Just what it's actually like working at Lincoln Plumbing &amp; Rooter: the pay, the equipment, and why the team sticks around.</p>
-      <ul>
-        <li>Top techs are earning strong, uncapped income. It's up to you</li>
-        <li>All-new equipment and tools, kept in top condition</li>
-        <li>A take-home vehicle so you're not stuck shuttling drain gear</li>
-        <li>Real benefits and paid days off</li>
-        <li>A team culture where everybody watches out for each other</li>
-      </ul>
     </div>
+    <ul class="perk-grid">
+      <li class="perk">Top techs earn strong, uncapped income. It's up to you</li>
+      <li class="perk">All-new equipment and tools, kept in top condition</li>
+      <li class="perk">A take-home vehicle, so you're not shuttling drain gear</li>
+      <li class="perk">Real benefits and paid days off</li>
+      <li class="perk">A crew where everybody watches out for each other</li>
+      <li class="perk">Weekly team trainings to keep your skills sharp</li>
+    </ul>
   </div>
 </section>
 
@@ -338,8 +357,10 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
 <!-- ================= WORK ORDER / PAY TICKET ================= -->
 <section class="ticket-section section">
   <div class="wrap">
-    <div class="eyebrow">The Offer</div>
-    <h2>What's on the ticket</h2>
+    <div class="sec-head">
+      <div class="eyebrow">The Offer</div>
+      <h2>What's on <span class="accent">the ticket</span></h2>
+    </div>
     <div class="ticket">
       <div class="ticket-head">
         <span>Work Order #APP-2026</span>
@@ -347,15 +368,15 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
       </div>
       <dl class="ticket-body">
         <div class="ticket-row"><dt>Position</dt><dd>Apprentice &amp; Journeyman Plumber</dd></div>
-        <div class="ticket-row"><dt>Pay</dt><dd>Competitive, based on experience. Top performers earn well above average</dd></div>
-        <div class="ticket-row"><dt>Vehicle</dt><dd>Take-home company vehicle provided</dd></div>
-        <div class="ticket-row"><dt>Equipment</dt><dd>New tools &amp; equipment, kept in top condition</dd></div>
+        <div class="ticket-row"><dt>Pay</dt><dd>Competitive, based on experience</dd></div>
+        <div class="ticket-row"><dt>Vehicle</dt><dd>Take-home company vehicle</dd></div>
+        <div class="ticket-row"><dt>Equipment</dt><dd>New tools, kept in top condition</dd></div>
         <div class="ticket-row"><dt>Benefits</dt><dd>Health benefits + paid days off</dd></div>
         <div class="ticket-row"><dt>Culture</dt><dd>Growing company, tight-knit crew</dd></div>
       </dl>
       <div class="ticket-foot">
         <span>Issued by: Lincoln Plumbing &amp; Rooter</span>
-        <span>Status: Accepting Applications</span>
+        <span>Status: <b>Accepting Applications</b></span>
       </div>
     </div>
   </div>
@@ -364,22 +385,28 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
 <!-- ================= WHO WE WANT ================= -->
 <section class="fit-section section">
   <div class="wrap">
-    <div class="eyebrow">Is This You?</div>
-    <h2>Who we're looking for</h2>
+    <div class="sec-head">
+      <div class="eyebrow">Is This You?</div>
+      <h2>Who we're <span class="accent">looking for</span></h2>
+    </div>
     <div class="fit-grid">
       <div class="fit-card">
+        <span class="fit-num" aria-hidden="true">01</span>
         <h3>Driven &amp; hungry to learn</h3>
-        <p>Whether you're brand new to the trade or have some hands-on time in already, what matters most is that you're motivated to grow.</p>
+        <p>Brand new to the trade or a few years in, what matters most is that you're motivated to grow.</p>
       </div>
       <div class="fit-card">
+        <span class="fit-num" aria-hidden="true">02</span>
         <h3>Reliable</h3>
         <p>You show up, you're coachable, and you take care of the equipment and vehicle we hand you.</p>
       </div>
       <div class="fit-card">
+        <span class="fit-num" aria-hidden="true">03</span>
         <h3>Team-first</h3>
-        <p>We're a crew that watches out for each other. We're looking for people who want to be part of that, not just clock in.</p>
+        <p>We watch out for each other. We want people who want to be part of that, not just clock in.</p>
       </div>
       <div class="fit-card">
+        <span class="fit-num" aria-hidden="true">04</span>
         <h3>In it for a career</h3>
         <p>This isn't a temp gig. If you want a long-term career in plumbing with real growth, this is the shop for you.</p>
       </div>
@@ -388,11 +415,13 @@ src="https://www.facebook.com/tr?id=1083376654248929&ev=PageView&noscript=1" /><
 </section>
 
 <!-- ================= APPLY ================= -->
-<section class="apply-section section" id="apply">
+<section class="apply-section section on-dark" id="apply">
   <div class="wrap">
-    <div class="eyebrow">Ready When You Are</div>
-    <h2 class="display">Apply in <span>2 minutes</span></h2>
-    <p class="lede">Fill out the form below and someone from our team will follow up directly.</p>
+    <div class="sec-head">
+      <div class="eyebrow">Ready When You Are</div>
+      <h2>Apply in <span class="accent">2 minutes</span></h2>
+      <p>Fill out the form below and someone from our team will follow up directly.</p>
+    </div>
     <div class="form-shell">
       <iframe src="https://link.advancedmarketers.co/widget/form/dxqfiiA9bB1OLTNaNnRx"
         id="inline-dxqfiiA9bB1OLTNaNnRx"
