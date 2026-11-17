@@ -72,6 +72,10 @@ LP_CALL_LINES = {
     'water-heater-checkup': '909-766-9716',
     'plumbing-checkup': '909-766-9716',
     'refer-a-neighbor': '909-766-9716',
+    # Meta hiring funnel's own line, given 2026-11-18. GTM-KF82PPKL has no call
+    # tag for it yet.
+    'lp-job-ad': '909-769-0563',
+    'meta-thank-you': '909-769-0563',
 }
 
 
@@ -104,6 +108,9 @@ MAIN_CALL_NUMBER = '(909)780-0887'
 GBP_CALL_LABEL = 'AW-16721660937/yy13COq3mpcdEImYwaU-'
 GBP_CALL_NUMBER = '(909)675-1272'
 META_PIXEL_ID = '1083376654248929'
+# Pages that report a Meta "Lead" on load: the page the GHL Meta Form redirects
+# to after a hiring application (/lp-job-ad -> /meta-thank-you).
+META_LEAD_PAGES = {'meta-thank-you'}
 # "Call from Ads" click-to-call conversion. Google's event snippet, verbatim, on
 # every page; a click on any tel: link reports it. Unlike the phone_conversion_number
 # configs above it swaps no numbers.
@@ -230,6 +237,7 @@ def head(slug=None):
 '''
     else:
         google += call_click(google) + '\n'
+    lead = "\nfbq('track', 'Lead');" if slug in META_LEAD_PAGES else ''
     out = f'''{HEAD_MARKER}
 {google}{gtm_snippet(slug)}
 <!-- Meta Pixel Code -->
@@ -243,7 +251,7 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '{META_PIXEL_ID}');
-fbq('track', 'PageView');
+fbq('track', 'PageView');{lead}
 </script>
 <!-- End Meta Pixel Code -->'''
     return out
@@ -258,4 +266,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id={META_PIXEL_ID}&ev=PageView&noscript=1" /></noscript>'''
+    if slug in META_LEAD_PAGES:
+        out += f'''
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id={META_PIXEL_ID}&ev=Lead&noscript=1" /></noscript>'''
     return out
